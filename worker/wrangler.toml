@@ -1,0 +1,15 @@
+name = "vivibon-cover-worker"
+main = "dist/index.js"
+compatibility_date = "2024-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+# 生产环境 KV 绑定配置
+kv_namespaces = [
+  { binding = "RATE_LIMIT_KV", id = "872d5b3c61864f6c99ff505046f38445" }
+]
+
+[vars]
+ENVIRONMENT = "production"
+
+[build]
+command = "node build.js"
