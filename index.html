@@ -1106,6 +1106,26 @@
     let activeTemplateId = "chill_intern";
     let userPhotoUrl = "models/milo_gentle.webp";
     let isUserUploaded = false;
+    let defaultModelBase64 = null;
+
+    async function loadDefaultModelBase64() {
+      if (defaultModelBase64) return defaultModelBase64;
+      try {
+        const res = await fetch('models/milo_gentle.jpg');
+        const blob = await res.blob();
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            defaultModelBase64 = reader.result;
+            resolve(defaultModelBase64);
+          };
+          reader.readAsDataURL(blob);
+        });
+      } catch (e) {
+        console.warn('Failed to load default model base64:', e);
+        return null;
+      }
+    }
 
     function trackEvent(eventName, properties = {}) {
       try {
@@ -1664,6 +1684,11 @@
       let finalPosterImg = tpl.img;
       let responseData = null;
 
+      let effectiveImageBase64 = userPhotoUrl;
+      if (!isUserUploaded || !effectiveImageBase64 || !effectiveImageBase64.startsWith('data:')) {
+        effectiveImageBase64 = await loadDefaultModelBase64();
+      }
+
       try {
         const payload = {
           styleKey: theme.backendTheme || "corporate",
@@ -1671,8 +1696,8 @@
           itemId: tpl.id,
           templateId: tpl.id,
           petName: "Milo",
-          imageBase64: isUserUploaded ? userPhotoUrl : undefined,
-          isDefaultSample: !isUserUploaded
+          imageBase64: effectiveImageBase64 || undefined,
+          isDefaultSample: false
         };
 
         const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';
@@ -1688,11 +1713,9 @@
         }).then(async (res) => {
           if (res.ok) {
             const json = await res.json();
-            if (json.data) {
+            if (json.data && json.data.imageUrl) {
               responseData = json.data;
-              if (json.data.imageUrl && !json.data.isFallback) {
-                finalPosterImg = json.data.imageUrl;
-              }
+              finalPosterImg = json.data.imageUrl;
             }
           }
         }).catch((err) => {
@@ -1717,7 +1740,7 @@
         triggerHaptic(15);
 
         document.getElementById("res-display-img").src = finalPosterImg;
-        document.getElementById("res-original-img").src = userPhotoUrl;
+        document.getElementById("res-original-img").src = isUserUploaded ? userPhotoUrl : (defaultModelBase64 || 'models/milo_gentle.jpg');
         const magTagEl = document.getElementById("mag-tag");
         if (magTagEl) magTagEl.innerText = tpl.tag;
         const magTitleEl = document.getElementById("mag-title");
@@ -1960,6 +1983,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      loadDefaultModelBase64();
       renderCategoryPills();
       renderTemplateCards();
       initDragScroll();

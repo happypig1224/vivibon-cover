@@ -1,6 +1,7 @@
 import { STYLE_CONFIGS, NEGATIVE_PROMPT, assembleDynamicPrompt } from '../config/styles';
 import { StyleKey } from '../types/env';
 import { alertService, AlertContext } from './alertService';
+import { DEFAULT_MILO_BASE64 } from '../config/miloSample';
 
 export interface GenerateResult {
   jobId: string;
@@ -219,18 +220,8 @@ export class FalService {
       };
     }
 
-    // Preset Sample Bypass: When using production runner without pet photo input,
-    // immediately return curated sample without wasting compute or triggering false alerts
-    if (this.runner === defaultFalRunner && !imageBase64) {
-      return {
-        ...baseResult,
-        jobId: `preset_${crypto.randomUUID().slice(0, 8)}`,
-        imageUrl: fallbackImage,
-        latencyMs: Date.now() - start,
-        isFallback: true,
-        debugReason: 'PRESET_SAMPLE_VIEW'
-      };
-    }
+    // Use user-uploaded photo if provided, or default demonstration model (Milo) for live AI generation
+    const effectiveImageInput = imageBase64 || DEFAULT_MILO_BASE64;
 
     // Helper to invoke runner with single timeout controller
     const runAttempt = async (key: string) => {
@@ -239,7 +230,7 @@ export class FalService {
       try {
         const res = await this.runner(
           assembled.fullPrompt,
-          imageBase64,
+          effectiveImageInput,
           key,
           controller.signal,
           assembled.negativePrompt

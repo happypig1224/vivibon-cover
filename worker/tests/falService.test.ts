@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { FalService } from '../src/services/falService';
+import { DEFAULT_MILO_BASE64 } from '../src/config/miloSample';
 import {
   STYLE_CONFIGS,
   SUPPORTED_STYLE_KEYS,
@@ -64,7 +65,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(result.capsuleVariant?.name).toBe('程序员与技术码农');
     expect(mockRunner).toHaveBeenCalledWith(
       expect.stringContaining('Tech company software engineer dog portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('corporate badges')
@@ -152,7 +153,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resMonaLisa.capsuleVariant?.name).toContain('蒙娜丽莎');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining("Mona Lisa"),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('modern digital artifacts')
@@ -171,7 +172,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resIronMan.capsuleVariant?.id).toBe('iron_man');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('Iron Man inspired superhero pet'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('full head helmet')
@@ -191,7 +192,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resLineArt.capsuleVariant?.id).toBe('line_art');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('Minimalist black and white rough crayon'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('realistic pencil sketch, colorful, gray gradient')
@@ -210,7 +211,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resChristmas.capsuleVariant?.id).toBe('christmas');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('Christmas holiday luxury pet portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('gift box cutting off front legs')
@@ -229,7 +230,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resHalloween.capsuleVariant?.id).toBe('halloween');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('Whimsical cozy and cute Halloween pet studio portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('horror, bloody, skulls')
@@ -248,7 +249,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resBirthday.capsuleVariant?.id).toBe('birthday_vip');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('VIP Birthday celebration pet studio portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('hat penetrating ears, strap digging into skin')
@@ -267,7 +268,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resIntern.capsuleVariant?.id).toBe('chill_intern');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('chill anti-hustle corporate intern pet portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('stressed expression, angry boss')
@@ -286,7 +287,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resCoffee.capsuleVariant?.id).toBe('coffee_pro');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('coffee-fueled 9-to-5 corporate professional pet portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('coffee spilled on fur, pet drinking hot coffee')
@@ -305,7 +306,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resWitch.capsuleVariant?.id).toBe('witch');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('Mystical fantasy witch pet studio portrait'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('hat covering eyes, hat swallowing ears, hat piercing skull')
@@ -324,7 +325,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(resCowboy.capsuleVariant?.id).toBe('cowboy');
     expect(mockRunner).toHaveBeenLastCalledWith(
       expect.stringContaining('Americana Wild West cowboy and Coastal Cowgirl'),
-      undefined,
+      DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
       expect.stringContaining('sunglasses obscuring eyes, heavy firearms')
