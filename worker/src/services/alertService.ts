@@ -29,7 +29,7 @@ export type FailureCategory =
 export interface ClassifiedFailure {
   category: FailureCategory;
   labelZh: string;
-  icon: string;
+  tag: string;
   description: string;
 }
 
@@ -53,7 +53,7 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
     return {
       category: 'INSUFFICIENT_BALANCE',
       labelZh: '账户欠费 / 额度耗尽',
-      icon: '🔴',
+      tag: '[INSUFFICIENT_BALANCE]',
       description: '大模型平台账户余额不足或已被官方锁定，急需充值以恢复正常生图！'
     };
   }
@@ -68,7 +68,7 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
     return {
       category: 'TIMEOUT_EXCEEDED',
       labelZh: '网络请求超时 (15s 截断)',
-      icon: '⏱️',
+      tag: '[TIMEOUT_EXCEEDED]',
       description: '大模型服务商推理耗时超过 15 秒硬阈值，系统已主动熔断并触发保护。'
     };
   }
@@ -86,7 +86,7 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
     return {
       category: 'NSFW_VIOLATION',
       labelZh: '内容安全拦截 / 触发风控',
-      icon: '🛡️',
+      tag: '[NSFW_VIOLATION]',
       description: '上传图片或请求触发服务商多模态内容安全审查 (NSFW/合规风控)，已优雅降级至标杆样片。'
     };
   }
@@ -102,7 +102,7 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
     return {
       category: 'AUTH_FAILED',
       labelZh: '鉴权失败 / API Key 无效',
-      icon: '🔑',
+      tag: '[AUTH_FAILED]',
       description: '调用的 API Key 无效或未授权，请检查 Cloudflare Workers Secrets 配置。'
     };
   }
@@ -120,7 +120,7 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
     return {
       category: 'UPSTREAM_5XX',
       labelZh: '服务商集群异常 (5xx)',
-      icon: '⚠️',
+      tag: '[UPSTREAM_5XX]',
       description: '上游服务商底层集群故障或过载排队，已自动触发多云容灾转移。'
     };
   }
@@ -129,7 +129,7 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
   return {
     category: 'UNKNOWN_ERROR',
     labelZh: '未分类异常',
-    icon: '❓',
+    tag: '[UNKNOWN_ERROR]',
     description: '发生未预期错误，请参考详细报错日志。'
   };
 }
@@ -153,8 +153,42 @@ export class AlertService {
   }
 
   /**
+   * Directly sends a Markdown formatted message to Enterprise WeChat Webhook
+   */
+  async sendMarkdown(webhookUrl: string | undefined, markdownContent: string): Promise<boolean> {
+    if (!webhookUrl || !webhookUrl.startsWith('http')) {
+      console.warn('[AlertService] WeChat Webhook URL not configured. Markdown message skipped.');
+      return false;
+    }
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          msgtype: 'markdown',
+          markdown: {
+            content: markdownContent
+          }
+        })
+      });
+
+      if (!response.ok) {
+        const resText = await response.text().catch(() => '');
+        console.error(`[AlertService] Failed to send WeChat Webhook: ${response.status} ${resText}`);
+        return false;
+      }
+
+      return true;
+    } catch (err) {
+      console.error('[AlertService] Error sending WeChat markdown message:', err);
+      return false;
+    }
+  }
+
+  /**
    * Dispatches an Enterprise WeChat Webhook alert message asynchronously
-   * Protected with 5-minute anti-storm debouncing per failure category
+   * Protected with 5-minute anti-storm debouncing per failure category (strictly NO emojis)
    */
   async sendWeChatAlert(
     webhookUrl: string | undefined,
@@ -192,14 +226,14 @@ export class AlertService {
 
     const colorTag = severity === 'CRITICAL' ? 'warning' : 'comment';
 
-    const markdownContent = `### ${classification.icon} ViviBon Cover 运维告警 · ${title}
+    const markdownContent = `### [ViviBon Cover 运维告警] ${title}
 > **环境**: \`${envTag}\`
-> **时间**: ${timestampStr} (北京时间)
+> **时间**: ${timestampStr} (CST)
 > **追踪 ID**: \`${context.traceId || 'N/A'}\`
 > **客户端 IP**: \`${context.clientIp || '127.0.0.1'}\`
 
-**故障诊断分析**:
-- **故障类型**: <font color="${colorTag}">${classification.labelZh}</font>
+**故障诊断**:
+- **故障类型**: <font color="${colorTag}">${classification.labelZh}</font> \`${classification.tag}\`
 - **业务影响**: ${classification.description}
 - **主选模型**: \`${context.primaryProvider || 'Primary'}\`
 - **备选模型**: \`${context.secondaryProvider || 'Secondary'}\`
@@ -209,35 +243,17 @@ export class AlertService {
 > **详细报错报文**:
 > \`${(context.errorMessage || 'Unknown').slice(0, 300)}\`
 
-> ℹ️ *已启用 5 分钟同类告警防风暴静默机制，避免高频刷屏*
+> *已启用 5 分钟同类告警防风暴静默机制，避免高频刷屏*
 `;
 
-    try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          msgtype: 'markdown',
-          markdown: {
-            content: markdownContent
-          }
-        })
-      });
-
-      if (!response.ok) {
-        const resText = await response.text().catch(() => '');
-        console.error(`[AlertService] Failed to send WeChat Webhook: ${response.status} ${resText}`);
-        return false;
-      }
-
+    const success = await this.sendMarkdown(webhookUrl, markdownContent);
+    if (success) {
       // Record successful alert time for debouncing suppression
       this.recentAlertTimestamps.set(debounceKey, now);
-      return true;
-    } catch (err) {
-      console.error('[AlertService] Error sending WeChat alert:', err);
-      return false;
     }
+    return success;
   }
 }
 
 export const alertService = new AlertService();
+

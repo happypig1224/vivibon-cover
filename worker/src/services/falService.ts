@@ -156,9 +156,9 @@ export class FalService {
   private runner: FalRunner;
   private timeoutMs: number;
 
-  constructor(runner: FalRunner = defaultFalRunner, timeoutMs: number = 15000) {
+  constructor(runner: FalRunner = defaultFalRunner, timeoutMs: number = 30000) {
     this.runner = runner;
-    this.timeoutMs = timeoutMs; // Hard 15s timeout limit per inference attempt
+    this.timeoutMs = timeoutMs; // 30s timeout limit per inference attempt (supports large multi-modal diffusion)
   }
 
   /**
@@ -219,6 +219,19 @@ export class FalService {
       };
     }
 
+    // Preset Sample Bypass: When using production runner without pet photo input,
+    // immediately return curated sample without wasting compute or triggering false alerts
+    if (this.runner === defaultFalRunner && !imageBase64) {
+      return {
+        ...baseResult,
+        jobId: `preset_${crypto.randomUUID().slice(0, 8)}`,
+        imageUrl: fallbackImage,
+        latencyMs: Date.now() - start,
+        isFallback: true,
+        debugReason: 'PRESET_SAMPLE_VIEW'
+      };
+    }
+
     // Helper to invoke runner with single timeout controller
     const runAttempt = async (key: string) => {
       const controller = new AbortController();
@@ -259,19 +272,21 @@ export class FalService {
         primaryError = err instanceof Error ? err : new Error(String(err));
         console.warn(`[FalService] Primary AI (${primaryProviderName}) failed:`, primaryError.message);
 
-        // Asynchronously notify Enterprise WeChat on Primary failure
-        alertService.sendWeChatAlert(
-          webhookUrl,
-          `主模型生图失败 · 准备故障转移`,
-          {
-            ...alertContext,
-            primaryProvider: primaryProviderName,
-            secondaryProvider: secondaryApiKey ? secondaryProviderName : 'None',
-            errorMessage: primaryError.message,
-            durationMs: Date.now() - start
-          },
-          'WARNING'
-        ).catch(() => {});
+        // Asynchronously notify Enterprise WeChat on Primary failure (ignore if intentional missing input)
+        if (!primaryError.message.includes('Missing pet photo input')) {
+          alertService.sendWeChatAlert(
+            webhookUrl,
+            `主模型生图失败 · 准备故障转移`,
+            {
+              ...alertContext,
+              primaryProvider: primaryProviderName,
+              secondaryProvider: secondaryApiKey ? secondaryProviderName : 'None',
+              errorMessage: primaryError.message,
+              durationMs: Date.now() - start
+            },
+            'WARNING'
+          ).catch(() => {});
+        }
       }
     }
 
@@ -307,19 +322,21 @@ export class FalService {
         const secondaryError = secErr instanceof Error ? secErr : new Error(String(secErr));
         console.warn(`[FalService] Secondary AI (${secondaryProviderName}) also failed:`, secondaryError.message);
 
-        // Notify Enterprise WeChat: Both Primary & Secondary failed!
-        alertService.sendWeChatAlert(
-          webhookUrl,
-          `主备模型均调用失败 · 触发静态样片终极降级`,
-          {
-            ...alertContext,
-            primaryProvider: primaryProviderName,
-            secondaryProvider: secondaryProviderName,
-            errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
-            durationMs: Date.now() - start
-          },
-          'CRITICAL'
-        ).catch(() => {});
+        // Notify Enterprise WeChat: Both Primary & Secondary failed! (ignore if intentional missing input)
+        if (!primaryError?.message?.includes('Missing pet photo input') && !secondaryError.message.includes('Missing pet photo input')) {
+          alertService.sendWeChatAlert(
+            webhookUrl,
+            `主备模型均调用失败 · 触发静态样片终极降级`,
+            {
+              ...alertContext,
+              primaryProvider: primaryProviderName,
+              secondaryProvider: secondaryProviderName,
+              errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
+              durationMs: Date.now() - start
+            },
+            'CRITICAL'
+          ).catch(() => {});
+        }
       }
     }
 

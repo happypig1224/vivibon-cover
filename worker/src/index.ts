@@ -10,8 +10,11 @@ import { createGenerateRoute } from './routes/generate';
 import { FalService, falService as defaultFalService } from './services/falService';
 import { ErrorResponse } from './schemas/generate';
 
+import { metricsService } from './services/metricsService';
+import { alertService } from './services/alertService';
+
 // @ts-ignore
-import indexHtml from '../../index.html?raw';
+import indexHtml from '../../public/index.html?raw';
 
 export const createApp = (customFalService?: FalService, rateLimiterOpts?: RateLimiterOptions) => {
   const app = new Hono<{
@@ -31,14 +34,36 @@ export const createApp = (customFalService?: FalService, rateLimiterOpts?: RateL
   // 4. FinOps & IP Rate Limiting Middleware on Generation Route (NC-3: 3/hr, 10/day, $45 cap)
   app.use('/api/generate', rateLimiterMiddleware(rateLimiterOpts));
 
-  // 4. Static H5 Delivery (Zero-Latency Unified Edge Serving)
+  // 5. Static H5 Delivery (Zero-Latency Unified Edge Serving)
   app.get('/', (c) => c.html(indexHtml));
   app.get('/index.html', (c) => c.html(indexHtml));
 
-  // 5. API Routes
+  // 6. API Routes
   app.route('/', healthRoute);
   app.route('/', stylesRoute);
   app.route('/', createGenerateRoute(customFalService || defaultFalService));
+
+  // 7. Internal Daily Report Inspection & Manual Trigger Route (strictly NO emojis)
+  app.get('/api/internal/daily-report', async (c) => {
+    const dateParam = c.req.query('date');
+    const shouldSend = c.req.query('send') === '1';
+    const summary = await metricsService.getDailySummary(c.env.RATE_LIMIT_KV, dateParam);
+    const markdown = metricsService.formatDailyReportMarkdown(summary, c.env.ENVIRONMENT || 'production');
+
+    let sent = false;
+    if (shouldSend) {
+      sent = await alertService.sendMarkdown(c.env.WECHAT_WEBHOOK_URL, markdown);
+    }
+
+    return c.json({
+      success: true,
+      data: {
+        summary,
+        markdown,
+        sent
+      }
+    });
+  });
 
   // Global 404 handler
   app.notFound((c) => {
@@ -64,5 +89,20 @@ export const createApp = (customFalService?: FalService, rateLimiterOpts?: RateL
   return app;
 };
 
-const app = createApp();
-export default app;
+export const app = createApp();
+
+export default {
+  fetch: (request: Request, env: Env, ctx: ExecutionContext) => app.fetch(request, env, ctx),
+  async scheduled(event: any, env: Env, ctx: ExecutionContext) {
+    console.log('[Cron] Executing ViviBon Cover Daily Operations Report scheduler...');
+    try {
+      const summary = await metricsService.getDailySummary(env.RATE_LIMIT_KV);
+      const markdown = metricsService.formatDailyReportMarkdown(summary, env.ENVIRONMENT || 'production');
+      const sent = await alertService.sendMarkdown(env.WECHAT_WEBHOOK_URL, markdown);
+      console.log('[Cron] Daily report successfully dispatched, sent =', sent);
+    } catch (err) {
+      console.error('[Cron] Error executing daily operations report:', err);
+    }
+  }
+};
+

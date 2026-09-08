@@ -83,12 +83,14 @@ describe('NC-6 & NC-11 Safety Moderation & Anti-Prompt-Injection', () => {
   });
 
   describe('Content Moderation Alert & Fallback Resilience', () => {
-    it('should classify upstream safety checker trigger as NSFW_VIOLATION', () => {
+    it('should classify upstream safety checker trigger as NSFW_VIOLATION with no emojis', () => {
       const nsfwError = classifyFailureReason('Upstream safety violation: NSFW content detected in generated frame');
       expect(nsfwError.category).toBe('NSFW_VIOLATION');
       expect(nsfwError.labelZh).toContain('内容安全');
-      expect(nsfwError.icon).toBe('🛡️');
+      expect(nsfwError.tag).toBe('[NSFW_VIOLATION]');
+      expect(nsfwError.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
     });
+
 
     it('should classify content moderation policy violations correctly', () => {
       const policyError = classifyFailureReason('Request rejected by provider content moderation policy');

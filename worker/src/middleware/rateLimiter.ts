@@ -121,7 +121,7 @@ export const rateLimiterMiddleware = (options?: RateLimiterOptions): MiddlewareH
         kv.put(dailyCapKey, (dailyTotal + 1).toString(), { expirationTtl: 172800 }),
         kv.put(ipHourlyKey, (currentHourly + 1).toString(), { expirationTtl: 7200 }),
         kv.put(ipDailyKey, (currentDaily + 1).toString(), { expirationTtl: 172800 }),
-        kv.put(burstKey, (burstCount + 1).toString(), { expirationTtl: 20 })
+        kv.put(burstKey, (burstCount + 1).toString(), { expirationTtl: 60 })
       ]);
     } else {
       // Test bypass still increments global FinOps cap for budget tracking

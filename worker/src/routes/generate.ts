@@ -3,6 +3,8 @@ import { Env, StyleKey } from '../types/env';
 import { GenerateRequestSchema, ErrorResponse, GenerateResponseSuccess } from '../schemas/generate';
 import { FalService, falService as defaultFalService } from '../services/falService';
 import { sanitizePetName } from '../config/styles';
+import { metricsService } from '../services/metricsService';
+
 
 export const createGenerateRoute = (service: FalService = defaultFalService) => {
   const route = new Hono<{
@@ -91,14 +93,14 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
 
     // Default to SiliconFlow as primary (low-cost, domestic RMB, Qwen-Image-Edit Face ID)
     // Fal.ai acts as secondary failover unless PRIMARY_AI_PROVIDER is explicitly set to 'fal'
-    const isFalPrimary = c.env.PRIMARY_AI_PROVIDER === 'fal';
+    const isFalPrimary = c.env?.PRIMARY_AI_PROVIDER === 'fal';
     const primaryKey = isFalPrimary
-      ? (c.env.FAL_KEY || c.env.SILICONFLOW_KEY)
-      : (c.env.SILICONFLOW_KEY || c.env.FAL_KEY);
-    const secondaryKey = isFalPrimary ? c.env.FAL_KEY : c.env.SILICONFLOW_KEY;
+      ? (c.env?.FAL_KEY || c.env?.SILICONFLOW_KEY)
+      : (c.env?.SILICONFLOW_KEY || c.env?.FAL_KEY);
+    const secondaryKey = isFalPrimary ? c.env?.SILICONFLOW_KEY : c.env?.FAL_KEY;
 
     const alertCtx = {
-      environment: c.env.ENVIRONMENT || 'production',
+      environment: c.env?.ENVIRONMENT || 'production',
       traceId: c.get('traceId'),
       clientIp: c.get('clientIp'),
       petName: safePetName,
@@ -115,7 +117,7 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       subId,
       effectiveItemId,
       alertCtx,
-      c.env.WECHAT_WEBHOOK_URL,
+      c.env?.WECHAT_WEBHOOK_URL,
       secondaryKey
     );
 
@@ -137,11 +139,31 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       }
     };
 
+    // Non-blocking metrics recording in background (0ms user impact)
+    if (c.env?.RATE_LIMIT_KV) {
+      const isRealUpload = !parseResult.data.isDefaultSample;
+      const recordPromise = metricsService.recordGeneration(c.env.RATE_LIMIT_KV, {
+        clientIp: c.var.clientIp,
+        styleKey: effectiveStyleKey,
+        isRealUpload,
+        isFallback: result.isFallback,
+        hasError: result.isFallback && result.failoverTriggered
+      });
+
+      try {
+        c.executionCtx.waitUntil(recordPromise);
+      } catch {
+        recordPromise.catch((err) => console.error('[Metrics] Error:', err));
+      }
+    }
+
     return c.json(response, 200);
   });
 
   return route;
 };
+
+
 
 
 export const generateRoute = createGenerateRoute();

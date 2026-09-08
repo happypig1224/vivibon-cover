@@ -1,6 +1,8 @@
 import { MiddlewareHandler } from 'hono';
 import { Env } from '../types/env';
 import { ErrorResponse } from '../schemas/generate';
+import { metricsService } from '../services/metricsService';
+
 
 /**
  * Big-Tech Grade Anti-Bot & Anti-Crawler Defense Middleware
@@ -48,6 +50,13 @@ export const antiBotMiddleware = (): MiddlewareHandler<{
 
     // 2. Reject empty or abnormally short User-Agents on generation API
     if (!userAgent || userAgent.trim().length < 5) {
+      if (c.env?.RATE_LIMIT_KV) {
+        try {
+          c.executionCtx.waitUntil(metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV));
+        } catch {
+          metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV).catch(() => {});
+        }
+      }
       const errorResp: ErrorResponse = {
         success: false,
         errorCode: 'BOT_DETECTED',
@@ -60,6 +69,13 @@ export const antiBotMiddleware = (): MiddlewareHandler<{
     for (const pattern of AUTOMATED_BOT_PATTERNS) {
       if (pattern.test(userAgent)) {
         console.warn(`[AntiBot] Blocked suspicious automated agent [${userAgent}] from IP [${c.get('clientIp')}]`);
+        if (c.env?.RATE_LIMIT_KV) {
+          try {
+            c.executionCtx.waitUntil(metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV));
+          } catch {
+            metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV).catch(() => {});
+          }
+        }
         const errorResp: ErrorResponse = {
           success: false,
           errorCode: 'BOT_DETECTED',
@@ -68,6 +84,8 @@ export const antiBotMiddleware = (): MiddlewareHandler<{
         return c.json(errorResp, 403);
       }
     }
+
+
 
     // 4. Verify presence of standard browser fetch headers on mutation requests
     if (c.req.method === 'POST') {

@@ -12,5 +12,9 @@ kv_namespaces = [
 ENVIRONMENT = "production"
 PRIMARY_AI_PROVIDER = "siliconflow"
 
+[triggers]
+crons = ["0 14 * * *"]
+
 [build]
 command = "node build.js"
+

@@ -8351,7 +8351,7 @@ var rateLimiterMiddleware = (options) => {
         kv.put(dailyCapKey, (dailyTotal + 1).toString(), { expirationTtl: 172800 }),
         kv.put(ipHourlyKey, (currentHourly + 1).toString(), { expirationTtl: 7200 }),
         kv.put(ipDailyKey, (currentDaily + 1).toString(), { expirationTtl: 172800 }),
-        kv.put(burstKey, (burstCount + 1).toString(), { expirationTtl: 20 })
+        kv.put(burstKey, (burstCount + 1).toString(), { expirationTtl: 60 })
       ]);
     } else {
       await kv.put(dailyCapKey, (dailyTotal + 1).toString(), { expirationTtl: 172800 });
@@ -8359,6 +8359,174 @@ var rateLimiterMiddleware = (options) => {
     await next();
   };
 };
+
+// src/services/metricsService.ts
+function getBeijingDateString(date = /* @__PURE__ */ new Date()) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai" }).format(date);
+}
+var STYLE_NAMES = {
+  fine_art: "\u540D\u7EC5\u665A\u5BB4 (Gentle Evening)",
+  gentle: "\u540D\u7EC5\u665A\u5BB4 (Gentle Evening)",
+  cool_black: "\u9ED1\u8D85\u5148\u950B (Aviator Pioneer)",
+  aviator: "\u9ED1\u8D85\u5148\u950B (Aviator Pioneer)",
+  street_style: "\u65F7\u91CE\u673A\u80FD (Wilderness Outdoor)",
+  wilderness: "\u65F7\u91CE\u673A\u80FD (Wilderness Outdoor)",
+  cozy_warm: "\u6E29\u6696\u624B\u5DE5 (Artisan Wool)",
+  artisan: "\u6E29\u6696\u624B\u5DE5 (Artisan Wool)"
+};
+function parseMetrics(raw, dateStr) {
+  const defaultMetrics = {
+    date: dateStr,
+    totalGenerations: 0,
+    realUploads: 0,
+    presetViews: 0,
+    styleCounts: {},
+    failoverCount: 0,
+    upstreamErrors: 0,
+    botBlocked: 0,
+    uniqueIps: 0
+  };
+  if (!raw) return defaultMetrics;
+  if (typeof raw === "string") {
+    try {
+      const parsed = JSON.parse(raw);
+      return { ...defaultMetrics, ...parsed, styleCounts: { ...parsed.styleCounts } };
+    } catch {
+      return defaultMetrics;
+    }
+  }
+  if (typeof raw === "object") {
+    const obj = raw;
+    return { ...defaultMetrics, ...obj, styleCounts: { ...obj.styleCounts } };
+  }
+  return defaultMetrics;
+}
+var MetricsService = class {
+  /**
+   * Records a generation event asynchronously into Cloudflare KV
+   */
+  async recordGeneration(kv, params) {
+    if (!kv) return;
+    const dateStr = getBeijingDateString();
+    const metricsKey = `metrics_summary:${dateStr}`;
+    try {
+      let isNewIp = false;
+      if (params.clientIp) {
+        const ipKey = `metrics_ip:${dateStr}:${params.clientIp}`;
+        const existing = await kv.get(ipKey);
+        if (!existing) {
+          isNewIp = true;
+          await kv.put(ipKey, "1", { expirationTtl: 86400 * 2 });
+        }
+      }
+      const raw = await kv.get(metricsKey, "json");
+      const metrics = parseMetrics(raw, dateStr);
+      metrics.totalGenerations += 1;
+      if (params.isRealUpload) {
+        metrics.realUploads += 1;
+      } else {
+        metrics.presetViews += 1;
+      }
+      const sKey = params.styleKey || "unknown";
+      metrics.styleCounts[sKey] = (metrics.styleCounts[sKey] || 0) + 1;
+      if (params.isFallback) {
+        metrics.failoverCount += 1;
+      }
+      if (params.hasError) {
+        metrics.upstreamErrors += 1;
+      }
+      if (isNewIp) {
+        metrics.uniqueIps += 1;
+      }
+      await kv.put(metricsKey, JSON.stringify(metrics), { expirationTtl: 86400 * 30 });
+    } catch (err) {
+      console.error("[MetricsService] Failed to record generation metric:", err);
+    }
+  }
+  /**
+   * Records a blocked bot/crawler attempt asynchronously
+   */
+  async recordBotBlocked(kv) {
+    if (!kv) return;
+    const dateStr = getBeijingDateString();
+    const metricsKey = `metrics_summary:${dateStr}`;
+    try {
+      const raw = await kv.get(metricsKey, "json");
+      const metrics = parseMetrics(raw, dateStr);
+      metrics.botBlocked += 1;
+      await kv.put(metricsKey, JSON.stringify(metrics), { expirationTtl: 86400 * 30 });
+    } catch (err) {
+      console.error("[MetricsService] Failed to record bot blocked metric:", err);
+    }
+  }
+  /**
+   * Retrieves summary for a specific date
+   */
+  async getDailySummary(kv, dateStr) {
+    const targetDate = dateStr || getBeijingDateString();
+    if (!kv) {
+      return parseMetrics(null, targetDate);
+    }
+    try {
+      const raw = await kv.get(`metrics_summary:${targetDate}`, "json");
+      return parseMetrics(raw, targetDate);
+    } catch (err) {
+      console.error("[MetricsService] Error getting daily summary:", err);
+      return parseMetrics(null, targetDate);
+    }
+  }
+  /**
+   * Formats the daily summary into an executive-grade, pure Markdown report without any emojis
+   */
+  formatDailyReportMarkdown(metrics, environment = "production") {
+    const total = metrics.totalGenerations;
+    const realUploadRate = total > 0 ? (metrics.realUploads / total * 100).toFixed(1) : "0.0";
+    const avgPerUser = metrics.uniqueIps > 0 ? (total / metrics.uniqueIps).toFixed(1) : "0.0";
+    const costPerCall = 0.2;
+    const totalCost = (metrics.realUploads * costPerCall).toFixed(2);
+    const savingsCost = (metrics.presetViews * costPerCall).toFixed(2);
+    const costPerUv = metrics.uniqueIps > 0 ? (metrics.realUploads * costPerCall / metrics.uniqueIps).toFixed(2) : "0.00";
+    const effectiveTotal = total > 0 ? total : 1;
+    const slaRate = total > 0 ? ((total - metrics.upstreamErrors) / effectiveTotal * 100).toFixed(1) : "100.0";
+    const sortedStyles = Object.entries(metrics.styleCounts).sort((a, b) => b[1] - a[1]);
+    let styleListText = "";
+    if (sortedStyles.length === 0) {
+      styleListText = "- \u6682\u65E0\u751F\u6210\u6570\u636E";
+    } else {
+      styleListText = sortedStyles.map(([key, count], index) => {
+        const name = STYLE_NAMES[key] || key;
+        const pct = total > 0 ? (count / total * 100).toFixed(1) : "0.0";
+        return `${index + 1}. ${name}: ${count} \u6B21 (${pct}%)`;
+      }).join("\n");
+    }
+    return `### [ViviBon Cover] \u6BCF\u65E5\u8FD0\u8425\u4E0E\u589E\u957F\u6218\u62A5
+> \u7EDF\u8BA1\u5468\u671F: ${metrics.date} (\u622A\u81F3 22:00 CST)
+> \u8FD0\u884C\u73AF\u5883: Cloudflare Edge Cluster (${environment})
+
+---
+**\u4E00\u3001 \u6838\u5FC3\u4E1A\u52A1\u4E0E\u8F6C\u5316\u6F0F\u6597**
+- \u72EC\u7ACB\u521B\u4F5C\u8005 (UV): ${metrics.uniqueIps} \u4EBA
+- \u603B\u751F\u6210\u5927\u7247\u6570: ${metrics.totalGenerations} \u6B21 (\u4EBA\u5747 ${avgPerUser} \u6B21)
+- \u771F\u5B9E\u7231\u5BA0\u4E0A\u4F20\u7387: ${realUploadRate}% (${metrics.realUploads} \u6B21\u771F\u56FE\u91CD\u7ED8)
+- \u9884\u7F6E\u6A21\u7279\u6D4F\u89C8\u6570: ${metrics.presetViews} \u6B21
+
+**\u4E8C\u3001 \u7206\u6B3E\u98CE\u683C\u504F\u597D\u5206\u5E03**
+${styleListText}
+
+**\u4E09\u3001 \u8D22\u52A1\u4E0E\u7B97\u529B\u7CBE\u7EC6\u5316\u6838\u7B97 (FinOps)**
+- \u7845\u57FA\u6D41\u52A8\u5B9E\u9645\u8C03\u7528: ${metrics.realUploads} \u6B21
+- \u4ECA\u65E5\u5927\u6A21\u578B\u5B9E\u9500\u91D1\u989D: \uFFE5${totalCost}
+- \u9884\u7F6E\u8D44\u4EA7\u8282\u7701\u7B97\u529B: \uFFE5${savingsCost} (${metrics.presetViews} \u6B21\u547D\u4E2D)
+- \u5355\u5BA2\u83B7\u5BA2\u7B97\u529B\u6210\u672C: \uFFE5${costPerUv} / \u4EBA
+
+**\u56DB\u3001 \u7CFB\u7EDF\u53EF\u7528\u6027\u4E0E\u5B89\u5168\u9632\u5FA1**
+- \u670D\u52A1\u53EF\u7528\u7387 (SLA): ${slaRate}%
+- \u4E0A\u6E38\u8D85\u65F6/\u6545\u969C\u964D\u7EA7: ${metrics.failoverCount} \u6B21
+- \u6076\u610F\u722C\u866B\u4E0E\u811A\u672C\u62E6\u622A: ${metrics.botBlocked} \u6B21
+`;
+  }
+};
+var metricsService = new MetricsService();
 
 // src/middleware/antiBot.ts
 var AUTOMATED_BOT_PATTERNS = [
@@ -8389,6 +8557,14 @@ var antiBotMiddleware = () => {
     }
     const userAgent = c.req.header("user-agent") || "";
     if (!userAgent || userAgent.trim().length < 5) {
+      if (c.env?.RATE_LIMIT_KV) {
+        try {
+          c.executionCtx.waitUntil(metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV));
+        } catch {
+          metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV).catch(() => {
+          });
+        }
+      }
       const errorResp = {
         success: false,
         errorCode: "BOT_DETECTED",
@@ -8399,6 +8575,14 @@ var antiBotMiddleware = () => {
     for (const pattern of AUTOMATED_BOT_PATTERNS) {
       if (pattern.test(userAgent)) {
         console.warn(`[AntiBot] Blocked suspicious automated agent [${userAgent}] from IP [${c.get("clientIp")}]`);
+        if (c.env?.RATE_LIMIT_KV) {
+          try {
+            c.executionCtx.waitUntil(metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV));
+          } catch {
+            metricsService.recordBotBlocked(c.env.RATE_LIMIT_KV).catch(() => {
+            });
+          }
+        }
         const errorResp = {
           success: false,
           errorCode: "BOT_DETECTED",
@@ -8497,7 +8681,7 @@ function classifyFailureReason(rawMessage = "") {
     return {
       category: "INSUFFICIENT_BALANCE",
       labelZh: "\u8D26\u6237\u6B20\u8D39 / \u989D\u5EA6\u8017\u5C3D",
-      icon: "\u{1F534}",
+      tag: "[INSUFFICIENT_BALANCE]",
       description: "\u5927\u6A21\u578B\u5E73\u53F0\u8D26\u6237\u4F59\u989D\u4E0D\u8DB3\u6216\u5DF2\u88AB\u5B98\u65B9\u9501\u5B9A\uFF0C\u6025\u9700\u5145\u503C\u4EE5\u6062\u590D\u6B63\u5E38\u751F\u56FE\uFF01"
     };
   }
@@ -8505,7 +8689,7 @@ function classifyFailureReason(rawMessage = "") {
     return {
       category: "TIMEOUT_EXCEEDED",
       labelZh: "\u7F51\u7EDC\u8BF7\u6C42\u8D85\u65F6 (15s \u622A\u65AD)",
-      icon: "\u23F1\uFE0F",
+      tag: "[TIMEOUT_EXCEEDED]",
       description: "\u5927\u6A21\u578B\u670D\u52A1\u5546\u63A8\u7406\u8017\u65F6\u8D85\u8FC7 15 \u79D2\u786C\u9608\u503C\uFF0C\u7CFB\u7EDF\u5DF2\u4E3B\u52A8\u7194\u65AD\u5E76\u89E6\u53D1\u4FDD\u62A4\u3002"
     };
   }
@@ -8513,7 +8697,7 @@ function classifyFailureReason(rawMessage = "") {
     return {
       category: "NSFW_VIOLATION",
       labelZh: "\u5185\u5BB9\u5B89\u5168\u62E6\u622A / \u89E6\u53D1\u98CE\u63A7",
-      icon: "\u{1F6E1}\uFE0F",
+      tag: "[NSFW_VIOLATION]",
       description: "\u4E0A\u4F20\u56FE\u7247\u6216\u8BF7\u6C42\u89E6\u53D1\u670D\u52A1\u5546\u591A\u6A21\u6001\u5185\u5BB9\u5B89\u5168\u5BA1\u67E5 (NSFW/\u5408\u89C4\u98CE\u63A7)\uFF0C\u5DF2\u4F18\u96C5\u964D\u7EA7\u81F3\u6807\u6746\u6837\u7247\u3002"
     };
   }
@@ -8521,7 +8705,7 @@ function classifyFailureReason(rawMessage = "") {
     return {
       category: "AUTH_FAILED",
       labelZh: "\u9274\u6743\u5931\u8D25 / API Key \u65E0\u6548",
-      icon: "\u{1F511}",
+      tag: "[AUTH_FAILED]",
       description: "\u8C03\u7528\u7684 API Key \u65E0\u6548\u6216\u672A\u6388\u6743\uFF0C\u8BF7\u68C0\u67E5 Cloudflare Workers Secrets \u914D\u7F6E\u3002"
     };
   }
@@ -8529,14 +8713,14 @@ function classifyFailureReason(rawMessage = "") {
     return {
       category: "UPSTREAM_5XX",
       labelZh: "\u670D\u52A1\u5546\u96C6\u7FA4\u5F02\u5E38 (5xx)",
-      icon: "\u26A0\uFE0F",
+      tag: "[UPSTREAM_5XX]",
       description: "\u4E0A\u6E38\u670D\u52A1\u5546\u5E95\u5C42\u96C6\u7FA4\u6545\u969C\u6216\u8FC7\u8F7D\u6392\u961F\uFF0C\u5DF2\u81EA\u52A8\u89E6\u53D1\u591A\u4E91\u5BB9\u707E\u8F6C\u79FB\u3002"
     };
   }
   return {
     category: "UNKNOWN_ERROR",
     labelZh: "\u672A\u5206\u7C7B\u5F02\u5E38",
-    icon: "\u2753",
+    tag: "[UNKNOWN_ERROR]",
     description: "\u53D1\u751F\u672A\u9884\u671F\u9519\u8BEF\uFF0C\u8BF7\u53C2\u8003\u8BE6\u7EC6\u62A5\u9519\u65E5\u5FD7\u3002"
   };
 }
@@ -8556,8 +8740,38 @@ var AlertService = class {
     this.recentAlertTimestamps.clear();
   }
   /**
+   * Directly sends a Markdown formatted message to Enterprise WeChat Webhook
+   */
+  async sendMarkdown(webhookUrl, markdownContent) {
+    if (!webhookUrl || !webhookUrl.startsWith("http")) {
+      console.warn("[AlertService] WeChat Webhook URL not configured. Markdown message skipped.");
+      return false;
+    }
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          msgtype: "markdown",
+          markdown: {
+            content: markdownContent
+          }
+        })
+      });
+      if (!response.ok) {
+        const resText = await response.text().catch(() => "");
+        console.error(`[AlertService] Failed to send WeChat Webhook: ${response.status} ${resText}`);
+        return false;
+      }
+      return true;
+    } catch (err) {
+      console.error("[AlertService] Error sending WeChat markdown message:", err);
+      return false;
+    }
+  }
+  /**
    * Dispatches an Enterprise WeChat Webhook alert message asynchronously
-   * Protected with 5-minute anti-storm debouncing per failure category
+   * Protected with 5-minute anti-storm debouncing per failure category (strictly NO emojis)
    */
   async sendWeChatAlert(webhookUrl, title, context, severity = "WARNING", options) {
     if (!webhookUrl || !webhookUrl.startsWith("http")) {
@@ -8582,14 +8796,14 @@ var AlertService = class {
     const timestampStr = (/* @__PURE__ */ new Date()).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
     const envTag = context.environment || "production";
     const colorTag = severity === "CRITICAL" ? "warning" : "comment";
-    const markdownContent = `### ${classification.icon} ViviBon Cover \u8FD0\u7EF4\u544A\u8B66 \xB7 ${title}
+    const markdownContent = `### [ViviBon Cover \u8FD0\u7EF4\u544A\u8B66] ${title}
 > **\u73AF\u5883**: \`${envTag}\`
-> **\u65F6\u95F4**: ${timestampStr} (\u5317\u4EAC\u65F6\u95F4)
+> **\u65F6\u95F4**: ${timestampStr} (CST)
 > **\u8FFD\u8E2A ID**: \`${context.traceId || "N/A"}\`
 > **\u5BA2\u6237\u7AEF IP**: \`${context.clientIp || "127.0.0.1"}\`
 
-**\u6545\u969C\u8BCA\u65AD\u5206\u6790**:
-- **\u6545\u969C\u7C7B\u578B**: <font color="${colorTag}">${classification.labelZh}</font>
+**\u6545\u969C\u8BCA\u65AD**:
+- **\u6545\u969C\u7C7B\u578B**: <font color="${colorTag}">${classification.labelZh}</font> \`${classification.tag}\`
 - **\u4E1A\u52A1\u5F71\u54CD**: ${classification.description}
 - **\u4E3B\u9009\u6A21\u578B**: \`${context.primaryProvider || "Primary"}\`
 - **\u5907\u9009\u6A21\u578B**: \`${context.secondaryProvider || "Secondary"}\`
@@ -8599,30 +8813,13 @@ var AlertService = class {
 > **\u8BE6\u7EC6\u62A5\u9519\u62A5\u6587**:
 > \`${(context.errorMessage || "Unknown").slice(0, 300)}\`
 
-> \u2139\uFE0F *\u5DF2\u542F\u7528 5 \u5206\u949F\u540C\u7C7B\u544A\u8B66\u9632\u98CE\u66B4\u9759\u9ED8\u673A\u5236\uFF0C\u907F\u514D\u9AD8\u9891\u5237\u5C4F*
+> *\u5DF2\u542F\u7528 5 \u5206\u949F\u540C\u7C7B\u544A\u8B66\u9632\u98CE\u66B4\u9759\u9ED8\u673A\u5236\uFF0C\u907F\u514D\u9AD8\u9891\u5237\u5C4F*
 `;
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          msgtype: "markdown",
-          markdown: {
-            content: markdownContent
-          }
-        })
-      });
-      if (!response.ok) {
-        const resText = await response.text().catch(() => "");
-        console.error(`[AlertService] Failed to send WeChat Webhook: ${response.status} ${resText}`);
-        return false;
-      }
+    const success = await this.sendMarkdown(webhookUrl, markdownContent);
+    if (success) {
       this.recentAlertTimestamps.set(debounceKey, now);
-      return true;
-    } catch (err) {
-      console.error("[AlertService] Error sending WeChat alert:", err);
-      return false;
     }
+    return success;
   }
 };
 var alertService = new AlertService();
@@ -8717,7 +8914,7 @@ var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePromp
 var FalService = class {
   runner;
   timeoutMs;
-  constructor(runner = defaultFalRunner, timeoutMs = 15e3) {
+  constructor(runner = defaultFalRunner, timeoutMs = 3e4) {
     this.runner = runner;
     this.timeoutMs = timeoutMs;
   }
@@ -8763,6 +8960,16 @@ var FalService = class {
         debugReason: "NO_API_KEY_CONFIGURED"
       };
     }
+    if (this.runner === defaultFalRunner && !imageBase64) {
+      return {
+        ...baseResult,
+        jobId: `preset_${crypto.randomUUID().slice(0, 8)}`,
+        imageUrl: fallbackImage,
+        latencyMs: Date.now() - start,
+        isFallback: true,
+        debugReason: "PRESET_SAMPLE_VIEW"
+      };
+    }
     const runAttempt = async (key) => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), this.timeoutMs);
@@ -8798,19 +9005,21 @@ var FalService = class {
       } catch (err) {
         primaryError = err instanceof Error ? err : new Error(String(err));
         console.warn(`[FalService] Primary AI (${primaryProviderName}) failed:`, primaryError.message);
-        alertService.sendWeChatAlert(
-          webhookUrl,
-          `\u4E3B\u6A21\u578B\u751F\u56FE\u5931\u8D25 \xB7 \u51C6\u5907\u6545\u969C\u8F6C\u79FB`,
-          {
-            ...alertContext,
-            primaryProvider: primaryProviderName,
-            secondaryProvider: secondaryApiKey ? secondaryProviderName : "None",
-            errorMessage: primaryError.message,
-            durationMs: Date.now() - start
-          },
-          "WARNING"
-        ).catch(() => {
-        });
+        if (!primaryError.message.includes("Missing pet photo input")) {
+          alertService.sendWeChatAlert(
+            webhookUrl,
+            `\u4E3B\u6A21\u578B\u751F\u56FE\u5931\u8D25 \xB7 \u51C6\u5907\u6545\u969C\u8F6C\u79FB`,
+            {
+              ...alertContext,
+              primaryProvider: primaryProviderName,
+              secondaryProvider: secondaryApiKey ? secondaryProviderName : "None",
+              errorMessage: primaryError.message,
+              durationMs: Date.now() - start
+            },
+            "WARNING"
+          ).catch(() => {
+          });
+        }
       }
     }
     if (secondaryApiKey) {
@@ -8841,19 +9050,21 @@ var FalService = class {
       } catch (secErr) {
         const secondaryError = secErr instanceof Error ? secErr : new Error(String(secErr));
         console.warn(`[FalService] Secondary AI (${secondaryProviderName}) also failed:`, secondaryError.message);
-        alertService.sendWeChatAlert(
-          webhookUrl,
-          `\u4E3B\u5907\u6A21\u578B\u5747\u8C03\u7528\u5931\u8D25 \xB7 \u89E6\u53D1\u9759\u6001\u6837\u7247\u7EC8\u6781\u964D\u7EA7`,
-          {
-            ...alertContext,
-            primaryProvider: primaryProviderName,
-            secondaryProvider: secondaryProviderName,
-            errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
-            durationMs: Date.now() - start
-          },
-          "CRITICAL"
-        ).catch(() => {
-        });
+        if (!primaryError?.message?.includes("Missing pet photo input") && !secondaryError.message.includes("Missing pet photo input")) {
+          alertService.sendWeChatAlert(
+            webhookUrl,
+            `\u4E3B\u5907\u6A21\u578B\u5747\u8C03\u7528\u5931\u8D25 \xB7 \u89E6\u53D1\u9759\u6001\u6837\u7247\u7EC8\u6781\u964D\u7EA7`,
+            {
+              ...alertContext,
+              primaryProvider: primaryProviderName,
+              secondaryProvider: secondaryProviderName,
+              errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
+              durationMs: Date.now() - start
+            },
+            "CRITICAL"
+          ).catch(() => {
+          });
+        }
       }
     }
     const finalReason = primaryError?.message || "ALL_AI_PROVIDERS_FAILED";
@@ -8940,11 +9151,11 @@ var createGenerateRoute = (service = falService) => {
         return c.json(errorResp, 400);
       }
     }
-    const isFalPrimary = c.env.PRIMARY_AI_PROVIDER === "fal";
-    const primaryKey = isFalPrimary ? c.env.FAL_KEY || c.env.SILICONFLOW_KEY : c.env.SILICONFLOW_KEY || c.env.FAL_KEY;
-    const secondaryKey = isFalPrimary ? c.env.FAL_KEY : c.env.SILICONFLOW_KEY;
+    const isFalPrimary = c.env?.PRIMARY_AI_PROVIDER === "fal";
+    const primaryKey = isFalPrimary ? c.env?.FAL_KEY || c.env?.SILICONFLOW_KEY : c.env?.SILICONFLOW_KEY || c.env?.FAL_KEY;
+    const secondaryKey = isFalPrimary ? c.env?.SILICONFLOW_KEY : c.env?.FAL_KEY;
     const alertCtx = {
-      environment: c.env.ENVIRONMENT || "production",
+      environment: c.env?.ENVIRONMENT || "production",
       traceId: c.get("traceId"),
       clientIp: c.get("clientIp"),
       petName: safePetName,
@@ -8960,7 +9171,7 @@ var createGenerateRoute = (service = falService) => {
       subId,
       effectiveItemId,
       alertCtx,
-      c.env.WECHAT_WEBHOOK_URL,
+      c.env?.WECHAT_WEBHOOK_URL,
       secondaryKey
     );
     const response = {
@@ -8980,14 +9191,29 @@ var createGenerateRoute = (service = falService) => {
         ...c.req.query("debug") === "1" && result.debugReason ? { debugReason: result.debugReason } : {}
       }
     };
+    if (c.env?.RATE_LIMIT_KV) {
+      const isRealUpload = !parseResult.data.isDefaultSample;
+      const recordPromise = metricsService.recordGeneration(c.env.RATE_LIMIT_KV, {
+        clientIp: c.var.clientIp,
+        styleKey: effectiveStyleKey,
+        isRealUpload,
+        isFallback: result.isFallback,
+        hasError: result.isFallback && result.failoverTriggered
+      });
+      try {
+        c.executionCtx.waitUntil(recordPromise);
+      } catch {
+        recordPromise.catch((err) => console.error("[Metrics] Error:", err));
+      }
+    }
     return c.json(response, 200);
   });
   return route;
 };
 var generateRoute = createGenerateRoute();
 
-// ../index.html
-var ViviBon_Cover_default = `<!DOCTYPE html>\r
+// ../public/index.html
+var public_default = `<!DOCTYPE html>\r
 <html lang="en">\r
 <head>\r
   <meta charset="UTF-8" />\r
@@ -9031,7 +9257,26 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       --cta-end: #F6CCA7;\r
       --cta-text: #4A3B31;\r
       \r
+      /* iOS 18 Fluid Spring Physics Curves */\r
       --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);\r
+      --spring-tight: cubic-bezier(0.2, 0.8, 0.2, 1);\r
+      --spring-fluid: cubic-bezier(0.32, 0.72, 0, 1);\r
+      --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);\r
+    }\r
+\r
+    /* Apple Display P3 Wide Color Gamut (iPhone / Retina OLED Enhancement) */\r
+    @supports (color: color(display-p3 1 1 1)) {\r
+      :root {\r
+        --bg-page: color(display-p3 0.996 0.973 0.953);\r
+        --bg-card: color(display-p3 0.996 0.973 0.953);\r
+        --text-main: color(display-p3 0.235 0.188 0.157);\r
+        --coral-accent: color(display-p3 0.910 0.365 0.247);\r
+        --coral-glow-border: color(display-p3 1 0.561 0.451);\r
+        --coral-shadow-glow: color(display-p3 0.910 0.365 0.247 / 0.25);\r
+        --cta-start: color(display-p3 0.996 0.906 0.839);\r
+        --cta-end: color(display-p3 0.965 0.800 0.655);\r
+        --cta-text: color(display-p3 0.290 0.231 0.192);\r
+      }\r
     }\r
 \r
     * {\r
@@ -9162,12 +9407,12 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       justify-content: center;\r
       cursor: pointer;\r
       color: #3C3028;\r
-      transition: all 0.2s var(--ease-smooth);\r
+      transition: transform 0.22s var(--spring-bouncy), background 0.2s var(--ease-smooth);\r
       z-index: 5;\r
     }\r
     .upload-btn-floating:active {\r
-      transform: scale(0.92);\r
-      background: rgba(255, 255, 255, 0.85);\r
+      transform: scale(0.88);\r
+      background: rgba(255, 255, 255, 0.9);\r
     }\r
 \r
     /* Category Pill Selector Bar (Soft Frosted Box, 4 Columns) */\r
@@ -9191,13 +9436,13 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       color: var(--text-subtle);\r
       cursor: pointer;\r
       user-select: none;\r
-      transition: all 0.2s var(--ease-smooth);\r
+      transition: all 0.24s var(--spring-fluid);\r
       display: flex;\r
       align-items: center;\r
       justify-content: center;\r
     }\r
     .category-pill:active {\r
-      transform: scale(0.96);\r
+      transform: scale(0.93);\r
     }\r
     .category-pill.active {\r
       background: #FFFFFF;\r
@@ -9247,16 +9492,17 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       align-items: center;\r
       cursor: pointer;\r
       user-select: none;\r
-      transition: all 0.22s var(--ease-smooth);\r
+      transition: transform 0.26s var(--spring-bouncy), border-color 0.22s ease, box-shadow 0.22s ease;\r
       box-shadow: 0 2px 8px rgba(180, 140, 110, 0.08);\r
       position: relative;\r
     }\r
     .template-card:active {\r
-      transform: scale(0.96);\r
+      transform: scale(0.92);\r
     }\r
     .template-card.active {\r
       border: 1.5px solid var(--coral-glow-border);\r
-      box-shadow: 0 0 0 2px rgba(232, 93, 63, 0.15), 0 4px 14px rgba(232, 93, 63, 0.12);\r
+      transform: translateY(-3px);\r
+      box-shadow: 0 0 0 2px rgba(232, 93, 63, 0.15), 0 8px 20px rgba(232, 93, 63, 0.15);\r
     }\r
 \r
     /* Image Box inside Template Card */\r
@@ -9325,11 +9571,11 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       justify-content: center;\r
       gap: 8px;\r
       cursor: pointer;\r
-      transition: all 0.2s var(--ease-smooth);\r
+      transition: transform 0.24s var(--spring-bouncy), box-shadow 0.24s var(--spring-fluid);\r
     }\r
     .btn-cta:active {\r
-      transform: scale(0.975);\r
-      box-shadow: 0 3px 10px -2px rgba(220, 160, 120, 0.25);\r
+      transform: scale(0.955) translateY(1.5px);\r
+      box-shadow: 0 2px 8px -2px rgba(220, 160, 120, 0.3);\r
     }\r
 \r
     /* ================= VIEW 2: Result Showcase (Exact Match to Screenshot 2) ================= */\r
@@ -9442,30 +9688,57 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       transform: scale(0.93);\r
       background: rgba(220, 222, 226, 0.9);\r
     }\r
+    .compare-pill.active {\r
+      background: rgba(28, 28, 30, 0.88);\r
+      color: #FFFFFF;\r
+      border-color: rgba(255, 255, 255, 0.35);\r
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);\r
+    }\r
+    .compare-pill.active svg {\r
+      stroke: #FFFFFF;\r
+    }\r
 \r
-    /* ================= LOADER COMPONENT (Exact Match to Screenshot 1) ================= */\r
+    /* ================= LOADER COMPONENT (Lapse Darkroom Ritual & HIG Match) ================= */\r
     .loader-overlay {\r
       position: fixed;\r
       top: 0;\r
       left: 0;\r
       right: 0;\r
       bottom: 0;\r
-      background: rgba(60, 48, 38, 0.35);\r
-      backdrop-filter: blur(18px);\r
-      -webkit-backdrop-filter: blur(18px);\r
+      background: rgba(14, 12, 10, 0.76);\r
+      backdrop-filter: blur(28px) saturate(160%);\r
+      -webkit-backdrop-filter: blur(28px) saturate(160%);\r
       display: none;\r
       flex-direction: column;\r
       align-items: center;\r
       justify-content: center;\r
       z-index: 100;\r
       opacity: 0;\r
-      transition: opacity 0.25s var(--ease-smooth);\r
+      transition: opacity 0.35s var(--spring-fluid);\r
+      overflow: hidden;\r
+    }\r
+    .darkroom-ambient-glow {\r
+      position: absolute;\r
+      width: 360px;\r
+      height: 360px;\r
+      border-radius: 50%;\r
+      background: radial-gradient(circle, rgba(232, 93, 63, 0.22) 0%, rgba(200, 70, 40, 0.08) 50%, transparent 75%);\r
+      filter: blur(40px);\r
+      pointer-events: none;\r
+      animation: darkroom-pulse 3.2s ease-in-out infinite alternate;\r
+      z-index: 1;\r
+    }\r
+    @keyframes darkroom-pulse {\r
+      0% { transform: scale(0.85); opacity: 0.5; }\r
+      100% { transform: scale(1.18); opacity: 0.95; }\r
     }\r
     .loader-card {\r
-      background: rgba(255, 255, 255, 0.72);\r
-      backdrop-filter: blur(30px) saturate(190%);\r
-      -webkit-backdrop-filter: blur(30px) saturate(190%);\r
-      border: 1px solid rgba(255, 255, 255, 0.9);\r
+      position: relative;\r
+      z-index: 2;\r
+      background: rgba(255, 255, 255, 0.94);\r
+      backdrop-filter: blur(40px) saturate(190%);\r
+      -webkit-backdrop-filter: blur(40px) saturate(190%);\r
+      border: 1px solid rgba(255, 255, 255, 0.95);\r
       border-radius: 36px;\r
       padding: 36px 28px 30px 28px;\r
       display: flex;\r
@@ -9474,7 +9747,12 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       max-width: 320px;\r
       width: 90%;\r
       text-align: center;\r
-      box-shadow: 0 24px 60px -12px rgba(80, 50, 30, 0.25);\r
+      box-shadow: 0 28px 64px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;\r
+      animation: loaderPopIn 0.38s var(--spring-bouncy);\r
+    }\r
+    @keyframes loaderPopIn {\r
+      0% { transform: scale(0.92); opacity: 0; }\r
+      100% { transform: scale(1); opacity: 1; }\r
     }\r
 \r
     /* Concentric Circles Loader (Exact Screenshot 1 Match) */\r
@@ -9507,14 +9785,19 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       0% { transform: rotate(0deg); }\r
       100% { transform: rotate(360deg); }\r
     }\r
-    /* Inner solid glowing coral dot */\r
+    /* Inner solid glowing coral dot with aperture pulse */\r
     .concentric-center-dot {\r
       width: 13px;\r
       height: 13px;\r
       border-radius: 50%;\r
       background: var(--coral-accent);\r
-      box-shadow: 0 0 10px rgba(232, 93, 63, 0.4);\r
+      box-shadow: 0 0 14px rgba(232, 93, 63, 0.6);\r
       z-index: 2;\r
+      animation: aperture-pulse 1.8s ease-in-out infinite;\r
+    }\r
+    @keyframes aperture-pulse {\r
+      0%, 100% { transform: scale(1); }\r
+      50% { transform: scale(1.25); }\r
     }\r
 \r
     /* Linear Progress Bar with Percentage Tag */\r
@@ -9527,7 +9810,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
     }\r
     .loader-progress-track {\r
       flex: 1;\r
-      height: 3.5px;\r
+      height: 4px;\r
       background: rgba(0, 0, 0, 0.08);\r
       border-radius: 9999px;\r
       overflow: hidden;\r
@@ -9541,18 +9824,24 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
     }\r
     .loader-percentage-text {\r
       font-size: 13px;\r
-      font-weight: 500;\r
-      color: #38302A;\r
-      font-family: "Cormorant Garamond", serif;\r
-      min-width: 32px;\r
+      font-weight: 600;\r
+      color: #1D1D1F;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;\r
+      font-variant-numeric: tabular-nums;\r
+      min-width: 38px;\r
       text-align: right;\r
+      line-height: 1;\r
+      flex-shrink: 0;\r
+      letter-spacing: -0.2px;\r
+      -webkit-font-smoothing: antialiased;\r
+      -moz-osx-font-smoothing: grayscale;\r
     }\r
 \r
     /* Loader Texts */\r
     .loader-text {\r
       font-size: 17px;\r
       font-weight: 600;\r
-      color: #2D241D;\r
+      color: #1D1D1F;\r
       font-family: "Cormorant Garamond", "Playfair Display", serif;\r
       margin-bottom: 6px;\r
       letter-spacing: 0.2px;\r
@@ -9560,8 +9849,9 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
     .loader-sub {\r
       font-size: 12px;\r
       font-weight: 500;\r
-      color: #8C8075;\r
-      font-family: "Cormorant Garamond", serif;\r
+      color: #6E6862;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;\r
+      letter-spacing: 0.1px;\r
     }\r
 \r
     /* Toast */\r
@@ -9591,76 +9881,114 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       opacity: 1;\r
     }\r
 \r
-    /* Mobile Save Modal (P0-2) */\r
+    /* Apple Native Save Sheet (HIG Aligned) */\r
     .save-modal-overlay {\r
       position: fixed;\r
       top: 0;\r
       left: 0;\r
       right: 0;\r
       bottom: 0;\r
-      background: rgba(0, 0, 0, 0.78);\r
-      backdrop-filter: blur(18px);\r
-      -webkit-backdrop-filter: blur(18px);\r
+      background: rgba(0, 0, 0, 0.45);\r
+      backdrop-filter: blur(20px) saturate(180%);\r
+      -webkit-backdrop-filter: blur(20px) saturate(180%);\r
       display: none;\r
       align-items: center;\r
       justify-content: center;\r
       padding: 16px;\r
       z-index: 500;\r
-      animation: modalFadeIn 0.22s ease-out;\r
+      animation: appleModalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);\r
     }\r
-    @keyframes modalFadeIn {\r
-      from { opacity: 0; transform: scale(0.97); }\r
+    @keyframes appleModalFadeIn {\r
+      from { opacity: 0; transform: scale(0.96); }\r
       to { opacity: 1; transform: scale(1); }\r
     }\r
     .save-modal-card {\r
-      background: #FFFFFF;\r
-      border-radius: 28px;\r
-      padding: 18px;\r
-      max-width: 360px;\r
+      background: rgba(255, 255, 255, 0.94);\r
+      backdrop-filter: blur(30px);\r
+      -webkit-backdrop-filter: blur(30px);\r
+      border-radius: 26px;\r
+      padding: 20px 18px 18px;\r
+      max-width: 356px;\r
       width: 100%;\r
       display: flex;\r
       flex-direction: column;\r
       align-items: center;\r
       gap: 12px;\r
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);\r
+      box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.28), 0 0 0 0.5px rgba(0, 0, 0, 0.08);\r
       position: relative;\r
+    }\r
+    .save-modal-close-btn {\r
+      position: absolute;\r
+      top: 14px;\r
+      right: 14px;\r
+      width: 28px;\r
+      height: 28px;\r
+      border-radius: 50%;\r
+      background: rgba(118, 118, 128, 0.12);\r
+      border: none;\r
+      color: #636366;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      cursor: pointer;\r
+      padding: 0;\r
+      transition: background 0.15s, transform 0.1s;\r
+      z-index: 10;\r
+    }\r
+    .save-modal-close-btn:active {\r
+      background: rgba(118, 118, 128, 0.24);\r
+      transform: scale(0.92);\r
     }\r
     .save-modal-header {\r
       display: flex;\r
       flex-direction: column;\r
       align-items: center;\r
-      gap: 4px;\r
+      gap: 6px;\r
       text-align: center;\r
+      width: 100%;\r
+      padding-top: 2px;\r
     }\r
     .save-modal-title {\r
-      font-size: 16px;\r
-      font-weight: 700;\r
-      color: #3C3028;\r
-      font-family: "Cinzel", serif;\r
-      letter-spacing: 0.5px;\r
+      font-size: 17px;\r
+      font-weight: 600;\r
+      color: #1D1D1F;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;\r
+      letter-spacing: -0.3px;\r
     }\r
-    .save-modal-hint {\r
-      display: flex;\r
+    .save-modal-badge {\r
+      display: inline-flex;\r
       align-items: center;\r
       gap: 6px;\r
-      font-size: 13px;\r
-      font-weight: 600;\r
-      color: #E85D3F;\r
-      background: rgba(232, 93, 63, 0.08);\r
-      padding: 4px 12px;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;\r
+      font-size: 12px;\r
+      font-weight: 500;\r
+      color: #48484A;\r
+      background: rgba(118, 118, 128, 0.08);\r
+      border: 0.5px solid rgba(0, 0, 0, 0.06);\r
+      padding: 5px 14px;\r
       border-radius: 9999px;\r
-      animation: hintPulse 2s infinite ease-in-out;\r
+      letter-spacing: -0.1px;\r
     }\r
-    @keyframes hintPulse {\r
-      0%, 100% { opacity: 0.85; transform: scale(0.98); }\r
-      50% { opacity: 1; transform: scale(1.02); }\r
+    .save-modal-badge-icon {\r
+      color: #0071E3;\r
+      flex-shrink: 0;\r
+    }\r
+    .save-modal-img-wrap {\r
+      width: 100%;\r
+      display: flex;\r
+      justify-content: center;\r
+      align-items: center;\r
+      border-radius: 18px;\r
+      overflow: hidden;\r
+      background: #F5F5F7;\r
+      border: 0.5px solid rgba(0, 0, 0, 0.06);\r
+      box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.14);\r
     }\r
     .save-modal-img {\r
       width: 100%;\r
-      max-height: 420px;\r
+      max-height: 410px;\r
       object-fit: contain;\r
-      border-radius: 18px;\r
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);\r
+      display: block;\r
       -webkit-touch-callout: default !important;\r
       pointer-events: auto !important;\r
       user-select: auto !important;\r
@@ -9670,26 +9998,34 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       display: flex;\r
       width: 100%;\r
       gap: 10px;\r
+      margin-top: 2px;\r
     }\r
     .save-modal-btn {\r
       flex: 1;\r
-      padding: 12px;\r
-      border-radius: 9999px;\r
-      background: #3C3028;\r
-      color: #FFFFFF;\r
-      border: none;\r
-      font-size: 14px;\r
+      padding: 12px 14px;\r
+      border-radius: 14px;\r
+      font-size: 15px;\r
       font-weight: 600;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
+      letter-spacing: -0.2px;\r
+      border: none;\r
       cursor: pointer;\r
-      font-family: "Cormorant Garamond", serif;\r
-      transition: opacity 0.2s;\r
-    }\r
-    .save-modal-btn.secondary {\r
-      background: #F3EFEA;\r
-      color: #3C3028;\r
+      transition: opacity 0.15s, transform 0.1s;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
     }\r
     .save-modal-btn:active {\r
-      opacity: 0.8;\r
+      transform: scale(0.98);\r
+      opacity: 0.85;\r
+    }\r
+    .save-modal-btn.primary {\r
+      background: #1D1D1F;\r
+      color: #FFFFFF;\r
+    }\r
+    .save-modal-btn.secondary {\r
+      background: rgba(118, 118, 128, 0.12);\r
+      color: #1D1D1F;\r
     }\r
 \r
     #render-canvas { display: none; }\r
@@ -9716,10 +10052,10 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       \r
       <!-- Hero 3:4 Viewport -->\r
       <div class="hero-box">\r
-        <img id="entry-preview" class="hero-img" src="models/milo_gentle_prince_of_wales.webp" alt="Pet Model Preview" />\r
+        <img id="entry-preview" class="hero-img" src="models/milo_gentle.webp" alt="Pet Model Preview" />\r
         \r
         <!-- Floating Round Upload Button -->\r
-        <div class="upload-btn-floating" onclick="document.getElementById('file-input').click()" title="Upload Pet Photo">\r
+        <div class="upload-btn-floating" onclick="soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Upload Pet Photo">\r
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
             <polyline points="17 8 12 3 7 8"></polyline>\r
@@ -9762,14 +10098,8 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
         <!-- Original Pet Layer (Hold to compare) -->\r
         <img id="res-original-img" class="poster-img original-layer" src="models/milo_gentle.webp" alt="Original Pet" />\r
 \r
-        <!-- Magazine Overlay matching Screenshot 2 typography -->\r
-        <div class="poster-overlay" id="poster-overlay">\r
-          <div class="poster-top-brand">VIVIBON COVER</div>\r
-          <div class="poster-bottom-meta">\r
-            <div class="poster-tag" id="mag-tag">INTERN \xB7 01</div>\r
-            <div class="poster-title" id="mag-title">Milo \xB7 The Anti-Hustle Intern</div>\r
-          </div>\r
-        </div>\r
+        <!-- Pure unobstructed portrait stage -->\r
+        <div class="poster-overlay" id="poster-overlay" style="display: none;"></div>\r
 \r
         <!-- Floating Compare Pill matching Screenshot 2 -->\r
         <div class="compare-pill" id="compare-btn">\r
@@ -9795,8 +10125,9 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
   </div>\r
 \r
-  <!-- Fullscreen Frosted Loader Overlay (Exact Match to Screenshot 1) -->\r
+  <!-- Fullscreen Frosted Loader Overlay (Lapse Darkroom Ritual) -->\r
   <div class="loader-overlay" id="loader">\r
+    <div class="darkroom-ambient-glow"></div>\r
     <div class="loader-card">\r
       \r
       <!-- Concentric Circular Loader (Screenshot 1) -->\r
@@ -9826,20 +10157,34 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
   <!-- Toast Pill -->\r
   <div id="toast" class="toast-pill"></div>\r
 \r
-  <!-- Mobile Save Modal (P0-2) -->\r
+  <!-- Mobile Save Modal (Apple Native HIG Aligned) -->\r
   <div id="save-modal" class="save-modal-overlay" onclick="closeSaveModal(event)">\r
     <div class="save-modal-card" onclick="event.stopPropagation()">\r
+      <button class="save-modal-close-btn" onclick="closeSaveModal(event)" aria-label="Close">\r
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">\r
+          <line x1="18" y1="6" x2="6" y2="18"></line>\r
+          <line x1="6" y1="6" x2="18" y2="18"></line>\r
+        </svg>\r
+      </button>\r
+\r
       <div class="save-modal-header">\r
-        <div class="save-modal-title">Vogue 1080P Portrait Ready</div>\r
-        <div class="save-modal-hint">\r
-          <span>\u{1F446}</span>\r
-          <span>Press & hold poster to save / \u957F\u6309\u5B58\u5165\u76F8\u518C</span>\r
-        </div>\r
+        <div class="save-modal-title">1080P Vogue Portrait</div>\r
       </div>\r
-      <img id="save-modal-img" class="save-modal-img" src="" alt="ViviBon Cover Poster" />\r
+\r
+      <div class="save-modal-img-wrap">\r
+        <img id="save-modal-img" class="save-modal-img" src="" alt="ViviBon Cover Poster" />\r
+      </div>\r
+\r
       <div class="save-modal-actions">\r
-        <button id="modal-share-btn" class="save-modal-btn secondary" style="display: none;" onclick="sharePosterNative()">Share</button>\r
-        <button class="save-modal-btn" onclick="closeSaveModal(event)">Done</button>\r
+        <button id="modal-share-btn" class="save-modal-btn secondary" style="display: none;" onclick="sharePosterNative()">\r
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: -2px;">\r
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>\r
+            <polyline points="16 6 12 2 8 6"></polyline>\r
+            <line x1="12" y1="2" x2="12" y2="15"></line>\r
+          </svg>\r
+          Share\r
+        </button>\r
+        <button class="save-modal-btn primary" onclick="closeSaveModal(event)">Done</button>\r
       </div>\r
     </div>\r
   </div>\r
@@ -9974,7 +10319,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
     let activeThemeKey = "corporate";\r
     let activeTemplateId = "chill_intern";\r
-    let userPhotoUrl = "models/milo_gentle_prince_of_wales.webp";\r
+    let userPhotoUrl = "models/milo_gentle.webp";\r
     let isUserUploaded = false;\r
 \r
     function trackEvent(eventName, properties = {}) {\r
@@ -9999,6 +10344,263 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
         try { navigator.vibrate(duration); } catch(e){}\r
       }\r
     }\r
+\r
+    /**\r
+     * Web Audio Pure Haptic Sound Engine (0KB Asset Overhead - NC-7 Compliant)\r
+     * Synthesizes mechanical tactile clicks, camera shutter release, and darkroom finish chimes.\r
+     */\r
+    class HapticSoundEngine {\r
+      constructor() {\r
+        this.ctx = null;\r
+        this.masterGain = null;\r
+        this.initUnlockListener();\r
+      }\r
+\r
+      ensureContext() {\r
+        try {\r
+          if (!this.ctx) {\r
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;\r
+            if (!AudioCtx) return null;\r
+            this.ctx = new AudioCtx();\r
+            this.masterGain = this.ctx.createGain();\r
+            this.masterGain.gain.setValueAtTime(0.92, this.ctx.currentTime);\r
+            this.masterGain.connect(this.ctx.destination);\r
+          }\r
+          if (this.ctx.state === 'suspended') {\r
+            return this.ctx.resume();\r
+          }\r
+          return Promise.resolve();\r
+        } catch (e) {\r
+          return null;\r
+        }\r
+      }\r
+\r
+      initUnlockListener() {\r
+        const unlock = () => {\r
+          const p = this.ensureContext();\r
+          if (p && typeof p.then === 'function') {\r
+            p.then(() => {\r
+              try {\r
+                if (this.ctx) {\r
+                  const b = this.ctx.createBuffer(1, 1, this.ctx.sampleRate);\r
+                  const s = this.ctx.createBufferSource();\r
+                  s.buffer = b;\r
+                  s.connect(this.ctx.destination);\r
+                  s.start(0);\r
+                }\r
+              } catch (e) {}\r
+            }).catch(() => {});\r
+          }\r
+        };\r
+        ['pointerdown', 'touchstart', 'mousedown', 'click', 'keydown'].forEach(evt => {\r
+          document.addEventListener(evt, unlock, { passive: true });\r
+        });\r
+      }\r
+\r
+      /**\r
+       * Teenage Engineering / Recent.design Style Tactile Mechanical Switch Click\r
+       * Dual-Action Acoustic Foley:\r
+       * - Layer 1: High-Frequency Snap (1900Hz -> 580Hz sweep, 24ms, gain 0.35)\r
+       *   Directly targets human ear canal resonance (Fletcher-Munson sweet spot 1k-3k Hz)\r
+       *   Audible on all smartphone and laptop speakers.\r
+       * - Layer 2: Metallic Leaf Spring Contact (2800Hz bandpass white noise, 18ms, gain 0.26)\r
+       * - Layer 3: Keycap Chassis Punch (340Hz -> 110Hz triangle thump, 28ms, gain 0.28)\r
+       */\r
+      playDialClick() {\r
+        const p = this.ensureContext();\r
+        if (!this.ctx) return;\r
+        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {\r
+          p.then(() => this._executeDialClick()).catch(() => {});\r
+        } else {\r
+          this._executeDialClick();\r
+        }\r
+      }\r
+\r
+      _executeDialClick() {\r
+        try {\r
+          if (!this.ctx || !this.masterGain) return;\r
+          const now = this.ctx.currentTime + 0.003;\r
+          const jitter = 1.0 + (Math.random() - 0.5) * 0.04;\r
+\r
+          // Layer 1: Sharp Mechanical Snap (Pitch drop transient, 1900Hz -> 580Hz)\r
+          const snapOsc = this.ctx.createOscillator();\r
+          const snapGain = this.ctx.createGain();\r
+          snapOsc.type = 'sine';\r
+          snapOsc.frequency.setValueAtTime(1900 * jitter, now);\r
+          snapOsc.frequency.exponentialRampToValueAtTime(580, now + 0.024);\r
+\r
+          snapGain.gain.setValueAtTime(0.35, now);\r
+          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.024);\r
+\r
+          snapOsc.connect(snapGain);\r
+          snapGain.connect(this.masterGain);\r
+          snapOsc.start(now);\r
+          snapOsc.stop(now + 0.025);\r
+\r
+          // Layer 2: Metal Leaf Spring Friction (Bandpass white noise, 2800Hz)\r
+          const bufferSize = Math.floor(this.ctx.sampleRate * 0.018);\r
+          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);\r
+          const output = noiseBuffer.getChannelData(0);\r
+          for (let i = 0; i < bufferSize; i++) {\r
+            output[i] = Math.random() * 2 - 1;\r
+          }\r
+          const noise = this.ctx.createBufferSource();\r
+          noise.buffer = noiseBuffer;\r
+\r
+          const bandpass = this.ctx.createBiquadFilter();\r
+          bandpass.type = 'bandpass';\r
+          bandpass.frequency.setValueAtTime(2800 * jitter, now);\r
+          bandpass.Q.setValueAtTime(3.2, now);\r
+\r
+          const noiseGain = this.ctx.createGain();\r
+          noiseGain.gain.setValueAtTime(0.26, now);\r
+          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.018);\r
+\r
+          noise.connect(bandpass);\r
+          bandpass.connect(noiseGain);\r
+          noiseGain.connect(this.masterGain);\r
+          noise.start(now);\r
+\r
+          // Layer 3: Keycap Bottoming Punch (Triangle wave body thump, 340Hz -> 110Hz)\r
+          const bodyOsc = this.ctx.createOscillator();\r
+          const bodyGain = this.ctx.createGain();\r
+          bodyOsc.type = 'triangle';\r
+          bodyOsc.frequency.setValueAtTime(340 * jitter, now);\r
+          bodyOsc.frequency.exponentialRampToValueAtTime(110, now + 0.028);\r
+\r
+          bodyGain.gain.setValueAtTime(0.28, now);\r
+          bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);\r
+\r
+          bodyOsc.connect(bodyGain);\r
+          bodyGain.connect(this.masterGain);\r
+          bodyOsc.start(now);\r
+          bodyOsc.stop(now + 0.029);\r
+        } catch (e) {\r
+          // Silent fallback\r
+        }\r
+      }\r
+\r
+      /**\r
+       * Mechanical Camera Shutter Release (Leica/Hasselblad style dual-stage click)\r
+       * Stroke 1: Leaf blade opening transient (1600Hz -> 420Hz, 32ms) + blade friction noise\r
+       * Stroke 2: Mechanical curtain / mirror return (280Hz -> 90Hz, 45ms, delayed by 36ms)\r
+       */\r
+      playShutterSnap() {\r
+        const p = this.ensureContext();\r
+        if (!this.ctx) return;\r
+        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {\r
+          p.then(() => this._executeShutterSnap()).catch(() => {});\r
+        } else {\r
+          this._executeShutterSnap();\r
+        }\r
+      }\r
+\r
+      _executeShutterSnap() {\r
+        try {\r
+          if (!this.ctx || !this.masterGain) return;\r
+          const now = this.ctx.currentTime + 0.003;\r
+          const jitter = 1.0 + (Math.random() - 0.5) * 0.03;\r
+\r
+          // Stroke 1: Shutter Blade Snap\r
+          const snapOsc = this.ctx.createOscillator();\r
+          const snapGain = this.ctx.createGain();\r
+          snapOsc.type = 'sine';\r
+          snapOsc.frequency.setValueAtTime(1600 * jitter, now);\r
+          snapOsc.frequency.exponentialRampToValueAtTime(420, now + 0.032);\r
+          snapGain.gain.setValueAtTime(0.38, now);\r
+          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.032);\r
+          snapOsc.connect(snapGain);\r
+          snapGain.connect(this.masterGain);\r
+          snapOsc.start(now);\r
+          snapOsc.stop(now + 0.033);\r
+\r
+          const bufferSize = Math.floor(this.ctx.sampleRate * 0.035);\r
+          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);\r
+          const output = noiseBuffer.getChannelData(0);\r
+          for (let i = 0; i < bufferSize; i++) {\r
+            output[i] = Math.random() * 2 - 1;\r
+          }\r
+          const whiteNoise = this.ctx.createBufferSource();\r
+          whiteNoise.buffer = noiseBuffer;\r
+          const filter = this.ctx.createBiquadFilter();\r
+          filter.type = 'bandpass';\r
+          filter.frequency.setValueAtTime(2400 * jitter, now);\r
+          filter.Q.setValueAtTime(2.5, now);\r
+          const noiseGain = this.ctx.createGain();\r
+          noiseGain.gain.setValueAtTime(0.30, now);\r
+          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);\r
+          whiteNoise.connect(filter);\r
+          filter.connect(noiseGain);\r
+          noiseGain.connect(this.masterGain);\r
+          whiteNoise.start(now);\r
+\r
+          // Stroke 2: Mechanical Return & Chassis Thump (t + 0.036s)\r
+          const returnTime = now + 0.036;\r
+          const returnOsc = this.ctx.createOscillator();\r
+          const returnGain = this.ctx.createGain();\r
+          returnOsc.type = 'triangle';\r
+          returnOsc.frequency.setValueAtTime(280 * jitter, returnTime);\r
+          returnOsc.frequency.exponentialRampToValueAtTime(90, returnTime + 0.045);\r
+          returnGain.gain.setValueAtTime(0.35, returnTime);\r
+          returnGain.gain.exponentialRampToValueAtTime(0.0001, returnTime + 0.045);\r
+          returnOsc.connect(returnGain);\r
+          returnGain.connect(this.masterGain);\r
+          returnOsc.start(returnTime);\r
+          returnOsc.stop(returnTime + 0.046);\r
+        } catch (e) {\r
+          // Silent fallback\r
+        }\r
+      }\r
+\r
+      /**\r
+       * Crystal Finish Chime (Lapse Darkroom Reveal)\r
+       * Apple / Studio Style 3-Note Micro-Arpeggio Chime: E6 (1318.5Hz), G#6 (1661.2Hz), B6 (1975.5Hz)\r
+       */\r
+      playChime() {\r
+        const p = this.ensureContext();\r
+        if (!this.ctx) return;\r
+        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {\r
+          p.then(() => this._executeChime()).catch(() => {});\r
+        } else {\r
+          this._executeChime();\r
+        }\r
+      }\r
+\r
+      _executeChime() {\r
+        try {\r
+          if (!this.ctx || !this.masterGain) return;\r
+          const now = this.ctx.currentTime + 0.003;\r
+\r
+          const notes = [\r
+            { f: 1318.5, delay: 0.0, gain: 0.24, dur: 0.55 },\r
+            { f: 1661.2, delay: 0.04, gain: 0.22, dur: 0.60 },\r
+            { f: 1975.5, delay: 0.08, gain: 0.26, dur: 0.70 }\r
+          ];\r
+\r
+          notes.forEach(note => {\r
+            const osc = this.ctx.createOscillator();\r
+            const gain = this.ctx.createGain();\r
+            const t = now + note.delay;\r
+\r
+            osc.type = 'sine';\r
+            osc.frequency.setValueAtTime(note.f, t);\r
+\r
+            gain.gain.setValueAtTime(note.gain, t);\r
+            gain.gain.exponentialRampToValueAtTime(0.0001, t + note.dur);\r
+\r
+            osc.connect(gain);\r
+            gain.connect(this.masterGain);\r
+\r
+            osc.start(t);\r
+            osc.stop(t + note.dur + 0.01);\r
+          });\r
+        } catch (e) {\r
+          // Silent fallback\r
+        }\r
+      }\r
+    }\r
+\r
+    const soundEngine = new HapticSoundEngine();\r
 \r
     function showToast(text, duration = 2500) {\r
       const toast = document.getElementById("toast");\r
@@ -10027,6 +10629,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
     function selectTheme(themeKey) {\r
       triggerHaptic(6);\r
+      soundEngine.playDialClick();\r
       activeThemeKey = themeKey;\r
       const theme = THEMES[themeKey];\r
       activeTemplateId = theme.templates[0].id;\r
@@ -10060,6 +10663,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
     function selectTemplate(tplId) {\r
       triggerHaptic(6);\r
+      soundEngine.playDialClick();\r
       activeTemplateId = tplId;\r
       renderTemplateCards();\r
       trackEvent("template_selected", { theme: activeThemeKey, template: tplId });\r
@@ -10195,6 +10799,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
         document.getElementById("res-original-img").src = userPhotoUrl;\r
         showToast("Photo uploaded successfully! \u2726");\r
         triggerHaptic(10);\r
+        soundEngine.playDialClick();\r
         trackEvent("photo_uploaded", {\r
           original_kb: result.originalSizeKb,\r
           optimized_kb: result.optimizedSizeKb,\r
@@ -10211,6 +10816,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
           document.getElementById("res-original-img").src = userPhotoUrl;\r
           showToast("Photo uploaded successfully! \u2726");\r
           triggerHaptic(10);\r
+          soundEngine.playDialClick();\r
           trackEvent("photo_uploaded", { file_size_kb: Math.round(file.size / 1024) });\r
         };\r
         reader.readAsDataURL(file);\r
@@ -10229,6 +10835,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
     async function startGeneration() {\r
       triggerHaptic(12);\r
+      soundEngine.playShutterSnap();\r
       const theme = THEMES[activeThemeKey];\r
       const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];\r
       trackEvent("generate_clicked", { theme: activeThemeKey, template: tpl.id, is_user_uploaded: isUserUploaded });\r
@@ -10247,11 +10854,15 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
       progressFill.style.width = "18%";\r
       percentageText.innerText = "18%";\r
 \r
-      // Exact milestones and text matching Screenshot 1\r
+      // High-Fashion Studio Darkroom Ritual with dynamic extended pacing\r
       const milestones = [\r
-        { t: 0, text: "Locking facial ID & breed geometry...", sub: "Sampling authentic pet features [0.4s]", prog: 32 },\r
-        { t: 600, text: "Synthesizing lighting & coat texture...", sub: "Dual softbox studio lighting [1.1s]", prog: 64 },\r
-        { t: 1300, text: "Adding the final editorial finish...", sub: "Polishing tone and fine detail [2.5s]", prog: 94 }\r
+        { t: 0, text: "Exposing 120mm Medium Format...", sub: "Calibrating biometric facial proportions [0.4s]", prog: 26 },\r
+        { t: 700, text: "Tailoring Savile Row Bespoke...", sub: "Weaving wool tweed & silk lining [1.1s]", prog: 55 },\r
+        { t: 1600, text: "Sculpting Rembrandt Studio Light...", sub: "Balancing softbox specular highlights [1.9s]", prog: 82 },\r
+        { t: 2400, text: "Applying Matte Varnish & Bodoni Type...", sub: "Curing archival pigments & cover typography [2.8s]", prog: 91 },\r
+        { t: 5500, text: "Rendering Neural Diffusion Latent Space...", sub: "Preserving pet facial contours & eye gaze [6.0s]", prog: 94 },\r
+        { t: 11000, text: "Infusing Haute Couture Microtextures...", sub: "Tailoring bespoke collars, lapels & textures [12.0s]", prog: 96 },\r
+        { t: 18000, text: "Developing Exhibition-Grade Fine Print...", sub: "Finalizing 1080P Bodoni editorial composition [19.0s]", prog: 98 }\r
       ];\r
 \r
       const stageTimers = [];\r
@@ -10279,9 +10890,11 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
           isDefaultSample: !isUserUploaded\r
         };\r
 \r
-        const endpoint = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000'\r
+        const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';\r
+        const isPages = window.location.hostname.endsWith('pages.dev');\r
+        const endpoint = isLocal\r
           ? 'http://127.0.0.1:8787/api/generate'\r
-          : '/api/generate';\r
+          : (isPages ? 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/generate' : '/api/generate');\r
 \r
         const apiPromise = fetch(endpoint, {\r
           method: 'POST',\r
@@ -10304,7 +10917,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
         await Promise.all([\r
           apiPromise,\r
           preloadImage(finalPosterImg),\r
-          new Promise(r => setTimeout(r, 2200))\r
+          new Promise(r => setTimeout(r, 2600))\r
         ]);\r
       } catch(err) {\r
         console.warn('Fallback to template preview:', err);\r
@@ -10314,12 +10927,16 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
         stageTimers.forEach(clearTimeout);\r
         progressFill.style.width = "100%";\r
         percentageText.innerText = "100%";\r
-        loaderText.innerText = "Portrait complete! Loading cover...";\r
+        loaderText.innerText = "Darkroom print developed! Unveiling cover...";\r
+        soundEngine.playChime();\r
+        triggerHaptic(15);\r
 \r
         document.getElementById("res-display-img").src = finalPosterImg;\r
         document.getElementById("res-original-img").src = userPhotoUrl;\r
-        document.getElementById("mag-tag").innerText = tpl.tag;\r
-        document.getElementById("mag-title").innerText = \`Milo \xB7 \${tpl.title}\`;\r
+        const magTagEl = document.getElementById("mag-tag");\r
+        if (magTagEl) magTagEl.innerText = tpl.tag;\r
+        const magTitleEl = document.getElementById("mag-title");\r
+        if (magTitleEl) magTitleEl.innerText = \`Milo \xB7 \${tpl.title}\`;\r
 \r
         setTimeout(() => {\r
           document.getElementById("view-entry").style.display = "none";\r
@@ -10338,6 +10955,10 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
     function backToEntry() {\r
       triggerHaptic(8);\r
+      soundEngine.playDialClick();\r
+      if (typeof window.resetCompareState === 'function') {\r
+        window.resetCompareState();\r
+      }\r
       document.getElementById("view-result").style.display = "none";\r
       document.getElementById("header-back-btn").style.display = "none";\r
       const entryView = document.getElementById("view-entry");\r
@@ -10348,42 +10969,101 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
     function initCompareEvents() {\r
       const btn = document.getElementById("compare-btn");\r
       const originalLayer = document.getElementById("res-original-img");\r
-      const overlay = document.getElementById("poster-overlay");\r
-      if (!btn) return;\r
+      if (!btn || !originalLayer) return;\r
 \r
-      let isComparing = false;\r
+      let isHolding = false;\r
+      let isToggled = false;\r
+      let pressStartTime = 0;\r
 \r
-      const showOriginal = (e) => {\r
+      function updateCompareUI(visible) {\r
+        if (visible) {\r
+          originalLayer.style.opacity = "1";\r
+          btn.classList.add("active");\r
+          btn.innerHTML = \`\r
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
+              <circle cx="12" cy="12" r="3"></circle>\r
+            </svg>\r
+            Original\r
+          \`;\r
+        } else {\r
+          originalLayer.style.opacity = "0";\r
+          btn.classList.remove("active");\r
+          btn.innerHTML = \`\r
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
+              <circle cx="12" cy="12" r="3"></circle>\r
+            </svg>\r
+            Hold to compare\r
+          \`;\r
+        }\r
+      }\r
+\r
+      window.resetCompareState = function() {\r
+        isHolding = false;\r
+        isToggled = false;\r
+        updateCompareUI(false);\r
+      };\r
+\r
+      const onPointerDown = (e) => {\r
         if (e) {\r
           e.stopPropagation();\r
-          if (e.cancelable) e.preventDefault();\r
+          if (e.cancelable && e.type === "touchstart") e.preventDefault();\r
         }\r
-        if (isComparing) return;\r
-        isComparing = true;\r
+        pressStartTime = Date.now();\r
+        isHolding = true;\r
         triggerHaptic(6);\r
-        trackEvent("compare_held", { template: activeTemplateId });\r
-        if (originalLayer) originalLayer.style.opacity = "1";\r
-        if (overlay) overlay.style.opacity = "0";\r
+        soundEngine.playDialClick();\r
+\r
+        if (!isToggled) {\r
+          updateCompareUI(true);\r
+          trackEvent("compare_shown", { template: activeTemplateId, mode: "hold" });\r
+        }\r
       };\r
 \r
-      const restoreResult = () => {\r
-        if (!isComparing) return;\r
-        isComparing = false;\r
-        if (originalLayer) originalLayer.style.opacity = "0";\r
-        if (overlay) overlay.style.opacity = "1";\r
+      const onPointerUp = (e) => {\r
+        if (!isHolding) return;\r
+        isHolding = false;\r
+        const duration = Date.now() - pressStartTime;\r
+        triggerHaptic(6);\r
+        soundEngine.playDialClick();\r
+\r
+        if (duration < 250) {\r
+          // Quick Tap / Click: toggle view\r
+          isToggled = !isToggled;\r
+          updateCompareUI(isToggled);\r
+          trackEvent("compare_shown", { template: activeTemplateId, mode: isToggled ? "toggle_on" : "toggle_off" });\r
+        } else {\r
+          // Long Press / Hold: release back to generated poster\r
+          isToggled = false;\r
+          updateCompareUI(false);\r
+        }\r
       };\r
 \r
-      btn.addEventListener("touchstart", showOriginal, { passive: false });\r
-      btn.addEventListener("mousedown", showOriginal);\r
+      btn.addEventListener("touchstart", onPointerDown, { passive: false });\r
+      btn.addEventListener("mousedown", onPointerDown);\r
 \r
-      window.addEventListener("touchend", restoreResult, { passive: true });\r
-      window.addEventListener("touchcancel", restoreResult, { passive: true });\r
-      window.addEventListener("mouseup", restoreResult, { passive: true });\r
-      window.addEventListener("blur", restoreResult);\r
+      window.addEventListener("touchend", onPointerUp, { passive: true });\r
+      window.addEventListener("touchcancel", () => {\r
+        if (isHolding) {\r
+          isHolding = false;\r
+          isToggled = false;\r
+          updateCompareUI(false);\r
+        }\r
+      }, { passive: true });\r
+      window.addEventListener("mouseup", onPointerUp, { passive: true });\r
+      window.addEventListener("blur", () => {\r
+        if (isHolding) {\r
+          isHolding = false;\r
+          isToggled = false;\r
+          updateCompareUI(false);\r
+        }\r
+      });\r
     }\r
 \r
     async function exportPoster() {\r
       triggerHaptic(12);\r
+      soundEngine.playShutterSnap();\r
       const canvas = document.getElementById("render-canvas");\r
       const ctx = canvas.getContext("2d");\r
       const width = 1080;\r
@@ -10415,42 +11095,6 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
         }\r
 \r
         ctx.drawImage(img, sx, sy, sw, sh, 0, 0, width, height);\r
-\r
-        // Subtle gradient top & bottom\r
-        const topGrad = ctx.createLinearGradient(0, 0, 0, 340);\r
-        topGrad.addColorStop(0, "rgba(0, 0, 0, 0.45)");\r
-        topGrad.addColorStop(1, "transparent");\r
-        ctx.fillStyle = topGrad;\r
-        ctx.fillRect(0, 0, width, 340);\r
-\r
-        const btmGrad = ctx.createLinearGradient(0, height - 440, 0, height);\r
-        btmGrad.addColorStop(0, "transparent");\r
-        btmGrad.addColorStop(1, "rgba(0, 0, 0, 0.86)");\r
-        ctx.fillStyle = btmGrad;\r
-        ctx.fillRect(0, height - 440, width, 440);\r
-\r
-        ctx.save();\r
-        ctx.shadowColor = "rgba(0, 0, 0, 0.6)";\r
-        ctx.shadowBlur = 16;\r
-        \r
-        // Exact Brand Title: Clean White Serif Tracking Text (Screenshot 2)\r
-        ctx.fillStyle = "#FFFFFF";\r
-        ctx.font = "700 38px 'Cinzel', serif";\r
-        ctx.letterSpacing = "6px";\r
-        ctx.fillText("VIVIBON COVER", 70, 110);\r
-\r
-        // Exact Sub-Tag (Screenshot 2)\r
-        ctx.fillStyle = "rgba(255, 255, 255, 0.72)";\r
-        ctx.font = "700 22px -apple-system, sans-serif";\r
-        ctx.letterSpacing = "4px";\r
-        ctx.fillText(tpl.tag, 70, height - 170);\r
-\r
-        // Exact Main Title (Screenshot 2)\r
-        ctx.fillStyle = "#FFFFFF";\r
-        ctx.font = "600 58px 'Cormorant Garamond', serif";\r
-        ctx.letterSpacing = "0.5px";\r
-        ctx.fillText(\`Milo \xB7 \${tpl.title}\`, 70, height - 100);\r
-        ctx.restore();\r
 \r
         try {\r
           const dataUrl = canvas.toDataURL("image/png");\r
@@ -10526,6 +11170,7 @@ var ViviBon_Cover_default = `<!DOCTYPE html>\r
 \r
     function closeSaveModal(e) {\r
       if (e) e.stopPropagation();\r
+      soundEngine.playDialClick();\r
       document.getElementById("save-modal").style.display = "none";\r
     }\r
 \r
@@ -10547,11 +11192,29 @@ var createApp = (customFalService, rateLimiterOpts) => {
   app2.use("*", corsMiddleware());
   app2.use("/api/generate", antiBotMiddleware());
   app2.use("/api/generate", rateLimiterMiddleware(rateLimiterOpts));
-  app2.get("/", (c) => c.html(ViviBon_Cover_default));
-  app2.get("/index.html", (c) => c.html(ViviBon_Cover_default));
+  app2.get("/", (c) => c.html(public_default));
+  app2.get("/index.html", (c) => c.html(public_default));
   app2.route("/", healthRoute);
   app2.route("/", stylesRoute);
   app2.route("/", createGenerateRoute(customFalService || falService));
+  app2.get("/api/internal/daily-report", async (c) => {
+    const dateParam = c.req.query("date");
+    const shouldSend = c.req.query("send") === "1";
+    const summary = await metricsService.getDailySummary(c.env.RATE_LIMIT_KV, dateParam);
+    const markdown = metricsService.formatDailyReportMarkdown(summary, c.env.ENVIRONMENT || "production");
+    let sent = false;
+    if (shouldSend) {
+      sent = await alertService.sendMarkdown(c.env.WECHAT_WEBHOOK_URL, markdown);
+    }
+    return c.json({
+      success: true,
+      data: {
+        summary,
+        markdown,
+        sent
+      }
+    });
+  });
   app2.notFound((c) => {
     const errorResp = {
       success: false,
@@ -10572,8 +11235,22 @@ var createApp = (customFalService, rateLimiterOpts) => {
   return app2;
 };
 var app = createApp();
-var src_default = app;
+var src_default = {
+  fetch: (request, env, ctx) => app.fetch(request, env, ctx),
+  async scheduled(event, env, ctx) {
+    console.log("[Cron] Executing ViviBon Cover Daily Operations Report scheduler...");
+    try {
+      const summary = await metricsService.getDailySummary(env.RATE_LIMIT_KV);
+      const markdown = metricsService.formatDailyReportMarkdown(summary, env.ENVIRONMENT || "production");
+      const sent = await alertService.sendMarkdown(env.WECHAT_WEBHOOK_URL, markdown);
+      console.log("[Cron] Daily report successfully dispatched, sent =", sent);
+    } catch (err) {
+      console.error("[Cron] Error executing daily operations report:", err);
+    }
+  }
+};
 export {
+  app,
   createApp,
   src_default as default
 };

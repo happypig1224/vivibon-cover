@@ -2,32 +2,36 @@ import { describe, it, expect, vi } from 'vitest';
 import { classifyFailureReason, AlertService } from '../src/services/alertService';
 
 describe('AlertService & Enterprise WeChat Failure Classification', () => {
-  it('should accurately classify Fal.ai account lock as INSUFFICIENT_BALANCE', () => {
+  it('should accurately classify Fal.ai account lock as INSUFFICIENT_BALANCE with no emojis', () => {
     const res = classifyFailureReason('403 Forbidden {"detail":"User is locked. Reason: TOP_UP."}');
     expect(res.category).toBe('INSUFFICIENT_BALANCE');
     expect(res.labelZh).toContain('账户欠费');
-    expect(res.icon).toBe('🔴');
+    expect(res.tag).toBe('[INSUFFICIENT_BALANCE]');
+    expect(res.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
   });
 
-  it('should accurately classify timeout as TIMEOUT_EXCEEDED', () => {
+  it('should accurately classify timeout as TIMEOUT_EXCEEDED with no emojis', () => {
     const res = classifyFailureReason('The operation was aborted (timeout 15000ms)');
     expect(res.category).toBe('TIMEOUT_EXCEEDED');
     expect(res.labelZh).toContain('超时');
-    expect(res.icon).toBe('⏱️');
+    expect(res.tag).toBe('[TIMEOUT_EXCEEDED]');
+    expect(res.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
   });
 
-  it('should accurately classify 503 error as UPSTREAM_5XX', () => {
+  it('should accurately classify 503 error as UPSTREAM_5XX with no emojis', () => {
     const res = classifyFailureReason('SiliconFlow upstream error: 503 Service Unavailable');
     expect(res.category).toBe('UPSTREAM_5XX');
     expect(res.labelZh).toContain('5xx');
-    expect(res.icon).toBe('⚠️');
+    expect(res.tag).toBe('[UPSTREAM_5XX]');
+    expect(res.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
   });
 
-  it('should accurately classify 401 as AUTH_FAILED', () => {
+  it('should accurately classify 401 as AUTH_FAILED with no emojis', () => {
     const res = classifyFailureReason('Fal.ai error: 401 Unauthorized invalid key');
     expect(res.category).toBe('AUTH_FAILED');
     expect(res.labelZh).toContain('鉴权失败');
-    expect(res.icon).toBe('🔑');
+    expect(res.tag).toBe('[AUTH_FAILED]');
+    expect(res.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
   });
 
   it('should gracefully skip when webhookUrl is undefined without throwing', async () => {
@@ -36,7 +40,7 @@ describe('AlertService & Enterprise WeChat Failure Classification', () => {
     expect(sent).toBe(false);
   });
 
-  it('should send formatted markdown payload to webhookUrl when provided', async () => {
+  it('should send formatted markdown payload to webhookUrl with strictly zero emojis', async () => {
     const service = new AlertService();
     const mockFetch = vi.fn().mockResolvedValue(new Response('{"errcode":0,"errmsg":"ok"}', { status: 200 }));
     vi.stubGlobal('fetch', mockFetch);
@@ -60,9 +64,12 @@ describe('AlertService & Enterprise WeChat Failure Classification', () => {
     expect(requestBody.msgtype).toBe('markdown');
     expect(requestBody.markdown.content).toContain('账户欠费 / 额度耗尽');
     expect(requestBody.markdown.content).toContain('test-trace-123');
+    // Strictly verify NO emojis in alert markdown
+    expect(requestBody.markdown.content).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
 
     vi.unstubAllGlobals();
   });
+
 
   it('should suppress duplicate alert within 5-minute debounce window to prevent alert storms', async () => {
     const service = new AlertService(5 * 60 * 1000);
