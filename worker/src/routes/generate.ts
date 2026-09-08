@@ -1,7 +1,8 @@
 import { Hono } from 'hono';
-import { Env } from '../types/env';
+import { Env, StyleKey } from '../types/env';
 import { GenerateRequestSchema, ErrorResponse, GenerateResponseSuccess } from '../schemas/generate';
 import { FalService, falService as defaultFalService } from '../services/falService';
+import { sanitizePetName } from '../config/styles';
 
 export const createGenerateRoute = (service: FalService = defaultFalService) => {
   const route = new Hono<{
@@ -34,18 +35,20 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
         const errorResp: ErrorResponse = {
           success: false,
           errorCode: 'IMAGE_TOO_LARGE',
-          message: 'Uploaded photo exceeds 5MB limit.'
+          message: 'Base64 image exceeds 5MB size limit.'
         };
         return c.json(errorResp, 413);
       }
 
-      // Check if styleKey issue (400)
-      const styleIssue = issues.find((i) => i.path.includes('styleKey'));
+      // Check if invalid styleKey / themeId
+      const styleIssue = issues.find(
+        (i) => i.path.includes('styleKey') || i.path.includes('themeId')
+      );
       if (styleIssue) {
         const errorResp: ErrorResponse = {
           success: false,
           errorCode: 'INVALID_STYLE_KEY',
-          message: 'Requested style is not in haute couture catalogue.'
+          message: styleIssue.message
         };
         return c.json(errorResp, 400);
       }
@@ -59,16 +62,61 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       return c.json(errorResp, 400);
     }
 
-    const { styleKey, petName, imageBase64, variantIndex } = parseResult.data;
+    const effectiveStyleKey = (parseResult.data.styleKey || parseResult.data.themeId || 'fine_art') as StyleKey;
+    const effectiveItemId = parseResult.data.itemId || parseResult.data.templateId;
+    const { imageBase64, variantIndex, subId } = parseResult.data;
+    const safePetName = sanitizePetName(parseResult.data.petName);
 
-    const apiKey = c.env.SILICONFLOW_KEY || c.env.FAL_KEY;
+    // Validate Level 2 item belongs to Level 1 style if provided
+    if (effectiveItemId) {
+      const { CASCADING_THEMES } = await import('../config/styles');
+      let targetThemeKey: 'fine_art' | 'corporate' | 'cosplay' | 'celebration';
+      if (effectiveStyleKey === 'gentle') targetThemeKey = 'fine_art';
+      else if (effectiveStyleKey === 'detective') targetThemeKey = 'corporate';
+      else if (effectiveStyleKey === 'street') targetThemeKey = 'cosplay';
+      else if (effectiveStyleKey === 'warm') targetThemeKey = 'celebration';
+      else targetThemeKey = effectiveStyleKey as 'fine_art' | 'corporate' | 'cosplay' | 'celebration';
+
+      const theme = CASCADING_THEMES[targetThemeKey];
+      const exists = theme?.subCategories.some((sub) => sub.items.some((it) => it.id === effectiveItemId));
+      if (!exists) {
+        const errorResp: ErrorResponse = {
+          success: false,
+          errorCode: 'INVALID_ITEM_ID',
+          message: `Template '${effectiveItemId}' is not valid for style '${effectiveStyleKey}'.`
+        };
+        return c.json(errorResp, 400);
+      }
+    }
+
+    // Default to SiliconFlow as primary (low-cost, domestic RMB, Qwen-Image-Edit Face ID)
+    // Fal.ai acts as secondary failover unless PRIMARY_AI_PROVIDER is explicitly set to 'fal'
+    const isFalPrimary = c.env.PRIMARY_AI_PROVIDER === 'fal';
+    const primaryKey = isFalPrimary
+      ? (c.env.FAL_KEY || c.env.SILICONFLOW_KEY)
+      : (c.env.SILICONFLOW_KEY || c.env.FAL_KEY);
+    const secondaryKey = isFalPrimary ? c.env.FAL_KEY : c.env.SILICONFLOW_KEY;
+
+    const alertCtx = {
+      environment: c.env.ENVIRONMENT || 'production',
+      traceId: c.get('traceId'),
+      clientIp: c.get('clientIp'),
+      petName: safePetName,
+      styleKey: effectiveStyleKey,
+      templateId: effectiveItemId
+    };
 
     const result = await service.generatePoster(
-      styleKey,
-      petName,
+      effectiveStyleKey,
+      safePetName,
       imageBase64,
-      apiKey,
-      variantIndex
+      primaryKey,
+      variantIndex,
+      subId,
+      effectiveItemId,
+      alertCtx,
+      c.env.WECHAT_WEBHOOK_URL,
+      secondaryKey
     );
 
     const response: GenerateResponseSuccess = {
@@ -80,7 +128,11 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
         petName: result.petName,
         latencyMs: result.latencyMs,
         isFallback: result.isFallback,
+        ...(result.failoverTriggered !== undefined ? { failoverTriggered: result.failoverTriggered } : {}),
         ...(result.capsuleVariant ? { capsuleVariant: result.capsuleVariant } : {}),
+        ...(result.level1Theme ? { level1Theme: result.level1Theme } : {}),
+        ...(result.level2Item ? { level2Item: result.level2Item } : {}),
+        ...(result.skillDirective ? { skillDirective: result.skillDirective } : {}),
         ...(c.req.query('debug') === '1' && result.debugReason ? { debugReason: result.debugReason } : {})
       }
     };
@@ -90,5 +142,6 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
 
   return route;
 };
+
 
 export const generateRoute = createGenerateRoute();

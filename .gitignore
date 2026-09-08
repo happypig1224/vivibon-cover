@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+worker/node_modules/
+
+# Cloudflare Wrangler Build Cache & State
+.wrangler/
+worker/.wrangler/
+
+# Build artifacts
+worker/dist/*.map
+
+# Scratch & Temporary Verification Files
+scratch/
+*.log
+temp_*
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Documentation & Internal Specs (Ignore from public repository)
+docs/
+*.docx

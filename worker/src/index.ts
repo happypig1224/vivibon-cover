@@ -3,7 +3,9 @@ import { Env } from './types/env';
 import { corsMiddleware } from './middleware/cors';
 import { loggerMiddleware } from './middleware/logger';
 import { rateLimiterMiddleware, RateLimiterOptions } from './middleware/rateLimiter';
+import { antiBotMiddleware } from './middleware/antiBot';
 import { healthRoute } from './routes/health';
+import { stylesRoute } from './routes/styles';
 import { createGenerateRoute } from './routes/generate';
 import { FalService, falService as defaultFalService } from './services/falService';
 import { ErrorResponse } from './schemas/generate';
@@ -23,8 +25,11 @@ export const createApp = (customFalService?: FalService, rateLimiterOpts?: RateL
   // 2. CORS Policy Middleware
   app.use('*', corsMiddleware());
 
-  // 3. FinOps & IP Rate Limiting Middleware (NC-3)
-  app.use('/api/*', rateLimiterMiddleware(rateLimiterOpts));
+  // 3. Big-Tech Grade Anti-Bot & Script Protection on Generation Route
+  app.use('/api/generate', antiBotMiddleware());
+
+  // 4. FinOps & IP Rate Limiting Middleware on Generation Route (NC-3: 3/hr, 10/day, $45 cap)
+  app.use('/api/generate', rateLimiterMiddleware(rateLimiterOpts));
 
   // 4. Static H5 Delivery (Zero-Latency Unified Edge Serving)
   app.get('/', (c) => c.html(indexHtml));
@@ -32,6 +37,7 @@ export const createApp = (customFalService?: FalService, rateLimiterOpts?: RateL
 
   // 5. API Routes
   app.route('/', healthRoute);
+  app.route('/', stylesRoute);
   app.route('/', createGenerateRoute(customFalService || defaultFalService));
 
   // Global 404 handler

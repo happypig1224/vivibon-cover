@@ -105,7 +105,7 @@ export const NEGATIVE_PROMPT =
 为贯彻商业化盈利底线与 Unit Economics 控制，绝不允许任何无效或低质请求打到付费模型端点。前端必须在调用 API 前完成 3 道物理级拦截：
 
 1. **尺寸下限拦截**：
-   - 图像宽与高必须 `>= 250px`，阻断小图标、表情包或严重破损图片；
+   - 图像宽与高必须 `>= 240px`（推荐 `>= 250px`），阻断小图标、表情包或严重破损图片；
 2. **曝光直方图亮度拦截 (Canvas Luminance Check)**：
    - 采样计算像素加权平均亮度：`Y = 0.299*R + 0.587*G + 0.114*B`；
    - 若 `Y < 15`（全黑、镜头遮挡、夜间无光）：直接在客户端拦截，提示“照片过暗，请重新上传清晰明亮的爱宠正面照”；
@@ -138,4 +138,38 @@ export const NEGATIVE_PROMPT =
    - 顶部渐变：`0 -> 380px`，`rgba(0,0,0,0.68) -> transparent`（确保浅色毛发上方的白字刊头清晰锐利）；
    - 底部渐变：`height - 480px -> height`，`transparent -> rgba(0,0,0,0.94)`（使底部金标和标题完美融合）；
 7. **零几何变形 (object-fit: cover 裁切)**：
-   - 动态计算源图像宽高比与 0.75 (3:4) 关系，居中裁切多余边距，X 轴与 Y 轴缩放比例完全 1:1，100% 保持面部天然几何形态。
+   - 动态计算源图像宽高比与 0.75 (3:4) 关系，居中裁切多余边距，X 轴与 Y 轴缩放比例完全 1:1，100% 保持面部天然几何形态；
+8. **NC-1 纯艺术铁律**：严禁在画布上绘制任何二维码、营销推广语、URL 链接或商业水印。
+
+---
+
+## 7. 5 层可控约束 Harness 与质量守门管线 (Harness & Quality Gate)
+
+为从根本上解决 Diffusion 模型“狸猫换太子”面部漂移与商业化可控性问题，本 Skill 规定标准的 5 层 Harness 执行管线：
+
+```
+[原宠照片] 
+   │
+   ▼
+[Layer 1: Pre-Flight Gate] ─── (未通过: 尺寸<240px / 亮度<15 或 >245) ──► 客户端拦截 (0扣费)
+   │ (通过: 缩放至 1024px, ~180KB)
+   ▼
+[Layer 2: Prompt Harness] ──── (动宾指令 + 区域锁定 + 华服材质 + 留白 + 20+ 逆向排斥)
+   │
+   ▼
+[Layer 3: Dual-Rail Dispatch] ──► 国内主轨: 硅基流动 Qwen-Image-Edit (768x1024, 10步, 12-14s)
+   │                             海外备选: Fal.ai FLUX.1 (strength 0.68, 24步)
+   │                             异常熔断: 高清 WebP 预置样片池 (<1.8s)
+   ▼
+[Layer 4: Automated Quality Gate] ─── (DINOv2/CLIP 余弦相似度 >= 0.72)
+   │                                   低于 0.72 判定为品种漂移，触发重试/告警
+   ▼
+[Layer 5: Editorial Typography] ─── (1080x1440 Bodoni 纯艺术刊头，NC-1 零二维码零水印)
+   │
+   ▼
+[成片输出 & Microsoft Clarity 遥测上报 (yf41ikpys2: poster_exported)]
+```
+
+- **Python 可执行参考实现**：详见 [scratch/pet_portrait_harness.py](file:///c:/Users/33046/Desktop/ViviBon%20Cover/scratch/pet_portrait_harness.py)。
+- **33 款高定模板全矩阵**：详见 [vivibon_cover生图提示词_稳定模板版.md](file:///c:/Users/33046/Desktop/ViviBon%20Cover/docs/prompts/vivibon_cover%E7%94%9F%E5%9B%BE%E6%8F%90%E7%A4%BA%E8%AF%8D_%E7%A8%B3%E5%AE%9A%E6%A8%A1%E6%9D%BF%E7%89%88.md) 与 [ViviBon Cover 风格级联体系与具象化规范.md](file:///c:/Users/33046/Desktop/ViviBon%20Cover/docs/specs/ViviBon%20Cover%20%E9%A3%8E%E6%A0%BC%E7%BA%A7%E8%81%94%E4%BD%93%E7%B3%BB%E4%B8%8E%E5%85%B7%E8%B1%A1%E5%8C%96%E8%A7%84%E8%8C%83.md)。
+

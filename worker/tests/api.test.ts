@@ -54,7 +54,10 @@ describe('Hono API End-to-End Integration', () => {
       '/api/generate',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)'
+        },
         body: 'invalid-json-string{{{'
       },
       env
@@ -73,7 +76,11 @@ describe('Hono API End-to-End Integration', () => {
       '/api/generate',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'cf-connecting-ip': '10.0.0.1' },
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+          'cf-connecting-ip': '10.0.0.1'
+        },
         body: JSON.stringify({ styleKey: 'unsupported_vibe' })
       },
       env
@@ -95,6 +102,7 @@ describe('Hono API End-to-End Integration', () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)',
           'cf-connecting-ip': '10.0.0.2',
           'x-trace-id': 'test-trace-uuid-123'
         },
@@ -123,4 +131,80 @@ describe('Hono API End-to-End Integration', () => {
     });
     expect(typeof body.data.latencyMs).toBe('number');
   });
+
+  it('GET /api/styles should return full 4-category cascading tree', async () => {
+    const res = await app.request('/api/styles', { method: 'GET' }, env);
+    expect(res.status).toBe(200);
+
+    const body = (await res.json()) as any;
+    expect(body.success).toBe(true);
+    expect(Array.isArray(body.data.themes)).toBe(true);
+    expect(body.data.themes.length).toBe(4);
+
+    const themeKeys = body.data.themes.map((t: any) => t.key);
+    expect(themeKeys).toEqual(['fine_art', 'corporate', 'cosplay', 'celebration']);
+
+    // Check that corporate has subcategories and items
+    const corporateTheme = body.data.themes.find((t: any) => t.key === 'corporate');
+    expect(corporateTheme.subCategories.length).toBe(3);
+    const programmerItem = corporateTheme.subCategories[0].items.find((i: any) => i.id === 'programmer');
+    expect(programmerItem.nameZh).toBe('程序员与技术码农');
+  });
+
+  it('POST /api/generate with cascading parameters (themeId, subId, itemId) should succeed and return Level 1 & 2 metadata', async () => {
+    const res = await app.request(
+      '/api/generate',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+          'cf-connecting-ip': '10.0.0.3'
+        },
+        body: JSON.stringify({
+          styleKey: 'corporate',
+          subId: 'entry_level',
+          itemId: 'ceo_titan',
+          petName: 'Milo'
+        })
+      },
+      env
+    );
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as any;
+    expect(body.success).toBe(true);
+    expect(body.data.styleKey).toBe('corporate');
+    expect(body.data.capsuleVariant?.id).toBe('ceo_titan');
+    expect(body.data.capsuleVariant?.name).toBe('华尔街商业掌门人');
+    expect(body.data.level1Theme?.id).toBe('corporate');
+    expect(body.data.level2Item?.id).toBe('ceo_titan');
+    expect(body.data.skillDirective).toBeTruthy();
+  });
+
+  it('POST /api/generate should reject invalid itemId with 400 INVALID_ITEM_ID', async () => {
+    const res = await app.request(
+      '/api/generate',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)',
+          'cf-connecting-ip': '10.0.0.4'
+        },
+        body: JSON.stringify({
+          styleKey: 'corporate',
+          itemId: 'mona_lisa', // mona_lisa belongs to fine_art, not corporate
+          petName: '皮皮 Pipi'
+        })
+      },
+      env
+    );
+
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as any;
+    expect(body.success).toBe(false);
+    expect(body.errorCode).toBe('INVALID_ITEM_ID');
+  });
 });
+

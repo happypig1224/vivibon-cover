@@ -7,9 +7,17 @@ const MAX_BASE64_LENGTH = Math.ceil((MAX_IMAGE_BYTES * 4) / 3) + 100;
 
 export const GenerateRequestSchema = z.object({
   petName: z.string().max(30).default('麦洛 Milo'),
-  styleKey: z.enum(['gentle', 'detective', 'street', 'warm'] as const, {
-    errorMap: () => ({ message: 'Requested style is not in haute couture catalogue.' })
-  }),
+  styleKey: z.enum(
+    ['fine_art', 'corporate', 'cosplay', 'celebration', 'gentle', 'detective', 'street', 'warm'] as const,
+    {
+      errorMap: () => ({ message: 'Requested style is not in haute couture catalogue.' })
+    }
+  ),
+  themeId: z.string().optional(), // alias for styleKey
+  subId: z.string().optional(),
+  itemId: z.string().optional(),
+  templateId: z.string().optional(), // alias for itemId
+
   variantIndex: z.number().int().min(0).optional(),
   imageBase64: z.string().optional().refine(
     (val) => {
@@ -44,8 +52,19 @@ export interface GenerateResponseSuccess {
       id: string;
       name: string;
     };
+    level1Theme?: {
+      id: string;
+      nameZh: string;
+    };
+    level2Item?: {
+      id: string;
+      nameZh: string;
+      badge: string;
+    };
+    skillDirective?: string;
   };
 }
+
 
 
 export interface ErrorResponse {

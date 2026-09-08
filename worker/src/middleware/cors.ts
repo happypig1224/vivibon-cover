@@ -3,7 +3,7 @@ import { Env } from '../types/env';
 
 export const corsMiddleware = (): MiddlewareHandler<{ Bindings: Env }> => {
   return async (c, next) => {
-    const origin = c.env.CORS_ORIGIN || '*';
+    const origin = c.env?.CORS_ORIGIN || '*';
 
     c.header('Access-Control-Allow-Origin', origin);
     c.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');

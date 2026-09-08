@@ -10,6 +10,7 @@ kv_namespaces = [
 
 [vars]
 ENVIRONMENT = "production"
+PRIMARY_AI_PROVIDER = "siliconflow"
 
 [build]
 command = "node build.js"

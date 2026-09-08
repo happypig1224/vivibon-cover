@@ -4,8 +4,15 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
@@ -31,7 +38,7 @@ var require_compose = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -45,7 +52,7 @@ var require_compose = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var compose_exports = {};
-    __export(compose_exports, {
+    __export2(compose_exports, {
       compose: () => compose
     });
     module.exports = __toCommonJS(compose_exports);
@@ -101,7 +108,7 @@ var require_http_exception = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -115,7 +122,7 @@ var require_http_exception = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var http_exception_exports = {};
-    __export(http_exception_exports, {
+    __export2(http_exception_exports, {
       HTTPException: () => HTTPException
     });
     module.exports = __toCommonJS(http_exception_exports);
@@ -160,7 +167,7 @@ var require_constants = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -174,7 +181,7 @@ var require_constants = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var constants_exports = {};
-    __export(constants_exports, {
+    __export2(constants_exports, {
       GET_MATCH_RESULT: () => GET_MATCH_RESULT
     });
     module.exports = __toCommonJS(constants_exports);
@@ -189,7 +196,7 @@ var require_crypto = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -203,7 +210,7 @@ var require_crypto = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var crypto_exports = {};
-    __export(crypto_exports, {
+    __export2(crypto_exports, {
       createHash: () => createHash,
       md5: () => md5,
       sha1: () => sha1,
@@ -257,7 +264,7 @@ var require_buffer = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -271,7 +278,7 @@ var require_buffer = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var buffer_exports = {};
-    __export(buffer_exports, {
+    __export2(buffer_exports, {
       bufferToFormData: () => bufferToFormData,
       bufferToString: () => bufferToString,
       equal: () => equal,
@@ -359,7 +366,7 @@ var require_body = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -373,7 +380,7 @@ var require_body = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var body_exports = {};
-    __export(body_exports, {
+    __export2(body_exports, {
       parseBody: () => parseBody
     });
     module.exports = __toCommonJS(body_exports);
@@ -484,7 +491,7 @@ var require_url = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -498,7 +505,7 @@ var require_url = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var url_exports = {};
-    __export(url_exports, {
+    __export2(url_exports, {
       checkOptionalParameter: () => checkOptionalParameter,
       decodeURIComponent_: () => decodeURIComponent_,
       getPath: () => getPath,
@@ -737,7 +744,7 @@ var require_request = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -751,7 +758,7 @@ var require_request = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var request_exports = {};
-    __export(request_exports, {
+    __export2(request_exports, {
       HonoRequest: () => HonoRequest,
       cloneRawRequest: () => cloneRawRequest
     });
@@ -1084,7 +1091,7 @@ var require_html = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -1098,7 +1105,7 @@ var require_html = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var html_exports = {};
-    __export(html_exports, {
+    __export2(html_exports, {
       HtmlEscapedCallbackPhase: () => HtmlEscapedCallbackPhase,
       escapeToBuffer: () => escapeToBuffer,
       raw: () => raw,
@@ -1231,7 +1238,7 @@ var require_context = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -1245,7 +1252,7 @@ var require_context = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var context_exports = {};
-    __export(context_exports, {
+    __export2(context_exports, {
       Context: () => Context2,
       TEXT_PLAIN: () => TEXT_PLAIN
     });
@@ -1686,7 +1693,7 @@ var require_router = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -1700,7 +1707,7 @@ var require_router = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var router_exports = {};
-    __export(router_exports, {
+    __export2(router_exports, {
       MESSAGE_MATCHER_IS_ALREADY_BUILT: () => MESSAGE_MATCHER_IS_ALREADY_BUILT,
       METHODS: () => METHODS,
       METHOD_NAME_ALL: () => METHOD_NAME_ALL,
@@ -1724,7 +1731,7 @@ var require_constants2 = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -1738,7 +1745,7 @@ var require_constants2 = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var constants_exports = {};
-    __export(constants_exports, {
+    __export2(constants_exports, {
       COMPOSED_HANDLER: () => COMPOSED_HANDLER
     });
     module.exports = __toCommonJS(constants_exports);
@@ -1753,7 +1760,7 @@ var require_hono_base = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -1767,8 +1774,8 @@ var require_hono_base = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var hono_base_exports = {};
-    __export(hono_base_exports, {
-      HonoBase: () => Hono5
+    __export2(hono_base_exports, {
+      HonoBase: () => Hono6
     });
     module.exports = __toCommonJS(hono_base_exports);
     var import_compose = require_compose();
@@ -1787,7 +1794,7 @@ var require_hono_base = __commonJS({
       console.error(err);
       return c.text("Internal Server Error", 500);
     };
-    var Hono5 = class _Hono {
+    var Hono6 = class _Hono {
       get;
       post;
       put;
@@ -2162,7 +2169,7 @@ var require_utils = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2176,7 +2183,7 @@ var require_utils = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var utils_exports = {};
-    __export(utils_exports, {
+    __export2(utils_exports, {
       createNullObject: () => createNullObject
     });
     module.exports = __toCommonJS(utils_exports);
@@ -2191,7 +2198,7 @@ var require_matcher = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2205,7 +2212,7 @@ var require_matcher = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var matcher_exports = {};
-    __export(matcher_exports, {
+    __export2(matcher_exports, {
       emptyParam: () => emptyParam,
       match: () => match
     });
@@ -2240,7 +2247,7 @@ var require_node = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2254,7 +2261,7 @@ var require_node = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var node_exports = {};
-    __export(node_exports, {
+    __export2(node_exports, {
       LABEL_REG_EXP_STR: () => LABEL_REG_EXP_STR,
       Node: () => Node,
       ONLY_WILDCARD_REG_EXP_STR: () => ONLY_WILDCARD_REG_EXP_STR,
@@ -2378,7 +2385,7 @@ var require_trie = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2392,7 +2399,7 @@ var require_trie = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var trie_exports = {};
-    __export(trie_exports, {
+    __export2(trie_exports, {
       Trie: () => Trie
     });
     module.exports = __toCommonJS(trie_exports);
@@ -2470,7 +2477,7 @@ var require_router2 = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2484,7 +2491,7 @@ var require_router2 = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var router_exports = {};
-    __export(router_exports, {
+    __export2(router_exports, {
       RegExpRouter: () => RegExpRouter2
     });
     module.exports = __toCommonJS(router_exports);
@@ -2623,7 +2630,7 @@ var require_prepared_router = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2637,7 +2644,7 @@ var require_prepared_router = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var prepared_router_exports = {};
-    __export(prepared_router_exports, {
+    __export2(prepared_router_exports, {
       PreparedRegExpRouter: () => PreparedRegExpRouter2,
       buildInitParams: () => buildInitParams2,
       serializeInitParams: () => serializeInitParams2
@@ -2789,7 +2796,7 @@ var require_reg_exp_router = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2803,7 +2810,7 @@ var require_reg_exp_router = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var reg_exp_router_exports = {};
-    __export(reg_exp_router_exports, {
+    __export2(reg_exp_router_exports, {
       PreparedRegExpRouter: () => import_prepared_router.PreparedRegExpRouter,
       RegExpRouter: () => import_router.RegExpRouter,
       buildInitParams: () => import_prepared_router.buildInitParams,
@@ -2822,7 +2829,7 @@ var require_router3 = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2836,7 +2843,7 @@ var require_router3 = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var router_exports = {};
-    __export(router_exports, {
+    __export2(router_exports, {
       SmartRouter: () => SmartRouter2
     });
     module.exports = __toCommonJS(router_exports);
@@ -2904,7 +2911,7 @@ var require_smart_router = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2918,7 +2925,7 @@ var require_smart_router = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var smart_router_exports = {};
-    __export(smart_router_exports, {
+    __export2(smart_router_exports, {
       SmartRouter: () => import_router.SmartRouter
     });
     module.exports = __toCommonJS(smart_router_exports);
@@ -2933,7 +2940,7 @@ var require_node2 = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -2947,7 +2954,7 @@ var require_node2 = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var node_exports = {};
-    __export(node_exports, {
+    __export2(node_exports, {
       Node: () => Node
     });
     module.exports = __toCommonJS(node_exports);
@@ -3122,7 +3129,7 @@ var require_router4 = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -3136,7 +3143,7 @@ var require_router4 = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var router_exports = {};
-    __export(router_exports, {
+    __export2(router_exports, {
       TrieRouter: () => TrieRouter2
     });
     module.exports = __toCommonJS(router_exports);
@@ -3164,7 +3171,7 @@ var require_trie_router = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -3178,7 +3185,7 @@ var require_trie_router = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var trie_router_exports = {};
-    __export(trie_router_exports, {
+    __export2(trie_router_exports, {
       TrieRouter: () => import_router.TrieRouter
     });
     module.exports = __toCommonJS(trie_router_exports);
@@ -3193,7 +3200,7 @@ var require_hono = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -3207,15 +3214,15 @@ var require_hono = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var hono_exports = {};
-    __export(hono_exports, {
-      Hono: () => Hono5
+    __export2(hono_exports, {
+      Hono: () => Hono6
     });
     module.exports = __toCommonJS(hono_exports);
     var import_hono_base = require_hono_base();
     var import_reg_exp_router = require_reg_exp_router();
     var import_smart_router = require_smart_router();
     var import_trie_router = require_trie_router();
-    var Hono5 = class extends import_hono_base.HonoBase {
+    var Hono6 = class extends import_hono_base.HonoBase {
       /**
        * Creates an instance of the Hono class.
        *
@@ -3238,7 +3245,7 @@ var require_cjs = __commonJS({
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __export = (target, all) => {
+    var __export2 = (target, all) => {
       for (var name in all)
         __defProp2(target, name, { get: all[name], enumerable: true });
     };
@@ -3252,13 +3259,790 @@ var require_cjs = __commonJS({
     };
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var index_exports = {};
-    __export(index_exports, {
+    __export2(index_exports, {
       Context: () => import_context.Context,
-      Hono: () => import_hono4.Hono
+      Hono: () => import_hono5.Hono
     });
     module.exports = __toCommonJS(index_exports);
-    var import_hono4 = require_hono();
+    var import_hono5 = require_hono();
     var import_context = require_context();
+  }
+});
+
+// src/config/styles.ts
+var styles_exports = {};
+__export(styles_exports, {
+  CASCADING_THEMES: () => CASCADING_THEMES,
+  CELEBRATION_HOLIDAYS: () => CELEBRATION_HOLIDAYS,
+  CELEBRATION_MILESTONES: () => CELEBRATION_MILESTONES,
+  CORE_THEME_KEYS: () => CORE_THEME_KEYS,
+  CORPORATE_CORE_TRIO: () => CORPORATE_CORE_TRIO,
+  CORPORATE_ENTRY: () => CORPORATE_ENTRY,
+  CORPORATE_MANAGEMENT: () => CORPORATE_MANAGEMENT,
+  CORPORATE_SPECIALISTS: () => CORPORATE_SPECIALISTS,
+  COSPLAY_DC: () => COSPLAY_DC,
+  COSPLAY_LEGENDS: () => COSPLAY_LEGENDS,
+  COSPLAY_MARVEL: () => COSPLAY_MARVEL,
+  COSPLAY_SCIFI: () => COSPLAY_SCIFI,
+  FINE_ART_CLASSICAL: () => FINE_ART_CLASSICAL,
+  FINE_ART_IMPRESSIONIST: () => FINE_ART_IMPRESSIONIST,
+  FINE_ART_POP: () => FINE_ART_POP,
+  IDENTITY_ANCHOR: () => IDENTITY_ANCHOR,
+  NEGATIVE_PROMPT: () => NEGATIVE_PROMPT,
+  STUDIO_FINISH: () => STUDIO_FINISH,
+  STYLE_CONFIGS: () => STYLE_CONFIGS,
+  SUPPORTED_STYLE_KEYS: () => SUPPORTED_STYLE_KEYS,
+  THEME_NEGATIVE_CONSTRAINTS: () => THEME_NEGATIVE_CONSTRAINTS,
+  THEME_SKILL_DIRECTIVES: () => THEME_SKILL_DIRECTIVES,
+  assembleDynamicPrompt: () => assembleDynamicPrompt,
+  getStyleVariant: () => getStyleVariant,
+  resolveCascadingItem: () => resolveCascadingItem,
+  sanitizePetName: () => sanitizePetName
+});
+function sanitizePetName(input) {
+  if (!input) return "Milo";
+  const trimmed = input.trim();
+  if (!trimmed) return "Milo";
+  const forbiddenPatterns = [
+    /nude|naked|porn|nsfw|erotic|sexy|sex|dick|pussy|vagina|penis|boobs|breast|cleavage/i,
+    /bitch|fuck|fck|shit|ass|asshole|whore|slut/i,
+    /kill|murder|suicide|death|terrorist|nazi|hitler/i,
+    /system\s*prompt|ignore\s*previous\s*instructions|ignore\s*all\s*instructions|developer\s*mode|prompt\s*injection/i,
+    /<script|javascript:|data:/i
+  ];
+  for (const pattern of forbiddenPatterns) {
+    if (pattern.test(trimmed)) {
+      return "Milo";
+    }
+  }
+  const cleaned = trimmed.replace(/[^\p{L}\p{N}\s.\-_&'❤️]/gu, "").trim();
+  if (!cleaned || cleaned.length === 0) return "Milo";
+  return cleaned.slice(0, 24);
+}
+function makeItem(id, nameZh, nameEn, badge, wardrobePrompt, sampleImageUrl, exclusiveNegativePrompt) {
+  return {
+    id,
+    nameZh,
+    nameEn,
+    badge,
+    wardrobePrompt,
+    fullPrompt: `${IDENTITY_ANCHOR} ${wardrobePrompt} ${STUDIO_FINISH}`,
+    sampleImageUrl,
+    exclusiveNegativePrompt
+  };
+}
+function cascadingToLegacyVariants(themeKey) {
+  const theme = CASCADING_THEMES[themeKey];
+  const variants = [];
+  for (const sub of theme.subCategories) {
+    for (const item of sub.items) {
+      variants.push({
+        id: item.id,
+        name: item.nameEn || item.nameZh,
+        wardrobePrompt: item.wardrobePrompt,
+        fullPrompt: item.fullPrompt
+      });
+    }
+  }
+  return variants;
+}
+function resolveCascadingItem(styleKey, subId, itemId, variantIndex) {
+  let targetThemeKey;
+  if (styleKey === "gentle") targetThemeKey = "fine_art";
+  else if (styleKey === "detective") targetThemeKey = "corporate";
+  else if (styleKey === "street") targetThemeKey = "cosplay";
+  else if (styleKey === "warm") targetThemeKey = "celebration";
+  else if (styleKey in CASCADING_THEMES) targetThemeKey = styleKey;
+  else targetThemeKey = "fine_art";
+  const theme = CASCADING_THEMES[targetThemeKey];
+  if (itemId) {
+    for (const sub of theme.subCategories) {
+      if (!subId || sub.id === subId) {
+        const found = sub.items.find((it) => it.id === itemId);
+        if (found) return found;
+      }
+    }
+  }
+  if (subId) {
+    const sub = theme.subCategories.find((s) => s.id === subId);
+    if (sub && sub.items.length > 0) {
+      const idx = typeof variantIndex === "number" && variantIndex >= 0 ? variantIndex % sub.items.length : Math.floor(Math.random() * sub.items.length);
+      return sub.items[idx];
+    }
+  }
+  const allItems = [];
+  for (const sub of theme.subCategories) {
+    allItems.push(...sub.items);
+  }
+  if (typeof variantIndex === "number" && variantIndex >= 0) {
+    return allItems[variantIndex % allItems.length];
+  }
+  return allItems[Math.floor(Math.random() * allItems.length)];
+}
+function assembleDynamicPrompt(styleKey, itemId, subId, variantIndex) {
+  let targetThemeKey;
+  if (styleKey === "gentle") targetThemeKey = "fine_art";
+  else if (styleKey === "detective") targetThemeKey = "corporate";
+  else if (styleKey === "street") targetThemeKey = "cosplay";
+  else if (styleKey === "warm") targetThemeKey = "celebration";
+  else if (styleKey in CASCADING_THEMES) targetThemeKey = styleKey;
+  else targetThemeKey = "fine_art";
+  const theme = CASCADING_THEMES[targetThemeKey];
+  const item = resolveCascadingItem(styleKey, subId, itemId, variantIndex);
+  const skillDirective = THEME_SKILL_DIRECTIVES[targetThemeKey];
+  const skillNegativeConstraint = THEME_NEGATIVE_CONSTRAINTS[targetThemeKey];
+  const fullPrompt = `${IDENTITY_ANCHOR} ${item.wardrobePrompt} ${skillDirective} ${STUDIO_FINISH}`;
+  const exclusiveNegative = item.exclusiveNegativePrompt ? `, ${item.exclusiveNegativePrompt}` : "";
+  const negativePrompt = `${NEGATIVE_PROMPT}${skillNegativeConstraint}${exclusiveNegative}`;
+  return {
+    fullPrompt,
+    negativePrompt,
+    skillDirective,
+    skillNegativeConstraint,
+    exclusiveNegativePrompt: item.exclusiveNegativePrompt,
+    item,
+    themeKey: targetThemeKey,
+    themeNameZh: theme.nameZh
+  };
+}
+function getStyleVariant(styleKey, index, subId, itemId) {
+  const item = resolveCascadingItem(styleKey, subId, itemId, index);
+  const assembled = assembleDynamicPrompt(styleKey, itemId, subId, index);
+  return {
+    id: item.id,
+    name: item.nameZh,
+    wardrobePrompt: item.wardrobePrompt,
+    fullPrompt: assembled.fullPrompt
+  };
+}
+var IDENTITY_ANCHOR, STUDIO_FINISH, NEGATIVE_PROMPT, FINE_ART_CLASSICAL, FINE_ART_IMPRESSIONIST, FINE_ART_POP, CORPORATE_CORE_TRIO, CORPORATE_ENTRY, CORPORATE_MANAGEMENT, CORPORATE_SPECIALISTS, COSPLAY_LEGENDS, COSPLAY_MARVEL, COSPLAY_DC, COSPLAY_SCIFI, CELEBRATION_HOLIDAYS, CELEBRATION_MILESTONES, CASCADING_THEMES, STYLE_CONFIGS, SUPPORTED_STYLE_KEYS, CORE_THEME_KEYS, THEME_SKILL_DIRECTIVES, THEME_NEGATIVE_CONSTRAINTS;
+var init_styles = __esm({
+  "src/config/styles.ts"() {
+    "use strict";
+    IDENTITY_ANCHOR = "Dress the EXACT SAME dog from the input image from the neck and shoulders down. Strictly preserve the original pet's facial structure, eyes, snout geometry, ear shape and position, native fur coloration, distinctive markings, body proportions and age 100% unchanged. Maintain authentic animal anatomy: exactly one head, two eyes, two ears, one nose, and natural furry legs and paws matching the species. Strictly NO human arms, hands, fingers, skin, human neck or human body. Unmasked face, head and eyes fully visible and natural, non-distorted.";
+    STUDIO_FINISH = "High-end commercial luxury pet portrait photography, 85mm portrait lens, rich vibrant natural color grading, high dynamic range, glossy fur highlights, deep warm studio lighting, delicate studio rim light accentuating authentic fur texture, sharp focus on pet eyes, clean solid seamless studio backdrop, ample negative space at top for magazine typography, hyperdetailed, 8k resolution, no text, no logo, award-winning studio portrait.";
+    NEGATIVE_PROMPT = "second pet, other animals, duplicate subject, breed change, facial change, fur color change, marking change, eye asymmetry, strabismus, human body, human arms, human hands, human fingers, human skin, human neck, hybrid human-animal, clothes clipping, accessories clipping, distorted anatomy, warped snout, deformed eyes, extra legs, missing legs, extra paws, fused limbs, severed limbs, blurry, low quality, noisy, jpeg artifacts, text, typography, letters, watermark, signature, logo, brand name, cartoon, 3D render, CGI doll, monochrome, black and white, grayscale, desaturated, dull colors, washed out, low contrast, hazy, dim, underexposed, dark muddy shadows, plastic texture, human cleavage, bare skin, naked, nude, bikini, erotic, suggestive, extra fingers, deformed paws.";
+    FINE_ART_CLASSICAL = [
+      makeItem(
+        "mona_lisa",
+        "\u590D\u523B\u300A\u8499\u5A1C\u4E3D\u838E\u300B\u53E4\u5178\u6CB9\u753B",
+        "The Mona Lisa Smile",
+        "\u6587\u827A\u590D\u5174",
+        "Mona Lisa Renaissance fine art portrait. Dressed in Mona Lisa vintage dark long pleated robe, collar resting outside chest fur without exposing human skin or neck, natural dark vintage wig contouring head with both animal ears emerging naturally through openings. Front paws naturally crossed and resting together on chest in faithful reference to the original painting while strictly respecting natural canine and feline anatomy and joint mobility, claw tips visible, no human arms or fingers. Sfumato chiaroscuro lighting, earthy amber and dark golden museum oil canvas texture, tranquil classical expression.",
+        "models/milo_gentle.webp",
+        "human ears, ears hidden inside wig, wig covering eyes, wig covering snout, front legs stretched into human arms, human fingers, human hands, human neck, human skin exposed, fused paws, long robe penetrating body"
+      ),
+      makeItem(
+        "pearl_earring",
+        "\u300A\u6234\u73CD\u73E0\u8033\u73AF\u7684\u5C11\u5973\u300B\u53E4\u5178\u8096\u50CF",
+        "Girl with a Pearl Earring",
+        "\u8377\u5170\u9EC4\u91D1\u65F6\u4EE3",
+        "Girl with a Pearl Earring fine art portrait. Pure black deep background, the pet body slightly turned in 3/4 pose with head looking back toward camera. Adorned in iconic royal ultramarine blue and ochre gold draped silk turban wrapped around head without flattening skull, native ears neatly enclosed beneath fabric, single large glowing baroque teardrop pearl pendant fastened at the lower edge of turban fabric without penetrating ear cartilage or skin. Warm ochre jacket with white collar fabric draped outside chest, soft chiaroscuro side window lighting illuminating eyes and snout.",
+        "models/milo_gentle_navy_velvet.webp",
+        "visible pet ears, human ears, two or more pearls, pearl penetrating skin, pearl penetrating turban, turban flattening skull, turban covering eyes, distorted neck, human neck, human collarbone, exposed human skin"
+      ),
+      makeItem(
+        "line_art",
+        "\u6781\u7B80\u9ED1\u767D\u7EBF\u6761\u7ED8\u753B\u624B\u7A3F",
+        "The Minimalist Line Art",
+        "\u6781\u7B80\u9ED1\u767D",
+        "Minimalist black and white rough crayon, charcoal pencil, and dry-brush hand-drawn illustration poster on warm off-white cream paper. Not realistic sketch, non-photorealistic artistic hand drawing. Only using black textured lines and raw paper background, no other colors, no gray gradients. Rough textured brushstrokes, deliberate white spaces, visible paper fiber texture, charming vintage children picture book combined with high-fashion independent magazine editorial aesthetic. Pet subject occupying top 65% to 75% of canvas with pristine ample negative space below.",
+        "models/milo_street.webp",
+        "realistic pencil sketch, colorful, gray gradient, smooth vector lines, 3D render, solid black fill, busy background, cropped subject, typography covering subject, long text, gibberish letters, misspelled words, over-stylized unrecognizable cartoon"
+      ),
+      makeItem(
+        "rembrandt",
+        "\u4F26\u52C3\u6717\u300A\u591C\u5DE1\u4E0E\u81EA\u753B\u50CF\u300B",
+        "Rembrandt Chiaroscuro Masterpiece",
+        "\u660E\u6697\u5BF9\u7167\u6CD5",
+        "Rembrandt style historic oil painting, pet wearing an elaborate layered pleated white linen Elizabethan ruff collar and dark heavy velvet tunic, authentic Rembrandt triangle lighting on face, rich impasto oil paint texture with subtle craquelure, dramatic dark museum depth."
+      ),
+      makeItem(
+        "las_meninas",
+        "\u59D4\u62C9\u65AF\u51EF\u5179\u300A\u5BAB\u5A25\u300B",
+        "Las Meninas by Diego Velazquez",
+        "\u897F\u73ED\u7259\u5BAB\u5EF7",
+        "Velazquez Spanish royal court style, the pet wearing an ornate silver-grey damask silk dress bodice with crimson satin ribbon rosettes and pearl buttons, majestic Prado museum lighting, stately baroque composition."
+      )
+    ];
+    FINE_ART_IMPRESSIONIST = [
+      makeItem(
+        "starry_night",
+        "\u68B5\u9AD8\u300A\u661F\u6708\u591C\u4E0E\u5411\u65E5\u8475\u300B",
+        "Van Gogh: Starry Night & Sunflowers",
+        "\u540E\u5370\u8C61\u6D3E",
+        "Vincent van Gogh aesthetic, pet wearing a midnight cobalt blue heavy wool jacket with a vibrant chrome-yellow sunflower silk ascot tie, iconic swirling dynamic Starry Night brushstrokes in the background, thick impasto oil paint texture, intense emotional post-impressionist color palette."
+      ),
+      makeItem(
+        "water_lilies",
+        "\u83AB\u5948\u300A\u7761\u83B2\u4E0E\u65E5\u672C\u6865\u300B",
+        "Monet: Water Lilies & Giverny",
+        "\u83AB\u5948\u82B1\u56ED",
+        "Claude Monet plein-air impressionism, pet wearing a delicate pastel sage-green and soft petal-pink raw linen shirt, tiny water lily blossom on lapel, luminous dappled sunlight reflections, soft-focus Giverny pond bokeh, dreamy aesthetic."
+      ),
+      makeItem(
+        "the_kiss",
+        "\u514B\u91CC\u59C6\u7279\u300A\u543B\u300B\u9EC4\u91D1\u534E\u670D",
+        "Gustav Klimt: The Golden Kiss",
+        "\u7EF4\u4E5F\u7EB3\u5206\u79BB\u6D3E",
+        "Gustav Klimt golden phase masterpiece, pet adorned in an opulent gilded mantle covered with geometric mosaic patterns, gold leaf flakes, spiraling decorative Art Nouveau patterns, shimmering luxurious gold texture."
+      ),
+      makeItem(
+        "the_scream",
+        "\u8499\u514B\u300A\u5450\u558A\u300B\u8868\u73B0\u4E3B\u4E49\u98CE\u66B4",
+        "Edvard Munch: The Scream",
+        "\u8868\u73B0\u4E3B\u4E49",
+        "Edvard Munch expressionist painting style, pet wearing a flowing dark crimson and navy trench collar, dramatic fiery blood-orange undulating sunset sky backdrop, intense emotional brushwork, iconic Nordic art atmosphere."
+      )
+    ];
+    FINE_ART_POP = [
+      makeItem(
+        "warhol",
+        "\u5B89\u8FEA\xB7\u6C83\u970D\u5C14\u300A\u739B\u4E3D\u83B2\u53CC\u8054\u753B\u300B",
+        "Andy Warhol: Pop Screenprint",
+        "\u6CE2\u666E\u4E1D\u7F51\u5370",
+        "Andy Warhol 1960s pop art style, pet wearing an electric neon yellow pop-art vest with bold black industrial zipper, vivid four-panel silkscreen color-block background in hot pink and turquoise, iconic retro modern vibe."
+      ),
+      makeItem(
+        "picasso",
+        "\u6BD5\u52A0\u7D22\u300A\u4E9A\u5A01\u519C\u5C11\u5973\u300B",
+        "Picasso: Cubist Geometry",
+        "\u7ACB\u4F53\u51E0\u4F55",
+        "Pablo Picasso analytic cubism, pet dressed in an avant-garde deconstructed jacket with fragmented geometric angular color blocks in terracotta, slate grey and ochre, sharp cubist facet shading, modern museum art."
+      ),
+      makeItem(
+        "keith_haring",
+        "\u51EF\u65AF\xB7\u54C8\u6797\u53D1\u5149\u6CE2\u666E\u6D82\u9E26",
+        "Keith Haring Radiant Pop",
+        "\u8857\u5934\u827A\u672F",
+        "Keith Haring 1980s street art inspired style, pet wearing a crisp white athletic collar covered in bold black graphic dancing dog doodles and radiant heart motifs, clean vibrant primary colors, urban pop art energy."
+      ),
+      makeItem(
+        "atelier_sketch",
+        "\u65F6\u88C5\u5468\u9ED1\u767D\u70AD\u7B14\u6781\u7B80\u901F\u5199\u624B\u7A3F",
+        "Paris Atelier Fashion Sketch",
+        "\u9AD8\u5B9A\u624B\u7A3F",
+        "Haute couture fashion designer sketch portrait, pet wearing a tailored charcoal wool coat combined with visible hand-drawn charcoal pencil sketch lines and tailor chalk markings, minimalist chic, Vogue runway concept aesthetic."
+      )
+    ];
+    CORPORATE_CORE_TRIO = [
+      makeItem(
+        "chill_intern",
+        "\u53CD\u5185\u5377\u6478\u9C7C\u5B9E\u4E60\u751F",
+        "The Chill Intern",
+        "\u53CD\u5185\u5377",
+        'The chill anti-hustle corporate intern pet portrait. Pet naturally seated with an adorable relaxed, unbothered expression, looking directly at camera. Wearing an oversized comfortable heather-grey soft fleece crewneck sweatshirt, draped with a vibrant blue fabric company lanyard around the neck displaying a prominent miniature plastic ID badge clearly labeled "INTERN". Front furry paws resting casually on clean minimalist desk surface. Gentle bright modern open-plan office background with soft bokeh, authentic pet anatomy, strictly NO human arms or hands.',
+        "models/milo_gentle_prince_of_wales.webp",
+        "stressed expression, angry boss, corporate business suit, human arms, human fingers, human hands, tight collar choking pet, badge covering face, badge piercing skin, dark gloomy lighting, messy trash"
+      ),
+      makeItem(
+        "coffee_pro",
+        "\u5496\u5561\u7EED\u547D\u6253\u5DE5\u72D7",
+        "The Caffeinated Pro",
+        "\u5496\u5561\u7EED\u547D",
+        "The coffee-fueled 9-to-5 corporate professional pet portrait. Wearing a crisp sky-blue and white micro-striped casual button-down work shirt with a slightly loosened top collar, tailored navy work jacket shoulders. Seated politely with one furry paw resting naturally next to an authentic artisan takeaway coffee cup with a kraft cardboard heat sleeve and white lid. Soft morning 5600K office studio lighting, subtle corporate glass architecture bokeh in background, humorous relatable hardworking pet aesthetic, strictly authentic pet anatomy.",
+        "models/milo_techwear_cobalt_cyber.webp",
+        "coffee spilled on fur, pet drinking hot coffee, burned fur, open flames, plastic trash, human hands holding cup, human arms, dislocated paws, formal tuxedo, evening gown"
+      ),
+      makeItem(
+        "ivy_prep",
+        "\u5E38\u9752\u85E4\u8001\u94B1\u5B66\u8005",
+        "The Ivy League Scholar",
+        "\u8001\u94B1\u5B66\u9662",
+        "Ivy League scholar pet, wearing an oversized Ralph Lauren style cream cable-knit V-neck tennis sweater with a neat light-blue Oxford collared shirt underneath, cozy vintage mahogany university library background with warm brass lamp glow, preppy old-money aesthetic.",
+        "models/milo_knitwear_oatmeal_cable.webp",
+        "human hands holding books, book glued to fur, deformed sweater collar, loose threads, synthetic polyester sheen, modern neon"
+      )
+    ];
+    CORPORATE_ENTRY = [
+      ...CORPORATE_CORE_TRIO,
+      makeItem(
+        "ceo_titan",
+        "\u534E\u5C14\u8857\u5546\u4E1A\u638C\u95E8\u4EBA",
+        "The Wall Street CEO",
+        "\u6743\u529B\u897F\u88C5",
+        "Wall Street investment titan pet portrait, wearing a bespoke charcoal pinstripe double-breasted suit with broad peak lapels, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, corner office with panoramic Manhattan skyline sunset bokeh, power-broker luxury."
+      ),
+      makeItem(
+        "tech_visionary",
+        "\u7845\u8C37\u79D1\u6280\u9886\u8896",
+        "The Silicon Valley Visionary",
+        "\u6781\u5BA2\u9886\u8896",
+        "Silicon Valley tech visionary pet leader, wearing a minimalist black fine-gauge cashmere turtleneck sweater, designer tortoiseshell wire-rim round glasses, modern sunlit Scandinavian loft studio background, sleek espresso, visionary leadership aesthetic."
+      ),
+      makeItem(
+        "programmer",
+        "\u7A0B\u5E8F\u5458\u4E0E\u6280\u672F\u7801\u519C",
+        "Software Engineer & Developer",
+        "\u7801\u519C\u5DE5\u4F4D\u98CE",
+        "Tech company software engineer dog portrait, wearing a worn heather-grey hoodie under a navy fleece vest, professional over-ear studio headphones resting around neck, glowing dual monitor glow in background, relatable programmer aesthetic."
+      ),
+      makeItem(
+        "customer_support",
+        "\u65B0\u5A92\u4F53\u8FD0\u8425\u4E0E\u5BA2\u670D",
+        "Social Media & Customer Support",
+        "\u5468\u4E00\u65E9\u516B\u98CE",
+        "Social media specialist pet, wearing a light-blue casual Oxford button-up shirt with an open collar, company lanyard and photo ID badge hanging around neck, exhausted Monday morning office lighting, subtle iced coffee cup on desk edge."
+      ),
+      makeItem(
+        "night_shift",
+        "\u71AC\u591C\u5BA1\u6838\u6253\u5DE5\u4EBA",
+        "Night Shift Operations Specialist",
+        "\u51B7\u767D\u52A0\u73ED\u706F",
+        "Late night shift operations specialist, wearing a loose navy blue nylon windbreaker, neon yellow highlighter in chest pocket, cool 5600K fluorescent office lamp light, humorous overworked corporate irony."
+      ),
+      makeItem(
+        "intern",
+        "\u6478\u9C7C\u5B9E\u4E60\u751F",
+        "Quiet Quitting Intern",
+        "\u5927\u5B66\u7272\u6478\u9C7C",
+        "Quiet quitting college intern pet, wearing an oversized cream cable-knit V-neck tennis sweater with a neat white collared shirt underneath, heavy canvas tote bag strap across chest, fresh youthful collegiate vibe."
+      )
+    ];
+    CORPORATE_MANAGEMENT = [
+      makeItem(
+        "scrum_master",
+        "\u654F\u6377\u9879\u76EE\u7ECF\u7406",
+        "Agile Scrum Master",
+        "\u770B\u677F\u7AD9\u4F1A\u98CE",
+        "Agile Scrum Master pet portrait, wearing a fitted light-grey merino crewneck sweater over a subtle gingham checked shirt, colorful sticky notes on glass wall bokeh in background, sharp professional office lighting."
+      ),
+      makeItem(
+        "hr_director",
+        "\u4E25\u82DB\u4EBA\u4E8B\u4E3B\u7BA1",
+        "HR Director & Recruiter",
+        "\u9762\u8BD5\u5B98\u6C14\u573A",
+        "Strict HR director pet, wearing an impeccable tailored black wool blazer with sharp lapels, sleek black cat-eye reading glasses perched neatly, immaculate corporate interview backdrop, intimidating yet humorous elegance."
+      ),
+      makeItem(
+        "product_vp",
+        "\u6EE1\u5634\u9ED1\u8BDD\u4EA7\u54C1\u603B\u76D1",
+        "Product Management VP",
+        "\u7845\u8C37\u6781\u5BA2\u9ED1",
+        "Silicon Valley product executive, wearing a minimalist black fine-gauge cashmere turtleneck sweater, charcoal wool unconstructed overcoat wide collar, sleek keynote presentation aesthetic, visionary tech leadership vibe."
+      )
+    ];
+    CORPORATE_SPECIALISTS = [
+      makeItem(
+        "ceo_titan",
+        "\u534E\u5C14\u8857\u5546\u4E1A\u638C\u95E8\u4EBA",
+        "The Wall Street CEO",
+        "\u6743\u529B\u897F\u88C5",
+        "Wall Street investment titan pet portrait, wearing a bespoke charcoal pinstripe double-breasted suit with broad peak lapels, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, corner office with panoramic Manhattan skyline sunset bokeh, power-broker luxury."
+      ),
+      makeItem(
+        "tech_visionary",
+        "\u7845\u8C37\u79D1\u6280\u9886\u8896",
+        "The Silicon Valley Visionary",
+        "\u6781\u5BA2\u9886\u8896",
+        "Silicon Valley tech visionary pet leader, wearing a minimalist black fine-gauge cashmere turtleneck sweater, designer tortoiseshell wire-rim round glasses, modern sunlit Scandinavian loft studio background, sleek espresso, visionary leadership aesthetic."
+      ),
+      makeItem(
+        "wall_street_trader",
+        "\u534E\u5C14\u8857\u6295\u884C\u5206\u6790\u5E08",
+        "Wall Street Investment Banker",
+        "\u53CC\u6392\u6263\u7EC6\u6761\u7EB9",
+        "Wall Street investment banker pet, wearing a bespoke charcoal pinstripe double-breasted suit lapel, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, Bloomberg terminal bokeh, power-broker luxury."
+      ),
+      makeItem(
+        "trial_attorney",
+        "\u8BC9\u8BBC\u5927\u5F8B\u5E08",
+        "Senior Trial Attorney",
+        "\u8428\u7EF4\u5C14\u8857\u4E09\u4EF6\u5957",
+        "Prestigious trial attorney pet, wearing a bespoke three-piece navy wool suit with tailored vest and gold pocket watch chain peeking out, warm mahogany law library bookshelf background, authoritative high-fashion legal portrait."
+      ),
+      makeItem(
+        "startup_ceo",
+        "\u521D\u521B\u72EC\u89D2\u517D CEO",
+        "Tech Unicorn Founder & CEO",
+        "\u6572\u949F\u9886\u8896\u98CE",
+        "Tech startup billionaire CEO, wearing a luxury unstructured midnight blue blazer over a pristine heavyweight white designer tee, subtle titanium luxury watch rim, clean minimalist studio lighting, Forbes 30 Under 30 cover style."
+      ),
+      makeItem(
+        "airline_pilot",
+        "\u6C11\u822A\u673A\u957F",
+        "Commercial Airline Captain",
+        "\u56DB\u9053\u6760\u91D1\u80A9\u7AE0",
+        "Commercial airline captain pet, wearing an authentic navy blue four-stripe gold braided pilot epaulet blazer, crisp white pilot shirt and black tie, warm cockpit ambient dashboard glow, heroic aviation portrait."
+      )
+    ];
+    COSPLAY_LEGENDS = [
+      makeItem(
+        "royal_monarch",
+        "\u6587\u827A\u590D\u5174\u7687\u5BA4\u541B\u4E3B",
+        "The Renaissance Monarch",
+        "\u7687\u5BA4\u8D35\u65CF",
+        "Regal Renaissance royal monarch pet portrait, wearing a deep royal crimson and gold embroidered velvet mantle with ermine fur lining, ornate antique lace ruff collar, royal sash with gold heraldic medal crest, majestic European palace throne room lighting, Crown and Paw prestige.",
+        "models/milo_gentle_navy_velvet.webp",
+        "human arms, human hands, human fingers, crown obscuring eyes, deformed skull, cheap costume, plastic jewels, human skin exposed"
+      ),
+      makeItem(
+        "witch",
+        "\u795E\u79D8\u5947\u5E7B\u5C0F\u5973\u5DEB",
+        "The Midnight Witch",
+        "\u9B54\u6CD5\u5947\u5883",
+        "Mystical fantasy witch pet studio portrait. Wearing an elegant miniature midnight-purple or deep navy velvet witch pointed hat softly tilted between the ears, with the pet's two authentic furry ears resting naturally and completely visible at the sides of the brim, never flattening the skull or covering the eyes. Draped in a matching dark velvet capelet with delicate gold star embroidery and an antique bronze celestial moon clasp at chest. Soft ambient glow with floating warm amber and emerald fairy firefly sparkles bokeh, mysterious yet heartwarming and adorable, strictly authentic animal anatomy.",
+        "models/milo_techwear_arctic_yellow.webp",
+        "human arms, human ears, hat covering eyes, hat swallowing ears, hat piercing skull, scary horror gore, skulls, blood, spiderwebs, dark pitch black, ugly witch nose, human hands, deformed paws"
+      ),
+      makeItem(
+        "cowboy",
+        "\u897F\u90E8\u8352\u91CE\u725B\u4ED4\u4E0E\u6D6A\u6F2B\u5973\u725B\u4ED4",
+        "The Wild West Cowboy & Cowgirl",
+        "\u897F\u90E8\u4F20\u5947",
+        "Chic Americana Wild West cowboy and Coastal Cowgirl pet portrait. Wearing a stylish miniature tan suede wide-brimmed cowboy hat resting gently on top head between natural furry ears, ears completely visible and uncompressed, unobstructed clear eyes and facial markings. Loosely tied caramel brown and soft vintage red paisley cotton bandana neckerchief around lower neck. Warm golden hour sunset prairie lighting, soft rustic wooden porch bokeh, free-spirited, charming and sunlit aesthetic, strictly authentic animal anatomy.",
+        "models/milo_aviator_vintage_shearling.webp",
+        "sunglasses obscuring eyes, heavy firearms, gun, saddle on back, plastic hat, hat crushing ears, choked neck, dirty mud, dust covering face, human arms, human fingers, dark dreary shadows"
+      ),
+      makeItem(
+        "detective",
+        "\u8D1D\u514B\u8857\u7EF4\u591A\u5229\u4E9A\u5927\u4FA6\u63A2",
+        "The Baker Street Sleuth",
+        "\u82F1\u4F26\u795E\u63A2",
+        "Victorian Baker Street detective pet, wearing a classic British houndstooth wool tweed Inverness cape trench coat, antique silver monocle on delicate chain, vintage gaslight foggy London streetscape, dark academia mystery atmosphere."
+      ),
+      makeItem(
+        "aviator",
+        "\u7F8E\u5F0F\u4F20\u5947\u738B\u724C\u98DE\u884C\u5458",
+        "The Vintage Aviator Ace",
+        "\u738B\u724C\u98DE\u884C",
+        "Vintage American aviator ace pet, wearing a rugged distressed brown B-3 shearling leather flight bomber jacket with plush sheepskin fleece collar, vintage brass aviator goggles pushed up over brow, silk flight scarf, golden sunset runway airfield bokeh, Top Gun heroism."
+      )
+    ];
+    COSPLAY_MARVEL = [
+      makeItem(
+        "iron_man",
+        "\u94A2\u94C1\u4FA0\uFF1A\u7EB3\u7C73 Mark 85 \u80F8\u7532",
+        "Iron Man Mark 85 (Unmasked)",
+        "\u7EB3\u7C73\u53CD\u5E94\u5806",
+        "Iron Man inspired superhero pet (no helmet, face fully natural), wearing a high-gloss hot-rod red and metallic gold nano-tech chest armor breastplate, glowing bright cyan triangular arc reactor in the center, mechanical shoulder joints, epic cinematic Marvel studio lighting."
+      ),
+      makeItem(
+        "spider_man",
+        "\u8718\u86DB\u4FA0\uFF1A\u7ECF\u5178\u6218\u8863\u4E0E\u86DB\u4E1D\u80A9\u7532",
+        "Spider-Man Suit (Unmasked)",
+        "\u7ACB\u4F53\u86DB\u7F51\u7EB9",
+        "Spider-Man inspired pet hero (unmasked, original pet face and eyes completely visible), wearing a tailored red spandex superhero suit collar with raised black webbing texture, matte black spider emblem on chest, New York city skyline dusk lighting."
+      ),
+      makeItem(
+        "deadpool",
+        "\u6B7B\u4F8D\uFF1A\u6218\u635F\u80CC\u5E26\u4E0E\u7EA2\u9ED1\u5DE5\u88C5",
+        "Deadpool & Dogpool Suit",
+        "\u53CC\u5200\u6218\u635F\u98CE",
+        "Deadpool and Dogpool inspired battle-worn suit (unmasked face), wearing a distressed crimson and black leather tactical chest harness, twin katana hilt handles strapped over back, rugged brass buckle details, humorous antihero cinematic studio shot."
+      ),
+      makeItem(
+        "thor",
+        "\u96F7\u795E\uFF1A\u963F\u65AF\u52A0\u5FB7\u94F6\u9CDE\u91CD\u94E0",
+        "Thor Odinson Heavy Armor",
+        "\u795E\u57DF\u91CD\u94E0",
+        "Thor God of Thunder pet warrior, wearing heavy silver metallic disc plate chest armor with Nordic filigree engravings, a regal flowing bright crimson velvet cape clasped at shoulders, subtle lightning sparks bokeh, cinematic blockbuster realism."
+      )
+    ];
+    COSPLAY_DC = [
+      makeItem(
+        "batman",
+        "\u8759\u8760\u4FA0\uFF1A\u54E5\u8C2D\u6697\u9ED1\u51EF\u592B\u62C9\u6218\u8863",
+        "The Dark Knight Armor (Unmasked)",
+        "\u51EF\u592B\u62C9\u9632\u5F39",
+        "The Dark Knight Batman aesthetic (unmasked, natural pet head), wearing a tactical matte-black Kevlar chest plate with embossed bat emblem, heavy utility shoulder straps, wet rain reflections, moody Gotham neo-noir rim light."
+      ),
+      makeItem(
+        "superman",
+        "\u8D85\u4EBA\uFF1A\u6C2A\u661F\u6DF1\u84DD\u7EB3\u7C73\u6218\u8863",
+        "Superman Kryptonian Suit",
+        "\u6C2A\u661F\u7EA2\u9EC4\u76FE",
+        "Superman inspired hero suit, wearing an alien deep royal blue chainmail texture chest suit with the iconic red and yellow House of El diamond crest, rich flowing red cape draped behind shoulders, sun-flare heroic lighting."
+      ),
+      makeItem(
+        "joker",
+        "\u5C0F\u4E11\uFF1A\u54E5\u8C2D\u7D2B\u7EFF\u649E\u8272\u6761\u7EB9\u4E09\u4EF6\u5957",
+        "The Joker Vintage Tailoring",
+        "\u7D2B\u7EFF\u649E\u8272",
+        "The Joker inspired villain fashion, wearing a vibrant deep purple tailored wool suit lapel, neon chartreuse green satin vest, vintage patterned silk tie, tiny lapel flower, dramatic theatrical circus lighting, stylish camp aesthetic."
+      )
+    ];
+    COSPLAY_SCIFI = [
+      makeItem(
+        "terminator",
+        "\u7EC8\u7ED3\u8005 T-800\uFF1A\u7ECF\u5178\u76AE\u5939\u514B\u4E0E\u673A\u68B0\u81C2",
+        "Terminator T-800 Cybernetic Biker",
+        "\u673A\u8F66\u76AE\u8863",
+        "Terminator T-800 inspired pet, wearing a heavy distressed black motorcycle leather biker jacket with asymmetrical silver zippers and studs, subtle chrome cybernetic endoskeleton exposed at one shoulder, dystopian blue night highway light."
+      ),
+      makeItem(
+        "matrix_neo",
+        "\u9ED1\u5BA2\u5E1D\u56FD\uFF1A\u5C3C\u5965\u7ACB\u9886\u6697\u9ED1\u98CE\u8863",
+        "The Matrix Neo Trench Coat",
+        "\u6781\u5BA2\u9ED1\u957F\u888D",
+        "The Matrix Neo inspired cyber coat, wearing a minimalist structured black gabardine high-collar trench coat, sleek micro oval sunglasses resting effortlessly, faint emerald green digital rain code bokeh in background."
+      ),
+      makeItem(
+        "jedi_knight",
+        "\u7EDD\u5730\u6B66\u58EB\uFF1A\u661F\u7403\u5927\u6218\u7EDD\u5730\u957F\u888D",
+        "Star Wars Jedi Knight Robe",
+        "\u53CC\u5C42\u4E9A\u9EBB\u957F\u888D",
+        "Star Wars Jedi Knight robes, pet dressed in authentic textured natural oatmeal linen tunic with overlapping earthy brown hooded cloak draped on shoulders, wide leather utility belt buckle, cinematic dual-sun Tatooine glow."
+      )
+    ];
+    CELEBRATION_HOLIDAYS = [
+      makeItem(
+        "christmas",
+        "\u5723\u8BDE\u6DF1\u7EA2\u4E1D\u7ED2\u793C\u76D2\u6696\u51AC\u5199\u771F",
+        "Christmas Velvet Box & Hearth",
+        "\u5723\u8BDE\u76DB\u5178",
+        "Christmas holiday luxury pet portrait. Pet naturally seated inside an open rich deep crimson velvet gift box, both front paws resting naturally and neatly over the front edge of the box without clipping legs. Wearing a deep forest-green plush fleece scarf collar adorned with a festive red silk ribbon and an opulent gold satin bow at chest. In the warm bokeh background stands a magnificently decorated grand Christmas tree with red and gold baubles, warm fairy lights, and neatly stacked holiday gift boxes, subtle tiny soft snowflakes gently drifting down, 50mm portrait lens, warm golden hearth glow.",
+        "models/milo_warm.webp",
+        "gift box cutting off front legs, paws trapped in box rim, gift box piercing body, scarf or bow covering face, decorations piercing fur, snowflakes covering eyes, gifts obscuring subject, overly crowded background, duplicate text, typo, gibberish, Christmas tree growing out of pet, pet wrapped like a package, wrong paw count"
+      ),
+      makeItem(
+        "halloween",
+        "\u4E07\u5723\u8282\u8F6F\u840C\u5C0F\u6076\u9B54\u4E0E\u5357\u74DC\u5199\u771F",
+        "Halloween Spooky Magic & Pumpkins",
+        "\u4E07\u5723\u5947\u5883",
+        "Whimsical cozy and cute Halloween pet studio portrait. Completely non-frightening, adorable and heartwarming. Pet wearing delicate miniature velvety devil horns resting gently on top fur without piercing skull or ears, and a dainty dark velvet bow tie below chin. Scattered around pet on floor are gently glowing carved jack-o-lantern mini pumpkins, curly dried vines, tiny black bat ornaments, and purple autumn leaves. Moody warm candlelight bokeh background, soft warm orange illumination, cozy luxury pet celebration.",
+        "models/milo_techwear_arctic_yellow.webp",
+        "horror, bloody, skulls, open wounds, sharp fangs, scary menacing expression, heavy bulky costume, giant devil horns, horns piercing ears, horns penetrating skull, bats covering face, pumpkin fused with body, cluttered props, pitch black background, frightening lighting"
+      ),
+      makeItem(
+        "easter",
+        "\u590D\u6D3B\u8282\uFF1A\u6625\u65E5\u9A6C\u5361\u9F99\u7C89\u84DD\u788E\u82B1\u9886\u7ED3",
+        "Easter Garden Party",
+        "\u6625\u65E5\u788E\u82B1",
+        "Easter garden gala pet portrait, wearing a tailored pastel mint-green and baby-pink linen waistcoat, delicate daisy floral print silk bow tie, soft morning spring garden sunlight, pastel painted eggs in blurred foreground."
+      ),
+      makeItem(
+        "thanksgiving",
+        "\u611F\u6069\u8282\uFF1A\u79CB\u65E5\u7126\u7CD6\u5927\u5730\u8272\u7F8A\u6BDB\u730E\u88C5",
+        "Thanksgiving Autumn Harvest",
+        "\u4E30\u6536\u91D1\u79CB",
+        "Thanksgiving harvest celebration, pet wearing an authentic caramel brown and warm oatmeal houndstooth wool hacking jacket, olive knit inner collar, golden autumn maple leaf bokeh, rich warm sunset glow."
+      )
+    ];
+    CELEBRATION_MILESTONES = [
+      makeItem(
+        "birthday_vip",
+        "\u751F\u65E5 VIP \u6D6E\u96D5\u5C0F\u86CB\u7CD5\u793C\u5BBE\u5199\u771F",
+        "Birthday VIP Gala & Cake",
+        "\u751F\u65E5\u4E13\u5C5E",
+        "VIP Birthday celebration pet studio portrait. Natural relaxed sitting or lying pose facing camera with adorable calm expression. Wearing a lightweight macaron pastel party hat centered on head with natural volume without piercing ears, soft pink ruffled collar necklace loosely draped around lower chest. In front sits an artisanal mini pet birthday cake made of gourmet meat p\xE2t\xE9 and shrimp on a delicate embossed porcelain plate, topped with a single gently glowing lit birthday candle providing warm amber ambient candlelight, shallow depth of field, high resolution luxury pet studio photography.",
+        "models/milo_gentle.webp",
+        "hat penetrating ears, strap digging into skin, collar covering mouth, pet touching flame, candle too close to fur, multiple candles, cake fused with paws, cake attached to human body, underexposed, forced human grin, dangerous flame, dripping wax"
+      ),
+      makeItem(
+        "debutante",
+        "\u540D\u5A9B\u6210\u4EBA\u793C\uFF1A\u5DF4\u6D1B\u514B\u591A\u5708\u5929\u7136\u5FAE\u578B\u73CD\u73E0\u9879\u94FE",
+        "The Debutante Ball Gala",
+        "\u5DF4\u6D1B\u514B\u73CD\u73E0",
+        "Debutante ball high-society gala portrait, pet wearing a lavish multi-strand baroque seed-pearl choker necklace with a miniature emerald gem pendant, blush-pink tulle gown collar, soft aristocratic salon chandelier lighting."
+      ),
+      makeItem(
+        "graduation",
+        "\u6BD5\u4E1A\u5178\u793C\uFF1A\u5FAE\u578B\u5B66\u58EB\u5782\u5E03\u4E0E\u8363\u8A89\u52CB\u5E26",
+        "The Ivy League Graduation",
+        "\u5E38\u9752\u85E4\u5B66\u58EB",
+        "Ivy League pet graduation portrait, pet wearing a formal black academic gown collar with deep crimson and navy blue silk graduation hood trim, golden honor stole across chest, warm library atmosphere, proud milestone finish."
+      ),
+      makeItem(
+        "wedding_ringbearer",
+        "\u5A5A\u793C\u82B1\u7AE5\u4F34\u5BA0\uFF1A\u6781\u7B80\u8C61\u7259\u767D\u7F0E\u9762\u9886\u7ED3",
+        "Wedding Ring-Bearer Tuxedo",
+        "\u5A5A\u5178\u82B1\u7AE5",
+        "Wedding ring-bearer pet fashion portrait, pet wearing a crisp pure white dress shirt collar with an exquisite double-layered ivory silk satin bow tie, tiny woven gold ring motif, romantic soft-focus white rose floral arch background."
+      )
+    ];
+    CASCADING_THEMES = {
+      fine_art: {
+        key: "fine_art",
+        nameZh: "\u827A\u672F\u6D41\u6D3E",
+        nameEn: "Fine Art & Masters",
+        headline: "Vogue Fine Art Edition",
+        fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_gentle.webp",
+        subCategories: [
+          {
+            id: "classical_masters",
+            nameZh: "\u53E4\u5178\u540D\u753B\u6D3E",
+            nameEn: "Classical Masters",
+            items: FINE_ART_CLASSICAL
+          },
+          {
+            id: "impressionist",
+            nameZh: "\u73B0\u4EE3\u4E3B\u4E49\u4E0E\u5370\u8C61\u6D3E",
+            nameEn: "Modern & Impressionist",
+            items: FINE_ART_IMPRESSIONIST
+          },
+          {
+            id: "pop_contemporary",
+            nameZh: "\u5148\u950B\u63D2\u753B\u4E0E\u6CE2\u666E",
+            nameEn: "Pop & Contemporary",
+            items: FINE_ART_POP
+          }
+        ]
+      },
+      corporate: {
+        key: "corporate",
+        nameZh: "\u804C\u573A\u5DE5\u88C5",
+        nameEn: "Corporate & 9-to-5",
+        headline: "Wall Street & Tech Edition",
+        fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_detective.webp",
+        subCategories: [
+          {
+            id: "entry_level",
+            nameZh: "\u5DE5\u4F4D\u57FA\u5C42\u725B\u9A6C",
+            nameEn: "Entry-Level Drones",
+            items: CORPORATE_ENTRY
+          },
+          {
+            id: "management",
+            nameZh: "\u7BA1\u7406\u4E0E\u4E2D\u5C42",
+            nameEn: "Management & Leads",
+            items: CORPORATE_MANAGEMENT
+          },
+          {
+            id: "specialists",
+            nameZh: "\u884C\u4E1A\u4E13\u4E1A\u4EBA\u5458",
+            nameEn: "Specialists & Execs",
+            items: CORPORATE_SPECIALISTS
+          }
+        ]
+      },
+      cosplay: {
+        key: "cosplay",
+        nameZh: "\u89D2\u8272\u626E\u6F14",
+        nameEn: "Cinematic Cosplay",
+        headline: "Cinematic Blockbuster Edition",
+        fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_street.webp",
+        subCategories: [
+          {
+            id: "legends",
+            nameZh: "\u516C\u6709\u9886\u57DF\u4F20\u5947\u4EBA\u7269",
+            nameEn: "Legendary Personas",
+            items: COSPLAY_LEGENDS
+          },
+          {
+            id: "marvel",
+            nameZh: "\u6F2B\u5A01\u82F1\u96C4\u8054\u76DF",
+            nameEn: "Marvel Icons",
+            items: COSPLAY_MARVEL
+          },
+          {
+            id: "dc",
+            nameZh: "DC \u9ED1\u6697\u5B87\u5B99",
+            nameEn: "DC Universe",
+            items: COSPLAY_DC
+          },
+          {
+            id: "scifi",
+            nameZh: "\u79D1\u5E7B\u7ECF\u5178\u94F6\u5E55",
+            nameEn: "Sci-Fi Legends",
+            items: COSPLAY_SCIFI
+          }
+        ]
+      },
+      celebration: {
+        key: "celebration",
+        nameZh: "\u8282\u65E5\u5E86\u5178",
+        nameEn: "Holidays & Milestones",
+        headline: "Celebration & Gala Edition",
+        fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_warm.webp",
+        subCategories: [
+          {
+            id: "holidays",
+            nameZh: "\u897F\u65B9\u4F20\u7EDF\u76DB\u5927\u8282\u65E5",
+            nameEn: "Major Holidays",
+            items: CELEBRATION_HOLIDAYS
+          },
+          {
+            id: "milestones",
+            nameZh: "\u4EBA\u751F\u9AD8\u5149\u65F6\u523B",
+            nameEn: "Milestone Events",
+            items: CELEBRATION_MILESTONES
+          }
+        ]
+      }
+    };
+    STYLE_CONFIGS = {
+      // New Core Themes (US English)
+      fine_art: {
+        key: "fine_art",
+        name: "Fine Art",
+        subtitle: "Classical Masterpieces & Modern Pop",
+        prompt: FINE_ART_CLASSICAL[0].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.fine_art.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("fine_art")
+      },
+      corporate: {
+        key: "corporate",
+        name: "Corporate",
+        subtitle: "Silicon Valley & Wall Street 9-to-5",
+        prompt: CORPORATE_ENTRY[0].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.corporate.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("corporate")
+      },
+      cosplay: {
+        key: "cosplay",
+        name: "Cosplay",
+        subtitle: "Historical Royalty & Iconic Legends",
+        prompt: COSPLAY_LEGENDS[0].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.cosplay.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("cosplay")
+      },
+      celebration: {
+        key: "celebration",
+        name: "Celebration",
+        subtitle: "Holiday Galas & VIP Milestones",
+        prompt: CELEBRATION_HOLIDAYS[0].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.celebration.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("celebration")
+      },
+      // Legacy aliases mapped seamlessly
+      gentle: {
+        key: "gentle",
+        name: "Fine Art (Legacy)",
+        subtitle: "Classical Art Masterpieces",
+        prompt: FINE_ART_CLASSICAL[1].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.fine_art.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("fine_art")
+      },
+      detective: {
+        key: "detective",
+        name: "Corporate (Legacy)",
+        subtitle: "Executive & Aviator",
+        prompt: CORPORATE_SPECIALISTS[3].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.corporate.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("corporate")
+      },
+      street: {
+        key: "street",
+        name: "Cosplay (Legacy)",
+        subtitle: "Cyber & Superhero",
+        prompt: COSPLAY_MARVEL[0].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.cosplay.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("cosplay")
+      },
+      warm: {
+        key: "warm",
+        name: "Celebration (Legacy)",
+        subtitle: "Festive & Winter Holiday",
+        prompt: CELEBRATION_HOLIDAYS[0].fullPrompt,
+        fallbackImageUrl: CASCADING_THEMES.celebration.fallbackImageUrl,
+        variants: cascadingToLegacyVariants("celebration")
+      }
+    };
+    SUPPORTED_STYLE_KEYS = Object.keys(STYLE_CONFIGS);
+    CORE_THEME_KEYS = ["fine_art", "corporate", "cosplay", "celebration"];
+    THEME_SKILL_DIRECTIVES = {
+      fine_art: "Fine art master oil painting technique, delicate atmospheric sfumato blending, authentic rich chiaroscuro single-source lighting, museum archival depth.",
+      corporate: "Commercial executive editorial portrait, crisp 5600K balanced softbox studio lighting, rich tailored suit fabric microtexture, modern corporate ambient bokeh.",
+      cosplay: "Cinematic Hollywood movie still lighting, high-contrast dramatic studio rims, photorealistic metallic armor reflections, 100% unmasked face with eyes completely visible.",
+      celebration: "Opulent festive celebration lighting, warm ambient golden bokeh, shimmering velvet and silk sheen, aristocratic salon milestone elegance."
+    };
+    THEME_NEGATIVE_CONSTRAINTS = {
+      fine_art: ", modern digital artifacts, casual clothes, sportswear, synthetic nylon, flat commercial lighting, cartoon, 3d render",
+      corporate: ", pajamas, dirty t-shirt, distorted tie, extra collars, messy background, distorted corporate badges, casual sloppy clothes",
+      cosplay: ", full head helmet, full face mask, gas mask, helmet covering eyes, obscured eyes, hidden snout, covered face, distorted pet expression, CGI doll",
+      celebration: ", cheap plastic props, party store costume, garish neon, distorted jewelry, fake blur, low budget party"
+    };
   }
 });
 
@@ -7435,12 +8219,12 @@ var require_zod = __commonJS({
 });
 
 // src/index.ts
-var import_hono3 = __toESM(require_cjs());
+var import_hono4 = __toESM(require_cjs());
 
 // src/middleware/cors.ts
 var corsMiddleware = () => {
   return async (c, next) => {
-    const origin = c.env.CORS_ORIGIN || "*";
+    const origin = c.env?.CORS_ORIGIN || "*";
     c.header("Access-Control-Allow-Origin", origin);
     c.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     c.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
@@ -7483,11 +8267,14 @@ var loggerMiddleware = () => {
 
 // src/middleware/rateLimiter.ts
 var DEFAULT_DAILY_BUDGET_CAP = 1500;
-var DEFAULT_IP_HOURLY_CAP = 30;
-var DEFAULT_IP_DAILY_CAP = 60;
+var DEFAULT_IP_HOURLY_CAP = 3;
+var DEFAULT_IP_DAILY_CAP = 10;
 var rateLimiterMiddleware = (options) => {
   return async (c, next) => {
-    const kv = c.env.RATE_LIMIT_KV;
+    if (c.req.method !== "POST") {
+      return await next();
+    }
+    const kv = c.env?.RATE_LIMIT_KV;
     if (!kv) {
       return await next();
     }
@@ -7498,9 +8285,31 @@ var rateLimiterMiddleware = (options) => {
     const dateStr = now.toISOString().slice(0, 10);
     const hourStr = `${dateStr}-${now.getUTCHours().toString().padStart(2, "0")}`;
     const ip = c.get("clientIp") || "127.0.0.1";
+    const blacklistKey = `blacklist:ip:${ip}`;
+    const isBlacklisted = await kv.get(blacklistKey);
+    if (isBlacklisted) {
+      const errorResp = {
+        success: false,
+        errorCode: "IP_BLACKLISTED",
+        message: "Your IP address has been temporarily suspended due to abusive automated requests."
+      };
+      return c.json(errorResp, 403);
+    }
+    const tenSecondWindow = Math.floor(now.getTime() / 1e4);
+    const burstKey = `burst:ip:${ip}:${tenSecondWindow}`;
+    const burstCountStr = await kv.get(burstKey);
+    const burstCount = burstCountStr ? parseInt(burstCountStr, 10) : 0;
+    if (burstCount >= 5) {
+      await kv.put(blacklistKey, "AUTO_BANNED_RAPID_FIRE", { expirationTtl: 86400 });
+      console.warn(`[RateLimiter] IP [${ip}] triggered rapid-fire burst limit (5 req/10s). Auto-blacklisted for 24h.`);
+      const errorResp = {
+        success: false,
+        errorCode: "ABUSIVE_BURST_BLOCKED",
+        message: "Abnormal request burst detected. IP address blacklisted for 24 hours."
+      };
+      return c.json(errorResp, 403);
+    }
     const dailyCapKey = `finops:daily:${dateStr}`;
-    const ipHourlyKey = `ratelimit:ip:${ip}:${hourStr}`;
-    const ipDailyKey = `ratelimit:ip:${ip}:${dateStr}`;
     const dailyTotalStr = await kv.get(dailyCapKey);
     const dailyTotal = dailyTotalStr ? parseInt(dailyTotalStr, 10) : 0;
     if (dailyTotal >= dailyBudgetCap) {
@@ -7514,6 +8323,8 @@ var rateLimiterMiddleware = (options) => {
     const url = new URL(c.req.url);
     const isTestBypass = c.req.header("x-test-bypass") === "1" || url.searchParams.get("test_bypass") === "1" || url.searchParams.get("debug") === "1";
     if (!isTestBypass) {
+      const ipHourlyKey = `ratelimit:ip:${ip}:${hourStr}`;
+      const ipDailyKey = `ratelimit:ip:${ip}:${dateStr}`;
       const ipHourlyStr = await kv.get(ipHourlyKey);
       const ipHourly = ipHourlyStr ? parseInt(ipHourlyStr, 10) : 0;
       if (ipHourly >= ipHourlyCap) {
@@ -7539,10 +8350,73 @@ var rateLimiterMiddleware = (options) => {
       await Promise.all([
         kv.put(dailyCapKey, (dailyTotal + 1).toString(), { expirationTtl: 172800 }),
         kv.put(ipHourlyKey, (currentHourly + 1).toString(), { expirationTtl: 7200 }),
-        kv.put(ipDailyKey, (currentDaily + 1).toString(), { expirationTtl: 172800 })
+        kv.put(ipDailyKey, (currentDaily + 1).toString(), { expirationTtl: 172800 }),
+        kv.put(burstKey, (burstCount + 1).toString(), { expirationTtl: 20 })
       ]);
     } else {
       await kv.put(dailyCapKey, (dailyTotal + 1).toString(), { expirationTtl: 172800 });
+    }
+    await next();
+  };
+};
+
+// src/middleware/antiBot.ts
+var AUTOMATED_BOT_PATTERNS = [
+  /python-requests/i,
+  /aiohttp/i,
+  /httpx/i,
+  /^curl\//i,
+  /^wget\//i,
+  /go-http-client/i,
+  /scrapy/i,
+  /headlesschrome/i,
+  /phantomjs/i,
+  /selenium/i,
+  /puppeteer/i,
+  /playwright/i,
+  /java\/\d/i,
+  /okhttp/i,
+  /apache-httpclient/i
+];
+var antiBotMiddleware = () => {
+  return async (c, next) => {
+    if (c.req.method !== "POST") {
+      return await next();
+    }
+    const url = new URL(c.req.url);
+    if (c.req.header("x-test-bypass") === "1" || url.searchParams.get("test_bypass") === "1" || url.searchParams.get("debug") === "1") {
+      return await next();
+    }
+    const userAgent = c.req.header("user-agent") || "";
+    if (!userAgent || userAgent.trim().length < 5) {
+      const errorResp = {
+        success: false,
+        errorCode: "BOT_DETECTED",
+        message: "Automated script detected. Valid browser environment required."
+      };
+      return c.json(errorResp, 403);
+    }
+    for (const pattern of AUTOMATED_BOT_PATTERNS) {
+      if (pattern.test(userAgent)) {
+        console.warn(`[AntiBot] Blocked suspicious automated agent [${userAgent}] from IP [${c.get("clientIp")}]`);
+        const errorResp = {
+          success: false,
+          errorCode: "BOT_DETECTED",
+          message: "Automated scraping and headless tools are strictly restricted."
+        };
+        return c.json(errorResp, 403);
+      }
+    }
+    if (c.req.method === "POST") {
+      const contentType = c.req.header("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        const errorResp = {
+          success: false,
+          errorCode: "INVALID_HEADERS",
+          message: "Request content-type must be application/json."
+        };
+        return c.json(errorResp, 400);
+      }
     }
     await next();
   };
@@ -7560,8 +8434,22 @@ healthRoute.get("/health", (c) => {
   });
 });
 
-// src/routes/generate.ts
+// src/routes/styles.ts
 var import_hono2 = __toESM(require_cjs(), 1);
+init_styles();
+var stylesRoute = new import_hono2.Hono();
+stylesRoute.get("/api/styles", (c) => {
+  const themes = CORE_THEME_KEYS.map((key) => CASCADING_THEMES[key]);
+  return c.json({
+    success: true,
+    data: {
+      themes
+    }
+  });
+});
+
+// src/routes/generate.ts
+var import_hono3 = __toESM(require_cjs(), 1);
 
 // src/schemas/generate.ts
 var import_zod = __toESM(require_zod(), 1);
@@ -7569,9 +8457,18 @@ var MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 var MAX_BASE64_LENGTH = Math.ceil(MAX_IMAGE_BYTES * 4 / 3) + 100;
 var GenerateRequestSchema = import_zod.z.object({
   petName: import_zod.z.string().max(30).default("\u9EA6\u6D1B Milo"),
-  styleKey: import_zod.z.enum(["gentle", "detective", "street", "warm"], {
-    errorMap: () => ({ message: "Requested style is not in haute couture catalogue." })
-  }),
+  styleKey: import_zod.z.enum(
+    ["fine_art", "corporate", "cosplay", "celebration", "gentle", "detective", "street", "warm"],
+    {
+      errorMap: () => ({ message: "Requested style is not in haute couture catalogue." })
+    }
+  ),
+  themeId: import_zod.z.string().optional(),
+  // alias for styleKey
+  subId: import_zod.z.string().optional(),
+  itemId: import_zod.z.string().optional(),
+  templateId: import_zod.z.string().optional(),
+  // alias for itemId
   variantIndex: import_zod.z.number().int().min(0).optional(),
   imageBase64: import_zod.z.string().optional().refine(
     (val) => {
@@ -7590,233 +8487,202 @@ var GenerateRequestSchema = import_zod.z.object({
   isDefaultSample: import_zod.z.boolean().default(true)
 });
 
-// src/config/styles.ts
-var IDENTITY_ANCHOR = "Dress the EXACT SAME dog from the input image from the neck and shoulders down in a bespoke tailored haute couture wardrobe. Strictly preserve the original pet's facial structure, eyes, ear contours, snout shape, and distinctive fur markings 100% unchanged. Do NOT alter the dog's breed, face geometry, or expression.";
-var STUDIO_FINISH = "High-end commercial luxury pet portrait photography, 85mm portrait lens, delicate studio rim light accentuating authentic fur texture, sharp focus on pet eyes, clean solid seamless studio backdrop, ample negative space at top for magazine typography, hyperdetailed, 8k resolution, no text, no logo, award-winning studio portrait.";
-var NEGATIVE_PROMPT = "text, typography, letters, words, logo, trademark, brand name, magazine cover title, watermark, signature, font, caption, subtitle, heading, UI, different dog, wrong breed, human face, deformed ears, extra legs, distorted anatomy, warped snout, deformed eyes, extra paws, blurry, low quality, lowres, jpeg artifacts, noisy, overexposed, underexposed, cartoon, illustration, 3D render, drawing, CGI, painting, sketch, anime, doll, amateur photography.";
-function makeVariant(id, name, wardrobePrompt) {
+// src/services/falService.ts
+init_styles();
+
+// src/services/alertService.ts
+function classifyFailureReason(rawMessage = "") {
+  const lower = rawMessage.toLowerCase();
+  if (lower.includes("top_up") || lower.includes("balance") || lower.includes("insufficient") || lower.includes("quota") || lower.includes("credit") || lower.includes("arrears") || lower.includes("payment required") || lower.includes("locked")) {
+    return {
+      category: "INSUFFICIENT_BALANCE",
+      labelZh: "\u8D26\u6237\u6B20\u8D39 / \u989D\u5EA6\u8017\u5C3D",
+      icon: "\u{1F534}",
+      description: "\u5927\u6A21\u578B\u5E73\u53F0\u8D26\u6237\u4F59\u989D\u4E0D\u8DB3\u6216\u5DF2\u88AB\u5B98\u65B9\u9501\u5B9A\uFF0C\u6025\u9700\u5145\u503C\u4EE5\u6062\u590D\u6B63\u5E38\u751F\u56FE\uFF01"
+    };
+  }
+  if (lower.includes("timeout") || lower.includes("abort") || lower.includes("timed out") || lower.includes("deadline exceeded")) {
+    return {
+      category: "TIMEOUT_EXCEEDED",
+      labelZh: "\u7F51\u7EDC\u8BF7\u6C42\u8D85\u65F6 (15s \u622A\u65AD)",
+      icon: "\u23F1\uFE0F",
+      description: "\u5927\u6A21\u578B\u670D\u52A1\u5546\u63A8\u7406\u8017\u65F6\u8D85\u8FC7 15 \u79D2\u786C\u9608\u503C\uFF0C\u7CFB\u7EDF\u5DF2\u4E3B\u52A8\u7194\u65AD\u5E76\u89E6\u53D1\u4FDD\u62A4\u3002"
+    };
+  }
+  if (lower.includes("nsfw") || lower.includes("safety") || lower.includes("sensitive") || lower.includes("content moderation") || lower.includes("inappropriate") || lower.includes("violation") || lower.includes("policy")) {
+    return {
+      category: "NSFW_VIOLATION",
+      labelZh: "\u5185\u5BB9\u5B89\u5168\u62E6\u622A / \u89E6\u53D1\u98CE\u63A7",
+      icon: "\u{1F6E1}\uFE0F",
+      description: "\u4E0A\u4F20\u56FE\u7247\u6216\u8BF7\u6C42\u89E6\u53D1\u670D\u52A1\u5546\u591A\u6A21\u6001\u5185\u5BB9\u5B89\u5168\u5BA1\u67E5 (NSFW/\u5408\u89C4\u98CE\u63A7)\uFF0C\u5DF2\u4F18\u96C5\u964D\u7EA7\u81F3\u6807\u6746\u6837\u7247\u3002"
+    };
+  }
+  if (lower.includes("unauthorized") || lower.includes("401") || lower.includes("invalid api key") || lower.includes("invalid key") || lower.includes("forbidden")) {
+    return {
+      category: "AUTH_FAILED",
+      labelZh: "\u9274\u6743\u5931\u8D25 / API Key \u65E0\u6548",
+      icon: "\u{1F511}",
+      description: "\u8C03\u7528\u7684 API Key \u65E0\u6548\u6216\u672A\u6388\u6743\uFF0C\u8BF7\u68C0\u67E5 Cloudflare Workers Secrets \u914D\u7F6E\u3002"
+    };
+  }
+  if (lower.includes("500") || lower.includes("502") || lower.includes("503") || lower.includes("504") || lower.includes("internal server error") || lower.includes("service unavailable") || lower.includes("bad gateway")) {
+    return {
+      category: "UPSTREAM_5XX",
+      labelZh: "\u670D\u52A1\u5546\u96C6\u7FA4\u5F02\u5E38 (5xx)",
+      icon: "\u26A0\uFE0F",
+      description: "\u4E0A\u6E38\u670D\u52A1\u5546\u5E95\u5C42\u96C6\u7FA4\u6545\u969C\u6216\u8FC7\u8F7D\u6392\u961F\uFF0C\u5DF2\u81EA\u52A8\u89E6\u53D1\u591A\u4E91\u5BB9\u707E\u8F6C\u79FB\u3002"
+    };
+  }
   return {
-    id,
-    name,
-    wardrobePrompt,
-    fullPrompt: `${IDENTITY_ANCHOR} ${wardrobePrompt} ${STUDIO_FINISH}`
+    category: "UNKNOWN_ERROR",
+    labelZh: "\u672A\u5206\u7C7B\u5F02\u5E38",
+    icon: "\u2753",
+    description: "\u53D1\u751F\u672A\u9884\u671F\u9519\u8BEF\uFF0C\u8BF7\u53C2\u8003\u8BE6\u7EC6\u62A5\u9519\u65E5\u5FD7\u3002"
   };
 }
-var GENTLE_VARIANTS = [
-  makeVariant(
-    "gentle_navy_velvet",
-    "\u7ECF\u5178\u85CF\u9752\u4E1D\u7ED2\u793C\u670D",
-    "The pet is elegantly dressed in a bespoke tailored Italian dark navy blue velvet tuxedo suit with a crisp white formal dress shirt collar and an exquisite black velvet bow tie fitted tailored around its neck."
-  ),
-  makeVariant(
-    "gentle_bordeaux_gala",
-    "\u76DB\u5178\u6CE2\u5C14\u591A\u9152\u7EA2\u793C\u670D",
-    "The pet is exquisitely dressed in a luxury royal Bordeaux wine-red velvet dinner jacket tuxedo with black satin peaked lapels, a crisp white pleated tuxedo shirt collar, and an elegant black silk bow tie fitted around its neck."
-  ),
-  makeVariant(
-    "gentle_prince_of_wales",
-    "\u8428\u7EF4\u5C14\u8857\u4EB2\u738B\u683C\u82B1\u5462",
-    "The pet is impeccably dressed in a bespoke British Savile Row Prince of Wales Glen plaid grey tweed suit vest with a tailored collar, a subtle gold lapel pin, and a refined charcoal grey silk necktie fitted around its neck."
-  )
-];
-var DETECTIVE_VARIANTS = [
-  makeVariant(
-    "aviator_vintage_shearling",
-    "\u590D\u53E4\u505A\u65E7\u68D5\u76AE\u98DE\u884C\u5939\u514B",
-    "The pet is stylishly dressed in a vintage distressed brown shearling leather aviator bomber jacket with a thick cream fleece collar and retro dark metal sunglasses positioned tastefully on its forehead."
-  ),
-  makeVariant(
-    "aviator_stealth_black",
-    "\u66DC\u77F3\u9ED1\u6218\u672F\u7A7A\u519B\u5939\u514B",
-    "The pet is boldly dressed in an obsidian black matte flight jacket with vintage military aviation patches, ribbed collar, and sleek dark mirrored aviator sunglasses pushed up resting on its head."
-  ),
-  makeVariant(
-    "aviator_heritage_ma1",
-    "\u6781\u5730\u5DE1\u822A\u58A8\u7EFF\u98DE\u884C\u5916\u5957",
-    "The pet is fashionably dressed in an authentic olive drab heritage nylon MA-1 flight bomber jacket with rescue-orange lining peeking at the collar, paired with classic dark round sunglasses resting above its brow."
-  )
-];
-var STREET_VARIANTS = [
-  makeVariant(
-    "techwear_arctic_yellow",
-    "\u6781\u5730\u54D1\u5149\u4EAE\u9EC4\u9632\u98CE\u8863",
-    "The pet is fashionably dressed in a contemporary streetwear matte bright yellow techwear hooded windbreaker jacket with waterproof zippers and tactical accents tailored around its neck and chest."
-  ),
-  makeVariant(
-    "techwear_glacier_white",
-    "\u51B0\u5DDD\u767D\u62FC\u8272\u66B4\u98CE\u96EA\u5916\u58F3",
-    "The pet is cutting-edge dressed in an alpine glacier white and slate grey stormproof techwear shell jacket with reflective cybernetic trim and waterproof taped seams around its neck and torso."
-  ),
-  makeVariant(
-    "techwear_cobalt_cyber",
-    "\u66DC\u5F71\u94B4\u84DD\u673A\u80FD\u51B2\u950B\u8863",
-    "The pet is avant-garde dressed in an ultra-modern cobalt electric blue and matte black futuristic windbreaker jacket with tactical buckle strap details snugly tailored around its shoulders."
-  )
-];
-var WARM_VARIANTS = [
-  makeVariant(
-    "knitwear_scottish_tartan",
-    "\u82CF\u683C\u5170\u683C\u7EB9\u7F8A\u7ED2\u56F4\u5DFE",
-    "The pet is cozily dressed in a hand-knitted thick woolen beanie and a luxurious soft Scottish tartan cashmere scarf wrapped gently around its neck."
-  ),
-  makeVariant(
-    "knitwear_oatmeal_cable",
-    "\u5976\u767D\u9EBB\u82B1\u7C97\u68D2\u9488\u9AD8\u9886\u6BDB\u8863",
-    "The pet is warmly dressed in an artisanal chunky oatmeal-cream cable-knit wool turtleneck sweater snugly fitted around its neck, with soft textured ribbing accentuating its chest."
-  ),
-  makeVariant(
-    "knitwear_fair_isle",
-    "\u8D39\u5C14\u5C9B\u590D\u53E4\u63D0\u82B1\u5957\u5934\u886B",
-    "The pet is charmingly dressed in a traditional Scottish Fair Isle jacquard knit patterned sweater in rich forest green and burgundy tones, with a cozy folded ribbed neckline."
-  )
-];
-var STYLE_CONFIGS = {
-  gentle: {
-    key: "gentle",
-    name: "\u8428\u7EF4\u5C14\u540D\u7EC5",
-    subtitle: "\u4E1D\u7ED2\u9886\u7ED3\u4E0E\u5B9A\u5236\u793C\u670D",
-    prompt: GENTLE_VARIANTS[0].fullPrompt,
-    fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_gentle.webp",
-    variants: GENTLE_VARIANTS
-  },
-  detective: {
-    key: "detective",
-    name: "\u9ED1\u8D85\u98DE\u884C\u5BB6",
-    subtitle: "\u5DE5\u88C5\u5939\u514B\u4E0E\u91D1\u5C5E\u58A8\u955C",
-    prompt: DETECTIVE_VARIANTS[0].fullPrompt,
-    fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_detective.webp",
-    variants: DETECTIVE_VARIANTS
-  },
-  street: {
-    key: "street",
-    name: "\u673A\u80FD\u9632\u98CE\u8863",
-    subtitle: "\u4EAE\u9EC4\u8FDE\u5E3D\u6781\u5730\u6237\u5916\u88C5",
-    prompt: STREET_VARIANTS[0].fullPrompt,
-    fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_street.webp",
-    variants: STREET_VARIANTS
-  },
-  warm: {
-    key: "warm",
-    name: "\u51AC\u65E5\u624B\u5DE5\u7EC7\u7269",
-    subtitle: "\u7C97\u9488\u6BDB\u7EBF\u5E3D\u4E0E\u7F8A\u7ED2\u56F4\u5DFE",
-    prompt: WARM_VARIANTS[0].fullPrompt,
-    fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_warm.webp",
-    variants: WARM_VARIANTS
+var AlertService = class {
+  recentAlertTimestamps = /* @__PURE__ */ new Map();
+  defaultDebounceMs;
+  /**
+   * @param defaultDebounceMs Default debounce window in milliseconds (default: 5 minutes = 300,000ms)
+   */
+  constructor(defaultDebounceMs = 5 * 60 * 1e3) {
+    this.defaultDebounceMs = defaultDebounceMs;
   }
-};
-var SUPPORTED_STYLE_KEYS = Object.keys(STYLE_CONFIGS);
-function getStyleVariant(styleKey, index) {
-  const config = STYLE_CONFIGS[styleKey];
-  if (!config || !config.variants || config.variants.length === 0) {
-    throw new Error(`Invalid style key or missing variants: ${styleKey}`);
+  /**
+   * Resets internal debounce tracking (useful in unit tests or manual reset)
+   */
+  clearDebounceHistory() {
+    this.recentAlertTimestamps.clear();
   }
-  if (typeof index === "number" && index >= 0) {
-    return config.variants[index % config.variants.length];
-  }
-  const randomIndex = Math.floor(Math.random() * config.variants.length);
-  return config.variants[randomIndex];
-}
+  /**
+   * Dispatches an Enterprise WeChat Webhook alert message asynchronously
+   * Protected with 5-minute anti-storm debouncing per failure category
+   */
+  async sendWeChatAlert(webhookUrl, title, context, severity = "WARNING", options) {
+    if (!webhookUrl || !webhookUrl.startsWith("http")) {
+      console.warn(`[AlertService] WeChat Webhook URL not configured. Alert skipped: [${title}]`);
+      return false;
+    }
+    const classification = classifyFailureReason(context.errorMessage || "");
+    const provider = context.primaryProvider || "default";
+    const debounceKey = `${classification.category}:${provider}`;
+    const now = Date.now();
+    const debounceMs = options?.customDebounceMs ?? this.defaultDebounceMs;
+    if (!options?.bypassDebounce && debounceMs > 0) {
+      const lastSent = this.recentAlertTimestamps.get(debounceKey);
+      if (lastSent && now - lastSent < debounceMs) {
+        const remainingSec = Math.ceil((debounceMs - (now - lastSent)) / 1e3);
+        console.warn(
+          `[AlertService] Alert storm suppressed for [${debounceKey}]. Next alert allowed in ${remainingSec}s.`
+        );
+        return false;
+      }
+    }
+    const timestampStr = (/* @__PURE__ */ new Date()).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });
+    const envTag = context.environment || "production";
+    const colorTag = severity === "CRITICAL" ? "warning" : "comment";
+    const markdownContent = `### ${classification.icon} ViviBon Cover \u8FD0\u7EF4\u544A\u8B66 \xB7 ${title}
+> **\u73AF\u5883**: \`${envTag}\`
+> **\u65F6\u95F4**: ${timestampStr} (\u5317\u4EAC\u65F6\u95F4)
+> **\u8FFD\u8E2A ID**: \`${context.traceId || "N/A"}\`
+> **\u5BA2\u6237\u7AEF IP**: \`${context.clientIp || "127.0.0.1"}\`
 
-// src/services/falService.ts
-var defaultFalRunner = async (prompt, imageBase64, apiKey, signal) => {
-  if (apiKey.startsWith("sk-")) {
-    const endpoint2 = "https://api.siliconflow.cn/v1/images/generations";
-    if (imageBase64) {
-      const response2 = await fetch(endpoint2, {
+**\u6545\u969C\u8BCA\u65AD\u5206\u6790**:
+- **\u6545\u969C\u7C7B\u578B**: <font color="${colorTag}">${classification.labelZh}</font>
+- **\u4E1A\u52A1\u5F71\u54CD**: ${classification.description}
+- **\u4E3B\u9009\u6A21\u578B**: \`${context.primaryProvider || "Primary"}\`
+- **\u5907\u9009\u6A21\u578B**: \`${context.secondaryProvider || "Secondary"}\`
+- **\u9020\u578B\u6A21\u677F**: \`${context.styleKey || "N/A"}\` / \`${context.templateId || "N/A"}\`
+- **\u63A5\u53E3\u8017\u65F6**: \`${context.durationMs ?? 0}ms\`
+
+> **\u8BE6\u7EC6\u62A5\u9519\u62A5\u6587**:
+> \`${(context.errorMessage || "Unknown").slice(0, 300)}\`
+
+> \u2139\uFE0F *\u5DF2\u542F\u7528 5 \u5206\u949F\u540C\u7C7B\u544A\u8B66\u9632\u98CE\u66B4\u9759\u9ED8\u673A\u5236\uFF0C\u907F\u514D\u9AD8\u9891\u5237\u5C4F*
+`;
+    try {
+      const response = await fetch(webhookUrl, {
         method: "POST",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "Qwen/Qwen-Image-Edit",
-          prompt,
-          negative_prompt: NEGATIVE_PROMPT,
-          image: imageBase64,
-          image_size: "768x1024",
-          // 3:4 Native Aspect Ratio (1080x1440 物理保真，零拉伸变形)
-          num_inference_steps: 8
-          // 推理耗时压缩至 12~14s，同时 100% 保持 Face ID 特征
-        }),
-        signal
+          msgtype: "markdown",
+          markdown: {
+            content: markdownContent
+          }
+        })
       });
-      if (!response2.ok) {
-        const errText = await response2.text().catch(() => "");
-        throw new Error(`SiliconFlow img2img upstream error: ${response2.status} ${response2.statusText} ${errText}`);
+      if (!response.ok) {
+        const resText = await response.text().catch(() => "");
+        console.error(`[AlertService] Failed to send WeChat Webhook: ${response.status} ${resText}`);
+        return false;
       }
-      const data2 = await response2.json();
-      const imageUrl2 = data2.images?.[0]?.url;
-      if (!imageUrl2) {
-        throw new Error("No image returned from SiliconFlow img2img");
-      }
-      return {
-        jobId: `sf_${crypto.randomUUID().slice(0, 8)}`,
-        imageUrl: imageUrl2
-      };
-    } else {
-      const response2 = await fetch(endpoint2, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "Kwai-Kolors/Kolors",
-          prompt,
-          negative_prompt: NEGATIVE_PROMPT,
-          image_size: "1024x1024"
-        }),
-        signal
-      });
-      if (!response2.ok) {
-        const errText = await response2.text().catch(() => "");
-        throw new Error(`SiliconFlow text2img upstream error: ${response2.status} ${response2.statusText} ${errText}`);
-      }
-      const data2 = await response2.json();
-      const imageUrl2 = data2.images?.[0]?.url;
-      if (!imageUrl2) {
-        throw new Error("No image returned from SiliconFlow text2img");
-      }
-      return {
-        jobId: `sf_${crypto.randomUUID().slice(0, 8)}`,
-        imageUrl: imageUrl2
-      };
+      this.recentAlertTimestamps.set(debounceKey, now);
+      return true;
+    } catch (err) {
+      console.error("[AlertService] Error sending WeChat alert:", err);
+      return false;
     }
   }
-  if (imageBase64) {
-    const endpoint2 = "https://fal.run/fal-ai/flux/dev/image-to-image";
+};
+var alertService = new AlertService();
+
+// src/services/falService.ts
+async function executeWithJitterRetry(fn, maxRetries = 1, baseDelayMs = 300, maxDelayMs = 1200) {
+  let attempt = 0;
+  while (true) {
+    try {
+      return await fn(attempt);
+    } catch (err) {
+      if (attempt >= maxRetries) {
+        throw err;
+      }
+      attempt++;
+      const maxBackoff = Math.min(maxDelayMs, baseDelayMs * Math.pow(2, attempt));
+      const jitterDelay = Math.floor(Math.random() * maxBackoff);
+      await new Promise((resolve) => setTimeout(resolve, jitterDelay));
+    }
+  }
+}
+var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePrompt = NEGATIVE_PROMPT) => {
+  if (!imageBase64) {
+    throw new Error("Pure Image-to-Image required. Missing pet photo input.");
+  }
+  if (apiKey.startsWith("sk-")) {
+    const endpoint2 = "https://api.siliconflow.cn/v1/images/generations";
     const response2 = await fetch(endpoint2, {
       method: "POST",
       headers: {
-        "Authorization": `Key ${apiKey}`,
+        "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        image_url: imageBase64,
+        model: "Qwen/Qwen-Image-Edit",
         prompt,
-        strength: 0.68,
-        // Golden ratio: 90%+ pet facial ID preservation, 100% haute couture outfit transformation
-        num_inference_steps: 24,
-        guidance_scale: 3.5,
-        enable_safety_checker: true
+        negative_prompt: negativePrompt,
+        image: imageBase64,
+        image_size: "768x1024",
+        // 3:4 Native Aspect Ratio (1080x1440 物理保真，零拉伸变形)
+        num_inference_steps: 8
+        // 压缩推理耗时至 12~14s，同时 100% 保持 Face ID 特征
       }),
       signal
     });
     if (!response2.ok) {
       const errText = await response2.text().catch(() => "");
-      throw new Error(`Fal.ai img2img upstream error: ${response2.status} ${response2.statusText} ${errText}`);
+      throw new Error(`SiliconFlow upstream error: ${response2.status} ${response2.statusText} ${errText}`);
     }
     const data2 = await response2.json();
     const imageUrl2 = data2.images?.[0]?.url;
     if (!imageUrl2) {
-      throw new Error("No image returned from Fal.ai img2img");
+      throw new Error("No image returned from SiliconFlow");
     }
     return {
-      jobId: data2.request_id || `fal_${crypto.randomUUID().slice(0, 8)}`,
+      jobId: `sf_${crypto.randomUUID().slice(0, 8)}`,
       imageUrl: imageUrl2
     };
   }
-  const endpoint = "https://fal.run/fal-ai/flux/schnell";
+  const endpoint = "https://fal.run/fal-ai/flux/dev/image-to-image";
   const response = await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -7824,16 +8690,19 @@ var defaultFalRunner = async (prompt, imageBase64, apiKey, signal) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
+      image_url: imageBase64,
       prompt,
-      image_size: "square_hd",
-      num_images: 1,
+      strength: 0.68,
+      // Golden ratio: 90%+ pet facial ID preservation, 100% haute couture outfit transformation
+      num_inference_steps: 24,
+      guidance_scale: 3.5,
       enable_safety_checker: true
     }),
     signal
   });
   if (!response.ok) {
     const errText = await response.text().catch(() => "");
-    throw new Error(`Fal.ai text2img upstream error: ${response.status} ${response.statusText} ${errText}`);
+    throw new Error(`Fal.ai upstream error: ${response.status} ${response.statusText} ${errText}`);
   }
   const data = await response.json();
   const imageUrl = data.images?.[0]?.url;
@@ -7848,80 +8717,162 @@ var defaultFalRunner = async (prompt, imageBase64, apiKey, signal) => {
 var FalService = class {
   runner;
   timeoutMs;
-  constructor(runner = defaultFalRunner, timeoutMs = 6e4) {
+  constructor(runner = defaultFalRunner, timeoutMs = 15e3) {
     this.runner = runner;
     this.timeoutMs = timeoutMs;
   }
   /**
-   * Execute Haute Couture Pet Generation with hard timeout and graceful degradation (NC-4)
+   * Execute Haute Couture Pet Generation with:
+   * 1. 15s hard timeout
+   * 2. Full jitter exponential backoff retry
+   * 3. Primary -> Secondary AI multi-rail failover
+   * 4. Enterprise WeChat Webhook alerting on failure/arrears
+   * 5. NC-4 graceful degradation to WebP sample library
    */
-  async generatePoster(styleKey, petName, imageBase64, apiKey, variantIndex) {
+  async generatePoster(styleKey, petName, imageBase64, primaryApiKey, variantIndex, subId, itemId, alertContext, webhookUrl, secondaryApiKey) {
     const start = Date.now();
     const styleConfig = STYLE_CONFIGS[styleKey];
     const fallbackImage = styleConfig.fallbackImageUrl;
-    const variant = getStyleVariant(styleKey, variantIndex);
-    if (!apiKey) {
+    const assembled = assembleDynamicPrompt(styleKey, itemId, subId, variantIndex);
+    const variant = assembled.item;
+    const baseResult = {
+      styleKey,
+      petName,
+      capsuleVariant: {
+        id: variant.id,
+        name: variant.nameZh
+      },
+      level1Theme: {
+        id: assembled.themeKey,
+        nameZh: assembled.themeNameZh
+      },
+      level2Item: {
+        id: variant.id,
+        nameZh: variant.nameZh,
+        badge: variant.badge
+      },
+      skillDirective: assembled.skillDirective
+    };
+    if (!primaryApiKey && !secondaryApiKey) {
       return {
+        ...baseResult,
         jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
         imageUrl: fallbackImage,
-        styleKey,
-        petName,
         latencyMs: Date.now() - start,
         isFallback: true,
-        debugReason: "NO_FAL_API_KEY_CONFIGURED",
-        capsuleVariant: {
-          id: variant.id,
-          name: variant.name
-        }
+        debugReason: "NO_API_KEY_CONFIGURED"
       };
     }
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), this.timeoutMs);
-    try {
-      const result = await this.runner(variant.fullPrompt, imageBase64, apiKey, controller.signal);
-      clearTimeout(timeoutId);
-      return {
-        jobId: result.jobId,
-        imageUrl: result.imageUrl,
-        styleKey,
-        petName,
-        latencyMs: Date.now() - start,
-        isFallback: false,
-        capsuleVariant: {
-          id: variant.id,
-          name: variant.name
-        }
-      };
-    } catch (err) {
-      clearTimeout(timeoutId);
-      const isTimeout = err instanceof Error && (err.name === "AbortError" || err.message.includes("abort"));
-      const latency = isTimeout ? this.timeoutMs : Date.now() - start;
-      const errMsg = err instanceof Error ? err.message : String(err);
-      console.warn(
-        `[FalService] Generation fallback triggered (${isTimeout ? "TIMEOUT_60000MS" : "UPSTREAM_ERROR"}):`,
-        errMsg
-      );
-      return {
-        jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
-        imageUrl: fallbackImage,
-        styleKey,
-        petName,
-        latencyMs: latency,
-        isFallback: true,
-        debugReason: errMsg,
-        capsuleVariant: {
-          id: variant.id,
-          name: variant.name
-        }
-      };
+    const runAttempt = async (key) => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), this.timeoutMs);
+      try {
+        const res = await this.runner(
+          assembled.fullPrompt,
+          imageBase64,
+          key,
+          controller.signal,
+          assembled.negativePrompt
+        );
+        clearTimeout(timeoutId);
+        return res;
+      } catch (err) {
+        clearTimeout(timeoutId);
+        throw err;
+      }
+    };
+    let primaryError = null;
+    const primaryProviderName = primaryApiKey?.startsWith("sk-") ? "SiliconFlow" : "Fal.ai";
+    const secondaryProviderName = secondaryApiKey?.startsWith("sk-") ? "SiliconFlow" : "Fal.ai";
+    if (primaryApiKey) {
+      try {
+        const result = await executeWithJitterRetry(() => runAttempt(primaryApiKey), 1);
+        return {
+          ...baseResult,
+          jobId: result.jobId,
+          imageUrl: result.imageUrl,
+          latencyMs: Date.now() - start,
+          isFallback: false,
+          activeProvider: primaryProviderName
+        };
+      } catch (err) {
+        primaryError = err instanceof Error ? err : new Error(String(err));
+        console.warn(`[FalService] Primary AI (${primaryProviderName}) failed:`, primaryError.message);
+        alertService.sendWeChatAlert(
+          webhookUrl,
+          `\u4E3B\u6A21\u578B\u751F\u56FE\u5931\u8D25 \xB7 \u51C6\u5907\u6545\u969C\u8F6C\u79FB`,
+          {
+            ...alertContext,
+            primaryProvider: primaryProviderName,
+            secondaryProvider: secondaryApiKey ? secondaryProviderName : "None",
+            errorMessage: primaryError.message,
+            durationMs: Date.now() - start
+          },
+          "WARNING"
+        ).catch(() => {
+        });
+      }
     }
+    if (secondaryApiKey) {
+      try {
+        const result = await executeWithJitterRetry(() => runAttempt(secondaryApiKey), 1);
+        alertService.sendWeChatAlert(
+          webhookUrl,
+          `\u4ECE\u6A21\u578B\u63A5\u7BA1\u751F\u56FE\u6210\u529F`,
+          {
+            ...alertContext,
+            primaryProvider: primaryProviderName,
+            secondaryProvider: secondaryProviderName,
+            errorMessage: `Primary failed with: ${primaryError?.message || "N/A"}`,
+            durationMs: Date.now() - start
+          },
+          "INFO"
+        ).catch(() => {
+        });
+        return {
+          ...baseResult,
+          jobId: result.jobId,
+          imageUrl: result.imageUrl,
+          latencyMs: Date.now() - start,
+          isFallback: false,
+          failoverTriggered: true,
+          activeProvider: secondaryProviderName
+        };
+      } catch (secErr) {
+        const secondaryError = secErr instanceof Error ? secErr : new Error(String(secErr));
+        console.warn(`[FalService] Secondary AI (${secondaryProviderName}) also failed:`, secondaryError.message);
+        alertService.sendWeChatAlert(
+          webhookUrl,
+          `\u4E3B\u5907\u6A21\u578B\u5747\u8C03\u7528\u5931\u8D25 \xB7 \u89E6\u53D1\u9759\u6001\u6837\u7247\u7EC8\u6781\u964D\u7EA7`,
+          {
+            ...alertContext,
+            primaryProvider: primaryProviderName,
+            secondaryProvider: secondaryProviderName,
+            errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
+            durationMs: Date.now() - start
+          },
+          "CRITICAL"
+        ).catch(() => {
+        });
+      }
+    }
+    const finalReason = primaryError?.message || "ALL_AI_PROVIDERS_FAILED";
+    return {
+      ...baseResult,
+      jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl: fallbackImage,
+      latencyMs: Date.now() - start,
+      isFallback: true,
+      debugReason: finalReason
+    };
   }
 };
 var falService = new FalService();
 
 // src/routes/generate.ts
+init_styles();
 var createGenerateRoute = (service = falService) => {
-  const route = new import_hono2.Hono();
+  const route = new import_hono3.Hono();
   route.post("/api/generate", async (c) => {
     let body;
     try {
@@ -7944,16 +8895,18 @@ var createGenerateRoute = (service = falService) => {
         const errorResp2 = {
           success: false,
           errorCode: "IMAGE_TOO_LARGE",
-          message: "Uploaded photo exceeds 5MB limit."
+          message: "Base64 image exceeds 5MB size limit."
         };
         return c.json(errorResp2, 413);
       }
-      const styleIssue = issues.find((i) => i.path.includes("styleKey"));
+      const styleIssue = issues.find(
+        (i) => i.path.includes("styleKey") || i.path.includes("themeId")
+      );
       if (styleIssue) {
         const errorResp2 = {
           success: false,
           errorCode: "INVALID_STYLE_KEY",
-          message: "Requested style is not in haute couture catalogue."
+          message: styleIssue.message
         };
         return c.json(errorResp2, 400);
       }
@@ -7964,14 +8917,51 @@ var createGenerateRoute = (service = falService) => {
       };
       return c.json(errorResp, 400);
     }
-    const { styleKey, petName, imageBase64, variantIndex } = parseResult.data;
-    const apiKey = c.env.SILICONFLOW_KEY || c.env.FAL_KEY;
+    const effectiveStyleKey = parseResult.data.styleKey || parseResult.data.themeId || "fine_art";
+    const effectiveItemId = parseResult.data.itemId || parseResult.data.templateId;
+    const { imageBase64, variantIndex, subId } = parseResult.data;
+    const safePetName = sanitizePetName(parseResult.data.petName);
+    if (effectiveItemId) {
+      const { CASCADING_THEMES: CASCADING_THEMES2 } = await Promise.resolve().then(() => (init_styles(), styles_exports));
+      let targetThemeKey;
+      if (effectiveStyleKey === "gentle") targetThemeKey = "fine_art";
+      else if (effectiveStyleKey === "detective") targetThemeKey = "corporate";
+      else if (effectiveStyleKey === "street") targetThemeKey = "cosplay";
+      else if (effectiveStyleKey === "warm") targetThemeKey = "celebration";
+      else targetThemeKey = effectiveStyleKey;
+      const theme = CASCADING_THEMES2[targetThemeKey];
+      const exists = theme?.subCategories.some((sub) => sub.items.some((it) => it.id === effectiveItemId));
+      if (!exists) {
+        const errorResp = {
+          success: false,
+          errorCode: "INVALID_ITEM_ID",
+          message: `Template '${effectiveItemId}' is not valid for style '${effectiveStyleKey}'.`
+        };
+        return c.json(errorResp, 400);
+      }
+    }
+    const isFalPrimary = c.env.PRIMARY_AI_PROVIDER === "fal";
+    const primaryKey = isFalPrimary ? c.env.FAL_KEY || c.env.SILICONFLOW_KEY : c.env.SILICONFLOW_KEY || c.env.FAL_KEY;
+    const secondaryKey = isFalPrimary ? c.env.FAL_KEY : c.env.SILICONFLOW_KEY;
+    const alertCtx = {
+      environment: c.env.ENVIRONMENT || "production",
+      traceId: c.get("traceId"),
+      clientIp: c.get("clientIp"),
+      petName: safePetName,
+      styleKey: effectiveStyleKey,
+      templateId: effectiveItemId
+    };
     const result = await service.generatePoster(
-      styleKey,
-      petName,
+      effectiveStyleKey,
+      safePetName,
       imageBase64,
-      apiKey,
-      variantIndex
+      primaryKey,
+      variantIndex,
+      subId,
+      effectiveItemId,
+      alertCtx,
+      c.env.WECHAT_WEBHOOK_URL,
+      secondaryKey
     );
     const response = {
       success: true,
@@ -7982,7 +8972,11 @@ var createGenerateRoute = (service = falService) => {
         petName: result.petName,
         latencyMs: result.latencyMs,
         isFallback: result.isFallback,
+        ...result.failoverTriggered !== void 0 ? { failoverTriggered: result.failoverTriggered } : {},
         ...result.capsuleVariant ? { capsuleVariant: result.capsuleVariant } : {},
+        ...result.level1Theme ? { level1Theme: result.level1Theme } : {},
+        ...result.level2Item ? { level2Item: result.level2Item } : {},
+        ...result.skillDirective ? { skillDirective: result.skillDirective } : {},
         ...c.req.query("debug") === "1" && result.debugReason ? { debugReason: result.debugReason } : {}
       }
     };
@@ -7993,1703 +8987,1570 @@ var createGenerateRoute = (service = falService) => {
 var generateRoute = createGenerateRoute();
 
 // ../index.html
-var ViviBon_Cover_default = `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>ViviBon Cover \xB7 \u5BA0\u7269\u9AD8\u5B9A\u65F6\u5C1A\u5927\u7247</title>
-
-  <!-- PostHog Web SDK (Async, Non-blocking, US Cloud Endpoint) -->
-  <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1.0)}(document,window.posthog||[]);
-
-    (function() {
-      try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const queryKey = urlParams.get('ph_key');
-        if (queryKey) {
-          try { localStorage.setItem('vivibon_ph_key', queryKey); } catch(e){}
-        }
-        const activeKey = queryKey || window.__POSTHOG_API_KEY__ || (function(){ try { return localStorage.getItem('vivibon_ph_key'); }catch(e){return null;} })() || 'phc_rJk9QSS6joiXpuMxYGpCq9zjdgy54HG5Wocqo8yjxJSS';
-        
-        posthog.init(activeKey, {
-          api_host: 'https://us.i.posthog.com',
-          person_profiles: 'always',
-          capture_pageview: true,
-          session_recording: { recordCrossOriginIframes: true }
-        });
-      } catch(err) {
-        console.warn('[ViviBon PostHog] Init skipped or blocked by client:', err);
-      }
-    })();
-  </script>
-
-  <style>
-    /* ================= Apple Official Design Tokens (HIG & Craftsman) ================= */
-    :root {
-      --system-bg: #F5F5F7;
-      --system-card: #FFFFFF;
-      --system-card-solid: #FFFFFF;
-      --system-card-secondary: #F8F8FA;
-      --card-border: rgba(0, 0, 0, 0.06);
-      --card-border-subtle: rgba(0, 0, 0, 0.04);
-      --text-primary: #1D1D1F;
-      --text-secondary: #48484A;
-      --text-muted: #8E8E93;
-      --shadow-ambient: 0 8px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
-      --shadow-elevated: 0 16px 40px -8px rgba(0, 0, 0, 0.1);
-      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      background-color: var(--system-bg);
-      color: var(--text-primary);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      min-height: 100dvh;
-      padding: 14px 14px calc(env(safe-area-inset-bottom) + 20px) 14px;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* \u5F25\u6563\u73AF\u5883\u5149\u6655 (Apple \u6781\u7B80\u9ED1\u767D\u5149\u5F71) */
-    .ambient-aura-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.35;
-      animation: auraBreathe 10s ease-in-out infinite alternate;
-    }
-    .orb-gold {
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
-      top: -60px;
-      right: -40px;
-    }
-    .orb-lavender {
-      width: 360px;
-      height: 360px;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.015) 0%, transparent 70%);
-      bottom: 40px;
-      left: -80px;
-      animation-delay: -5s;
-    }
-    @keyframes auraBreathe {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.25; }
-      100% { transform: translate(15px, 20px) scale(1.1); opacity: 0.45; }
-    }
-
-    /* \u6838\u5FC3\u9875\u9762\u5BB9\u5668 */
-    .app-shell {
-      width: 100%;
-      max-width: 414px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ================= \u9876\u680F (Apple Floating Capsule Header) ================= */
-    header.apple-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 20px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 9999px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
-      margin-top: calc(env(safe-area-inset-top) + 2px);
-    }
-    .brand-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #1D1D1F;
-      text-align: center;
-    }
-
-    /* ================= Apple Squircle Bento Card ================= */
-    .bento-card {
-      background: var(--system-card);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border: 1px solid var(--card-border);
-      border-radius: 28px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      box-shadow: var(--shadow-ambient);
-      position: relative;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-    }
-    .section-title {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    /* ================= \u89C6\u56FE 1\uFF1A\u5236\u4F5C\u5165\u53E3 ================= */
-    #view-entry {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* \u7167\u7247\u4E0A\u4F20\u89C6\u53E3 */
-    .upload-box {
-      position: relative;
-      height: 228px;
-      border-radius: 20px;
-      background: #E5E5EA;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--card-border-subtle);
-      transition: all 0.25s var(--ease-apple);
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
-    }
-    .upload-box:active {
-      transform: scale(0.985);
-    }
-    .upload-preview-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s var(--ease-apple);
-    }
-    .upload-tip-pill {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      color: var(--text-primary);
-      font-size: 0.74rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: -0.01em;
-      transition: transform 0.2s var(--ease-apple), background 0.2s;
-    }
-    .upload-tip-pill:active {
-      transform: scale(0.96);
-    }
-
-    /* iOS \u539F\u751F\u8868\u5355\u8F93\u5165\u9879 */
-    .input-row {
-      display: flex;
-      align-items: center;
-      background: var(--system-card-secondary);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 18px;
-      padding: 6px 14px;
-      gap: 10px;
-      transition: all 0.2s var(--ease-apple);
-    }
-    .input-row:focus-within {
-      background: #FFFFFF;
-      border-color: #1D1D1F;
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
-    }
-    .input-label {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .input-field {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--text-primary);
-      font-size: 0.92rem;
-      font-weight: 600;
-      outline: none;
-      padding: 6px 0;
-    }
-
-    /* \u9AD8\u5B9A\u98CE\u683C Bento \u9009\u6846 (Apple \u6781\u7B80\u9ED1\u767D) */
-    .style-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .style-item {
-      background: #F8F8FA;
-      border: 1.5px solid rgba(0, 0, 0, 0.06);
-      border-radius: 20px;
-      padding: 14px 14px 16px 14px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.22s var(--ease-apple), background 0.22s, border-color 0.22s, box-shadow 0.22s;
-      position: relative;
-    }
-    .style-item:active {
-      transform: scale(0.97);
-    }
-    .style-item.active {
-      background: #FFFFFF;
-      border-color: #1D1D1F;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.12);
-    }
-    .style-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .style-icon-box {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: #FFFFFF;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1D1D1F;
-      transition: all 0.25s var(--ease-apple);
-    }
-    .style-item.active .style-icon-box {
-      background: #1D1D1F;
-      border-color: #1D1D1F;
-      color: #FFFFFF;
-      transform: scale(1.05);
-    }
-    .style-check-indicator {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1.5px solid #D1D1D6;
-      background: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s var(--ease-apple);
-    }
-    .style-item.active .style-check-indicator {
-      border-color: #1D1D1F;
-      background: #1D1D1F;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    }
-    .style-check-indicator svg {
-      display: none;
-      color: #FFFFFF;
-    }
-    .style-item.active .style-check-indicator svg {
-      display: block;
-    }
-    .style-meta h4 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
-    }
-    .style-meta p {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-      line-height: 1.35;
-    }
-    .style-item.active .style-meta p {
-      color: var(--text-secondary);
-    }
-
-    /* Apple \u5B98\u7F51\u6807\u5FD7\u6027\u4E3B\u64CD\u4F5C\u6309\u94AE (Pill Button) */
-    .btn-submit {
-      background: linear-gradient(180deg, #2C2C2E 0%, #1C1C1E 100%);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 9999px;
-      padding: 17px 24px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 12px 32px -4px rgba(29, 29, 31, 0.32);
-      transition: transform 0.15s var(--ease-apple), opacity 0.15s, box-shadow 0.15s;
-    }
-    .btn-submit:active {
-      transform: scale(0.97);
-      opacity: 0.92;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 14px rgba(29, 29, 31, 0.25);
-    }
-    .btn-submit svg {
-      color: #FFFFFF;
-      transition: transform 0.2s var(--ease-spring);
-    }
-    .btn-submit:active svg {
-      transform: translateX(3px);
-    }
-
-    /* ================= \u89C6\u56FE 2\uFF1A\u5199\u771F\u6210\u54C1\u5C55\u53F0 ================= */
-    #view-result {
-      display: none;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* \u9876\u7EA7\u7535\u5F71\u753B\u6846\u5C55\u53F0 */
-    .stage-viewport {
-      position: relative;
-      width: 100%;
-      height: 490px;
-      border-radius: 28px;
-      overflow: hidden;
-      background: #000000;
-      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.35);
-      user-select: none;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    .stage-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 0.15s ease-out;
-    }
-
-    /* Vogue / Kinfolk \u6742\u5FD7\u6392\u7248\u5C42 (\u7EAF\u51C0\u827A\u672F\u54C1) */
-    .stage-overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, transparent 26%, transparent 58%, rgba(0,0,0,0.92) 100%);
-      transition: opacity 0.15s ease-out;
-    }
-    .mag-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-    .mag-masthead {
-      font-family: 'Bodoni MT', 'Didot', 'Times New Roman', serif;
-      font-size: 1.9rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      color: #FFFFFF;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    }
-    .mag-sub {
-      font-size: 0.6rem;
-      text-align: right;
-      color: rgba(255, 255, 255, 0.85);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      line-height: 1.35;
-    }
-    .mag-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .mag-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      opacity: 0.9;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .mag-headline {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      letter-spacing: -0.02em;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    .mag-story {
-      font-size: 0.74rem;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.45;
-      font-weight: 400;
-    }
-
-    /* \u539F\u7247\u5BF9\u6BD4\u60AC\u6D6E\u80F6\u56CA */
-    .compare-pill {
-      position: absolute;
-      bottom: 18px;
-      right: 18px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      color: var(--text-primary);
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 9999px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      transition: transform 0.12s var(--ease-apple);
-    }
-    .compare-pill:active {
-      transform: scale(0.94);
-    }
-
-    /* \u5C55\u53F0\u5FAE\u578B\u98CE\u683C\u5207\u6362\u680F (iOS Segmented Chips) */
-    .mini-switch-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 6px;
-      border-radius: 9999px;
-      border: 1px solid var(--card-border);
-    }
-    .mini-chip {
-      text-align: center;
-      padding: 9px 0;
-      font-size: 0.74rem;
-      font-weight: 600;
-      border-radius: 9999px;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: all 0.2s var(--ease-apple);
-      white-space: nowrap;
-    }
-    .mini-chip:active {
-      transform: scale(0.95);
-    }
-    .mini-chip.active {
-      background: #1D1D1F;
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    }
-
-    /* \u5C55\u53F0\u64CD\u4F5C\u6309\u94AE */
-    .btn-export {
-      background: #1D1D1F;
-      color: #FFFFFF;
-      border: none;
-      border-radius: 9999px;
-      padding: 17px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 10px 28px -4px rgba(29, 29, 31, 0.25);
-      transition: transform 0.15s var(--ease-apple);
-    }
-    .btn-export:active {
-      transform: scale(0.97);
-    }
-
-    .btn-back {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      color: var(--text-secondary);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 9999px;
-      padding: 13px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.15s;
-    }
-    .btn-back:active {
-      transform: scale(0.98);
-      background: #FFFFFF;
-    }
-
-    /* ================= Apple Liquid Glass \u52A0\u8F7D\u6D6E\u5C42 ================= */
-    .loader-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      z-index: 100;
-      animation: fadeIn 0.25s ease-out;
-    }
-    .loader-glass-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(32px) saturate(180%);
-      -webkit-backdrop-filter: blur(32px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      border-radius: 32px;
-      padding: 34px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      box-shadow: var(--shadow-elevated);
-      max-width: 320px;
-      width: 100%;
-      text-align: center;
-    }
-    .loader-spinner-box {
-      position: relative;
-      width: 52px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .loader-spinner {
-      width: 48px;
-      height: 48px;
-      border: 3px solid rgba(0, 0, 0, 0.08);
-      border-top-color: #1D1D1F;
-      border-radius: 50%;
-      animation: spin 0.85s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-    .loader-pulse-dot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #1D1D1F;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes pulse { 0%, 100% { opacity: 0.4; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.15); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .loader-progress-box {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 2px 0;
-    }
-    .loader-progress-track {
-      flex: 1;
-      height: 4px;
-      background: rgba(0, 0, 0, 0.08);
-      border-radius: 9999px;
-      overflow: hidden;
-    }
-    .loader-progress-fill {
-      height: 100%;
-      width: 0%;
-      background: #1D1D1F;
-      border-radius: 9999px;
-      transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .loader-progress-num {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      min-width: 32px;
-      text-align: right;
-    }
-
-    .loader-text {
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.4;
-    }
-    .loader-sub {
-      font-size: 0.72rem;
-      color: #8E8E93;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    /* ================= iOS Dynamic Island \u60AC\u6D6E Toast ================= */
-    .toast-container {
-      position: fixed;
-      top: calc(env(safe-area-inset-top) + 20px);
-      left: 50%;
-      transform: translateX(-50%) translateY(-30px);
-      background: rgba(29, 29, 31, 0.94);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 9999px;
-      padding: 10px 22px;
-      color: #FFFFFF;
-      font-size: 0.82rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 1000;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.35s var(--ease-apple);
-      max-width: 90vw;
-      text-align: center;
-    }
-    .toast-container.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-      pointer-events: auto;
-    }
-
-    /* ================= \u793E\u4EA4 Webview / iOS \u957F\u6309\u5B58\u56FE\u81EA\u6108 Sheet ================= */
-    .save-modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 500;
-      animation: fadeIn 0.25s ease-out;
-    }
-    .save-modal-card {
-      position: relative;
-      max-width: 360px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.25);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      gap: 12px;
-    }
-    .save-modal-hint {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-align: center;
-      letter-spacing: -0.01em;
-    }
-    .save-modal-subhint {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-align: center;
-      line-height: 1.4;
-    }
-    .save-modal-img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      user-select: auto;
-      -webkit-touch-callout: default;
-    }
-    .save-modal-close {
-      width: 100%;
-      background: #1D1D1F;
-      color: #FFFFFF;
-      border: none;
-      border-radius: 9999px;
-      padding: 14px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-    .save-modal-close:active {
-      opacity: 0.88;
-    }
-
-    #render-canvas { display: none; }
-  </style>
-</head>
-<body>
-
-  <!-- \u5F25\u6563\u73AF\u5883\u5149\u6655\u80CC\u666F\u5C42 -->
-  <div class="ambient-aura-layer">
-    <div class="ambient-orb orb-gold"></div>
-    <div class="ambient-orb orb-lavender"></div>
-  </div>
-
-  <div class="app-shell">
-    <!-- Apple Floating Island \u9876\u680F -->
-    <header class="apple-header">
-      <div class="brand-title">ViviBon Cover</div>
-    </header>
-
-    <!-- ================= \u9875\u9762 1\uFF1A\u5236\u4F5C\u5165\u53E3 (Bento Grid) ================= -->
-    <div id="view-entry">
-      <!-- Bento 01: \u4E0A\u4F20\u5E95\u7247 -->
-      <div class="bento-card">
-        <div class="section-header">
-          <span class="section-title">01 / \u7231\u5BA0\u76F8\u7247</span>
-        </div>
-
-        <div class="upload-box" onclick="document.getElementById('file-input').click()">
-          <img id="entry-preview" class="upload-preview-img" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" alt="\u539F\u7247\u9884\u89C8" />
-          <div class="upload-tip-pill">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-              <circle cx="12" cy="13" r="4"></circle>
-            </svg>
-            \u66F4\u6362\u76F8\u7247
-          </div>
-        </div>
-        <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="handleUpload(event)" />
-
-        <div class="input-row">
-          <span class="input-label">\u7231\u5BA0\u6635\u79F0</span>
-          <input type="text" id="pet-name" class="input-field" value="\u9EA6\u6D1B Milo" placeholder="\u8F93\u5165\u7231\u5BA0\u4E13\u5C5E\u540D\u5B57 (\u5982 \u9EA6\u6D1B Milo)" />
-        </div>
-      </div>
-
-      <!-- Bento 02: \u9009\u62E9\u9AD8\u5B9A\u9020\u578B -->
-      <div class="bento-card">
-        <div class="section-header">
-          <span class="section-title">02 / \u9AD8\u5B9A\u9020\u578B</span>
-        </div>
-
-        <div class="style-grid">
-          <div class="style-item active" onclick="chooseStyle(this, 'gentle')">
-            <div class="style-top">
-              <div class="style-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 3h12l-2 9-4 9-4-9L6 3z"></path>
-                  <path d="M8 3l4 8 4-8"></path>
-                  <polygon points="9,7 15,10 15,7 9,10" fill="currentColor" opacity="0.8"></polygon>
-                  <circle cx="12" cy="8.5" r="1.5" fill="currentColor"></circle>
-                </svg>
-              </div>
-              <div class="style-check-indicator">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="style-meta">
-              <h4>\u8428\u7EF4\u5C14\u540D\u7EC5</h4>
-              <p>\u4E1D\u7ED2\u9886\u7ED3\u4E0E\u5B9A\u5236\u793C\u670D</p>
-            </div>
-          </div>
-
-          <div class="style-item" onclick="chooseStyle(this, 'detective')">
-            <div class="style-top">
-              <div class="style-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9h18"></path>
-                  <path d="M7 9c0 0 1-2.5 5-2.5s5 2.5 5 2.5"></path>
-                  <path d="M3.5 10c0 3.5 2 6 5 6s4-2 4-5V10H3.5z" fill="currentColor" fill-opacity="0.12"></path>
-                  <path d="M11.5 10c0 3 1 5 4 5s5-2.5 5-6V10h-9z" fill="currentColor" fill-opacity="0.12"></path>
-                  <path d="M11.5 11h1"></path>
-                </svg>
-              </div>
-              <div class="style-check-indicator">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="style-meta">
-              <h4>\u9ED1\u8D85\u98DE\u884C\u5BB6</h4>
-              <p>\u5DE5\u88C5\u5939\u514B\u4E0E\u91D1\u5C5E\u58A8\u955C</p>
-            </div>
-          </div>
-
-          <div class="style-item" onclick="chooseStyle(this, 'street')">
-            <div class="style-top">
-              <div class="style-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 8a4 4 0 0 1 8 0v2H8V8z"></path>
-                  <path d="M5 10.5l-2 5 3 2 1-3v6.5h10V14.5l1 3 3-2-2-5H5z"></path>
-                  <path d="M12 10.5v10.5"></path>
-                  <path d="M15 14.5h2"></path>
-                </svg>
-              </div>
-              <div class="style-check-indicator">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="style-meta">
-              <h4>\u673A\u80FD\u9632\u98CE\u8863</h4>
-              <p>\u4EAE\u9EC4\u8FDE\u5E3D\u6781\u5730\u6237\u5916\u88C5</p>
-            </div>
-          </div>
-
-          <div class="style-item" onclick="chooseStyle(this, 'warm')">
-            <div class="style-top">
-              <div class="style-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="4" r="1.5" fill="currentColor"></circle>
-                  <path d="M7.5 9c0-3 2-5 4.5-5s4.5 2 4.5 5H7.5z"></path>
-                  <rect x="5" y="10" width="14" height="4.5" rx="2" fill="currentColor" fill-opacity="0.12"></rect>
-                  <path d="M14 14.5v5a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-5"></path>
-                  <path d="M15 20.5v1m2-1v1"></path>
-                </svg>
-              </div>
-              <div class="style-check-indicator">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-            </div>
-            <div class="style-meta">
-              <h4>\u51AC\u65E5\u624B\u5DE5\u7EC7\u7269</h4>
-              <p>\u7C97\u9488\u6BDB\u7EBF\u5E3D\u4E0E\u7F8A\u7ED2\u56F4\u5DFE</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Apple CTA Button -->
-      <button class="btn-submit" onclick="startGeneration()">
-        \u7ACB\u5373\u751F\u6210 Vogue \u7EA7\u65F6\u5C1A\u5927\u7247
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- ================= \u9875\u9762 2\uFF1A\u5199\u771F\u6210\u54C1\u5C55\u53F0 ================= -->
-    <div id="view-result">
-      <div class="stage-viewport">
-        <img id="res-display-img" class="stage-img" src="" alt="\u9AD8\u5B9A\u5199\u771F" crossorigin="anonymous" />
-
-        <div class="stage-overlay" id="stage-overlay">
-          <div class="mag-top">
-            <div class="mag-masthead">VIVIBON COVER</div>
-            <div class="mag-sub">AUTUMN 2026<br>HAUTE COUTURE</div>
-          </div>
-          <div class="mag-bottom">
-            <div class="mag-tag" id="mag-tag">SAVILE ROW \xB7 01</div>
-            <div class="mag-headline" id="mag-title">\u9EA6\u6D1B Milo \xB7 \u8428\u7EF4\u5C14\u540D\u7EC5</div>
-            <div class="mag-story" id="mag-desc">\u5B9A\u5236\u9ED1\u8272\u4E1D\u7ED2\u7EC5\u58EB\u9886\u7ED3\uFF0C\u7EAF\u9ED1\u9759\u7269\u67D4\u5149\u7BB1\u4FA7\u6253\u5149\uFF0C\u5B8C\u7F8E\u5448\u73B0\u6DF1\u9083\u9AD8\u8D35\u7684\u82F1\u4F26\u540D\u6D41\u8096\u50CF\u3002</div>
-          </div>
-        </div>
-
-        <div class="compare-pill" id="compare-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-          \u6309\u4F4F\u770B\u539F\u7247
-        </div>
-      </div>
-
-      <!-- \u5C55\u53F0\u5FAE\u578B\u98CE\u683C\u680F (iOS Segmented Chips) -->
-      <div class="mini-switch-row">
-        <div class="mini-chip active" onclick="switchThemeOnResult(this, 'gentle')">\u540D\u7EC5</div>
-        <div class="mini-chip" onclick="switchThemeOnResult(this, 'detective')">\u9ED1\u8D85</div>
-        <div class="mini-chip" onclick="switchThemeOnResult(this, 'street')">\u673A\u80FD</div>
-        <div class="mini-chip" onclick="switchThemeOnResult(this, 'warm')">\u7F8A\u7ED2</div>
-      </div>
-
-      <!-- \u64CD\u4F5C\u6309\u94AE -->
-      <button class="btn-export" onclick="exportPoster()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        \u4FDD\u5B58 1080P \u9AD8\u6E05\u5C01\u9762\u6D77\u62A5
-      </button>
-
-      <button class="btn-back" onclick="backToEntry()">
-        \u8FD4\u56DE\u91CD\u65B0\u6311\u9009\u9020\u578B\u6216\u5E95\u56FE
-      </button>
-    </div>
-  </div>
-
-  <!-- Apple Liquid Glass \u52A0\u8F7D\u6D6E\u5C42 -->
-  <div class="loader-overlay" id="loader">
-    <div class="loader-glass-card">
-      <div class="loader-spinner-box">
-        <div class="loader-spinner"></div>
-        <div class="loader-pulse-dot"></div>
-      </div>
-      <div class="loader-progress-box">
-        <div class="loader-progress-track">
-          <div class="loader-progress-fill" id="loader-progress-fill"></div>
-        </div>
-        <div class="loader-progress-num" id="loader-progress-num">0%</div>
-      </div>
-      <div class="loader-text" id="loader-text">AI \u6B63\u5728\u4E3A\u7231\u5BA0\u91CF\u4F53\u88C1\u8863\u5E76\u6784\u5EFA\u8F6E\u5ED3...</div>
-      <div class="loader-sub" id="loader-sub">Aligning facial ID & silhouette [0.0s]</div>
-    </div>
-  </div>
-
-  <!-- iOS Dynamic Island \u60AC\u6D6E\u901A\u77E5 Toast -->
-  <div id="toast" class="toast-container">
-    <span id="toast-icon">\u2726</span>
-    <span id="toast-text"></span>
-  </div>
-
-  <!-- \u793E\u4EA4 Webview / iOS \u957F\u6309\u5B58\u56FE\u81EA\u6108 Sheet \u6A21\u6001\u7A97 -->
-  <div id="save-modal" class="save-modal-overlay" onclick="closeSaveModal(event)">
-    <div class="save-modal-card" onclick="event.stopPropagation()">
-      <div class="save-modal-hint">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        \u957F\u6309\u56FE\u7247\u5373\u53EF\u76F4\u63A5\u4FDD\u5B58\u81F3\u7CFB\u7EDF\u76F8\u518C
-      </div>
-      <div class="save-modal-subhint">1080P \u8D85\u6E05 Vogue \u7EAF\u51C0\u5927\u7247\u5DF2\u5C31\u7EEA \xB7 \u96F6\u5E7F\u544A\u7EAF\u827A\u672F\u54C1</div>
-      <img id="save-modal-img" class="save-modal-img" src="" alt="ViviBon Cover 1080P \u9AD8\u6E05\u6D77\u62A5" />
-      <button class="save-modal-close" onclick="closeSaveModal()">\u5B8C\u6210 / \u8FD4\u56DE\u5C55\u53F0</button>
-    </div>
-  </div>
-
-  <canvas id="render-canvas"></canvas>
-
-  <script>
-    // \u91C7\u7528 Qwen/Qwen-Image-Edit \u539F\u751F\u5927\u6A21\u578B\u91CF\u8EAB\u5B9A\u5236\u7684\u9AD8\u5B9A\u5927\u7247
-    const STYLES = {
-      gentle: {
-        img: "models/milo_gentle.png",
-        tag: "SAVILE ROW \xB7 01",
-        title: "\u8428\u7EF4\u5C14\u540D\u7EC5",
-        desc: "\u5B9A\u5236\u7EAF\u9ED1\u4E1D\u7ED2\u9886\u7ED3\uFF0C\u9ED1\u66DC\u77F3\u7EAF\u51C0\u68DA\u62CD\u80CC\u666F\u4E0E\u8F6E\u5ED3\u5149\u6F2B\u5C04\uFF0C\u4F18\u96C5\u5B9A\u683C\u6C89\u7A33\u8D35\u65CF\u6C14\u8D28\u3002"
-      },
-      detective: {
-        img: "models/milo_detective.png",
-        tag: "HERITAGE NOIR \xB7 02",
-        title: "\u9ED1\u8D85\u98DE\u884C\u5BB6",
-        desc: "\u5DE5\u88C5\u8FDE\u5E3D\u5939\u514B\u4E0E\u590D\u53E4\u98DE\u884C\u58A8\u955C\uFF0C\u6C14\u573A\u5168\u5F00\uFF0C\u5C55\u73B0\u8857\u5934\u5148\u950B\u4E0E\u4ECE\u5BB9\u795E\u91C7\u7684\u6781\u81F4\u878D\u5408\u3002"
-      },
-      street: {
-        img: "models/milo_street.png",
-        tag: "EXPEDITION \xB7 03",
-        title: "\u673A\u80FD\u9632\u98CE\u8863",
-        desc: "\u6781\u5730\u82A5\u672B\u9EC4\u5B9A\u5236\u8FDE\u5E3D\u96E8\u8863\uFF0C\u9762\u6599\u9632\u6C34\u7EB9\u7406\u4E0E\u6BDB\u53D1\u9AD8\u5149\u5B8C\u7F8E\u4EA4\u7EC7\uFF0C\u5229\u843D\u4E0D\u7F81\u3002"
-      },
-      warm: {
-        img: "models/milo_warm.png",
-        tag: "WINTER COZY \xB7 04",
-        title: "\u51AC\u65E5\u624B\u5DE5\u7F8A\u7ED2",
-        desc: "\u7EAF\u624B\u4F5C\u539A\u9488\u7EC7\u6BDB\u7EBF\u5E3D\u4E0E\u82CF\u683C\u5170\u7F8A\u7ED2\u56F4\u5DFE\uFF0C\u6F2B\u5C04\u4FA7\u5149\u629A\u6478\u51FA\u5982\u58C1\u7089\u822C\u7684\u6CBB\u6108\u6696\u610F\u3002"
-      }
-    };
-
-    // \u91C7\u7528 Qwen/Qwen-Image-Edit \u539F\u751F\u5927\u6A21\u578B\u4E3A\u9ED8\u8BA4\u6A21\u7279\u9EA6\u6D1B\u91CF\u8EAB\u5B9A\u5236\u7684\u5168\u5957 12 \u6B3E\u9AD8\u5B9A\u80F6\u56CA\u5927\u7247
-    const MILO_VARIANTS = {
-      gentle: [
-        { id: 'gentle_bordeaux_gala', name: '\u76DB\u5178\u6CE2\u5C14\u591A\u9152\u7EA2\u793C\u670D', img: 'models/milo_gentle.png' },
-        { id: 'gentle_navy_velvet', name: '\u7ECF\u5178\u85CF\u9752\u4E1D\u7ED2\u793C\u670D', img: 'models/milo_gentle_navy_velvet.png' },
-        { id: 'gentle_prince_of_wales', name: '\u8428\u7EF4\u5C14\u8857\u4EB2\u738B\u683C\u82B1\u5462', img: 'models/milo_gentle_prince_of_wales.png' }
-      ],
-      detective: [
-        { id: 'aviator_stealth_black', name: '\u66DC\u77F3\u9ED1\u6218\u672F\u7A7A\u519B\u5939\u514B', img: 'models/milo_detective.png' },
-        { id: 'aviator_vintage_shearling', name: '\u590D\u53E4\u505A\u65E7\u68D5\u76AE\u98DE\u884C\u5939\u514B', img: 'models/milo_aviator_vintage_shearling.png' },
-        { id: 'aviator_heritage_ma1', name: '\u6781\u5730\u5DE1\u822A\u58A8\u7EFF\u98DE\u884C\u5916\u5957', img: 'models/milo_aviator_heritage_ma1.png' }
-      ],
-      street: [
-        { id: 'techwear_glacier_white', name: '\u51B0\u5DDD\u767D\u62FC\u8272\u66B4\u98CE\u96EA\u5916\u58F3', img: 'models/milo_street.png' },
-        { id: 'techwear_arctic_yellow', name: '\u6781\u5730\u54D1\u5149\u4EAE\u9EC4\u9632\u98CE\u8863', img: 'models/milo_techwear_arctic_yellow.png' },
-        { id: 'techwear_cobalt_cyber', name: '\u66DC\u5F71\u94B4\u84DD\u673A\u80FD\u51B2\u950B\u8863', img: 'models/milo_techwear_cobalt_cyber.png' }
-      ],
-      warm: [
-        { id: 'knitwear_scottish_tartan', name: '\u82CF\u683C\u5170\u683C\u7EB9\u7F8A\u7ED2\u56F4\u5DFE', img: 'models/milo_warm.png' },
-        { id: 'knitwear_oatmeal_cable', name: '\u5976\u767D\u9EBB\u82B1\u7C97\u68D2\u9488\u9AD8\u9886\u6BDB\u8863', img: 'models/milo_knitwear_oatmeal_cable.png' },
-        { id: 'knitwear_fair_isle', name: '\u8D39\u5C14\u5C9B\u590D\u53E4\u63D0\u82B1\u5957\u5934\u886B', img: 'models/milo_knitwear_fair_isle.png' }
-      ]
-    };
-
-    let userPhotoUrl = "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80";
-    let selectedStyleKey = "gentle";
-    const generatedResults = {};
-    const generatedVariants = {};
-
-    // ================= \u8FD0\u8425\u53EF\u89C2\u6D4B\u6027\u4E0E\u57CB\u70B9\u9632\u8150\u5C42 (Product-Led Ops Tracker) =================
-    let isDefaultSample = true;
-    let generateRetryCount = 0;
-    let resultViewRenderTimestamp = null;
-    let uploadedImageSizeKb = null;
-
-    function getApiBaseUrl() {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('api')) return urlParams.get('api');
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        return 'http://127.0.0.1:8787';
-      }
-      return 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev'; // \u751F\u4EA7\u73AF\u5883\u8FB9\u7F18 Worker URL
-    }
-
-    let toastTimer = null;
-    function showToast(message, icon = '\u2726', durationMs = 3500) {
-      const toast = document.getElementById('toast');
-      const iconEl = document.getElementById('toast-icon');
-      const textEl = document.getElementById('toast-text');
-      if (!toast || !textEl) return;
-      if (iconEl) iconEl.innerText = icon;
-      textEl.innerText = message;
-      toast.classList.add('show');
-      if (toastTimer) clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        toast.classList.remove('show');
-      }, durationMs);
-    }
-
-    function triggerHaptic(level = 10) {
-      if (navigator.vibrate) {
-        try { navigator.vibrate(level); } catch(e) {}
-      }
-    }
-
-    function showSaveModal(dataUrl) {
-      const modal = document.getElementById('save-modal');
-      const img = document.getElementById('save-modal-img');
-      if (!modal || !img) return;
-      const toast = document.getElementById('toast');
-      if (toast) toast.classList.remove('show');
-      if (toastTimer) clearTimeout(toastTimer);
-      img.src = dataUrl;
-      modal.style.display = 'flex';
-      triggerHaptic(12);
-    }
-
-    function closeSaveModal(e) {
-      if (e && e.target && e.target.id !== 'save-modal' && !e.target.classList.contains('save-modal-close')) {
-        return;
-      }
-      const modal = document.getElementById('save-modal');
-      if (modal) modal.style.display = 'none';
-      triggerHaptic(8);
-    }
-
-    function getDeviceType() {
-      const ua = navigator.userAgent;
-      if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return "tablet";
-      if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/i.test(ua)) return "mobile";
-      return "desktop";
-    }
-
-    function trackEvent(eventName, properties = {}) {
-      try {
-        const payload = {
-          ...properties,
-          app_name: "vivibon_cover",
-          device_type: getDeviceType(),
-          client_timestamp: new Date().toISOString()
-        };
-        if (window.posthog && typeof window.posthog.capture === "function") {
-          window.posthog.capture(eventName, payload);
-        }
-        const isDebug = new URLSearchParams(window.location.search).get("debug") === "1" || window.__VIVIBON_DEBUG__;
-        if (isDebug) {
-          console.log(\`%c[PostHog Track] \${eventName}\`, "color: #B8934C; font-weight: bold;", payload);
-        }
-      } catch (err) {
-        // \u6297\u62E6\u622A\u4E0E\u9519\u8BEF\u81EA\u6108\uFF1A\u7EDD\u4E0D\u56E0\u4E3A\u57CB\u70B9\u963B\u65AD\u4E3B\u4E1A\u52A1\u4EA4\u4E92 (NC-5)
-        console.warn(\`[Track Warning] Failed to capture \${eventName}:\`, err);
-      }
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      bindCompareEvents();
-      // Step 1: \u8BBF\u95EE\u843D\u5730\u9875
-      trackEvent("page_view_cover", {
-        referrer: document.referrer || "direct"
-      });
-    });
-
-    function chooseStyle(el, key) {
-      triggerHaptic(6);
-      document.querySelectorAll(".style-item").forEach(item => item.classList.remove("active"));
-      el.classList.add("active");
-      selectedStyleKey = key;
-      // Step 3: \u9009\u62E9\u9AD8\u5B9A\u670D\u9970\u9020\u578B (\u5236\u4F5C\u5165\u53E3)
-      trackEvent("style_selected", {
-        style_key: key,
-        source_view: "entry"
-      });
-    }
-
-    function inspectAndCompressImage(file, maxDimension = 1024, quality = 0.88) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          const img = new Image();
-          img.onload = () => {
-            const rawW = img.naturalWidth || img.width;
-            const rawH = img.naturalHeight || img.height;
-
-            // FinOps \u95E8\u7981 1: \u62E6\u622A\u8FC7\u5C0F\u5206\u8FA8\u7387\uFF08\u9632\u56FE\u6807/\u8868\u60C5\u5305/\u7F29\u7565\u56FE\u6253\u5165\u6A21\u578B\u6D6A\u8D39\u7B97\u529B\uFF09
-            if (rawW < 240 || rawH < 240) {
-              return reject(new Error('IMAGE_RESOLUTION_TOO_LOW'));
-            }
-
-            let width = rawW;
-            let height = rawH;
-
-            if (width > maxDimension || height > maxDimension) {
-              if (width > height) {
-                height = Math.round((height * maxDimension) / width);
-                width = maxDimension;
-              } else {
-                width = Math.round((width * maxDimension) / height);
-                height = maxDimension;
-              }
-            }
-
-            const canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
-
-            // FinOps \u95E8\u7981 2: \u66DD\u5149\u76F4\u65B9\u56FE\u4EAE\u5EA6\u68C0\u6D4B\uFF08\u9632\u5168\u9ED1\u906E\u6321/\u7EAF\u767D\u8FC7\u66DD\u5E9F\u56FE\u6D6A\u8D39\u7B97\u529B\uFF09
-            try {
-              const imgData = ctx.getImageData(0, 0, width, height);
-              const data = imgData.data;
-              let totalLuminance = 0;
-              const sampleStep = 8; // 8 \u50CF\u7D20\u6B65\u8FDB\u9AD8\u6548\u91C7\u6837
-              let sampleCount = 0;
-
-              for (let i = 0; i < data.length; i += 4 * sampleStep) {
-                const r = data[i];
-                const g = data[i + 1];
-                const b = data[i + 2];
-                totalLuminance += 0.299 * r + 0.587 * g + 0.114 * b;
-                sampleCount++;
-              }
-
-              const avgLuminance = totalLuminance / (sampleCount || 1);
-
-              if (avgLuminance < 14) {
-                return reject(new Error('IMAGE_TOO_DARK'));
-              }
-              if (avgLuminance > 246) {
-                return reject(new Error('IMAGE_TOO_BRIGHT'));
-              }
-            } catch (sampleErr) {
-              console.warn('[Pre-flight Sampling Bypassed]:', sampleErr);
-            }
-
-            const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
-            resolve({
-              base64: compressedBase64,
-              width,
-              height
-            });
-          };
-          img.onerror = () => reject(new Error('IMAGE_DECODE_FAILED'));
-          img.src = evt.target.result;
-        };
-        reader.onerror = () => reject(new Error('FILE_READ_FAILED'));
-        reader.readAsDataURL(file);
-      });
-    }
-
-    async function handleUpload(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      isDefaultSample = false;
-      // \u7B56\u7565 1: \u6E05\u7A7A\u65E7\u7684\u9884\u7F6E\u5927\u7247\u7F13\u5B58\uFF0C\u786E\u4FDD\u540E\u7EED\u751F\u6210\u5FC5\u5B9A\u4E3A\u8BE5\u7231\u5BA0\u8C03\u7528\u91CF\u8EAB\u91CD\u7ED8
-      Object.keys(generatedResults).forEach(k => delete generatedResults[k]);
-      Object.keys(generatedVariants).forEach(k => delete generatedVariants[k]);
-      const rawSizeKb = Math.round(file.size / 1024);
-
-      if (file.size > 15 * 1024 * 1024) {
-        showToast("\u56FE\u7247\u5927\u5C0F\u8D85\u8FC7 15MB \u9650\u5236\uFF0C\u8BF7\u91CD\u65B0\u9009\u62E9", "\u26A0\uFE0F", 4000);
-        return;
-      }
-
-      triggerHaptic(10);
-      showToast("\u6B63\u5728\u8D28\u68C0\u7231\u5BA0\u76F8\u7247\u753B\u8D28...", "\u23F3", 1500);
-
-      try {
-        const result = await inspectAndCompressImage(file, 1024, 0.88);
-        userPhotoUrl = result.base64;
-        uploadedImageSizeKb = Math.round(result.base64.length * 0.75 / 1024);
-
-        document.getElementById("entry-preview").src = userPhotoUrl;
-        const hint = document.getElementById("photo-status-badge");
-        if (hint) {
-          hint.innerText = "\u7231\u5BA0\u8096\u50CF\u5DF2\u5C31\u7EEA \xB7 Ready";
-        }
-        showToast("\u7231\u5BA0\u76F8\u7247\u5DF2\u5C31\u7EEA (\u5DF2\u901A\u8FC7\u9AD8\u5B9A\u753B\u8D28\u8D28\u68C0)", "\u2726", 2200);
-
-        // Step 2: \u786E\u8BA4\u7231\u5BA0\u5E95\u56FE (\u4E0A\u4F20\u672C\u5730\u7167\u7247)
-        trackEvent("photo_uploaded", {
-          is_default_sample: false,
-          image_size_kb: uploadedImageSizeKb,
-          raw_size_kb: rawSizeKb,
-          dimensions: \`\${result.width}x\${result.height}\`,
-          file_type: file.type || "unknown"
-        });
-      } catch (err) {
-        console.warn('[Upload Pre-flight Intercepted]:', err);
-        if (err.message === 'IMAGE_RESOLUTION_TOO_LOW') {
-          showToast("\u76F8\u7247\u5206\u8FA8\u7387\u8FC7\u4F4E\uFF0C\u8BF7\u4E0A\u4F20\u5927\u4E8E 250px \u7684\u6E05\u6670\u7167\u7247", "\u26A0\uFE0F", 4000);
-        } else if (err.message === 'IMAGE_TOO_DARK') {
-          showToast("\u76F8\u7247\u5149\u7EBF\u4E25\u91CD\u8FC7\u6697\uFF08\u8FD1\u4E4E\u5168\u9ED1\uFF09\uFF0C\u8BF7\u5728\u660E\u4EAE\u5149\u7EBF\u4E0B\u62CD\u6444", "\u{1F4A1}", 4000);
-        } else if (err.message === 'IMAGE_TOO_BRIGHT') {
-          showToast("\u76F8\u7247\u4E25\u91CD\u8FC7\u66DD\uFF08\u8FD1\u4E4E\u7EAF\u767D\uFF09\uFF0C\u8BF7\u91CD\u65B0\u9009\u53D6\u6B63\u5E38\u5149\u7EBF\u7167\u7247", "\u{1F4A1}", 4000);
-        } else {
-          showToast("\u76F8\u7247\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u6362\u4E00\u5F20\u8BD5\u4E00\u4E0B", "\u26A0\uFE0F", 3000);
-        }
-      }
-    }
-
-    async function startGeneration() {
-      triggerHaptic(12);
-      generateRetryCount++;
-      const petName = (document.getElementById("pet-name").value || "\u9EA6\u6D1B Milo").trim();
-
-      // Step 4: \u89E6\u53D1\u5199\u771F\u751F\u6210
-      trackEvent("generate_clicked", {
-        style_key: selectedStyleKey,
-        selected_style: selectedStyleKey,
-        pet_name: petName,
-        pet_name_length: petName.length,
-        is_default_sample: isDefaultSample,
-        image_size_kb: uploadedImageSizeKb,
-        retry_count: generateRetryCount
-      });
-
-      const loader = document.getElementById("loader");
-      const loaderText = document.getElementById("loader-text");
-      const loaderSub = document.getElementById("loader-sub");
-      const progressFill = document.getElementById("loader-progress-fill");
-      const progressNum = document.getElementById("loader-progress-num");
-      loader.style.display = "flex";
-
-      let progress = 5;
-      if (progressFill) progressFill.style.width = "5%";
-      if (progressNum) progressNum.innerText = "5%";
-
-      const startTime = Date.now();
-      const MIN_LOADING_TIME = 1500; // Apple UX: \u9632\u95EA\u70C1\u4FDD\u62A4
-
-      function setProgress(val) {
-        progress = Math.min(val, 93);
-        if (progressFill) progressFill.style.width = \`\${progress}%\`;
-        if (progressNum) progressNum.innerText = \`\${Math.round(progress)}%\`;
-      }
-
-      // 5 \u9636\u6BB5\u5DE5\u827A\u53CD\u9988\u5E8F\u5217
-      const milestones = [
-        { t: 0, text: "\u6B63\u5728\u9501\u5B9A\u7231\u5BA0\u9762\u90E8\u7279\u5F81\u4E0E\u54C1\u79CD\u8F6E\u5ED3 (Face ID)...", sub: "Locking facial geometry & markings", prog: 15 },
-        { t: 3000, text: "\u6B63\u5728\u63D0\u53D6\u4E13\u5C5E\u6BDB\u53D1\u8272\u6CFD\u4E0E\u773C\u795E\u5149\u97F5...", sub: "Sampling authentic fur texture & reflections", prog: 38 },
-        { t: 6500, text: "\u6B63\u5728\u6309\u9EC4\u91D1\u6BD4\u4F8B\u91CF\u8EAB\u4F53\u88C1\u9AD8\u5B9A\u534E\u670D...", sub: "Tailoring bespoke haute couture fabrics", prog: 62 },
-        { t: 10000, text: "\u6B63\u5728\u5E03\u8BBE\u9AD8\u7EA7\u6444\u5F71\u68DA\u53CC\u67D4\u5149\u7BB1\u4E0E\u7535\u5F71\u7EA7\u5E03\u5149...", sub: "Setting up dual-softbox cinematic studio lighting", prog: 80 },
-        { t: 13500, text: "\u6B63\u5728\u8FDB\u884C 8K \u8D28\u611F\u5FAE\u8DDD\u4FEE\u56FE\u4E0E\u8272\u5F69\u5B9A\u8C03...", sub: "Polishing 8K high-fidelity magazine grade tone", prog: 92 }
-      ];
-
-      const stageTimers = [];
-      milestones.forEach((m) => {
-        const tid = setTimeout(() => {
-          loaderText.innerText = m.text;
-          const elapsedSec = ((Date.now() - startTime) / 1000).toFixed(1);
-          loaderSub.innerText = \`\${m.sub} [\${elapsedSec}s]\`;
-          setProgress(m.prog);
-        }, m.t);
-        stageTimers.push(tid);
-      });
-
-      const tickTimer = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const elapsedSec = (elapsed / 1000).toFixed(1);
-        const curMilestone = milestones.slice().reverse().find(m => elapsed >= m.t) || milestones[0];
-        loaderSub.innerText = \`\${curMilestone.sub} [\${elapsedSec}s]\`;
-        if (progress < 92) {
-          setProgress(progress + 0.6);
-        }
-      }, 100);
-
-      let responseData = null;
-
-      try {
-        if (isDefaultSample) {
-          // \u793A\u8303\u6A21\u7279\u9EA6\u6D1B\uFF1A\u4ECE Qwen-Image-Edit \u539F\u751F\u6A21\u578B\u9884\u751F\u6210\u7684 12 \u6B3E\u9AD8\u5B9A\u80F6\u56CA\u5E93\u4E2D\u968F\u673A\u76F2\u76D2\u62BD\u53D6
-          // \u65E2\u786E\u4FDD 100% \u4E3A\u6A21\u578B\u771F\u5B9E\u6210\u7247\u3001\u4E94\u5B98 Face ID \u4E0E\u9AD8\u5B9A\u534E\u670D\u5B8C\u5168\u5951\u5408\uFF0C\u53C8\u5F7B\u5E95\u6D88\u706D 30s \u7F51\u7EDC\u6392\u961F\u5EF6\u8FDF
-          const variants = MILO_VARIANTS[selectedStyleKey] || [];
-          const chosen = variants[Math.floor(Math.random() * variants.length)] || {
-            id: selectedStyleKey,
-            name: STYLES[selectedStyleKey].title,
-            img: STYLES[selectedStyleKey].img
-          };
-
-          // \u4FDD\u6301 1.8s \u4E1D\u6ED1\u5962\u54C1\u5DE5\u574A\u91CF\u4F53\u88C1\u8863\u52A8\u753B\u4F53\u9A8C
-          await new Promise(r => setTimeout(r, 1800));
-
-          responseData = {
-            imageUrl: chosen.img,
-            isFallback: false,
-            capsuleVariant: {
-              id: chosen.id,
-              name: chosen.name
-            }
-          };
-        } else {
-          // \u771F\u5B9E\u4E0A\u4F20\u7231\u5BA0\uFF1A\u901A\u8FC7 Worker \u8C03\u7528\u4E91\u7AEF Qwen/Qwen-Image-Edit \u539F\u751F\u56FE\u751F\u56FE\u6A21\u578B\u8FDB\u884C Face ID \u4E13\u5C5E\u6362\u88C5
-          const payload = {
-            styleKey: selectedStyleKey,
-            petName: petName,
-            imageBase64: userPhotoUrl,
-            isDefaultSample: false
-          };
-
-          const apiEndpoint = \`\${getApiBaseUrl()}/api/generate\`;
-          const headers = { 'Content-Type': 'application/json' };
-          const urlParams = new URLSearchParams(window.location.search);
-          if (urlParams.get('debug') === '1' || urlParams.get('test') === '1' || urlParams.get('bypass') === '1') {
-            headers['x-test-bypass'] = '1';
-          }
-
-          const res = await fetch(apiEndpoint, {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(payload)
-          });
-
-          const json = await res.json();
-
-          if (!res.ok || !json.success) {
-            if (res.status === 429) {
-              if (json.errorCode === 'FINOPS_CAP_REACHED') {
-                showToast("\u4ECA\u65E5\u79C1\u4EAB\u5B9A\u5236\u540D\u989D\u5DF2\u6EE1\uFF0C\u660E\u65E5 0 \u70B9\u91CD\u65B0\u5F00\u653E", "\u2726", 4500);
-              } else {
-                showToast("\u7231\u5BA0\u4ECA\u65E5\u8BD5\u8863\u8FC7\u4E8E\u9891\u7E41\uFF0C\u8BF7\u7A0D\u4E8B\u4F11\u606F\u518D\u6765\u5B9A\u5236~", "\u2726", 4000);
-              }
-            } else if (res.status === 413) {
-              showToast("\u76F8\u7247\u6587\u4EF6\u8D85\u8FC7\u9650\u5236\uFF0C\u8BF7\u91CD\u65B0\u9009\u53D6", "\u2726", 4000);
-            } else {
-              showToast(json.message || "\u5DF2\u4E3A\u60A8\u5448\u73B0\u7ECF\u5178\u5178\u85CF\u6837\u7247", "\u2726", 3500);
-            }
-            // \u4F18\u96C5\u964D\u7EA7\u56DE\u9000\u5230\u6A21\u578B\u751F\u6210\u7684\u5BF9\u5E94\u5927\u7247\uFF0C\u7EDD\u4E0D\u518D\u7528\u65E0\u5173\u72AC\u79CD
-            responseData = {
-              imageUrl: STYLES[selectedStyleKey].img,
-              isFallback: true
-            };
-          } else {
-            responseData = json.data;
-            if (responseData.isFallback) {
-              showToast("\u5DF2\u4E3A\u60A8\u5448\u73B0\u7ECF\u5178\u5178\u85CF\u6837\u7247", "\u2726", 3000);
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('[API Network Error, fallbacking gracefully]:', err);
-        showToast("\u7F51\u7EDC\u8FDE\u63A5\u7A0D\u6709\u5EF6\u8FDF\uFF0C\u5DF2\u5448\u73B0\u7ECF\u5178\u5178\u85CF\u5927\u7247", "\u2726", 3000);
-        responseData = {
-          imageUrl: STYLES[selectedStyleKey].img,
-          isFallback: true
-        };
-      } finally {
-        clearInterval(tickTimer);
-        stageTimers.forEach(clearTimeout);
-
-        if (progressFill) progressFill.style.width = "100%";
-        if (progressNum) progressNum.innerText = "100%";
-        loaderText.innerText = "\u9AD8\u5B9A\u5927\u7247\u5B9A\u5236\u5B8C\u6210\uFF01\u6B63\u5728\u5448\u73B0\u5C55\u53F0...";
-        loaderSub.innerText = "Haute couture masterpiece rendered [100%]";
-
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, MIN_LOADING_TIME - elapsed);
-
-        setTimeout(() => {
-          loader.style.display = "none";
-          document.getElementById("view-entry").style.display = "none";
-          document.getElementById("view-result").style.display = "flex";
-
-          const generatedUrl = responseData?.imageUrl || STYLES[selectedStyleKey].img;
-          generatedResults[selectedStyleKey] = generatedUrl;
-          generatedVariants[selectedStyleKey] = responseData?.capsuleVariant;
-
-          renderResult(selectedStyleKey, generatedUrl);
-          resultViewRenderTimestamp = Date.now();
-          triggerHaptic(15);
-
-          // Step 5: \u5927\u7247\u5C55\u53F0\u5448\u73B0
-          trackEvent("showcase_rendered", {
-            style_key: selectedStyleKey,
-            is_fallback: responseData?.isFallback ?? false,
-            latency_ms: elapsed
-          });
-        }, Math.min(remaining, 500));
-      }
-    }
-
-    function renderResult(key, overrideImgUrl) {
-      selectedStyleKey = key;
-      const data = STYLES[key];
-      const petName = (document.getElementById("pet-name").value || "\u9EA6\u6D1B Milo").trim();
-      const finalImgUrl = overrideImgUrl || generatedResults[key] || data.img;
-
-      document.getElementById("res-display-img").src = finalImgUrl;
-      document.getElementById("mag-tag").innerText = data.tag;
-      document.getElementById("mag-title").innerText = \`\${petName} \xB7 \${data.title}\`;
-      const activeVariant = generatedVariants[key];
-      document.getElementById("mag-desc").innerText = activeVariant?.name ? \`\${data.desc} (\${activeVariant.name})\` : data.desc;
-
-      const keys = ['gentle', 'detective', 'street', 'warm'];
-      document.querySelectorAll(".mini-chip").forEach((chip, idx) => {
-        chip.classList.toggle("active", keys[idx] === key);
-      });
-    }
-
-    function switchThemeOnResult(el, key) {
-      triggerHaptic(6);
-      document.querySelectorAll(".mini-chip").forEach(c => c.classList.remove("active"));
-      el.classList.add("active");
-      if (!generatedResults[key]) {
-        selectedStyleKey = key;
-        startGeneration();
-      } else {
-        renderResult(key, generatedResults[key]);
-      }
-    }
-
-    function backToEntry() {
-      triggerHaptic(8);
-      document.getElementById("view-result").style.display = "none";
-      document.getElementById("view-entry").style.display = "flex";
-    }
-
-    function bindCompareEvents() {
-      const btn = document.getElementById("compare-btn");
-      const img = document.getElementById("res-display-img");
-      const overlay = document.getElementById("stage-overlay");
-
-      const showOriginal = (e) => {
-        e.preventDefault();
-        triggerHaptic(8);
-        img.src = userPhotoUrl;
-        overlay.style.opacity = "0";
-      };
-
-      const restoreResult = (e) => {
-        e.preventDefault();
-        img.src = generatedResults[selectedStyleKey] || STYLES[selectedStyleKey].img;
-        overlay.style.opacity = "1";
-      };
-
-      btn.addEventListener("touchstart", showOriginal, { passive: false });
-      btn.addEventListener("touchend", restoreResult);
-      btn.addEventListener("touchcancel", restoreResult);
-      btn.addEventListener("mousedown", showOriginal);
-      btn.addEventListener("mouseup", restoreResult);
-      btn.addEventListener("mouseleave", restoreResult);
-    }
-
-    async function exportPoster() {
-      triggerHaptic(12);
-      const dwellTimeSec = resultViewRenderTimestamp
-        ? Math.round((Date.now() - resultViewRenderTimestamp) / 1000)
-        : 0;
-
-      const canvas = document.getElementById("render-canvas");
-      const ctx = canvas.getContext("2d");
-      const width = 1080;
-      const height = 1440;
-      canvas.width = width;
-      canvas.height = height;
-
-      // \u5B57\u4F53\u5C31\u7EEA\u9501\u4FDD\u969C (Font Ready Guardrail)
-      try {
-        await document.fonts.ready;
-      } catch (e) {
-        console.warn('[Font Ready Guardrail bypassed]:', e);
-      }
-
-      const currentImgUrl = generatedResults[selectedStyleKey] || STYLES[selectedStyleKey].img;
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = currentImgUrl;
-
-      img.onload = () => {
-        // \u6838\u5FC3\u4FEE\u590D\uFF1A\u7B49\u6BD4\u8986\u76D6\u88C1\u5207\u7ED8\u5236 (object-fit: cover)\uFF0C\u5F7B\u5E95\u6D88\u9664\u9762\u90E8\u88AB\u538B\u7F29\u62C9\u4F38\u53D8\u5F62
-        let sx = 0, sy = 0, sWidth = img.naturalWidth, sHeight = img.naturalHeight;
-        const targetRatio = width / height; // 1080 / 1440 = 0.75
-        const srcRatio = img.naturalWidth / img.naturalHeight;
-
-        if (srcRatio > targetRatio) {
-          // \u539F\u56FE\u6BD4 3:4 \u5BBD\uFF08\u5982 1:1 \u6B63\u65B9\u5F62\uFF09\uFF0C\u6C34\u5E73\u5C45\u4E2D\u88C1\u5207\u591A\u4F59\u4E24\u4FA7\uFF0C\u5B8C\u7F8E\u4FDD\u7559\u7231\u5BA0\u9762\u5BB9\u51E0\u4F55\u7ED3\u6784
-          sWidth = img.naturalHeight * targetRatio;
-          sx = (img.naturalWidth - sWidth) / 2;
-        } else {
-          // \u539F\u56FE\u6BD4 3:4 \u7A84\uFF0C\u5782\u76F4\u5C45\u4E2D\u88C1\u5207\u591A\u4F59\u4E0A\u4E0B
-          sHeight = img.naturalWidth / targetRatio;
-          sy = (img.naturalHeight - sHeight) / 2;
-        }
-
-        ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, width, height);
-
-        // \u7535\u5F71\u7EA7\u6697\u89D2\u6E10\u53D8
-        const gradTop = ctx.createLinearGradient(0, 0, 0, 380);
-        gradTop.addColorStop(0, "rgba(0,0,0,0.68)");
-        gradTop.addColorStop(1, "transparent");
-        ctx.fillStyle = gradTop;
-        ctx.fillRect(0, 0, width, 380);
-
-        const gradBottom = ctx.createLinearGradient(0, height - 480, 0, height);
-        gradBottom.addColorStop(0, "transparent");
-        gradBottom.addColorStop(1, "rgba(0,0,0,0.94)");
-        ctx.fillStyle = gradBottom;
-        ctx.fillRect(0, height - 480, width, 480);
-
-        // \u520A\u5934 VIVIBON COVER (NC-1: 100% \u827A\u672F\u7EAF\u51C0\uFF0C\u7EDD\u5BF9\u96F6\u5E7F\u544A\u4E8C\u7EF4\u7801)
-        ctx.save();
-        ctx.shadowColor = "rgba(0, 0, 0, 0.42)";
-        ctx.shadowBlur = 12;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 3;
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "900 76px 'Bodoni MT', 'Didot', 'Times New Roman', serif";
-        ctx.fillText("VIVIBON COVER", 50, 130);
-
-        ctx.font = "600 24px -apple-system, sans-serif";
-        ctx.fillStyle = "rgba(255, 255, 255, 0.88)";
-        ctx.textAlign = "right";
-        ctx.fillText("AUTUMN 2026", width - 50, 95);
-        ctx.fillText("HAUTE COUTURE", width - 50, 130);
-
-        // \u6807\u7B7E\u3001\u6807\u9898\u4E0E\u8BC4\u8FF0
-        ctx.textAlign = "left";
-        const petName = (document.getElementById("pet-name").value || "\u9EA6\u6D1B Milo").trim();
-        ctx.fillStyle = "#C5A059"; // Herm\xE8s \u7ECF\u5178\u9AD8\u5B9A\u91D1\u6807\u70B9\u775B\u8272
-        ctx.font = "800 28px -apple-system, sans-serif";
-        ctx.fillText(STYLES[selectedStyleKey].tag, 50, height - 160);
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "800 52px -apple-system, sans-serif";
-        ctx.fillText(\`\${petName} \xB7 \${STYLES[selectedStyleKey].title}\`, 50, height - 100);
-
-        ctx.fillStyle = "#E2E8F0";
-        ctx.font = "400 24px -apple-system, sans-serif";
-        const activeVariant = generatedVariants[selectedStyleKey];
-        const captionDesc = activeVariant?.name ? \`\${STYLES[selectedStyleKey].desc} \xB7 \${activeVariant.name}\` : STYLES[selectedStyleKey].desc;
-        ctx.fillText(captionDesc, 50, height - 50);
-        ctx.restore();
-
-        let dataUrl = '';
-        try {
-          dataUrl = canvas.toDataURL("image/png");
-        } catch (taintErr) {
-          console.warn('[Canvas Tainted or Error]:', taintErr);
-        }
-
-        const isMobileWebview = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        // \u793E\u4EA4 Webview \u53CC\u8F68\u5B58\u56FE\u81EA\u6108 (Section 2.3)
-        if (isMobileWebview || !dataUrl) {
-          if (dataUrl) {
-            showSaveModal(dataUrl);
-          } else {
-            showToast("\u8BF7\u957F\u6309\u5C55\u53F0\u56FE\u7247\u4FDD\u5B58\u81F3\u76F8\u518C", "\u{1F4A1}", 3500);
-          }
-          trackEvent("poster_exported", {
-            style_key: selectedStyleKey,
-            dwell_time_sec: dwellTimeSec,
-            export_mode: "save_modal"
-          });
-        } else {
-          try {
-            const a = document.createElement("a");
-            a.download = \`ViviBonCover_\${petName}_HauteCouture.png\`;
-            a.href = dataUrl;
-            a.click();
-            showToast("\u6D77\u62A5\u5DF2\u5F00\u59CB\u4E0B\u8F7D", "\u{1F389}", 2500);
-            trackEvent("poster_exported", {
-              style_key: selectedStyleKey,
-              dwell_time_sec: dwellTimeSec,
-              export_mode: "direct_download"
-            });
-          } catch(downloadErr) {
-            showSaveModal(dataUrl);
-            trackEvent("poster_exported", {
-              style_key: selectedStyleKey,
-              dwell_time_sec: dwellTimeSec,
-              export_mode: "save_modal_fallback"
-            });
-          }
-        }
-      };
-
-      img.onerror = () => {
-        showToast("\u5E95\u56FE\u8F7D\u5165\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u8BD5", "\u26A0\uFE0F", 3500);
-      };
-    }
-  </script>
-</body>
-</html>`;
+var ViviBon_Cover_default = `<!DOCTYPE html>\r
+<html lang="en">\r
+<head>\r
+  <meta charset="UTF-8" />\r
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />\r
+  <title>ViviBon Cover</title>\r
+\r
+  <!-- Google Fonts for Elegance -->\r
+  <link rel="preconnect" href="https://fonts.googleapis.com">\r
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\r
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Cinzel:wght@500;600;700;800&display=swap" rel="stylesheet">\r
+\r
+  <!-- Microsoft Clarity (100% Free, Unlimited Replay & Heatmaps) -->\r
+  <script type="text/javascript">\r
+    (function(c,l,a,r,i,t,y){\r
+      try {\r
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r
+      } catch(e){ console.warn('[Clarity] Init error:', e); }\r
+    })(window, document, "clarity", "script", "yf41ikpys2");\r
+  </script>\r
+\r
+  <style>\r
+    :root {\r
+      /* Warm Peach Cream Palette matching user reference image */\r
+      --bg-page: #FFF8F3;\r
+      --bg-card: #FFF8F3;\r
+      --card-border: rgba(255, 255, 255, 0.9);\r
+      --text-main: #3C3028;\r
+      --text-subtle: #7A6D63;\r
+      --text-muted: #9E9085;\r
+      \r
+      /* Active Highlight Accent (Coral / Warm Terracotta) */\r
+      --coral-accent: #E85D3F;\r
+      --coral-glow-border: #FF8F73;\r
+      --coral-bg-pill: #FFFFFF;\r
+      --coral-shadow-glow: rgba(232, 93, 63, 0.22);\r
+      \r
+      /* CTA Warm Butter-Peach Gradient */\r
+      --cta-start: #FEE7D6;\r
+      --cta-end: #F6CCA7;\r
+      --cta-text: #4A3B31;\r
+      \r
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);\r
+    }\r
+\r
+    * {\r
+      box-sizing: border-box;\r
+      margin: 0;\r
+      padding: 0;\r
+      -webkit-tap-highlight-color: transparent;\r
+      -webkit-font-smoothing: antialiased;\r
+    }\r
+\r
+    body {\r
+      background: var(--bg-page);\r
+      color: var(--text-main);\r
+      min-height: 100vh;\r
+      display: flex;\r
+      justify-content: center;\r
+      align-items: center;\r
+      padding: 12px 10px;\r
+      font-family: "Cormorant Garamond", -apple-system, BlinkMacSystemFont, "Playfair Display", serif;\r
+      overflow-x: hidden;\r
+    }\r
+\r
+    /* Ambient Warm Glow */\r
+    .ambient-glow-top {\r
+      position: fixed;\r
+      top: -120px;\r
+      left: 50%;\r
+      transform: translateX(-50%);\r
+      width: 500px;\r
+      height: 380px;\r
+      background: radial-gradient(circle, rgba(254, 235, 220, 0.8) 0%, rgba(255, 248, 243, 0) 70%);\r
+      filter: blur(50px);\r
+      pointer-events: none;\r
+      z-index: 0;\r
+    }\r
+\r
+    /* Outer Container: Clean Warm Cream Box */\r
+    .app-card {\r
+      position: relative;\r
+      z-index: 1;\r
+      width: 100%;\r
+      max-width: 390px;\r
+      background: var(--bg-card);\r
+      padding: 12px 16px 20px 16px;\r
+      display: flex;\r
+      flex-direction: column;\r
+    }\r
+\r
+    /* Top Centered Header - Elegant Cursive Title */\r
+    .header-bar {\r
+      position: relative;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      min-height: 42px;\r
+      margin-bottom: 12px;\r
+    }\r
+    .brand-title {\r
+      font-size: 28px;\r
+      font-weight: 500;\r
+      letter-spacing: 1px;\r
+      color: var(--text-main);\r
+      font-family: "Alex Brush", "Playfair Display", cursive, serif;\r
+      text-align: center;\r
+      transform: translateY(2px);\r
+    }\r
+    .header-back-btn {\r
+      position: absolute;\r
+      left: 0;\r
+      top: 50%;\r
+      transform: translateY(-50%);\r
+      background: transparent;\r
+      border: none;\r
+      width: 32px;\r
+      height: 32px;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      cursor: pointer;\r
+      color: var(--text-main);\r
+      transition: all 0.2s ease;\r
+    }\r
+    .header-back-btn:active {\r
+      transform: translateY(-50%) scale(0.92);\r
+      opacity: 0.7;\r
+    }\r
+\r
+    /* ================= VIEW 1: Entry Studio ================= */\r
+    #view-entry {\r
+      display: flex;\r
+      flex-direction: column;\r
+      width: 100%;\r
+    }\r
+\r
+    /* Hero Viewport (3:4 ratio with large soft rounded corners) */\r
+    .hero-box {\r
+      position: relative;\r
+      width: 100%;\r
+      aspect-ratio: 3 / 4;\r
+      border-radius: 28px;\r
+      overflow: hidden;\r
+      background: #F2E8DF;\r
+      box-shadow: 0 10px 30px -10px rgba(180, 140, 110, 0.2);\r
+    }\r
+    .hero-img {\r
+      width: 100%;\r
+      height: 100%;\r
+      object-fit: cover;\r
+      display: block;\r
+      transition: opacity 0.25s var(--ease-smooth);\r
+    }\r
+\r
+    /* Floating Round Upload Button in Bottom-Right Corner */\r
+    .upload-btn-floating {\r
+      position: absolute;\r
+      bottom: 14px;\r
+      right: 14px;\r
+      width: 44px;\r
+      height: 44px;\r
+      border-radius: 50%;\r
+      background: rgba(255, 255, 255, 0.65);\r
+      backdrop-filter: blur(14px) saturate(160%);\r
+      -webkit-backdrop-filter: blur(14px) saturate(160%);\r
+      border: 1px solid rgba(255, 255, 255, 0.9);\r
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      cursor: pointer;\r
+      color: #3C3028;\r
+      transition: all 0.2s var(--ease-smooth);\r
+      z-index: 5;\r
+    }\r
+    .upload-btn-floating:active {\r
+      transform: scale(0.92);\r
+      background: rgba(255, 255, 255, 0.85);\r
+    }\r
+\r
+    /* Category Pill Selector Bar (Soft Frosted Box, 4 Columns) */\r
+    .category-pills-bar {\r
+      margin-top: 14px;\r
+      background: rgba(255, 255, 255, 0.65);\r
+      backdrop-filter: blur(12px);\r
+      -webkit-backdrop-filter: blur(12px);\r
+      border: 1px solid rgba(255, 255, 255, 0.85);\r
+      border-radius: 14px;\r
+      padding: 4px;\r
+      display: grid;\r
+      grid-template-columns: repeat(4, 1fr);\r
+      gap: 4px;\r
+    }\r
+    .category-pill {\r
+      padding: 6px 2px;\r
+      border-radius: 9px;\r
+      border: 1px solid transparent;\r
+      background: transparent;\r
+      color: var(--text-subtle);\r
+      cursor: pointer;\r
+      user-select: none;\r
+      transition: all 0.2s var(--ease-smooth);\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+    }\r
+    .category-pill:active {\r
+      transform: scale(0.96);\r
+    }\r
+    .category-pill.active {\r
+      background: #FFFFFF;\r
+      color: var(--coral-accent);\r
+      border-color: rgba(232, 93, 63, 0.15);\r
+      font-weight: 600;\r
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);\r
+    }\r
+    .category-pill-name {\r
+      font-size: 13.5px;\r
+      font-weight: 500;\r
+      letter-spacing: 0.1px;\r
+      white-space: nowrap;\r
+      font-family: "Cormorant Garamond", serif;\r
+    }\r
+\r
+    /* Reference Templates Scroll Carousel */\r
+    .template-carousel-container {\r
+      margin-top: 14px;\r
+      position: relative;\r
+      width: 100%;\r
+    }\r
+    .template-cards-row {\r
+      display: flex;\r
+      gap: 10px;\r
+      overflow-x: auto;\r
+      scroll-snap-type: x mandatory;\r
+      -webkit-overflow-scrolling: touch;\r
+      padding: 4px 2px 8px 2px;\r
+      scrollbar-width: none;\r
+    }\r
+    .template-cards-row::-webkit-scrollbar {\r
+      display: none;\r
+    }\r
+\r
+    /* Reference Template Card */\r
+    .template-card {\r
+      flex: 0 0 102px;\r
+      width: 102px;\r
+      scroll-snap-align: start;\r
+      background: #FFFFFF;\r
+      border: 1px solid rgba(255, 255, 255, 0.8);\r
+      border-radius: 16px;\r
+      padding: 6px 6px 8px 6px;\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      cursor: pointer;\r
+      user-select: none;\r
+      transition: all 0.22s var(--ease-smooth);\r
+      box-shadow: 0 2px 8px rgba(180, 140, 110, 0.08);\r
+      position: relative;\r
+    }\r
+    .template-card:active {\r
+      transform: scale(0.96);\r
+    }\r
+    .template-card.active {\r
+      border: 1.5px solid var(--coral-glow-border);\r
+      box-shadow: 0 0 0 2px rgba(232, 93, 63, 0.15), 0 4px 14px rgba(232, 93, 63, 0.12);\r
+    }\r
+\r
+    /* Image Box inside Template Card */\r
+    .template-thumb-box {\r
+      position: relative;\r
+      width: 100%;\r
+      aspect-ratio: 1 / 1;\r
+      border-radius: 12px;\r
+      overflow: hidden;\r
+      background: #EAE0D5;\r
+    }\r
+    .template-thumb {\r
+      width: 100%;\r
+      height: 100%;\r
+      object-fit: cover;\r
+      display: block;\r
+    }\r
+\r
+    /* Label text below thumbnail */\r
+    .template-label {\r
+      margin-top: 6px;\r
+      font-size: 11.5px;\r
+      font-weight: 500;\r
+      color: var(--text-main);\r
+      text-align: center;\r
+      white-space: nowrap;\r
+      overflow: hidden;\r
+      text-overflow: ellipsis;\r
+      width: 100%;\r
+      line-height: 1.2;\r
+      font-family: "Cormorant Garamond", serif;\r
+    }\r
+    .template-card.active .template-label {\r
+      color: var(--coral-accent);\r
+      font-weight: 600;\r
+    }\r
+\r
+    /* Right Edge Hint */\r
+    .scroll-edge-hint {\r
+      position: absolute;\r
+      top: 0;\r
+      right: 0;\r
+      bottom: 8px;\r
+      width: 24px;\r
+      background: linear-gradient(90deg, rgba(255, 248, 243, 0) 0%, var(--bg-card) 100%);\r
+      pointer-events: none;\r
+      transition: opacity 0.2s ease;\r
+    }\r
+\r
+    /* Primary CTA Button */\r
+    .btn-cta {\r
+      margin-top: 14px;\r
+      width: 100%;\r
+      padding: 14px;\r
+      border-radius: 9999px;\r
+      background: linear-gradient(180deg, var(--cta-start) 0%, var(--cta-end) 100%);\r
+      border: 1px solid rgba(255, 255, 255, 0.7);\r
+      box-shadow: 0 6px 20px -4px rgba(220, 160, 120, 0.35);\r
+      color: var(--cta-text);\r
+      font-size: 16px;\r
+      font-weight: 500;\r
+      font-family: "Cormorant Garamond", "Playfair Display", serif;\r
+      letter-spacing: 0.3px;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      gap: 8px;\r
+      cursor: pointer;\r
+      transition: all 0.2s var(--ease-smooth);\r
+    }\r
+    .btn-cta:active {\r
+      transform: scale(0.975);\r
+      box-shadow: 0 3px 10px -2px rgba(220, 160, 120, 0.25);\r
+    }\r
+\r
+    /* ================= VIEW 2: Result Showcase (Exact Match to Screenshot 2) ================= */\r
+    #view-result {\r
+      display: none;\r
+      flex-direction: column;\r
+      width: 100%;\r
+    }\r
+    .poster-stage {\r
+      position: relative;\r
+      width: 100%;\r
+      aspect-ratio: 3 / 4;\r
+      border-radius: 28px;\r
+      overflow: hidden;\r
+      background: #1C1917;\r
+      box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.25);\r
+    }\r
+    .poster-img {\r
+      width: 100%;\r
+      height: 100%;\r
+      object-fit: cover;\r
+      display: block;\r
+    }\r
+    .poster-img.original-layer {\r
+      position: absolute;\r
+      top: 0;\r
+      left: 0;\r
+      opacity: 0;\r
+      transition: opacity 0.12s ease-out;\r
+      z-index: 10;\r
+      pointer-events: none;\r
+    }\r
+\r
+    /* Magazine Typography Overlay (Exact Match) */\r
+    .poster-overlay {\r
+      position: absolute;\r
+      top: 0;\r
+      left: 0;\r
+      right: 0;\r
+      bottom: 0;\r
+      padding: 28px 24px;\r
+      display: flex;\r
+      flex-direction: column;\r
+      justify-content: space-between;\r
+      pointer-events: none;\r
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, transparent 25%, transparent 58%, rgba(0,0,0,0.85) 100%);\r
+      z-index: 2;\r
+      transition: opacity 0.16s var(--ease-smooth);\r
+    }\r
+    /* Top Brand: Clean White Serif Uppercase */\r
+    .poster-top-brand {\r
+      font-size: 13.5px;\r
+      font-weight: 700;\r
+      letter-spacing: 2.2px;\r
+      color: #FFFFFF;\r
+      text-transform: uppercase;\r
+      font-family: "Cinzel", "Times New Roman", serif;\r
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);\r
+    }\r
+    .poster-bottom-meta {\r
+      display: flex;\r
+      flex-direction: column;\r
+      gap: 4px;\r
+    }\r
+    /* Sub-tag: Small Muted Tracking Text */\r
+    .poster-tag {\r
+      font-size: 9.5px;\r
+      font-weight: 700;\r
+      letter-spacing: 2px;\r
+      color: rgba(255, 255, 255, 0.72);\r
+      text-transform: uppercase;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
+    }\r
+    /* Main Title: Large Bold Serif with High Editorial Presence */\r
+    .poster-title {\r
+      font-size: 26px;\r
+      font-weight: 600;\r
+      letter-spacing: 0.2px;\r
+      color: #FFFFFF;\r
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);\r
+      line-height: 1.15;\r
+      font-family: "Cormorant Garamond", "Playfair Display", serif;\r
+    }\r
+\r
+    /* Floating "Hold to compare" Pill (Matching Screenshot 2 exact grey pill) */\r
+    .compare-pill {\r
+      position: absolute;\r
+      bottom: 20px;\r
+      right: 20px;\r
+      background: rgba(200, 202, 206, 0.72);\r
+      backdrop-filter: blur(16px) saturate(180%);\r
+      -webkit-backdrop-filter: blur(16px) saturate(180%);\r
+      border: 1px solid rgba(255, 255, 255, 0.6);\r
+      border-radius: 9999px;\r
+      padding: 7px 15px;\r
+      font-size: 11px;\r
+      font-weight: 600;\r
+      color: #383735;\r
+      display: flex;\r
+      align-items: center;\r
+      gap: 6px;\r
+      cursor: pointer;\r
+      user-select: none;\r
+      z-index: 20;\r
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);\r
+      transition: all 0.18s var(--ease-smooth);\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
+    }\r
+    .compare-pill:active {\r
+      transform: scale(0.93);\r
+      background: rgba(220, 222, 226, 0.9);\r
+    }\r
+\r
+    /* ================= LOADER COMPONENT (Exact Match to Screenshot 1) ================= */\r
+    .loader-overlay {\r
+      position: fixed;\r
+      top: 0;\r
+      left: 0;\r
+      right: 0;\r
+      bottom: 0;\r
+      background: rgba(60, 48, 38, 0.35);\r
+      backdrop-filter: blur(18px);\r
+      -webkit-backdrop-filter: blur(18px);\r
+      display: none;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      justify-content: center;\r
+      z-index: 100;\r
+      opacity: 0;\r
+      transition: opacity 0.25s var(--ease-smooth);\r
+    }\r
+    .loader-card {\r
+      background: rgba(255, 255, 255, 0.72);\r
+      backdrop-filter: blur(30px) saturate(190%);\r
+      -webkit-backdrop-filter: blur(30px) saturate(190%);\r
+      border: 1px solid rgba(255, 255, 255, 0.9);\r
+      border-radius: 36px;\r
+      padding: 36px 28px 30px 28px;\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      max-width: 320px;\r
+      width: 90%;\r
+      text-align: center;\r
+      box-shadow: 0 24px 60px -12px rgba(80, 50, 30, 0.25);\r
+    }\r
+\r
+    /* Concentric Circles Loader (Exact Screenshot 1 Match) */\r
+    .concentric-loader-box {\r
+      position: relative;\r
+      width: 76px;\r
+      height: 76px;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      margin-bottom: 24px;\r
+    }\r
+    /* Outer subtle ring */\r
+    .concentric-ring-outer {\r
+      position: absolute;\r
+      width: 76px;\r
+      height: 76px;\r
+      border-radius: 50%;\r
+      background: rgba(0, 0, 0, 0.03);\r
+      border: 1px solid rgba(0, 0, 0, 0.05);\r
+    }\r
+    /* Animated coral arc */\r
+    .concentric-arc-svg {\r
+      position: absolute;\r
+      width: 76px;\r
+      height: 76px;\r
+      animation: spin-arc 1.6s linear infinite;\r
+    }\r
+    @keyframes spin-arc {\r
+      0% { transform: rotate(0deg); }\r
+      100% { transform: rotate(360deg); }\r
+    }\r
+    /* Inner solid glowing coral dot */\r
+    .concentric-center-dot {\r
+      width: 13px;\r
+      height: 13px;\r
+      border-radius: 50%;\r
+      background: var(--coral-accent);\r
+      box-shadow: 0 0 10px rgba(232, 93, 63, 0.4);\r
+      z-index: 2;\r
+    }\r
+\r
+    /* Linear Progress Bar with Percentage Tag */\r
+    .loader-progress-row {\r
+      width: 100%;\r
+      display: flex;\r
+      align-items: center;\r
+      gap: 12px;\r
+      margin-bottom: 18px;\r
+    }\r
+    .loader-progress-track {\r
+      flex: 1;\r
+      height: 3.5px;\r
+      background: rgba(0, 0, 0, 0.08);\r
+      border-radius: 9999px;\r
+      overflow: hidden;\r
+    }\r
+    .loader-progress-fill {\r
+      height: 100%;\r
+      width: 0%;\r
+      background: var(--coral-accent);\r
+      border-radius: 9999px;\r
+      transition: width 0.35s ease;\r
+    }\r
+    .loader-percentage-text {\r
+      font-size: 13px;\r
+      font-weight: 500;\r
+      color: #38302A;\r
+      font-family: "Cormorant Garamond", serif;\r
+      min-width: 32px;\r
+      text-align: right;\r
+    }\r
+\r
+    /* Loader Texts */\r
+    .loader-text {\r
+      font-size: 17px;\r
+      font-weight: 600;\r
+      color: #2D241D;\r
+      font-family: "Cormorant Garamond", "Playfair Display", serif;\r
+      margin-bottom: 6px;\r
+      letter-spacing: 0.2px;\r
+    }\r
+    .loader-sub {\r
+      font-size: 12px;\r
+      font-weight: 500;\r
+      color: #8C8075;\r
+      font-family: "Cormorant Garamond", serif;\r
+    }\r
+\r
+    /* Toast */\r
+    .toast-pill {\r
+      position: fixed;\r
+      top: calc(env(safe-area-inset-top) + 20px);\r
+      left: 50%;\r
+      transform: translateX(-50%) translateY(-30px);\r
+      background: rgba(45, 36, 30, 0.94);\r
+      backdrop-filter: blur(20px);\r
+      -webkit-backdrop-filter: blur(20px);\r
+      color: #FFFFFF;\r
+      font-size: 13px;\r
+      font-weight: 500;\r
+      padding: 9px 20px;\r
+      border-radius: 9999px;\r
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);\r
+      opacity: 0;\r
+      pointer-events: none;\r
+      transition: all 0.3s var(--ease-smooth);\r
+      z-index: 200;\r
+      white-space: nowrap;\r
+      font-family: -apple-system, sans-serif;\r
+    }\r
+    .toast-pill.show {\r
+      transform: translateX(-50%) translateY(0);\r
+      opacity: 1;\r
+    }\r
+\r
+    /* Mobile Save Modal (P0-2) */\r
+    .save-modal-overlay {\r
+      position: fixed;\r
+      top: 0;\r
+      left: 0;\r
+      right: 0;\r
+      bottom: 0;\r
+      background: rgba(0, 0, 0, 0.78);\r
+      backdrop-filter: blur(18px);\r
+      -webkit-backdrop-filter: blur(18px);\r
+      display: none;\r
+      align-items: center;\r
+      justify-content: center;\r
+      padding: 16px;\r
+      z-index: 500;\r
+      animation: modalFadeIn 0.22s ease-out;\r
+    }\r
+    @keyframes modalFadeIn {\r
+      from { opacity: 0; transform: scale(0.97); }\r
+      to { opacity: 1; transform: scale(1); }\r
+    }\r
+    .save-modal-card {\r
+      background: #FFFFFF;\r
+      border-radius: 28px;\r
+      padding: 18px;\r
+      max-width: 360px;\r
+      width: 100%;\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      gap: 12px;\r
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);\r
+      position: relative;\r
+    }\r
+    .save-modal-header {\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      gap: 4px;\r
+      text-align: center;\r
+    }\r
+    .save-modal-title {\r
+      font-size: 16px;\r
+      font-weight: 700;\r
+      color: #3C3028;\r
+      font-family: "Cinzel", serif;\r
+      letter-spacing: 0.5px;\r
+    }\r
+    .save-modal-hint {\r
+      display: flex;\r
+      align-items: center;\r
+      gap: 6px;\r
+      font-size: 13px;\r
+      font-weight: 600;\r
+      color: #E85D3F;\r
+      background: rgba(232, 93, 63, 0.08);\r
+      padding: 4px 12px;\r
+      border-radius: 9999px;\r
+      animation: hintPulse 2s infinite ease-in-out;\r
+    }\r
+    @keyframes hintPulse {\r
+      0%, 100% { opacity: 0.85; transform: scale(0.98); }\r
+      50% { opacity: 1; transform: scale(1.02); }\r
+    }\r
+    .save-modal-img {\r
+      width: 100%;\r
+      max-height: 420px;\r
+      object-fit: contain;\r
+      border-radius: 18px;\r
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);\r
+      -webkit-touch-callout: default !important;\r
+      pointer-events: auto !important;\r
+      user-select: auto !important;\r
+      -webkit-user-select: auto !important;\r
+    }\r
+    .save-modal-actions {\r
+      display: flex;\r
+      width: 100%;\r
+      gap: 10px;\r
+    }\r
+    .save-modal-btn {\r
+      flex: 1;\r
+      padding: 12px;\r
+      border-radius: 9999px;\r
+      background: #3C3028;\r
+      color: #FFFFFF;\r
+      border: none;\r
+      font-size: 14px;\r
+      font-weight: 600;\r
+      cursor: pointer;\r
+      font-family: "Cormorant Garamond", serif;\r
+      transition: opacity 0.2s;\r
+    }\r
+    .save-modal-btn.secondary {\r
+      background: #F3EFEA;\r
+      color: #3C3028;\r
+    }\r
+    .save-modal-btn:active {\r
+      opacity: 0.8;\r
+    }\r
+\r
+    #render-canvas { display: none; }\r
+  </style>\r
+</head>\r
+<body>\r
+\r
+  <div class="ambient-glow-top"></div>\r
+\r
+  <div class="app-card">\r
+    \r
+    <!-- Top Header with Cursive Branding -->\r
+    <header class="header-bar">\r
+      <button id="header-back-btn" class="header-back-btn" style="display: none;" onclick="backToEntry()">\r
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">\r
+          <polyline points="15 18 9 12 15 6"></polyline>\r
+        </svg>\r
+      </button>\r
+      <div class="brand-title">ViviBon Cover</div>\r
+    </header>\r
+\r
+    <!-- ================= VIEW 1: Entry Studio ================= -->\r
+    <div id="view-entry">\r
+      \r
+      <!-- Hero 3:4 Viewport -->\r
+      <div class="hero-box">\r
+        <img id="entry-preview" class="hero-img" src="models/milo_gentle_prince_of_wales.webp" alt="Pet Model Preview" />\r
+        \r
+        <!-- Floating Round Upload Button -->\r
+        <div class="upload-btn-floating" onclick="document.getElementById('file-input').click()" title="Upload Pet Photo">\r
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
+            <polyline points="17 8 12 3 7 8"></polyline>\r
+            <line x1="12" y1="3" x2="12" y2="15"></line>\r
+          </svg>\r
+        </div>\r
+      </div>\r
+      <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="handleUpload(event)" />\r
+\r
+      <!-- 4 Core Category Pills Bar -->\r
+      <div class="category-pills-bar" id="category-pills-bar">\r
+        <!-- Dynamically rendered pills -->\r
+      </div>\r
+\r
+      <!-- Reference Templates Carousel -->\r
+      <div class="template-carousel-container">\r
+        <div class="template-cards-row" id="template-cards-row">\r
+          <!-- Dynamically rendered template cards -->\r
+        </div>\r
+        <div class="scroll-edge-hint" id="scroll-edge-hint"></div>\r
+      </div>\r
+\r
+      <!-- Primary CTA Button -->\r
+      <button class="btn-cta" onclick="startGeneration()">\r
+        Create my portrait\r
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">\r
+          <line x1="5" y1="12" x2="19" y2="12"></line>\r
+          <polyline points="12 5 19 12 12 19"></polyline>\r
+        </svg>\r
+      </button>\r
+\r
+    </div>\r
+\r
+    <!-- ================= VIEW 2: Result Showcase (Exact Match to Screenshot 2) ================= -->\r
+    <div id="view-result">\r
+      \r
+      <div class="poster-stage">\r
+        <!-- Generated Portrait Display -->\r
+        <img id="res-display-img" class="poster-img" src="models/milo_gentle_prince_of_wales.webp" alt="High Fashion Cover" />\r
+        <!-- Original Pet Layer (Hold to compare) -->\r
+        <img id="res-original-img" class="poster-img original-layer" src="models/milo_gentle.webp" alt="Original Pet" />\r
+\r
+        <!-- Magazine Overlay matching Screenshot 2 typography -->\r
+        <div class="poster-overlay" id="poster-overlay">\r
+          <div class="poster-top-brand">VIVIBON COVER</div>\r
+          <div class="poster-bottom-meta">\r
+            <div class="poster-tag" id="mag-tag">INTERN \xB7 01</div>\r
+            <div class="poster-title" id="mag-title">Milo \xB7 The Anti-Hustle Intern</div>\r
+          </div>\r
+        </div>\r
+\r
+        <!-- Floating Compare Pill matching Screenshot 2 -->\r
+        <div class="compare-pill" id="compare-btn">\r
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
+            <circle cx="12" cy="12" r="3"></circle>\r
+          </svg>\r
+          Hold to compare\r
+        </div>\r
+      </div>\r
+\r
+      <!-- Save Poster Button matching Screenshot 2 with Download Icon -->\r
+      <button class="btn-cta" onclick="exportPoster()">\r
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
+          <polyline points="7 10 12 15 17 10"></polyline>\r
+          <line x1="12" y1="15" x2="12" y2="3"></line>\r
+        </svg>\r
+        Save 1080P portrait\r
+      </button>\r
+\r
+    </div>\r
+\r
+  </div>\r
+\r
+  <!-- Fullscreen Frosted Loader Overlay (Exact Match to Screenshot 1) -->\r
+  <div class="loader-overlay" id="loader">\r
+    <div class="loader-card">\r
+      \r
+      <!-- Concentric Circular Loader (Screenshot 1) -->\r
+      <div class="concentric-loader-box">\r
+        <div class="concentric-ring-outer"></div>\r
+        <svg class="concentric-arc-svg" viewBox="0 0 76 76">\r
+          <circle cx="38" cy="38" r="36" fill="none" stroke="#E85D3F" stroke-width="3" stroke-dasharray="75 160" stroke-linecap="round"/>\r
+        </svg>\r
+        <div class="concentric-center-dot"></div>\r
+      </div>\r
+\r
+      <!-- Linear Track + Percentage Text (Screenshot 1) -->\r
+      <div class="loader-progress-row">\r
+        <div class="loader-progress-track">\r
+          <div class="loader-progress-fill" id="loader-progress-fill"></div>\r
+        </div>\r
+        <div class="loader-percentage-text" id="loader-percentage">94%</div>\r
+      </div>\r
+\r
+      <!-- Status Text and Subtext (Screenshot 1) -->\r
+      <div class="loader-text" id="loader-text">Adding the final editorial finish...</div>\r
+      <div class="loader-sub" id="loader-sub">Polishing tone and fine detail [2.5s]</div>\r
+\r
+    </div>\r
+  </div>\r
+\r
+  <!-- Toast Pill -->\r
+  <div id="toast" class="toast-pill"></div>\r
+\r
+  <!-- Mobile Save Modal (P0-2) -->\r
+  <div id="save-modal" class="save-modal-overlay" onclick="closeSaveModal(event)">\r
+    <div class="save-modal-card" onclick="event.stopPropagation()">\r
+      <div class="save-modal-header">\r
+        <div class="save-modal-title">Vogue 1080P Portrait Ready</div>\r
+        <div class="save-modal-hint">\r
+          <span>\u{1F446}</span>\r
+          <span>Press & hold poster to save / \u957F\u6309\u5B58\u5165\u76F8\u518C</span>\r
+        </div>\r
+      </div>\r
+      <img id="save-modal-img" class="save-modal-img" src="" alt="ViviBon Cover Poster" />\r
+      <div class="save-modal-actions">\r
+        <button id="modal-share-btn" class="save-modal-btn secondary" style="display: none;" onclick="sharePosterNative()">Share</button>\r
+        <button class="save-modal-btn" onclick="closeSaveModal(event)">Done</button>\r
+      </div>\r
+    </div>\r
+  </div>\r
+\r
+  <canvas id="render-canvas"></canvas>\r
+\r
+  <script>\r
+    // 4 Categories \xD7 3 High-Converting Templates (12 Core Templates Matrix)\r
+    const THEMES = {\r
+      corporate: {\r
+        id: "corporate",\r
+        backendTheme: "corporate",\r
+        name: "Corporate",\r
+        tag: "WORK & LIFE \xB7 01",\r
+        templates: [\r
+          {\r
+            id: "chill_intern",\r
+            name: "Chill Intern",\r
+            img: "models/milo_gentle_prince_of_wales.webp",\r
+            title: "The Anti-Hustle Intern",\r
+            tag: "INTERN \xB7 01"\r
+          },\r
+          {\r
+            id: "coffee_pro",\r
+            name: "Caffeine Pro",\r
+            img: "models/milo_techwear_cobalt_cyber.webp",\r
+            title: "Daily Coffee Grind",\r
+            tag: "CAFFEINE \xB7 02"\r
+          },\r
+          {\r
+            id: "ivy_prep",\r
+            name: "Ivy Scholar",\r
+            img: "models/milo_knitwear_oatmeal_cable.webp",\r
+            title: "Old Money Cable Knit",\r
+            tag: "PREPPY \xB7 03"\r
+          }\r
+        ]\r
+      },\r
+      fine_art: {\r
+        id: "fine_art",\r
+        backendTheme: "fine_art",\r
+        name: "Fine Art",\r
+        tag: "FINE ART \xB7 01",\r
+        templates: [\r
+          {\r
+            id: "mona_lisa",\r
+            name: "Mona Lisa",\r
+            img: "models/milo_gentle.webp",\r
+            title: "Renaissance Masterpiece",\r
+            tag: "FINE ART \xB7 01"\r
+          },\r
+          {\r
+            id: "pearl_earring",\r
+            name: "Pearl Earring",\r
+            img: "models/milo_gentle_navy_velvet.webp",\r
+            title: "Girl with a Pearl Earring",\r
+            tag: "DUTCH GOLDEN \xB7 02"\r
+          },\r
+          {\r
+            id: "line_art",\r
+            name: "Line Art",\r
+            img: "models/milo_street.webp",\r
+            title: "Minimalist Ink Sketch",\r
+            tag: "LINE ART \xB7 03"\r
+          }\r
+        ]\r
+      },\r
+      cosplay: {\r
+        id: "cosplay",\r
+        backendTheme: "cosplay",\r
+        name: "Cosplay",\r
+        tag: "LEGEND \xB7 01",\r
+        templates: [\r
+          {\r
+            id: "royal_monarch",\r
+            name: "The Monarch",\r
+            img: "models/milo_gentle_navy_velvet.webp",\r
+            title: "Renaissance Royal Sovereign",\r
+            tag: "ROYALTY \xB7 01"\r
+          },\r
+          {\r
+            id: "witch",\r
+            name: "The Witch",\r
+            img: "models/milo_techwear_arctic_yellow.webp",\r
+            title: "Midnight Magic & Stars",\r
+            tag: "SORCERY \xB7 02"\r
+          },\r
+          {\r
+            id: "cowboy",\r
+            name: "The Cowboy",\r
+            img: "models/milo_aviator_vintage_shearling.webp",\r
+            title: "Wild West & Coastal Cowgirl",\r
+            tag: "COWGIRL \xB7 03"\r
+          }\r
+        ]\r
+      },\r
+      celebration: {\r
+        id: "celebration",\r
+        backendTheme: "celebration",\r
+        name: "Celebration",\r
+        tag: "HOLIDAY \xB7 01",\r
+        templates: [\r
+          {\r
+            id: "christmas",\r
+            name: "Christmas Box",\r
+            img: "models/milo_warm.webp",\r
+            title: "Velvet Gift Box & Hearth",\r
+            tag: "CHRISTMAS \xB7 01"\r
+          },\r
+          {\r
+            id: "halloween",\r
+            name: "Spooky Magic",\r
+            img: "models/milo_techwear_arctic_yellow.webp",\r
+            title: "Whimsical Pumpkin & Horns",\r
+            tag: "HALLOWEEN \xB7 02"\r
+          },\r
+          {\r
+            id: "birthday_vip",\r
+            name: "Birthday Gala",\r
+            img: "models/milo_gentle.webp",\r
+            title: "VIP Cake & Pastel Crown",\r
+            tag: "BIRTHDAY \xB7 03"\r
+          }\r
+        ]\r
+      }\r
+    };\r
+\r
+    // Backward-compatibility aliases\r
+    THEMES.lifestyle = THEMES.corporate;\r
+    THEMES.artistic = THEMES.fine_art;\r
+    THEMES.drama = THEMES.cosplay;\r
+\r
+    let activeThemeKey = "corporate";\r
+    let activeTemplateId = "chill_intern";\r
+    let userPhotoUrl = "models/milo_gentle_prince_of_wales.webp";\r
+    let isUserUploaded = false;\r
+\r
+    function trackEvent(eventName, properties = {}) {\r
+      try {\r
+        if (window.clarity) {\r
+          window.clarity("event", eventName);\r
+          if (properties && typeof properties === 'object') {\r
+            for (const [k, v] of Object.entries(properties)) {\r
+              if (v !== undefined && v !== null) {\r
+                window.clarity("set", \`\${eventName}_\${k}\`, String(v));\r
+              }\r
+            }\r
+          }\r
+        }\r
+      } catch(e) {\r
+        console.warn('[Clarity Event]:', e);\r
+      }\r
+    }\r
+\r
+    function triggerHaptic(duration = 8) {\r
+      if (navigator.vibrate) {\r
+        try { navigator.vibrate(duration); } catch(e){}\r
+      }\r
+    }\r
+\r
+    function showToast(text, duration = 2500) {\r
+      const toast = document.getElementById("toast");\r
+      if (!toast) return;\r
+      toast.innerText = text;\r
+      toast.classList.add("show");\r
+      setTimeout(() => {\r
+        toast.classList.remove("show");\r
+      }, duration);\r
+    }\r
+\r
+    function renderCategoryPills() {\r
+      const bar = document.getElementById("category-pills-bar");\r
+      if (!bar) return;\r
+      const keys = ["corporate", "fine_art", "cosplay", "celebration"];\r
+      bar.innerHTML = keys.map(k => {\r
+        const theme = THEMES[k];\r
+        const isActive = k === activeThemeKey;\r
+        return \`\r
+          <div class="category-pill \${isActive ? 'active' : ''}" onclick="selectTheme('\${k}')">\r
+            <span class="category-pill-name">\${theme.name}</span>\r
+          </div>\r
+        \`;\r
+      }).join('');\r
+    }\r
+\r
+    function selectTheme(themeKey) {\r
+      triggerHaptic(6);\r
+      activeThemeKey = themeKey;\r
+      const theme = THEMES[themeKey];\r
+      activeTemplateId = theme.templates[0].id;\r
+      renderCategoryPills();\r
+      renderTemplateCards();\r
+      trackEvent("style_selected", { theme: themeKey, template: activeTemplateId });\r
+\r
+      const row = document.getElementById("template-cards-row");\r
+      if (row) {\r
+        row.scrollTo({ left: 0, behavior: 'smooth' });\r
+      }\r
+    }\r
+\r
+    function renderTemplateCards() {\r
+      const row = document.getElementById("template-cards-row");\r
+      if (!row) return;\r
+      const theme = THEMES[activeThemeKey];\r
+      row.innerHTML = theme.templates.map(tpl => {\r
+        const isActive = tpl.id === activeTemplateId;\r
+        return \`\r
+          <div class="template-card \${isActive ? 'active' : ''}" id="card-\${tpl.id}" onclick="selectTemplate('\${tpl.id}')">\r
+            <div class="template-thumb-box">\r
+              <img class="template-thumb" src="\${tpl.img}" alt="\${tpl.name}" loading="lazy" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />\r
+            </div>\r
+            <div class="template-label">\${tpl.name}</div>\r
+          </div>\r
+        \`;\r
+      }).join('');\r
+      updateScrollEdgeHint();\r
+    }\r
+\r
+    function selectTemplate(tplId) {\r
+      triggerHaptic(6);\r
+      activeTemplateId = tplId;\r
+      renderTemplateCards();\r
+      trackEvent("template_selected", { theme: activeThemeKey, template: tplId });\r
+\r
+      const targetCard = document.getElementById(\`card-\${tplId}\`);\r
+      if (targetCard) {\r
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });\r
+      }\r
+    }\r
+\r
+    function updateScrollEdgeHint() {\r
+      const row = document.getElementById("template-cards-row");\r
+      const hint = document.getElementById("scroll-edge-hint");\r
+      if (!row || !hint) return;\r
+      const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 10;\r
+      hint.style.opacity = atEnd ? '0' : '1';\r
+    }\r
+\r
+    function initDragScroll() {\r
+      const row = document.getElementById("template-cards-row");\r
+      if (!row) return;\r
+\r
+      let isDown = false;\r
+      let startX = 0;\r
+      let scrollLeft = 0;\r
+      let moved = false;\r
+\r
+      row.addEventListener('mousedown', (e) => {\r
+        isDown = true;\r
+        moved = false;\r
+        startX = e.pageX - row.offsetLeft;\r
+        scrollLeft = row.scrollLeft;\r
+      });\r
+\r
+      window.addEventListener('mouseup', () => {\r
+        isDown = false;\r
+      });\r
+\r
+      row.addEventListener('mousemove', (e) => {\r
+        if (!isDown) return;\r
+        e.preventDefault();\r
+        const x = e.pageX - row.offsetLeft;\r
+        const walk = (x - startX) * 1.5;\r
+        if (Math.abs(walk) > 4) moved = true;\r
+        row.scrollLeft = scrollLeft - walk;\r
+      });\r
+\r
+      row.addEventListener('scroll', updateScrollEdgeHint, { passive: true });\r
+    }\r
+\r
+    /**\r
+     * P0-1: Downsample and optimize image file to prevent iOS Safari OOM crashes\r
+     * Scales max edge to <= 1500px, outputs high-quality JPEG (0.85), memory footprint < 25MB\r
+     */\r
+    function downsampleImageFile(file, maxEdge = 1500, quality = 0.85) {\r
+      return new Promise((resolve, reject) => {\r
+        if (!file || !file.type.startsWith('image/')) {\r
+          return reject(new Error('Please select a valid image file.'));\r
+        }\r
+\r
+        const objectUrl = URL.createObjectURL(file);\r
+        const img = new Image();\r
+\r
+        img.onload = () => {\r
+          try {\r
+            let width = img.naturalWidth || img.width;\r
+            let height = img.naturalHeight || img.height;\r
+\r
+            if (width > maxEdge || height > maxEdge) {\r
+              if (width >= height) {\r
+                height = Math.round((height * maxEdge) / width);\r
+                width = maxEdge;\r
+              } else {\r
+                width = Math.round((width * maxEdge) / height);\r
+                height = maxEdge;\r
+              }\r
+            }\r
+\r
+            const canvas = document.createElement('canvas');\r
+            canvas.width = width;\r
+            canvas.height = height;\r
+            const ctx = canvas.getContext('2d');\r
+            if (!ctx) {\r
+              URL.revokeObjectURL(objectUrl);\r
+              return reject(new Error('Canvas 2D context unavailable'));\r
+            }\r
+\r
+            ctx.drawImage(img, 0, 0, width, height);\r
+            const optimizedDataUrl = canvas.toDataURL('image/jpeg', quality);\r
+\r
+            URL.revokeObjectURL(objectUrl);\r
+            canvas.width = 0;\r
+            canvas.height = 0;\r
+\r
+            resolve({\r
+              dataUrl: optimizedDataUrl,\r
+              width,\r
+              height,\r
+              originalSizeKb: Math.round(file.size / 1024),\r
+              optimizedSizeKb: Math.round((optimizedDataUrl.length * 3) / 4 / 1024)\r
+            });\r
+          } catch (err) {\r
+            URL.revokeObjectURL(objectUrl);\r
+            reject(err);\r
+          }\r
+        };\r
+\r
+        img.onerror = () => {\r
+          URL.revokeObjectURL(objectUrl);\r
+          reject(new Error('Failed to load and decode image'));\r
+        };\r
+\r
+        img.src = objectUrl;\r
+      });\r
+    }\r
+\r
+    async function handleUpload(event) {\r
+      const file = event.target.files && event.target.files[0];\r
+      if (!file) return;\r
+\r
+      if (file.size > 20 * 1024 * 1024) {\r
+        showToast("Photo exceeds 20MB limit. Please choose another.");\r
+        return;\r
+      }\r
+\r
+      showToast("Optimizing portrait resolution... \u2726", 1000);\r
+\r
+      try {\r
+        const result = await downsampleImageFile(file, 1500, 0.85);\r
+        userPhotoUrl = result.dataUrl;\r
+        isUserUploaded = true;\r
+        document.getElementById("entry-preview").src = userPhotoUrl;\r
+        document.getElementById("res-original-img").src = userPhotoUrl;\r
+        showToast("Photo uploaded successfully! \u2726");\r
+        triggerHaptic(10);\r
+        trackEvent("photo_uploaded", {\r
+          original_kb: result.originalSizeKb,\r
+          optimized_kb: result.optimizedSizeKb,\r
+          scaled_w: result.width,\r
+          scaled_h: result.height\r
+        });\r
+      } catch (err) {\r
+        console.warn("Downsampling failed, fallback to FileReader:", err);\r
+        const reader = new FileReader();\r
+        reader.onload = (e) => {\r
+          userPhotoUrl = e.target.result;\r
+          isUserUploaded = true;\r
+          document.getElementById("entry-preview").src = userPhotoUrl;\r
+          document.getElementById("res-original-img").src = userPhotoUrl;\r
+          showToast("Photo uploaded successfully! \u2726");\r
+          triggerHaptic(10);\r
+          trackEvent("photo_uploaded", { file_size_kb: Math.round(file.size / 1024) });\r
+        };\r
+        reader.readAsDataURL(file);\r
+      }\r
+    }\r
+\r
+    function preloadImage(url) {\r
+      return new Promise((resolve) => {\r
+        const img = new Image();\r
+        img.crossOrigin = "anonymous";\r
+        img.src = url;\r
+        img.onload = () => resolve(img);\r
+        img.onerror = () => resolve(img);\r
+      });\r
+    }\r
+\r
+    async function startGeneration() {\r
+      triggerHaptic(12);\r
+      const theme = THEMES[activeThemeKey];\r
+      const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];\r
+      trackEvent("generate_clicked", { theme: activeThemeKey, template: tpl.id, is_user_uploaded: isUserUploaded });\r
+\r
+      const loader = document.getElementById("loader");\r
+      const loaderText = document.getElementById("loader-text");\r
+      const loaderSub = document.getElementById("loader-sub");\r
+      const progressFill = document.getElementById("loader-progress-fill");\r
+      const percentageText = document.getElementById("loader-percentage");\r
+\r
+      loader.style.display = "flex";\r
+      loader.style.opacity = "1";\r
+\r
+      const startTime = Date.now();\r
+      let progress = 18;\r
+      progressFill.style.width = "18%";\r
+      percentageText.innerText = "18%";\r
+\r
+      // Exact milestones and text matching Screenshot 1\r
+      const milestones = [\r
+        { t: 0, text: "Locking facial ID & breed geometry...", sub: "Sampling authentic pet features [0.4s]", prog: 32 },\r
+        { t: 600, text: "Synthesizing lighting & coat texture...", sub: "Dual softbox studio lighting [1.1s]", prog: 64 },\r
+        { t: 1300, text: "Adding the final editorial finish...", sub: "Polishing tone and fine detail [2.5s]", prog: 94 }\r
+      ];\r
+\r
+      const stageTimers = [];\r
+      milestones.forEach(m => {\r
+        const tid = setTimeout(() => {\r
+          loaderText.innerText = m.text;\r
+          loaderSub.innerText = m.sub;\r
+          progressFill.style.width = \`\${m.prog}%\`;\r
+          percentageText.innerText = \`\${m.prog}%\`;\r
+        }, m.t);\r
+        stageTimers.push(tid);\r
+      });\r
+\r
+      let finalPosterImg = tpl.img;\r
+      let responseData = null;\r
+\r
+      try {\r
+        const payload = {\r
+          styleKey: theme.backendTheme || "corporate",\r
+          themeId: theme.backendTheme || "corporate",\r
+          itemId: tpl.id,\r
+          templateId: tpl.id,\r
+          petName: "Milo",\r
+          imageBase64: isUserUploaded ? userPhotoUrl : undefined,\r
+          isDefaultSample: !isUserUploaded\r
+        };\r
+\r
+        const endpoint = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000'\r
+          ? 'http://127.0.0.1:8787/api/generate'\r
+          : '/api/generate';\r
+\r
+        const apiPromise = fetch(endpoint, {\r
+          method: 'POST',\r
+          headers: { 'Content-Type': 'application/json' },\r
+          body: JSON.stringify(payload)\r
+        }).then(async (res) => {\r
+          if (res.ok) {\r
+            const json = await res.json();\r
+            if (json.data) {\r
+              responseData = json.data;\r
+              if (json.data.imageUrl && !json.data.isFallback) {\r
+                finalPosterImg = json.data.imageUrl;\r
+              }\r
+            }\r
+          }\r
+        }).catch((err) => {\r
+          console.warn('[API Joint Debugging Warning]:', err);\r
+        });\r
+\r
+        await Promise.all([\r
+          apiPromise,\r
+          preloadImage(finalPosterImg),\r
+          new Promise(r => setTimeout(r, 2200))\r
+        ]);\r
+      } catch(err) {\r
+        console.warn('Fallback to template preview:', err);\r
+        finalPosterImg = tpl.img;\r
+        await preloadImage(finalPosterImg);\r
+      } finally {\r
+        stageTimers.forEach(clearTimeout);\r
+        progressFill.style.width = "100%";\r
+        percentageText.innerText = "100%";\r
+        loaderText.innerText = "Portrait complete! Loading cover...";\r
+\r
+        document.getElementById("res-display-img").src = finalPosterImg;\r
+        document.getElementById("res-original-img").src = userPhotoUrl;\r
+        document.getElementById("mag-tag").innerText = tpl.tag;\r
+        document.getElementById("mag-title").innerText = \`Milo \xB7 \${tpl.title}\`;\r
+\r
+        setTimeout(() => {\r
+          document.getElementById("view-entry").style.display = "none";\r
+          const resView = document.getElementById("view-result");\r
+          resView.style.display = "flex";\r
+          resView.style.flexDirection = "column";\r
+          document.getElementById("header-back-btn").style.display = "flex";\r
+\r
+          loader.style.opacity = "0";\r
+          setTimeout(() => {\r
+            loader.style.display = "none";\r
+          }, 200);\r
+        }, 220);\r
+      }\r
+    }\r
+\r
+    function backToEntry() {\r
+      triggerHaptic(8);\r
+      document.getElementById("view-result").style.display = "none";\r
+      document.getElementById("header-back-btn").style.display = "none";\r
+      const entryView = document.getElementById("view-entry");\r
+      entryView.style.display = "flex";\r
+      entryView.style.flexDirection = "column";\r
+    }\r
+\r
+    function initCompareEvents() {\r
+      const btn = document.getElementById("compare-btn");\r
+      const originalLayer = document.getElementById("res-original-img");\r
+      const overlay = document.getElementById("poster-overlay");\r
+      if (!btn) return;\r
+\r
+      let isComparing = false;\r
+\r
+      const showOriginal = (e) => {\r
+        if (e) {\r
+          e.stopPropagation();\r
+          if (e.cancelable) e.preventDefault();\r
+        }\r
+        if (isComparing) return;\r
+        isComparing = true;\r
+        triggerHaptic(6);\r
+        trackEvent("compare_held", { template: activeTemplateId });\r
+        if (originalLayer) originalLayer.style.opacity = "1";\r
+        if (overlay) overlay.style.opacity = "0";\r
+      };\r
+\r
+      const restoreResult = () => {\r
+        if (!isComparing) return;\r
+        isComparing = false;\r
+        if (originalLayer) originalLayer.style.opacity = "0";\r
+        if (overlay) overlay.style.opacity = "1";\r
+      };\r
+\r
+      btn.addEventListener("touchstart", showOriginal, { passive: false });\r
+      btn.addEventListener("mousedown", showOriginal);\r
+\r
+      window.addEventListener("touchend", restoreResult, { passive: true });\r
+      window.addEventListener("touchcancel", restoreResult, { passive: true });\r
+      window.addEventListener("mouseup", restoreResult, { passive: true });\r
+      window.addEventListener("blur", restoreResult);\r
+    }\r
+\r
+    async function exportPoster() {\r
+      triggerHaptic(12);\r
+      const canvas = document.getElementById("render-canvas");\r
+      const ctx = canvas.getContext("2d");\r
+      const width = 1080;\r
+      const height = 1440;\r
+      canvas.width = width;\r
+      canvas.height = height;\r
+\r
+      try { await document.fonts.ready; } catch(e){}\r
+\r
+      const theme = THEMES[activeThemeKey];\r
+      const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];\r
+      const displayImg = document.getElementById("res-display-img");\r
+\r
+      const img = new Image();\r
+      img.crossOrigin = "anonymous";\r
+      img.src = displayImg.src;\r
+\r
+      img.onload = () => {\r
+        const targetRatio = width / height;\r
+        const srcRatio = img.naturalWidth / img.naturalHeight;\r
+        let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;\r
+\r
+        if (srcRatio > targetRatio) {\r
+          sw = img.naturalHeight * targetRatio;\r
+          sx = (img.naturalWidth - sw) / 2;\r
+        } else {\r
+          sh = img.naturalWidth / targetRatio;\r
+          sy = (img.naturalHeight - sh) / 2;\r
+        }\r
+\r
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, width, height);\r
+\r
+        // Subtle gradient top & bottom\r
+        const topGrad = ctx.createLinearGradient(0, 0, 0, 340);\r
+        topGrad.addColorStop(0, "rgba(0, 0, 0, 0.45)");\r
+        topGrad.addColorStop(1, "transparent");\r
+        ctx.fillStyle = topGrad;\r
+        ctx.fillRect(0, 0, width, 340);\r
+\r
+        const btmGrad = ctx.createLinearGradient(0, height - 440, 0, height);\r
+        btmGrad.addColorStop(0, "transparent");\r
+        btmGrad.addColorStop(1, "rgba(0, 0, 0, 0.86)");\r
+        ctx.fillStyle = btmGrad;\r
+        ctx.fillRect(0, height - 440, width, 440);\r
+\r
+        ctx.save();\r
+        ctx.shadowColor = "rgba(0, 0, 0, 0.6)";\r
+        ctx.shadowBlur = 16;\r
+        \r
+        // Exact Brand Title: Clean White Serif Tracking Text (Screenshot 2)\r
+        ctx.fillStyle = "#FFFFFF";\r
+        ctx.font = "700 38px 'Cinzel', serif";\r
+        ctx.letterSpacing = "6px";\r
+        ctx.fillText("VIVIBON COVER", 70, 110);\r
+\r
+        // Exact Sub-Tag (Screenshot 2)\r
+        ctx.fillStyle = "rgba(255, 255, 255, 0.72)";\r
+        ctx.font = "700 22px -apple-system, sans-serif";\r
+        ctx.letterSpacing = "4px";\r
+        ctx.fillText(tpl.tag, 70, height - 170);\r
+\r
+        // Exact Main Title (Screenshot 2)\r
+        ctx.fillStyle = "#FFFFFF";\r
+        ctx.font = "600 58px 'Cormorant Garamond', serif";\r
+        ctx.letterSpacing = "0.5px";\r
+        ctx.fillText(\`Milo \xB7 \${tpl.title}\`, 70, height - 100);\r
+        ctx.restore();\r
+\r
+        try {\r
+          const dataUrl = canvas.toDataURL("image/png");\r
+          currentPosterDataUrl = dataUrl;\r
+          trackEvent("poster_exported", { theme: activeThemeKey, template: tpl.id, is_user_uploaded: isUserUploaded });\r
+\r
+          // P0-2: Universal Mobile & In-App Webview Detection\r
+          const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);\r
+          const isWeChatOrInApp = /MicroMessenger|WeChat|Weibo|Instagram|TikTok/i.test(navigator.userAgent);\r
+\r
+          if (isMobile || isWeChatOrInApp) {\r
+            const modalImg = document.getElementById("save-modal-img");\r
+            modalImg.src = dataUrl;\r
+\r
+            // Check if Web Share API with files is supported\r
+            const shareBtn = document.getElementById("modal-share-btn");\r
+            if (navigator.share) {\r
+              shareBtn.style.display = "block";\r
+            } else {\r
+              shareBtn.style.display = "none";\r
+            }\r
+\r
+            document.getElementById("save-modal").style.display = "flex";\r
+            return;\r
+          }\r
+\r
+          // Desktop PC direct file download\r
+          const a = document.createElement("a");\r
+          a.download = \`ViviBon-Cover-\${tpl.id}-\${Date.now()}.png\`;\r
+          a.href = dataUrl;\r
+          document.body.appendChild(a);\r
+          a.click();\r
+          document.body.removeChild(a);\r
+          showToast("Saved 1080P portrait to downloads! \u2726");\r
+        } catch(err) {\r
+          console.warn("Direct download restricted, opening save modal:", err);\r
+          const dataUrl = canvas.toDataURL("image/png");\r
+          currentPosterDataUrl = dataUrl;\r
+          document.getElementById("save-modal-img").src = dataUrl;\r
+          document.getElementById("save-modal").style.display = "flex";\r
+        }\r
+      };\r
+    }\r
+\r
+    let currentPosterDataUrl = null;\r
+\r
+    async function sharePosterNative() {\r
+      if (!currentPosterDataUrl || !navigator.share) return;\r
+      try {\r
+        const response = await fetch(currentPosterDataUrl);\r
+        const blob = await response.blob();\r
+        const file = new File([blob], \`ViviBon-Cover-\${Date.now()}.png\`, { type: 'image/png' });\r
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {\r
+          await navigator.share({\r
+            title: 'ViviBon Cover',\r
+            text: 'Look at my pet on the cover of Vogue! \u2726',\r
+            files: [file]\r
+          });\r
+          trackEvent("poster_shared_native");\r
+        } else {\r
+          await navigator.share({\r
+            title: 'ViviBon Cover',\r
+            text: 'Look at my pet on the cover of Vogue! \u2726',\r
+            url: window.location.href\r
+          });\r
+        }\r
+      } catch (err) {\r
+        if (err.name !== 'AbortError') {\r
+          console.warn("Web Share failed:", err);\r
+        }\r
+      }\r
+    }\r
+\r
+    function closeSaveModal(e) {\r
+      if (e) e.stopPropagation();\r
+      document.getElementById("save-modal").style.display = "none";\r
+    }\r
+\r
+    document.addEventListener("DOMContentLoaded", () => {\r
+      renderCategoryPills();\r
+      renderTemplateCards();\r
+      initDragScroll();\r
+      initCompareEvents();\r
+    });\r
+  </script>\r
+</body>\r
+</html>\r
+`;
 
 // src/index.ts
 var createApp = (customFalService, rateLimiterOpts) => {
-  const app2 = new import_hono3.Hono();
+  const app2 = new import_hono4.Hono();
   app2.use("*", loggerMiddleware());
   app2.use("*", corsMiddleware());
-  app2.use("/api/*", rateLimiterMiddleware(rateLimiterOpts));
+  app2.use("/api/generate", antiBotMiddleware());
+  app2.use("/api/generate", rateLimiterMiddleware(rateLimiterOpts));
   app2.get("/", (c) => c.html(ViviBon_Cover_default));
   app2.get("/index.html", (c) => c.html(ViviBon_Cover_default));
   app2.route("/", healthRoute);
+  app2.route("/", stylesRoute);
   app2.route("/", createGenerateRoute(customFalService || falService));
   app2.notFound((c) => {
     const errorResp = {
