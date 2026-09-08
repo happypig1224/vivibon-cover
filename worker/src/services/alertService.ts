@@ -67,9 +67,9 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
   ) {
     return {
       category: 'TIMEOUT_EXCEEDED',
-      labelZh: '网络请求超时 (15s 截断)',
+      labelZh: '网络请求超时 (30s 截断)',
       tag: '[TIMEOUT_EXCEEDED]',
-      description: '大模型服务商推理耗时超过 15 秒硬阈值，系统已主动熔断并触发保护。'
+      description: '大模型服务商推理耗时超过 30 秒硬阈值，系统已主动熔断并触发保护。'
     };
   }
 

@@ -164,7 +164,7 @@ export class FalService {
 
   /**
    * Execute Haute Couture Pet Generation with:
-   * 1. 15s hard timeout
+   * 1. 30s hard timeout
    * 2. Full jitter exponential backoff retry
    * 3. Primary -> Secondary AI multi-rail failover
    * 4. Enterprise WeChat Webhook alerting on failure/arrears
