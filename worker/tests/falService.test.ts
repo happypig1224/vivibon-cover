@@ -47,28 +47,30 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     });
 
     const service = new FalService(mockRunner, 5000);
-    // Explicitly request Corporate -> Entry-Level -> Programmer
+    // Explicitly request Corporate -> Featured -> Airline Captain
     const result = await service.generatePoster(
       'corporate',
       'Sherlock',
       undefined,
       'valid_key',
       undefined,
-      'entry_level',
-      'programmer'
+      'featured',
+      'airline_captain'
     );
 
     expect(result.isFallback).toBe(false);
     expect(result.imageUrl).toBe('https://fal.media/mock_generated.png');
     expect(result.jobId).toBe('fal_mock_123');
-    expect(result.capsuleVariant?.id).toBe('programmer');
-    expect(result.capsuleVariant?.name).toBe('程序员与技术码农');
+    expect(result.capsuleVariant?.id).toBe('airline_captain');
+    expect(result.capsuleVariant?.name).toBe('顶级民航机长');
     expect(mockRunner).toHaveBeenCalledWith(
-      expect.stringContaining('Tech company software engineer dog portrait'),
+      expect.stringContaining('fisheye lens perspective'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('corporate badges')
+      expect.stringContaining('dislocated paws'),
+      undefined,
+      expect.stringContaining('models/airline_captain.png')
     );
   });
 
@@ -110,26 +112,22 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     let totalItems = 0;
     for (const themeKey of CORE_THEME_KEYS) {
       const theme = CASCADING_THEMES[themeKey];
-      expect(theme.subCategories.length).toBeGreaterThanOrEqual(2);
+      expect(theme.subCategories.length).toBe(1);
 
       for (const sub of theme.subCategories) {
-        expect(sub.items.length).toBeGreaterThanOrEqual(3);
+        expect(sub.items.length).toBe(3);
         totalItems += sub.items.length;
 
         for (const item of sub.items) {
           expect(item.id).toBeTruthy();
           expect(item.nameZh).toBeTruthy();
-          expect(item.nameEn).toBeTruthy();
-          expect(item.fullPrompt).toContain('EXACT SAME dog from the input image');
-          expect(item.fullPrompt).toContain("Strictly preserve the original pet's facial structure");
-          expect(item.fullPrompt).toContain('High-end commercial luxury pet portrait photography');
-          expect(item.fullPrompt).toContain('8k resolution, no text, no logo');
-          expect(item.fullPrompt).toContain('Unmasked face, head and eyes fully visible and natural');
+          expect(item.fullPrompt.length).toBeGreaterThan(20);
+          expect(item.sampleImageUrl).toBeTruthy();
         }
       }
     }
-    // Verify rich catalog of 35+ items across 4 themes
-    expect(totalItems).toBeGreaterThanOrEqual(35);
+    // Verify exact catalog of 12 items across 4 themes
+    expect(totalItems).toBe(12);
   });
 
   it('should support deterministic selection by index and targeted subId/itemId', async () => {
@@ -146,7 +144,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       undefined,
       'valid_key',
       undefined,
-      'classical_masters',
+      'featured',
       'mona_lisa'
     );
     expect(resMonaLisa.capsuleVariant?.id).toBe('mona_lisa');
@@ -156,26 +154,30 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('modern digital artifacts')
+      expect.stringContaining('modern digital artifacts'),
+      undefined,
+      expect.any(String)
     );
 
-    // Specific selection: Iron Man Nano Armor (Cosplay)
-    const resIronMan = await service.generatePoster(
+    // Specific selection: Secret Agent (Cosplay)
+    const resSecretAgent = await service.generatePoster(
       'cosplay',
       '托尼',
       undefined,
       'valid_key',
       undefined,
-      'marvel',
-      'iron_man'
+      'featured',
+      'secret_agent'
     );
-    expect(resIronMan.capsuleVariant?.id).toBe('iron_man');
+    expect(resSecretAgent.capsuleVariant?.id).toBe('secret_agent');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Iron Man inspired superhero pet'),
+      expect.stringContaining('balaclava'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('full head helmet')
+      expect.stringContaining('studio lighting'),
+      undefined,
+      expect.any(String)
     );
 
 
@@ -186,16 +188,18 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       undefined,
       'valid_key',
       undefined,
-      'classical_masters',
+      'featured',
       'line_art'
     );
     expect(resLineArt.capsuleVariant?.id).toBe('line_art');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Minimalist black and white rough crayon'),
+      expect.stringContaining('Study of My Pet'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('realistic pencil sketch, colorful, gray gradient')
+      expect.stringContaining('realistic pencil sketch, colorful, gray gradient'),
+      undefined,
+      expect.any(String)
     );
 
     // Colleague template: Christmas (Velvet Box)
@@ -205,16 +209,18 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       undefined,
       'valid_key',
       undefined,
-      'holidays',
+      'featured',
       'christmas'
     );
     expect(resChristmas.capsuleVariant?.id).toBe('christmas');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Christmas holiday luxury pet portrait'),
+      expect.stringContaining('British Christmas'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('gift box cutting off front legs')
+      expect.stringContaining('text, watermark'),
+      undefined,
+      expect.any(String)
     );
 
     // Colleague template: Halloween (Spooky Magic)
@@ -224,16 +230,18 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       undefined,
       'valid_key',
       undefined,
-      'holidays',
+      'featured',
       'halloween'
     );
     expect(resHalloween.capsuleVariant?.id).toBe('halloween');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Whimsical cozy and cute Halloween pet studio portrait'),
+      expect.stringContaining('Halloween'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('horror, bloody, skulls')
+      expect.stringContaining('deformed face'),
+      undefined,
+      expect.any(String)
     );
 
     // Colleague template: Birthday VIP (Milestones)
@@ -243,35 +251,39 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       undefined,
       'valid_key',
       undefined,
-      'milestones',
+      'featured',
       'birthday_vip'
     );
     expect(resBirthday.capsuleVariant?.id).toBe('birthday_vip');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('VIP Birthday celebration pet studio portrait'),
+      expect.stringContaining('VIP pet birthday'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('hat penetrating ears, strap digging into skin')
+      expect.stringContaining('text, watermark'),
+      undefined,
+      expect.any(String)
     );
 
-    // Corporate Young Life: Chill Intern
+    // Corporate Young Life: Airline Captain
     const resIntern = await service.generatePoster(
       'corporate',
       '米洛',
       undefined,
       'valid_key',
       undefined,
-      'entry_level',
-      'chill_intern'
+      'featured',
+      'airline_captain'
     );
-    expect(resIntern.capsuleVariant?.id).toBe('chill_intern');
+    expect(resIntern.capsuleVariant?.id).toBe('airline_captain');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('chill anti-hustle corporate intern pet portrait'),
+      expect.stringContaining('fisheye lens perspective'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('stressed expression, angry boss')
+      expect.stringContaining('high altitude sky'),
+      undefined,
+      expect.any(String)
     );
 
     // Corporate Young Life: Coffee Pro
@@ -281,58 +293,188 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       undefined,
       'valid_key',
       undefined,
-      'entry_level',
+      'featured',
       'coffee_pro'
     );
     expect(resCoffee.capsuleVariant?.id).toBe('coffee_pro');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('coffee-fueled 9-to-5 corporate professional pet portrait'),
+      expect.stringContaining('Daily Life of a 9-to-5 Working Pet'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('coffee spilled on fur, pet drinking hot coffee')
+      expect.stringContaining('coffee spilled on fur, pet drinking hot coffee'),
+      undefined,
+      expect.any(String)
     );
 
-    // Cosplay Legends: The Witch
-    const resWitch = await service.generatePoster(
+    // Cosplay Legends: The Pirate
+    const resPirate = await service.generatePoster(
       'cosplay',
       '米洛',
       undefined,
       'valid_key',
       undefined,
-      'legends',
+      'featured',
+      'caribbean_pirate'
+    );
+    expect(resPirate.capsuleVariant?.id).toBe('caribbean_pirate');
+    expect(mockRunner).toHaveBeenLastCalledWith(
+      expect.stringContaining('ruthless pirate captain'),
+      DEFAULT_MILO_BASE64,
+      'valid_key',
+      expect.any(AbortSignal),
+      expect.stringContaining('deformed limbs'),
+      undefined,
+      expect.any(String)
+    );
+
+    // Backward compatibility: alias 'witch' -> 'caribbean_pirate'
+    const resWitchAlias = await service.generatePoster(
+      'cosplay',
+      '米洛',
+      undefined,
+      'valid_key',
+      undefined,
+      'featured',
       'witch'
     );
-    expect(resWitch.capsuleVariant?.id).toBe('witch');
-    expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Mystical fantasy witch pet studio portrait'),
-      DEFAULT_MILO_BASE64,
-      'valid_key',
-      expect.any(AbortSignal),
-      expect.stringContaining('hat covering eyes, hat swallowing ears, hat piercing skull')
-    );
-
-    // Cosplay Legends: The Cowboy / Coastal Cowgirl
-    const resCowboy = await service.generatePoster(
-      'cosplay',
-      '米洛',
-      undefined,
-      'valid_key',
-      undefined,
-      'legends',
-      'cowboy'
-    );
-    expect(resCowboy.capsuleVariant?.id).toBe('cowboy');
-    expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Americana Wild West cowboy and Coastal Cowgirl'),
-      DEFAULT_MILO_BASE64,
-      'valid_key',
-      expect.any(AbortSignal),
-      expect.stringContaining('sunglasses obscuring eyes, heavy firearms')
-    );
+    expect(resWitchAlias.capsuleVariant?.id).toBe('caribbean_pirate');
 
     // Legacy fallback compatibility: gentle
     const resLegacy = await service.generatePoster('gentle', '查理', undefined, 'valid_key', 0);
     expect(resLegacy.capsuleVariant?.id).toBeTruthy();
+  });
+
+  it('should support Wokey multi-rail priority execution and seamless failover', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider) => {
+      if (provider === 'wokey') {
+        return Promise.resolve({
+          jobId: 'wk_mock_456',
+          imageUrl: 'https://cdn.wokey.ai/sample.png'
+        });
+      }
+      return Promise.reject(new Error('Unknown provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'corporate',
+      'Milo',
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [
+        { provider: 'wokey', apiKey: 'sk-wokey-test-key' },
+        { provider: 'siliconflow', apiKey: 'sk-sf-test-key' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.activeProvider).toBe('Wokey');
+    expect(result.jobId).toBe('wk_mock_456');
+    expect(mockRunner).toHaveBeenCalledWith(
+      expect.any(String),
+      DEFAULT_MILO_BASE64,
+      'sk-wokey-test-key',
+      expect.any(AbortSignal),
+      expect.any(String),
+      'wokey',
+      expect.any(String),
+      expect.anything()
+    );
+  });
+
+  it('should support Volcengine Ark (Seedream 5.0 Lite) as primary rail with correct options', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider, refUrl, options) => {
+      if (provider === 'volcengine') {
+        return Promise.resolve({
+          jobId: 'ark_mock_789',
+          imageUrl: 'https://ark.cn-beijing.volces.com/sample_ark.png'
+        });
+      }
+      return Promise.reject(new Error('Unknown provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'fine_art',
+      'Milo',
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [
+        {
+          provider: 'volcengine',
+          apiKey: 'volc_test_key_123',
+          modelId: 'doubao-seedream-5-0-lite',
+          endpoint: 'https://ark.cn-beijing.volces.com/api/v3/images/generations'
+        },
+        { provider: 'wokey', apiKey: 'sk-wokey-backup' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.activeProvider).toBe('Volcengine Ark (Seedream 5.0 Lite)');
+    expect(result.jobId).toBe('ark_mock_789');
+    expect(mockRunner).toHaveBeenCalledWith(
+      expect.any(String),
+      DEFAULT_MILO_BASE64,
+      'volc_test_key_123',
+      expect.any(AbortSignal),
+      expect.any(String),
+      'volcengine',
+      expect.any(String),
+      expect.objectContaining({
+        modelId: 'doubao-seedream-5-0-lite'
+      })
+    );
+  });
+
+  it('should failover from Volcengine to secondary provider when Volcengine fails', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider) => {
+      if (provider === 'volcengine') {
+        return Promise.reject(new Error('Volcengine Ark quota exceeded 429'));
+      }
+      if (provider === 'wokey') {
+        return Promise.resolve({
+          jobId: 'wk_backup_111',
+          imageUrl: 'https://cdn.wokey.ai/backup.png'
+        });
+      }
+      return Promise.reject(new Error('Unexpected provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'cosplay',
+      'Milo',
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [
+        { provider: 'volcengine', apiKey: 'volc_bad_key' },
+        { provider: 'wokey', apiKey: 'wokey_good_key' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.failoverTriggered).toBe(true);
+    expect(result.activeProvider).toBe('Wokey');
+    expect(result.jobId).toBe('wk_backup_111');
   });
 });

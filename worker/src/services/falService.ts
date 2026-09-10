@@ -34,8 +34,23 @@ export type FalRunner = (
   imageBase64: string | undefined,
   apiKey: string,
   signal: AbortSignal,
-  negativePrompt?: string
+  negativePrompt?: string,
+  providerName?: 'volcengine' | 'wokey' | 'siliconflow' | 'fal',
+  referenceImageUrl?: string,
+  options?: {
+    modelId?: string;
+    endpoint?: string;
+  }
 ) => Promise<{ jobId: string; imageUrl: string }>;
+
+export interface ProviderRail {
+  provider: 'volcengine' | 'wokey' | 'siliconflow' | 'fal';
+  apiKey: string;
+  name?: string;
+  timeoutMs?: number;
+  modelId?: string;
+  endpoint?: string;
+}
 
 /**
  * Full Jitter Exponential Backoff Helper
@@ -52,7 +67,12 @@ export async function executeWithJitterRetry<T>(
     try {
       return await fn(attempt);
     } catch (err) {
-      if (attempt >= maxRetries) {
+      const isTimeout = err instanceof Error && (
+        err.name === 'AbortError' ||
+        err.message.includes('aborted') ||
+        err.message.includes('timeout')
+      );
+      if (isTimeout || attempt >= maxRetries) {
         throw err;
       }
       attempt++;
@@ -73,15 +93,155 @@ export const defaultFalRunner: FalRunner = async (
   imageBase64,
   apiKey,
   signal,
-  negativePrompt = NEGATIVE_PROMPT
+  negativePrompt = NEGATIVE_PROMPT,
+  providerName,
+  referenceImageUrl,
+  options
 ) => {
   // Pure Image-to-Image Enforcement
   if (!imageBase64) {
     throw new Error('Pure Image-to-Image required. Missing pet photo input.');
   }
 
-  // 1. Domestic Provider: SiliconFlow (Qwen/Qwen-Image-Edit)
-  if (apiKey.startsWith('sk-')) {
+  // 1. Volcengine Ark Provider: Doubao Seedream 5.0 Lite
+  if (providerName === 'volcengine') {
+    const endpoint = options?.endpoint || 'https://ark.cn-beijing.volces.com/api/v3/images/generations';
+    const model = options?.modelId || 'ep-20260910130528-l8thd';
+
+    let formattedImage = imageBase64;
+    if (!formattedImage.startsWith('http://') && !formattedImage.startsWith('https://') && !formattedImage.startsWith('data:')) {
+      formattedImage = `data:image/jpeg;base64,${formattedImage}`;
+    }
+
+    const payload: Record<string, unknown> = {
+      model,
+      prompt,
+      image: formattedImage,
+      size: options?.size || '2K', // Seedream 5.0 Lite requires at least 3,686,400 pixels ("2K" preset)
+      response_format: 'url'
+    };
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload),
+      signal
+    });
+
+    if (!response.ok) {
+      const errText = await response.text().catch(() => '');
+      throw new Error(`Volcengine upstream error: ${response.status} ${response.statusText} ${errText}`);
+    }
+
+    const data = (await response.json()) as {
+      data?: Array<{ url?: string; b64_json?: string }>;
+    };
+    const item = data.data?.[0];
+    let imageUrl = item?.url;
+    if (!imageUrl && item?.b64_json) {
+      imageUrl = `data:image/png;base64,${item.b64_json}`;
+    }
+    if (!imageUrl) {
+      throw new Error('No image returned from Volcengine Ark');
+    }
+
+    return {
+      jobId: `ark_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl
+    };
+  }
+
+  // 2. Wokey Provider: Grok 2 Image ($0.01 / 7分钱, 2K/3K resolution, Face ID preservation)
+  if (providerName === 'wokey') {
+    const endpoint = 'https://api.wokey.ai/v1/images/edits';
+    const cleanBase64 = imageBase64.includes('base64,') ? imageBase64.split('base64,')[1] : imageBase64;
+
+    let effectivePrompt = prompt;
+    let imageArray = [cleanBase64];
+
+    if (referenceImageUrl) {
+      try {
+        if (referenceImageUrl.startsWith('data:')) {
+          const cleanRef = referenceImageUrl.includes('base64,') ? referenceImageUrl.split('base64,')[1] : referenceImageUrl;
+          imageArray.push(cleanRef);
+        } else {
+          let fetchUrl = referenceImageUrl;
+          if (!fetchUrl.startsWith('http://') && !fetchUrl.startsWith('https://')) {
+            fetchUrl = `https://vivibon-cover.pages.dev/${fetchUrl.replace(/^\/+/, '')}`;
+          }
+          const refRes = await fetch(fetchUrl, { signal });
+          if (refRes.ok) {
+            const arrBuffer = await refRes.arrayBuffer();
+            const base64String = Buffer.from(arrBuffer).toString('base64');
+            imageArray.push(base64String);
+          } else {
+            console.warn('[Wokey] Failed to fetch reference image:', refRes.status);
+          }
+        }
+      } catch (err) {
+        console.warn('[Wokey] Error fetching reference image:', err);
+      }
+    }
+
+    // xAI Grok 2 Image strictly enforces a 1024-character maximum prompt length limit
+    if (imageArray.length > 1) {
+      const prefix = "[Photo 1: user pet face identity. Photo 2: outfit, pose and scene reference. Strictly preserve Photo 1 pet face, eyes, fur and breed exactly.] ";
+      const maxRemaining = 1000 - prefix.length;
+      if (effectivePrompt.length > maxRemaining) {
+        const trimmed = effectivePrompt.slice(0, maxRemaining);
+        const lastPunct = Math.max(trimmed.lastIndexOf('.'), trimmed.lastIndexOf('，'), trimmed.lastIndexOf('。'), trimmed.lastIndexOf(','));
+        effectivePrompt = lastPunct > 200 ? trimmed.slice(0, lastPunct + 1) : trimmed;
+      }
+      effectivePrompt = `${prefix}${effectivePrompt}`;
+    } else if (effectivePrompt.length > 1000) {
+      const trimmed = effectivePrompt.slice(0, 1000);
+      const lastPunct = Math.max(trimmed.lastIndexOf('.'), trimmed.lastIndexOf('，'), trimmed.lastIndexOf('。'), trimmed.lastIndexOf(','));
+      effectivePrompt = lastPunct > 500 ? trimmed.slice(0, lastPunct + 1) : trimmed;
+    }
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      },
+      body: JSON.stringify({
+        model: 'gpt-image-2',
+        prompt: effectivePrompt,
+        image: imageArray
+      }),
+      signal
+    });
+
+    if (!response.ok) {
+      const errText = await response.text().catch(() => '');
+      throw new Error(`Wokey upstream error: ${response.status} ${response.statusText} ${errText}`);
+    }
+
+    const data = (await response.json()) as {
+      data?: Array<{ url?: string; b64_json?: string }>;
+    };
+    const item = data.data?.[0];
+    let imageUrl = item?.url;
+    if (!imageUrl && item?.b64_json) {
+      imageUrl = `data:image/png;base64,${item.b64_json}`;
+    }
+    if (!imageUrl) {
+      throw new Error('No image returned from Wokey');
+    }
+
+    return {
+      jobId: `wk_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl
+    };
+  }
+
+  // 2. Domestic Provider: SiliconFlow (Qwen/Qwen-Image-Edit)
+  if (providerName === 'siliconflow' || (!providerName && apiKey.startsWith('sk-'))) {
     const endpoint = 'https://api.siliconflow.cn/v1/images/generations';
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -95,7 +255,8 @@ export const defaultFalRunner: FalRunner = async (
         negative_prompt: negativePrompt,
         image: imageBase64,
         image_size: '768x1024', // 3:4 Native Aspect Ratio (1080x1440 物理保真，零拉伸变形)
-        num_inference_steps: 8  // 压缩推理耗时至 12~14s，同时 100% 保持 Face ID 特征
+        num_inference_steps: 20, // 20 步黄金标准去噪：极致微米级毛发与面部五官保真
+        guidance_scale: 3.5      // 3.5 黄金引导值：紧紧锁定原图花纹分区与原生眼眸瞳色，杜绝文本大词先验污染（防杂色虎斑与变色）
       }),
       signal
     });
@@ -157,9 +318,9 @@ export class FalService {
   private runner: FalRunner;
   private timeoutMs: number;
 
-  constructor(runner: FalRunner = defaultFalRunner, timeoutMs: number = 30000) {
+  constructor(runner: FalRunner = defaultFalRunner, timeoutMs: number = 60000) {
     this.runner = runner;
-    this.timeoutMs = timeoutMs; // 30s timeout limit per inference attempt (supports large multi-modal diffusion)
+    this.timeoutMs = timeoutMs; // 60s timeout limit per inference attempt (supports large multi-modal diffusion)
   }
 
   /**
@@ -180,7 +341,9 @@ export class FalService {
     itemId?: string,
     alertContext?: AlertContext,
     webhookUrl?: string,
-    secondaryApiKey?: string
+    secondaryApiKey?: string,
+    rails?: ProviderRail[],
+    referenceImageUrl?: string
   ): Promise<GenerateResult> {
     const start = Date.now();
 
@@ -208,7 +371,149 @@ export class FalService {
       skillDirective: assembled.skillDirective
     };
 
-    // If no API key configured at all, gracefully degrade immediately
+    let resolvedRefUrl = referenceImageUrl;
+    if (resolvedRefUrl && (resolvedRefUrl.includes('localhost') || resolvedRefUrl.includes('127.0.0.1'))) {
+      try {
+        const pathname = new URL(resolvedRefUrl).pathname.replace(/^\/+/, '');
+        resolvedRefUrl = `https://vivibon-cover.pages.dev/${pathname}`;
+      } catch (_) {
+        resolvedRefUrl = undefined;
+      }
+    }
+    const effectiveReferenceUrl = resolvedRefUrl || (
+      variant.sampleImageUrl
+        ? (variant.sampleImageUrl.startsWith('http') ? variant.sampleImageUrl : `https://vivibon-cover.pages.dev/${variant.sampleImageUrl.replace(/^\/+/, '')}`)
+        : undefined
+    );
+
+    // Multi-rail dynamic execution path (supports Wokey, SiliconFlow, Fal.ai)
+    if (rails && rails.length > 0) {
+      const activeRails = rails.filter(r => Boolean(r.apiKey));
+      if (activeRails.length === 0) {
+        return {
+          ...baseResult,
+          jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
+          imageUrl: fallbackImage,
+          latencyMs: Date.now() - start,
+          isFallback: true,
+          debugReason: 'NO_API_KEY_CONFIGURED'
+        };
+      }
+
+      const effectiveImageInput = imageBase64 || DEFAULT_MILO_BASE64;
+      const previousErrors: string[] = [];
+
+      for (let i = 0; i < activeRails.length; i++) {
+        const rail = activeRails[i];
+        const displayName = rail.provider === 'volcengine'
+          ? 'Volcengine Ark (Seedream 5.0 Lite)'
+          : (rail.provider === 'wokey' ? 'Wokey' : (rail.provider === 'siliconflow' ? 'SiliconFlow' : 'Fal.ai'));
+        const timeoutLimit = rail.timeoutMs || 60000;
+
+        const runRailAttempt = async () => {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), timeoutLimit);
+          try {
+            const res = await this.runner(
+              assembled.fullPrompt,
+              effectiveImageInput,
+              rail.apiKey,
+              controller.signal,
+              assembled.negativePrompt,
+              rail.provider,
+              effectiveReferenceUrl,
+              {
+                modelId: rail.modelId,
+                endpoint: rail.endpoint
+              }
+            );
+            clearTimeout(timeoutId);
+            return res;
+          } catch (err) {
+            clearTimeout(timeoutId);
+            throw err;
+          }
+        };
+
+        try {
+          const result = await executeWithJitterRetry(() => runRailAttempt(), 1);
+
+          if (i > 0) {
+            alertService.sendWeChatAlert(
+              webhookUrl,
+              `从模型接管生图成功`,
+              {
+                ...alertContext,
+                primaryProvider: activeRails[0].provider,
+                secondaryProvider: displayName,
+                errorMessage: `Primary failed with: ${previousErrors[0] || 'N/A'}`,
+                durationMs: Date.now() - start,
+                timeoutMs: activeRails[0]?.timeoutMs
+              },
+              'INFO'
+            ).catch(() => {});
+          }
+
+          return {
+            ...baseResult,
+            jobId: result.jobId,
+            imageUrl: result.imageUrl,
+            latencyMs: Date.now() - start,
+            isFallback: false,
+            failoverTriggered: i > 0,
+            activeProvider: displayName
+          };
+        } catch (err: unknown) {
+          const errorObj = err instanceof Error ? err : new Error(String(err));
+          previousErrors.push(`${displayName}: [${errorObj.message}]`);
+          console.warn(`[FalService] Rail ${i} (${displayName}) failed:`, errorObj.message);
+
+          if (i < activeRails.length - 1 && !errorObj.message.includes('Missing pet photo input')) {
+            alertService.sendWeChatAlert(
+              webhookUrl,
+              `主模型生图失败 · 准备故障转移`,
+              {
+                ...alertContext,
+                primaryProvider: displayName,
+                secondaryProvider: activeRails[i + 1].provider,
+                errorMessage: errorObj.message,
+                durationMs: Date.now() - start,
+                timeoutMs: rail.timeoutMs
+              },
+              'WARNING'
+            ).catch(() => {});
+          }
+        }
+      }
+
+      // All rails failed
+      if (webhookUrl && previousErrors.length > 0) {
+        alertService.sendWeChatAlert(
+          webhookUrl,
+          `主备模型均调用失败 · 触发静态样片终极降级`,
+          {
+            ...alertContext,
+            primaryProvider: activeRails[0]?.provider,
+            secondaryProvider: activeRails[1]?.provider || 'None',
+            errorMessage: previousErrors.join(', '),
+            durationMs: Date.now() - start,
+            timeoutMs: activeRails[0]?.timeoutMs
+          },
+          'CRITICAL'
+        ).catch(() => {});
+      }
+
+      return {
+        ...baseResult,
+        jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
+        imageUrl: fallbackImage,
+        latencyMs: Date.now() - start,
+        isFallback: true,
+        debugReason: previousErrors.join('; ')
+      };
+    }
+
+    // Legacy fallback path (when rails parameter not provided)
     if (!primaryApiKey && !secondaryApiKey) {
       return {
         ...baseResult,
@@ -233,7 +538,9 @@ export class FalService {
           effectiveImageInput,
           key,
           controller.signal,
-          assembled.negativePrompt
+          assembled.negativePrompt,
+          undefined,
+          effectiveReferenceUrl
         );
         clearTimeout(timeoutId);
         return res;
@@ -273,7 +580,8 @@ export class FalService {
               primaryProvider: primaryProviderName,
               secondaryProvider: secondaryApiKey ? secondaryProviderName : 'None',
               errorMessage: primaryError.message,
-              durationMs: Date.now() - start
+              durationMs: Date.now() - start,
+              timeoutMs: this.timeoutLimit
             },
             'WARNING'
           ).catch(() => {});
@@ -295,7 +603,8 @@ export class FalService {
             primaryProvider: primaryProviderName,
             secondaryProvider: secondaryProviderName,
             errorMessage: `Primary failed with: ${primaryError?.message || 'N/A'}`,
-            durationMs: Date.now() - start
+            durationMs: Date.now() - start,
+            timeoutMs: this.timeoutLimit
           },
           'INFO'
         ).catch(() => {});
@@ -323,7 +632,8 @@ export class FalService {
               primaryProvider: primaryProviderName,
               secondaryProvider: secondaryProviderName,
               errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
-              durationMs: Date.now() - start
+              durationMs: Date.now() - start,
+              timeoutMs: this.timeoutLimit
             },
             'CRITICAL'
           ).catch(() => {});

@@ -10,7 +10,8 @@ kv_namespaces = [
 
 [vars]
 ENVIRONMENT = "production"
-PRIMARY_AI_PROVIDER = "siliconflow"
+PRIMARY_AI_PROVIDER = "volcengine"
+VOLCENGINE_MODEL_ID = "ep-20260910130528-l8thd"
 
 [triggers]
 crons = ["0 14 * * *"]

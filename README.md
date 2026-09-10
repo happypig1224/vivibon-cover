@@ -8,8 +8,8 @@
 
 - **Pure Vanilla Edge Delivery**: Single-file H5 frontend hosted on Cloudflare Pages, achieving sub-100ms FCP inside mobile Instagram & TikTok webviews without heavy framework overhead.
 - **Two-Tier Visual Reference Carousel**:
-  - **Tier 1 (4 Themes)**: `Fine Art` (8), `Corporate` (6), `Cosplay` (11), `Celebration` (8).
-  - **Tier 2 (33 Templates)**: Visual magazine cards featuring our official IP mascot (Milo) with smooth horizontal swipe navigation.
+  - **Tier 1 (4 Themes)**: `Fine Art` (3), `Corporate` (3), `Cosplay` (3), `Celebration` (3).
+  - **Tier 2 (12 Gold Haute Couture Templates)**: Visual magazine cards featuring our official IP mascot (Milo) with smooth horizontal swipe navigation.
 - **5-Layer Controllable Harness Pipeline**:
   - *Layer 1*: Client Pre-Flight Gate (luminance 15~245, dimension >=240px, ~180KB downsample).
   - *Layer 2*: Action-Oriented Imperative Prompt Harness + 20+ negative constraints.
@@ -43,7 +43,7 @@ ViviBon Cover/
 │   │   ├── ViviBon Cover 业务与状态机规范.md # State machine & Microsoft Clarity telemetry (V2.2)
 │   │   ├── ViviBon Cover 高可用容灾与安全防刷规范.md # 15s timeout, Full Jitter, Failover, WeChat alerts, and anti-bot defense (V1.0)
 │   │   ├── ViviBon Cover ToC生产级稳定性与体验保障规范.md # P0-P2: Mobile OOM, album saving, emotional loading, visibilitychange (V1.0)
-│   │   └── ViviBon Cover 风格级联体系与具象化规范.md # 33 haute couture templates & carousel (V4.2)
+│   │   └── ViviBon Cover 风格级联体系与具象化规范.md # 12 haute couture templates & carousel (V4.2)
 │   ├── prompts/                           # Prompt engineering & negative constraints
 │   │   └── vivibon_cover生图提示词_稳定模板版.md # 4 modular style blocks & extension blueprint
 │   └── ops/                               # Operations & historical audit logs

@@ -36,13 +36,13 @@ export const antiBotMiddleware = (): MiddlewareHandler<{
       return await next();
     }
 
-    // 1. Allow Admin / Test Bypass
-    const url = new URL(c.req.url);
-    if (
-      c.req.header('x-test-bypass') === '1' ||
-      url.searchParams.get('test_bypass') === '1' ||
-      url.searchParams.get('debug') === '1'
-    ) {
+    // 1. Allow Admin / Test Harness Bypass (Strictly require secret key, eliminate public query backdoors)
+    const isAdminBypass = Boolean(
+      c.env?.ADMIN_BYPASS_KEY && c.req.header('x-admin-bypass-key') === c.env.ADMIN_BYPASS_KEY
+    );
+    const isTestBypass = c.env?.ENVIRONMENT !== 'production' && c.req.header('x-test-bypass') === '1';
+
+    if (isAdminBypass || isTestBypass) {
       return await next();
     }
 

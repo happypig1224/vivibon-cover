@@ -2,10 +2,17 @@ export interface Env {
   RATE_LIMIT_KV: KVNamespace;
   FAL_KEY?: string;
   SILICONFLOW_KEY?: string;
+  WOKEY_API_KEY?: string;
+  GEMINI_API_KEY?: string;
+  ARK_API_KEY?: string;
+  VOLCENGINE_API_KEY?: string;
+  VOLCENGINE_MODEL_ID?: string;
+  VOLCENGINE_ENDPOINT?: string;
   WECHAT_WEBHOOK_URL?: string;
-  PRIMARY_AI_PROVIDER?: 'fal' | 'siliconflow';
+  PRIMARY_AI_PROVIDER?: 'volcengine' | 'wokey' | 'fal' | 'siliconflow' | 'gemini';
   ENVIRONMENT?: string;
   CORS_ORIGIN?: string;
+  ADMIN_BYPASS_KEY?: string;
 }
 
 // 4 Core Themes (V3.0) + 4 Legacy Keys for 100% backward compatibility

@@ -10,12 +10,26 @@ describe('AlertService & Enterprise WeChat Failure Classification', () => {
     expect(res.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
   });
 
-  it('should accurately classify timeout as TIMEOUT_EXCEEDED with no emojis', () => {
-    const res = classifyFailureReason('The operation was aborted (timeout 15000ms)');
-    expect(res.category).toBe('TIMEOUT_EXCEEDED');
-    expect(res.labelZh).toContain('超时');
-    expect(res.tag).toBe('[TIMEOUT_EXCEEDED]');
-    expect(res.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
+  it('should accurately classify timeout as TIMEOUT_EXCEEDED with dynamic duration and no emojis', () => {
+    // 1. Detected from message: 15000ms -> 15s
+    const res1 = classifyFailureReason('The operation was aborted (timeout 15000ms)');
+    expect(res1.category).toBe('TIMEOUT_EXCEEDED');
+    expect(res1.labelZh).toBe('网络请求超时 (15s 截断)');
+    expect(res1.description).toContain('超过 15 秒硬阈值');
+    expect(res1.tag).toBe('[TIMEOUT_EXCEEDED]');
+    expect(res1.tag).not.toMatch(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}]/u);
+
+    // 2. Explicitly passed timeoutMs: 60000 -> 60s
+    const res2 = classifyFailureReason('The operation was aborted', 60000);
+    expect(res2.category).toBe('TIMEOUT_EXCEEDED');
+    expect(res2.labelZh).toBe('网络请求超时 (60s 截断)');
+    expect(res2.description).toContain('超过 60 秒硬阈值');
+
+    // 3. Fallback without specific duration
+    const res3 = classifyFailureReason('The operation was aborted');
+    expect(res3.category).toBe('TIMEOUT_EXCEEDED');
+    expect(res3.labelZh).toBe('网络请求超时 (硬阈值熔断)');
+    expect(res3.description).toContain('超过系统设定的硬阈值');
   });
 
   it('should accurately classify 503 error as UPSTREAM_5XX with no emojis', () => {

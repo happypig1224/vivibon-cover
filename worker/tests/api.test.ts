@@ -146,9 +146,9 @@ describe('Hono API End-to-End Integration', () => {
 
     // Check that corporate has subcategories and items
     const corporateTheme = body.data.themes.find((t: any) => t.key === 'corporate');
-    expect(corporateTheme.subCategories.length).toBe(3);
-    const programmerItem = corporateTheme.subCategories[0].items.find((i: any) => i.id === 'programmer');
-    expect(programmerItem.nameZh).toBe('程序员与技术码农');
+    expect(corporateTheme.subCategories.length).toBe(1);
+    const coffeeItem = corporateTheme.subCategories[0].items.find((i: any) => i.id === 'coffee_pro');
+    expect(coffeeItem.nameZh).toBe('早八打工摸鱼狗');
   });
 
   it('POST /api/generate with cascading parameters (themeId, subId, itemId) should succeed and return Level 1 & 2 metadata', async () => {
@@ -163,8 +163,8 @@ describe('Hono API End-to-End Integration', () => {
         },
         body: JSON.stringify({
           styleKey: 'corporate',
-          subId: 'entry_level',
-          itemId: 'ceo_titan',
+          subId: 'featured',
+          itemId: 'coffee_pro',
           petName: 'Milo'
         })
       },
@@ -175,10 +175,10 @@ describe('Hono API End-to-End Integration', () => {
     const body = (await res.json()) as any;
     expect(body.success).toBe(true);
     expect(body.data.styleKey).toBe('corporate');
-    expect(body.data.capsuleVariant?.id).toBe('ceo_titan');
-    expect(body.data.capsuleVariant?.name).toBe('华尔街商业掌门人');
+    expect(body.data.capsuleVariant?.id).toBe('coffee_pro');
+    expect(body.data.capsuleVariant?.name).toBe('早八打工摸鱼狗');
     expect(body.data.level1Theme?.id).toBe('corporate');
-    expect(body.data.level2Item?.id).toBe('ceo_titan');
+    expect(body.data.level2Item?.id).toBe('coffee_pro');
     expect(body.data.skillDirective).toBeTruthy();
   });
 

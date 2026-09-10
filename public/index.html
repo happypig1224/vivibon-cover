@@ -200,6 +200,89 @@
       background: rgba(255, 255, 255, 0.9);
     }
 
+    /* Upload Placeholder (Clean Minimalist Luxury) */
+    .upload-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      text-align: center;
+      background: radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, #FAF5EF 60%, #F3E7DC 100%);
+      border: 1px solid rgba(225, 195, 172, 0.55);
+      border-radius: 28px;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-smooth);
+      user-select: none;
+      z-index: 2;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 8px 24px -6px rgba(180, 135, 105, 0.14);
+    }
+    .upload-placeholder:hover {
+      background: radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, #FFF8F2 50%, #F5E8DC 100%);
+      border-color: rgba(225, 180, 150, 0.85);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 12px 30px -4px rgba(215, 130, 90, 0.2);
+    }
+    .upload-placeholder:active {
+      transform: scale(0.988);
+    }
+    .upload-center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .upload-lens-portal {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FDF4EB 65%, #F0DCCE 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 24px -4px rgba(210, 130, 90, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #B8683B;
+      transition: transform 0.25s var(--spring-bouncy);
+    }
+    .upload-placeholder:hover .upload-lens-portal {
+      transform: scale(1.06);
+    }
+    .upload-placeholder-title {
+      font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 24px;
+      font-weight: 600;
+      color: #2C2018;
+      letter-spacing: -0.01em;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .upload-placeholder-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #FFE7D4 0%, #F5CBA5 100%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 20px -4px rgba(215, 125, 80, 0.26), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+      color: #422F22;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: all 0.2s var(--ease-smooth);
+    }
+    .upload-placeholder-pill svg {
+      stroke: #422F22;
+    }
+    .upload-placeholder:hover .upload-placeholder-pill {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -2px rgba(215, 125, 80, 0.36), inset 0 1px 2px rgba(255, 255, 255, 1);
+    }
+
     /* Category Pill Selector Bar (Soft Frosted Box, 4 Columns) */
     .category-pills-bar {
       margin-top: 14px;
@@ -389,7 +472,12 @@
       top: 0;
       left: 0;
       opacity: 0;
-      transition: opacity 0.12s ease-out;
+      will-change: opacity;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: opacity 0.08s cubic-bezier(0.2, 0, 0, 1);
       z-index: 10;
       pointer-events: none;
     }
@@ -464,14 +552,28 @@
       gap: 6px;
       cursor: pointer;
       user-select: none;
+      -webkit-user-select: none;
       z-index: 20;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      transition: all 0.18s var(--ease-smooth);
+      transition: transform 0.12s var(--ease-smooth), background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      touch-action: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+    /* Expanded hit area (Apple HIG 44px+ touch standard) */
+    .compare-pill::after {
+      content: "";
+      position: absolute;
+      top: -14px;
+      bottom: -14px;
+      left: -14px;
+      right: -14px;
     }
     .compare-pill:active {
       transform: scale(0.93);
-      background: rgba(220, 222, 226, 0.9);
+      background: rgba(220, 222, 226, 0.92);
     }
     .compare-pill.active {
       background: rgba(28, 28, 30, 0.88);
@@ -745,18 +847,28 @@
       align-items: center;
       gap: 6px;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 500;
-      color: #48484A;
-      background: rgba(118, 118, 128, 0.08);
-      border: 0.5px solid rgba(0, 0, 0, 0.06);
-      padding: 5px 14px;
+      color: #7B341E;
+      background: linear-gradient(135deg, #FFF1EC 0%, #FFE5DC 100%);
+      border: 0.5px solid rgba(232, 93, 63, 0.22);
+      padding: 6px 14px;
       border-radius: 9999px;
       letter-spacing: -0.1px;
+      animation: gentlePulse 2.2s ease-in-out infinite;
+    }
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 1; box-shadow: 0 4px 12px rgba(232, 93, 63, 0.18); }
     }
     .save-modal-badge-icon {
-      color: #0071E3;
+      color: #E85D3F;
       flex-shrink: 0;
+      animation: fingerBounce 1.4s ease-in-out infinite;
+    }
+    @keyframes fingerBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
     }
     .save-modal-img-wrap {
       width: 100%;
@@ -813,6 +925,114 @@
       color: #1D1D1F;
     }
 
+    /* Error / Service Busy Modal (Haute Couture Studio Fallback Prevention) */
+    .error-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(40, 26, 20, 0.52);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 520;
+      animation: appleModalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .error-modal-card {
+      background: rgba(255, 252, 250, 0.96);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-radius: 28px;
+      padding: 28px 22px 22px;
+      max-width: 356px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      box-shadow: 0 28px 64px -12px rgba(60, 48, 40, 0.32), 0 0 0 0.5px rgba(232, 93, 63, 0.15);
+      position: relative;
+    }
+    .error-modal-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFF0EB 0%, #FFE2D9 100%);
+      border: 1px solid rgba(232, 93, 63, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #E85D3F;
+      margin-bottom: 2px;
+      box-shadow: 0 8px 20px -4px rgba(232, 93, 63, 0.25);
+    }
+    .error-modal-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #2D231E;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+    .error-modal-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #706259;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      margin: 0;
+      padding: 0 4px;
+    }
+    .error-modal-tip {
+      font-size: 12px;
+      color: #9C8C81;
+      background: rgba(232, 93, 63, 0.06);
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 0.5px solid rgba(232, 93, 63, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .error-modal-actions {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .error-modal-btn {
+      flex: 1;
+      padding: 13px 16px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      letter-spacing: -0.2px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .error-modal-btn:active {
+      transform: scale(0.97);
+      opacity: 0.88;
+    }
+    .error-modal-btn.primary {
+      background: linear-gradient(180deg, var(--cta-start) 0%, var(--cta-end) 100%);
+      color: var(--cta-text);
+      box-shadow: 0 8px 20px -6px rgba(232, 93, 63, 0.3);
+    }
+    .error-modal-btn.secondary {
+      background: rgba(118, 118, 128, 0.1);
+      color: #483E38;
+    }
+
     #render-canvas { display: none; }
   </style>
 </head>
@@ -836,11 +1056,32 @@
     <div id="view-entry">
       
       <!-- Hero 3:4 Viewport -->
-      <div class="hero-box">
-        <img id="entry-preview" class="hero-img" src="models/milo_gentle.webp" alt="Pet Model Preview" />
+      <div class="hero-box" onclick="soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Tap to upload pet photo">
+        <img id="entry-preview" class="hero-img" style="display: none;" alt="Pet Preview" />
         
-        <!-- Floating Round Upload Button -->
-        <div class="upload-btn-floating" onclick="soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Upload Pet Photo">
+        <!-- Upload Placeholder (Minimalist Luxury Studio) -->
+        <div id="upload-placeholder" class="upload-placeholder">
+          <div class="upload-center-content">
+            <div class="upload-lens-portal">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+                <circle cx="12" cy="13" r="1.5" fill="currentColor"></circle>
+              </svg>
+            </div>
+            <div class="upload-placeholder-title">Place Your Pet on the Cover</div>
+            <div class="upload-placeholder-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Choose Pet Photo
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Round Upload Button (Shown after photo is uploaded to allow changing photo) -->
+        <div id="upload-btn-floating" class="upload-btn-floating" style="display: none;" onclick="event.stopPropagation(); soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Change Pet Photo">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="17 8 12 3 7 8"></polyline>
@@ -887,12 +1128,12 @@
         <div class="poster-overlay" id="poster-overlay" style="display: none;"></div>
 
         <!-- Floating Compare Pill matching Screenshot 2 -->
-        <div class="compare-pill" id="compare-btn">
+        <div class="compare-pill" id="compare-btn" role="button" aria-pressed="false" tabindex="0">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
-          Hold to compare
+          <span id="compare-label">Hold to compare</span>
         </div>
       </div>
 
@@ -954,6 +1195,12 @@
 
       <div class="save-modal-header">
         <div class="save-modal-title">1080P Vogue Portrait</div>
+        <div class="save-modal-badge" id="save-modal-badge">
+          <svg class="save-modal-badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5V11a1 1 0 0 0-2 0v5.5a1 1 0 0 0 2 0zm-1-8a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"></path>
+          </svg>
+          <span id="save-modal-tip-text">Press and hold image to save to Photos</span>
+        </div>
       </div>
 
       <div class="save-modal-img-wrap">
@@ -961,15 +1208,56 @@
       </div>
 
       <div class="save-modal-actions">
-        <button id="modal-share-btn" class="save-modal-btn secondary" style="display: none;" onclick="sharePosterNative()">
+        <button id="modal-download-btn" class="save-modal-btn primary" onclick="triggerMobileSave()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: -2px;">
-            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-            <polyline points="16 6 12 2 8 6"></polyline>
-            <line x1="12" y1="2" x2="12" y2="15"></line>
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Share
+          Save to Album
         </button>
-        <button class="save-modal-btn primary" onclick="closeSaveModal(event)">Done</button>
+        <button class="save-modal-btn secondary" onclick="closeSaveModal(event)">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Haute Couture Studio Service Busy / Error Dialog (Prevents default fallback replacement) -->
+  <div id="error-modal" class="error-modal-overlay" onclick="closeErrorModal(event)">
+    <div class="error-modal-card" onclick="event.stopPropagation()">
+      <button class="save-modal-close-btn error-modal-close-trigger" onclick="closeErrorModal(event)" aria-label="Close">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="error-modal-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+
+      <div class="error-modal-title" id="error-modal-title">Service Temporarily Busy</div>
+      <p class="error-modal-desc" id="error-modal-desc">
+        Our studio AI rendering servers are experiencing heavy queue volumes. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment.
+      </p>
+      <div class="error-modal-tip">
+        ✦ Tip: Your original uploaded photo is preserved
+      </div>
+
+      <div class="error-modal-actions">
+        <button class="error-modal-btn secondary error-modal-close-trigger" onclick="closeErrorModal(event)">
+          Keep Editing
+        </button>
+        <button class="error-modal-btn primary" onclick="retryGeneration()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          Try Again
+        </button>
       </div>
     </div>
   </div>
@@ -986,25 +1274,25 @@
         tag: "WORK & LIFE · 01",
         templates: [
           {
-            id: "chill_intern",
-            name: "Chill Intern",
-            img: "models/milo_gentle_prince_of_wales.webp",
-            title: "The Anti-Hustle Intern",
-            tag: "INTERN · 01"
+            id: "airline_captain",
+            name: "The Captain",
+            img: "models/airline_captain.webp",
+            title: "Elite Gold Aviator Uniform",
+            tag: "CAPTAIN · 01"
           },
           {
             id: "coffee_pro",
             name: "Caffeine Pro",
-            img: "models/milo_techwear_cobalt_cyber.webp",
-            title: "Daily Coffee Grind",
+            img: "models/caffeine_pro.webp",
+            title: "Coffee Lifeline & Desk",
             tag: "CAFFEINE · 02"
           },
           {
-            id: "ivy_prep",
-            name: "Ivy Scholar",
-            img: "models/milo_knitwear_oatmeal_cable.webp",
-            title: "Old Money Cable Knit",
-            tag: "PREPPY · 03"
+            id: "michelin_chef",
+            name: "Michelin Chef",
+            img: "models/michelin_chef.webp",
+            title: "Pet Chef Cooking Daily",
+            tag: "CHEF · 03"
           }
         ]
       },
@@ -1017,21 +1305,21 @@
           {
             id: "mona_lisa",
             name: "Mona Lisa",
-            img: "models/milo_gentle.webp",
+            img: "models/mona_lisa.webp",
             title: "Renaissance Masterpiece",
             tag: "FINE ART · 01"
           },
           {
             id: "pearl_earring",
             name: "Pearl Earring",
-            img: "models/milo_gentle_navy_velvet.webp",
+            img: "models/pearl_earring.webp",
             title: "Girl with a Pearl Earring",
             tag: "DUTCH GOLDEN · 02"
           },
           {
             id: "line_art",
             name: "Line Art",
-            img: "models/milo_street.webp",
+            img: "models/line_art.webp",
             title: "Minimalist Ink Sketch",
             tag: "LINE ART · 03"
           }
@@ -1044,25 +1332,25 @@
         tag: "LEGEND · 01",
         templates: [
           {
-            id: "royal_monarch",
-            name: "The Monarch",
-            img: "models/milo_gentle_navy_velvet.webp",
-            title: "Renaissance Royal Sovereign",
-            tag: "ROYALTY · 01"
+            id: "assumption_of_mary",
+            name: "The Assumption",
+            img: "models/assumption_of_mary.webp",
+            title: "Titian Baroque Masterpiece",
+            tag: "SACRED · 01"
           },
           {
-            id: "witch",
-            name: "The Witch",
-            img: "models/milo_techwear_arctic_yellow.webp",
-            title: "Midnight Magic & Stars",
-            tag: "SORCERY · 02"
+            id: "caribbean_pirate",
+            name: "Caribbean Pirate",
+            img: "models/caribbean_pirate.webp",
+            title: "Pirates of the Caribbean",
+            tag: "PIRATE · 02"
           },
           {
-            id: "cowboy",
-            name: "The Cowboy",
-            img: "models/milo_aviator_vintage_shearling.webp",
-            title: "Wild West & Coastal Cowgirl",
-            tag: "COWGIRL · 03"
+            id: "secret_agent",
+            name: "Secret Agent",
+            img: "models/secret_agent.webp",
+            title: "Pet Heist Secret Agent",
+            tag: "AGENT · 03"
           }
         ]
       },
@@ -1075,22 +1363,22 @@
           {
             id: "christmas",
             name: "Christmas Box",
-            img: "models/milo_warm.webp",
-            title: "Velvet Gift Box & Hearth",
+            img: "models/christmas.webp",
+            title: "British Velvet Gift Box",
             tag: "CHRISTMAS · 01"
           },
           {
             id: "halloween",
-            name: "Spooky Magic",
-            img: "models/milo_techwear_arctic_yellow.webp",
-            title: "Whimsical Pumpkin & Horns",
-            tag: "HALLOWEEN · 02"
+            name: "Pumpkin Carriage",
+            img: "models/halloween.webp",
+            title: "Magical Pumpkin Carriage",
+            tag: "PUMPKIN · 02"
           },
           {
             id: "birthday_vip",
             name: "Birthday Gala",
-            img: "models/milo_gentle.webp",
-            title: "VIP Cake & Pastel Crown",
+            img: "models/birthday_vip.webp",
+            title: "VIP Cake & Birthday Gala",
             tag: "BIRTHDAY · 03"
           }
         ]
@@ -1103,7 +1391,7 @@
     THEMES.drama = THEMES.cosplay;
 
     let activeThemeKey = "corporate";
-    let activeTemplateId = "chill_intern";
+    let activeTemplateId = "airline_captain";
     let userPhotoUrl = "models/milo_gentle.webp";
     let isUserUploaded = false;
     let defaultModelBase64 = null;
@@ -1457,7 +1745,7 @@
         return `
           <div class="template-card ${isActive ? 'active' : ''}" id="card-${tpl.id}" onclick="selectTemplate('${tpl.id}')">
             <div class="template-thumb-box">
-              <img class="template-thumb" src="${tpl.img}" alt="${tpl.name}" loading="lazy" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />
+              <img class="template-thumb" src="${tpl.img}" alt="${tpl.name}" decoding="async" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />
             </div>
             <div class="template-label">${tpl.name}</div>
           </div>
@@ -1467,16 +1755,39 @@
     }
 
     function selectTemplate(tplId) {
+      if (activeTemplateId === tplId) return;
       triggerHaptic(6);
       soundEngine.playDialClick();
+      
+      // Fast DOM active class toggle without destroying and reloading images!
+      const prevCard = document.getElementById(`card-${activeTemplateId}`);
+      if (prevCard) prevCard.classList.remove('active');
+      
       activeTemplateId = tplId;
-      renderTemplateCards();
-      trackEvent("template_selected", { theme: activeThemeKey, template: tplId });
-
       const targetCard = document.getElementById(`card-${tplId}`);
       if (targetCard) {
+        targetCard.classList.add('active');
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
+      trackEvent("template_selected", { theme: activeThemeKey, template: tplId });
+    }
+
+    function preloadAllTemplateThumbnails() {
+      const allUrls = [];
+      Object.values(THEMES).forEach(theme => {
+        if (theme.templates && Array.isArray(theme.templates)) {
+          theme.templates.forEach(t => {
+            if (t.img && !allUrls.includes(t.img)) allUrls.push(t.img);
+          });
+        }
+      });
+      allUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+        if (img.decode) {
+          img.decode().catch(() => {});
+        }
+      });
     }
 
     function updateScrollEdgeHint() {
@@ -1600,7 +1911,15 @@
         const result = await downsampleImageFile(file, 1500, 0.85);
         userPhotoUrl = result.dataUrl;
         isUserUploaded = true;
-        document.getElementById("entry-preview").src = userPhotoUrl;
+        const preview = document.getElementById("entry-preview");
+        if (preview) {
+          preview.src = userPhotoUrl;
+          preview.style.display = "block";
+        }
+        const placeholder = document.getElementById("upload-placeholder");
+        if (placeholder) placeholder.style.display = "none";
+        const floatBtn = document.getElementById("upload-btn-floating");
+        if (floatBtn) floatBtn.style.display = "flex";
         document.getElementById("res-original-img").src = userPhotoUrl;
         showToast("Photo uploaded successfully! ✦");
         triggerHaptic(10);
@@ -1617,7 +1936,15 @@
         reader.onload = (e) => {
           userPhotoUrl = e.target.result;
           isUserUploaded = true;
-          document.getElementById("entry-preview").src = userPhotoUrl;
+          const preview = document.getElementById("entry-preview");
+          if (preview) {
+            preview.src = userPhotoUrl;
+            preview.style.display = "block";
+          }
+          const placeholder = document.getElementById("upload-placeholder");
+          if (placeholder) placeholder.style.display = "none";
+          const floatBtn = document.getElementById("upload-btn-floating");
+          if (floatBtn) floatBtn.style.display = "flex";
           document.getElementById("res-original-img").src = userPhotoUrl;
           showToast("Photo uploaded successfully! ✦");
           triggerHaptic(10);
@@ -1639,6 +1966,15 @@
     }
 
     async function startGeneration() {
+      if (!isUserUploaded || !userPhotoUrl) {
+        triggerHaptic(15);
+        soundEngine.playDialClick();
+        showToast("Please upload your pet's photo first ✦");
+        const fileInput = document.getElementById("file-input");
+        if (fileInput) fileInput.click();
+        return;
+      }
+
       triggerHaptic(12);
       soundEngine.playShutterSnap();
       const theme = THEMES[activeThemeKey];
@@ -1681,15 +2017,21 @@
         stageTimers.push(tid);
       });
 
-      let finalPosterImg = tpl.img;
+      let finalPosterImg = null;
       let responseData = null;
+      let isSuccess = false;
+      let failureMsg = "";
 
-      let effectiveImageBase64 = userPhotoUrl;
-      if (!isUserUploaded || !effectiveImageBase64 || !effectiveImageBase64.startsWith('data:')) {
-        effectiveImageBase64 = await loadDefaultModelBase64();
-      }
+      const effectiveImageBase64 = userPhotoUrl;
 
       try {
+        const templateImagePath = tpl.img || tpl.sampleImageUrl;
+        const referenceImageUrl = templateImagePath
+          ? (templateImagePath.startsWith('http') && !templateImagePath.includes('localhost') && !templateImagePath.includes('127.0.0.1')
+              ? templateImagePath
+              : `https://vivibon-cover.pages.dev/${templateImagePath.replace(/^\/+/, '')}`)
+          : undefined;
+
         const payload = {
           styleKey: theme.backendTheme || "corporate",
           themeId: theme.backendTheme || "corporate",
@@ -1697,7 +2039,8 @@
           templateId: tpl.id,
           petName: "Milo",
           imageBase64: effectiveImageBase64 || undefined,
-          isDefaultSample: false
+          isDefaultSample: false,
+          referenceImageUrl: referenceImageUrl
         };
 
         const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';
@@ -1706,33 +2049,94 @@
           ? 'http://127.0.0.1:8787/api/generate'
           : (isPages ? 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/generate' : '/api/generate');
 
+        const reqTimestamp = Date.now().toString();
+        const reqNonce = (typeof crypto !== 'undefined' && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : (Math.random().toString(36).slice(2) + Date.now().toString(36));
+
+        const requestHeaders = {
+          'Content-Type': 'application/json',
+          'x-request-timestamp': reqTimestamp,
+          'x-request-nonce': reqNonce
+        };
+
         const apiPromise = fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: requestHeaders,
           body: JSON.stringify(payload)
         }).then(async (res) => {
           if (res.ok) {
             const json = await res.json();
             if (json.data && json.data.imageUrl) {
-              responseData = json.data;
-              finalPosterImg = json.data.imageUrl;
+              if (json.data.isFallback) {
+                // Upstream AI models degraded to fallback sample - strictly suppress sample to preserve user pet ID
+                console.warn('[AI Generation] Upstream models unavailable; fallback sample suppressed per UX directive.');
+                isSuccess = false;
+                failureMsg = "Our studio AI rendering servers are currently congested. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment.";
+              } else {
+                responseData = json.data;
+                finalPosterImg = json.data.imageUrl;
+                isSuccess = true;
+              }
+            } else {
+              isSuccess = false;
+              failureMsg = "Upstream model returned an incomplete response. Please try again.";
+            }
+          } else {
+            isSuccess = false;
+            console.warn('[API HTTP Error]:', res.status);
+            if (res.status === 429) {
+              try {
+                const errData = await res.json();
+                failureMsg = errData.message || "You have reached the temporary rate limit. Please try again in a few moments.";
+              } catch(_) {
+                failureMsg = "You have reached the temporary rate limit. Please try again in a few moments.";
+              }
+            } else {
+              failureMsg = "Our studio rendering cluster is temporarily congested. Please tap Try Again in a moment.";
             }
           }
         }).catch((err) => {
-          console.warn('[API Joint Debugging Warning]:', err);
+          isSuccess = false;
+          console.warn('[API Network Error]:', err);
+          failureMsg = "Network timeout or connection blip occurred. Please check your network and tap Try Again.";
         });
 
         await Promise.all([
           apiPromise,
-          preloadImage(finalPosterImg),
-          new Promise(r => setTimeout(r, 2600))
+          new Promise(r => setTimeout(r, 2200))
         ]);
+
+        if (isSuccess && finalPosterImg) {
+          await preloadImage(finalPosterImg);
+        }
       } catch(err) {
-        console.warn('Fallback to template preview:', err);
-        finalPosterImg = tpl.img;
-        await preloadImage(finalPosterImg);
+        console.warn('Generation workflow exception:', err);
+        isSuccess = false;
       } finally {
         stageTimers.forEach(clearTimeout);
+
+        if (!isSuccess || !finalPosterImg) {
+          // Failure flow: Hide loader, keep user on entry studio with photo intact, DO NOT switch to result screen!
+          loader.style.opacity = "0";
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 200);
+
+          trackEvent("generation_failed", {
+            theme: activeThemeKey,
+            template: tpl.id,
+            is_user_uploaded: isUserUploaded
+          });
+
+          openErrorModal(
+            "Service Temporarily Busy",
+            failureMsg || "Our studio AI rendering servers are experiencing heavy queue volumes. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment."
+          );
+          return;
+        }
+
+        // Success flow: Unveil high fashion result
         progressFill.style.width = "100%";
         percentageText.innerText = "100%";
         loaderText.innerText = "Darkroom print developed! Unveiling cover...";
@@ -1740,11 +2144,15 @@
         triggerHaptic(15);
 
         document.getElementById("res-display-img").src = finalPosterImg;
-        document.getElementById("res-original-img").src = isUserUploaded ? userPhotoUrl : (defaultModelBase64 || 'models/milo_gentle.jpg');
+        document.getElementById("res-original-img").src = userPhotoUrl;
         const magTagEl = document.getElementById("mag-tag");
         if (magTagEl) magTagEl.innerText = tpl.tag;
         const magTitleEl = document.getElementById("mag-title");
         if (magTitleEl) magTitleEl.innerText = `Milo · ${tpl.title}`;
+
+        if (typeof window.resetCompareState === 'function') {
+          window.resetCompareState();
+        }
 
         setTimeout(() => {
           document.getElementById("view-entry").style.display = "none";
@@ -1776,6 +2184,7 @@
 
     function initCompareEvents() {
       const btn = document.getElementById("compare-btn");
+      const label = document.getElementById("compare-label");
       const originalLayer = document.getElementById("res-original-img");
       if (!btn || !originalLayer) return;
 
@@ -1783,88 +2192,118 @@
       let isToggled = false;
       let pressStartTime = 0;
 
-      function updateCompareUI(visible) {
+      function setCompareState(visible) {
         if (visible) {
           originalLayer.style.opacity = "1";
           btn.classList.add("active");
-          btn.innerHTML = `
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            Original
-          `;
+          btn.setAttribute("aria-pressed", "true");
+          if (label) label.textContent = "Original";
         } else {
           originalLayer.style.opacity = "0";
           btn.classList.remove("active");
-          btn.innerHTML = `
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            Hold to compare
-          `;
+          btn.setAttribute("aria-pressed", "false");
+          if (label) label.textContent = "Hold to compare";
         }
       }
 
       window.resetCompareState = function() {
         isHolding = false;
         isToggled = false;
-        updateCompareUI(false);
+        setCompareState(false);
       };
 
-      const onPointerDown = (e) => {
+      const handlePointerDown = (e) => {
         if (e) {
           e.stopPropagation();
-          if (e.cancelable && e.type === "touchstart") e.preventDefault();
+          if (e.cancelable) e.preventDefault();
+          if (btn.setPointerCapture && e.pointerId !== undefined) {
+            try { btn.setPointerCapture(e.pointerId); } catch(_) {}
+          }
         }
-        pressStartTime = Date.now();
+        pressStartTime = performance.now();
         isHolding = true;
         triggerHaptic(6);
         soundEngine.playDialClick();
 
-        if (!isToggled) {
-          updateCompareUI(true);
+        if (isToggled) {
+          // If already in toggled Original state, tapping prepares to switch back to AI cover
+          setCompareState(false);
+        } else {
+          // Instant 0ms GPU reveal of original photo
+          setCompareState(true);
           trackEvent("compare_shown", { template: activeTemplateId, mode: "hold" });
         }
       };
 
-      const onPointerUp = (e) => {
+      const handlePointerUp = (e) => {
         if (!isHolding) return;
         isHolding = false;
-        const duration = Date.now() - pressStartTime;
-        triggerHaptic(6);
-        soundEngine.playDialClick();
+        if (btn.releasePointerCapture && e && e.pointerId !== undefined) {
+          try { btn.releasePointerCapture(e.pointerId); } catch(_) {}
+        }
 
-        if (duration < 250) {
-          // Quick Tap / Click: toggle view
+        const duration = performance.now() - pressStartTime;
+        triggerHaptic(6);
+
+        if (duration < 280) {
+          // Quick Tap (<280ms): Toggle view state
           isToggled = !isToggled;
-          updateCompareUI(isToggled);
+          setCompareState(isToggled);
           trackEvent("compare_shown", { template: activeTemplateId, mode: isToggled ? "toggle_on" : "toggle_off" });
         } else {
-          // Long Press / Hold: release back to generated poster
+          // Long Press Hold (>=280ms): Releasing always returns to AI cover
           isToggled = false;
-          updateCompareUI(false);
+          setCompareState(false);
         }
       };
 
-      btn.addEventListener("touchstart", onPointerDown, { passive: false });
-      btn.addEventListener("mousedown", onPointerDown);
-
-      window.addEventListener("touchend", onPointerUp, { passive: true });
-      window.addEventListener("touchcancel", () => {
+      const handlePointerCancel = (e) => {
         if (isHolding) {
           isHolding = false;
           isToggled = false;
-          updateCompareUI(false);
+          setCompareState(false);
         }
-      }, { passive: true });
-      window.addEventListener("mouseup", onPointerUp, { passive: true });
+        if (btn.releasePointerCapture && e && e.pointerId !== undefined) {
+          try { btn.releasePointerCapture(e.pointerId); } catch(_) {}
+        }
+      };
+
+      // Modern Unified Pointer Events (Zero-latency, immune to mobile ghost click race conditions)
+      btn.addEventListener("pointerdown", handlePointerDown);
+      btn.addEventListener("pointerup", handlePointerUp);
+      btn.addEventListener("pointercancel", handlePointerCancel);
+      window.addEventListener("pointerup", handlePointerUp);
+      window.addEventListener("pointercancel", handlePointerCancel);
+
+      // Keyboard accessibility
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          isToggled = !isToggled;
+          setCompareState(isToggled);
+          triggerHaptic(6);
+          soundEngine.playDialClick();
+        }
+      });
+
+      // Tap on poster stage to dismiss toggle mode
+      const posterStage = btn.closest(".poster-stage");
+      if (posterStage) {
+        posterStage.addEventListener("click", (e) => {
+          if (e.target === btn || btn.contains(e.target)) return;
+          if (isToggled) {
+            isToggled = false;
+            setCompareState(false);
+            triggerHaptic(6);
+            soundEngine.playDialClick();
+          }
+        });
+      }
+
+      // Window blur safety
       window.addEventListener("blur", () => {
-        if (isHolding) {
-          isHolding = false;
-          isToggled = false;
-          updateCompareUI(false);
+        if (isHolding || isToggled) {
+          window.resetCompareState();
         }
       });
     }
@@ -1917,12 +2356,12 @@
             const modalImg = document.getElementById("save-modal-img");
             modalImg.src = dataUrl;
 
-            // Check if Web Share API with files is supported
-            const shareBtn = document.getElementById("modal-share-btn");
-            if (navigator.share) {
-              shareBtn.style.display = "block";
+            // Adaptive Tip Text for Specific Environments
+            const tipText = document.getElementById("save-modal-tip-text");
+            if (isWeChatOrInApp) {
+              tipText.innerText = "Press and hold image to save to Photos / Send to Chat";
             } else {
-              shareBtn.style.display = "none";
+              tipText.innerText = "Press and hold image to save to Photos";
             }
 
             document.getElementById("save-modal").style.display = "flex";
@@ -1949,30 +2388,72 @@
 
     let currentPosterDataUrl = null;
 
-    async function sharePosterNative() {
-      if (!currentPosterDataUrl || !navigator.share) return;
+    /**
+     * Universal Mobile Save Handler (Covering Safari, Chrome, WeChat, QQ, TikTok, etc.)
+     * 1. Attempts Native Web Share API (File direct to iOS/Android system Photos sheet)
+     * 2. Attempts Blob <a download> click for mobile browsers supporting anchor downloads
+     * 3. Fallbacks to clear animated guidance for long-press-to-save in in-app webviews (WeChat)
+     */
+    async function triggerMobileSave() {
+      if (!currentPosterDataUrl) return;
+      triggerHaptic(8);
+      soundEngine.playDialClick();
+
+      const isWeChatOrInApp = /MicroMessenger|WeChat|Weibo|Instagram|TikTok/i.test(navigator.userAgent);
+
+      // In WeChat / In-App Webview: directly highlight the long-press action since Web Share & anchor downloads are sandbox-blocked
+      if (isWeChatOrInApp) {
+        showToast("👆 Press & hold image above to save to album");
+        const badge = document.getElementById("save-modal-badge");
+        if (badge) {
+          badge.style.transform = "scale(1.08)";
+          badge.style.boxShadow = "0 0 0 3px rgba(232, 93, 63, 0.35)";
+          setTimeout(() => {
+            badge.style.transform = "";
+            badge.style.boxShadow = "";
+          }, 1200);
+        }
+        return;
+      }
+
+      // Step 1: Try Native Web Share API (iOS Safari & Android Chrome direct save to camera roll)
+      if (navigator.share && navigator.canShare) {
+        try {
+          const response = await fetch(currentPosterDataUrl);
+          const blob = await response.blob();
+          const file = new File([blob], `ViviBon-Cover-${Date.now()}.png`, { type: 'image/png' });
+          if (navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              title: 'ViviBon Cover',
+              files: [file]
+            });
+            trackEvent("poster_shared_native_photos");
+            return;
+          }
+        } catch (err) {
+          if (err.name === 'AbortError') return; // User closed sheet
+          console.warn("Web Share files failed, attempting fallback download:", err);
+        }
+      }
+
+      // Step 2: Try Direct Blob Download for mobile browsers allowing download attribute
       try {
         const response = await fetch(currentPosterDataUrl);
         const blob = await response.blob();
-        const file = new File([blob], `ViviBon-Cover-${Date.now()}.png`, { type: 'image/png' });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            title: 'ViviBon Cover',
-            text: 'Look at my pet on the cover of Vogue! ✦',
-            files: [file]
-          });
-          trackEvent("poster_shared_native");
-        } else {
-          await navigator.share({
-            title: 'ViviBon Cover',
-            text: 'Look at my pet on the cover of Vogue! ✦',
-            url: window.location.href
-          });
-        }
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.warn("Web Share failed:", err);
-        }
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = blobUrl;
+        a.download = `ViviBon-Cover-${Date.now()}.png`;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+        }, 300);
+        showToast("Saved to Photos / Downloads! ✦");
+      } catch (e) {
+        showToast("👆 Press & hold image to save to album");
       }
     }
 
@@ -1982,10 +2463,33 @@
       document.getElementById("save-modal").style.display = "none";
     }
 
+    function openErrorModal(title, message) {
+      triggerHaptic(15);
+      const modal = document.getElementById("error-modal");
+      if (!modal) return;
+      if (title) document.getElementById("error-modal-title").innerText = title;
+      if (message) document.getElementById("error-modal-desc").innerText = message;
+      modal.style.display = "flex";
+    }
+
+    function closeErrorModal(e) {
+      if (e) e.stopPropagation();
+      triggerHaptic(6);
+      soundEngine.playDialClick();
+      const modal = document.getElementById("error-modal");
+      if (modal) modal.style.display = "none";
+    }
+
+    function retryGeneration() {
+      const modal = document.getElementById("error-modal");
+      if (modal) modal.style.display = "none";
+      startGeneration();
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      loadDefaultModelBase64();
       renderCategoryPills();
       renderTemplateCards();
+      preloadAllTemplateThumbnails();
       initDragScroll();
       initCompareEvents();
     });

@@ -11,13 +11,13 @@ import {
 
 
 export const IDENTITY_ANCHOR =
-  'Dress the EXACT SAME dog from the input image from the neck and shoulders down. Strictly preserve the original pet\'s facial structure, eyes, snout geometry, ear shape and position, native fur coloration, distinctive markings, body proportions and age 100% unchanged. Maintain authentic animal anatomy: exactly one head, two eyes, two ears, one nose, and natural furry legs and paws matching the species. Strictly NO human arms, hands, fingers, skin, human neck or human body. Unmasked face, head and eyes fully visible and natural, non-distorted.';
+  'Dress the EXACT SAME pet from the input image from the neck and shoulders down. Strictly preserve the original pet\'s facial structure, eyes, snout geometry, ear shape and position, native fur coloration, distinctive markings, body proportions and age 100% unchanged. Strict quadruped anatomical law: The subject is a 100% pure animal pet. All visible front limbs must terminate solely in authentic, fluffy animal paws with species-correct fur and soft paw pads. Strictly and absolutely NO human arms, NO human hands, NO human fingers, NO human thumbs, NO opposable thumbs, NO fingernails, NO human skin or flesh, NO human wrists, NO human joints, NO hybrid chimera anatomy. Both animal paws must rest naturally and flat on surfaces. Absolutely NO person or human body parts in frame, NO hands holding cameras, NO hands holding phones, NO hands holding cups, NO selfie sticks. Unmasked face, head and eyes fully visible and natural, non-distorted.';
 
 export const STUDIO_FINISH =
-  'High-end commercial luxury pet portrait photography, 85mm portrait lens, rich vibrant natural color grading, high dynamic range, glossy fur highlights, deep warm studio lighting, delicate studio rim light accentuating authentic fur texture, sharp focus on pet eyes, clean solid seamless studio backdrop, ample negative space at top for magazine typography, hyperdetailed, 8k resolution, no text, no logo, award-winning studio portrait.';
+  'Hyperdetailed, 8k resolution, cinematic lighting, sharp focus on pet eyes, rich vibrant natural color grading, high dynamic range, glossy fur highlights, deep warm studio lighting, masterpiece quality, no text, no logo, award-winning composition.';
 
 export const NEGATIVE_PROMPT =
-  'second pet, other animals, duplicate subject, breed change, facial change, fur color change, marking change, eye asymmetry, strabismus, human body, human arms, human hands, human fingers, human skin, human neck, hybrid human-animal, clothes clipping, accessories clipping, distorted anatomy, warped snout, deformed eyes, extra legs, missing legs, extra paws, fused limbs, severed limbs, blurry, low quality, noisy, jpeg artifacts, text, typography, letters, watermark, signature, logo, brand name, cartoon, 3D render, CGI doll, monochrome, black and white, grayscale, desaturated, dull colors, washed out, low contrast, hazy, dim, underexposed, dark muddy shadows, plastic texture, human cleavage, bare skin, naked, nude, bikini, erotic, suggestive, extra fingers, deformed paws.';
+  'human hand, human hands, human fingers, human thumb, human palm, fingernails, human wrist, human skin, human arms, human body, person holding camera, person holding phone, human hand holding phone, taking selfie, smartphone in hand, hand reaching into frame, selfie stick, person in photo, human taking picture, chimera, hybrid human-animal, anthropomorphic hands, furry hands, human hands on pet, human arms on pet, bare skin, fleshy fingers, knuckles, second pet, other animals, duplicate subject, breed change, facial change, fur color change, marking change, eye asymmetry, strabismus, clothes clipping, accessories clipping, distorted anatomy, warped snout, deformed eyes, extra legs, missing legs, extra paws, fused limbs, severed limbs, blurry, low quality, noisy, jpeg artifacts, text, typography, letters, watermark, signature, logo, brand name, cartoon, 3D render, CGI doll, monochrome, black and white, grayscale, desaturated, dull colors, washed out, low contrast, hazy, dim, underexposed, dark muddy shadows, plastic texture, human cleavage, bare skin, naked, nude, bikini, erotic, suggestive, extra fingers, deformed paws.';
 
 /**
  * Robust sanitization for pet name on Canvas typography (NC-6 & NC-11)
@@ -65,7 +65,7 @@ function makeItem(
     nameEn,
     badge,
     wardrobePrompt,
-    fullPrompt: `${IDENTITY_ANCHOR} ${wardrobePrompt} ${STUDIO_FINISH}`,
+    fullPrompt: `${wardrobePrompt} ${IDENTITY_ANCHOR} ${STUDIO_FINISH}`,
     sampleImageUrl,
     exclusiveNegativePrompt
   };
@@ -74,14 +74,14 @@ function makeItem(
 // ----------------------------------------------------------------------
 // 1. FINE_ART (艺术流派)
 // ----------------------------------------------------------------------
-export const FINE_ART_CLASSICAL: CascadingItem[] = [
+export const FINE_ART_TEMPLATES: CascadingItem[] = [
   makeItem(
     'mona_lisa',
     '复刻《蒙娜丽莎》古典油画',
     'The Mona Lisa Smile',
     '文艺复兴',
-    'Mona Lisa Renaissance fine art portrait. Dressed in Mona Lisa vintage dark long pleated robe, collar resting outside chest fur without exposing human skin or neck, natural dark vintage wig contouring head with both animal ears emerging naturally through openings. Front paws naturally crossed and resting together on chest in faithful reference to the original painting while strictly respecting natural canine and feline anatomy and joint mobility, claw tips visible, no human arms or fingers. Sfumato chiaroscuro lighting, earthy amber and dark golden museum oil canvas texture, tranquil classical expression.',
-    'models/milo_gentle.webp',
+    "A masterwork classical Renaissance oil painting in the style of Leonardo da Vinci's Mona Lisa, starring the specific pet from Photo 1. Meticulously preserve the pet's exact facial structure, eye shape, pupil color, whisker placement, and native fur coloration and markings. The pet has soft dark waves of fur framing its face like the iconic Mona Lisa silhouette. Sitting in a classic 3/4 turn pose, gazing serenely forward with a subtle enigmatic smile. Dressed in the authentic dark olive-green pleated Renaissance velvet gown with gold embroidery. Both front legs end in natural furry paws folded gracefully in its lap. Sfumato soft chiaroscuro lighting, warm golden-brown undertones, misty river and mountain landscape in background, realistic antique oil painting canvas craquelure texture.",
+    'models/mona_lisa.png',
     'human ears, ears hidden inside wig, wig covering eyes, wig covering snout, front legs stretched into human arms, human fingers, human hands, human neck, human skin exposed, fused paws, long robe penetrating body'
   ),
   makeItem(
@@ -89,439 +89,117 @@ export const FINE_ART_CLASSICAL: CascadingItem[] = [
     '《戴珍珠耳环的少女》古典肖像',
     'Girl with a Pearl Earring',
     '荷兰黄金时代',
-    'Girl with a Pearl Earring fine art portrait. Pure black deep background, the pet body slightly turned in 3/4 pose with head looking back toward camera. Adorned in iconic royal ultramarine blue and ochre gold draped silk turban wrapped around head without flattening skull, native ears neatly enclosed beneath fabric, single large glowing baroque teardrop pearl pendant fastened at the lower edge of turban fabric without penetrating ear cartilage or skin. Warm ochre jacket with white collar fabric draped outside chest, soft chiaroscuro side window lighting illuminating eyes and snout.',
-    'models/milo_gentle_navy_velvet.webp',
-    'visible pet ears, human ears, two or more pearls, pearl penetrating skin, pearl penetrating turban, turban flattening skull, turban covering eyes, distorted neck, human neck, human collarbone, exposed human skin'
+    "A classical 17th-century Dutch Golden Age master oil painting in the exact iconic composition and posture of Johannes Vermeer's Girl with a Pearl Earring, featuring the specific pet from Photo 1. Meticulously preserve the pet's authentic facial identity, fur pattern, snout geometry, and luminous eye color. The pet's body is positioned in a strict side profile facing away to the right, turning its head back over its left shoulder to look directly at the viewer with an enigmatic gaze, exactly matching the 3/4 Vermeer pose. Wearing an iconic ultramarine blue and gold silk turban wrapped gracefully around its head, with a single large luminous teardrop pearl earring catchlight beside its left ear. Dressed in a muted golden-ochre Dutch wool coat with long full sleeves that completely cover its body and shoulders down to the chest, with a crisp, closed high white inner collar cleanly wrapping the neck. Absolutely NO exposed paws, NO bare arms, NO open chest, NO V-neck. Deep dramatic chiaroscuro with a pure dark void background, delicate directional raking light sculpting the side of the face and glistening on the pearl, rich craquelure oil painting glaze texture.",
+    'models/pearl_earring.png',
+    'visible pet ears, human ears, two or more pearls, pearl penetrating skin, pearl penetrating turban, turban flattening skull, turban covering eyes, distorted neck, human neck, human collarbone, exposed human skin, bare arms, bare paws, exposed paws, uncovered paws, bare fur on torso, open chest, deep V-neck, frontal pose, facing front, symmetrical shoulders, casual clothes'
   ),
   makeItem(
     'line_art',
-    '极简黑白线条绘画手稿',
-    'The Minimalist Line Art',
-    '极简黑白',
-    'Minimalist black and white rough crayon, charcoal pencil, and dry-brush hand-drawn illustration poster on warm off-white cream paper. Not realistic sketch, non-photorealistic artistic hand drawing. Only using black textured lines and raw paper background, no other colors, no gray gradients. Rough textured brushstrokes, deliberate white spaces, visible paper fiber texture, charming vintage children picture book combined with high-fashion independent magazine editorial aesthetic. Pet subject occupying top 65% to 75% of canvas with pristine ample negative space below.',
-    'models/milo_street.webp',
+    '大师级手绘速写研究本',
+    "Master's Sketchbook Study",
+    '手绘速写',
+    "A masterclass sketchbook study page titled 'Study of My Pet', featuring the exact pet from Photo 1. Meticulously preserve the pet's distinct facial anatomy, fur markings, and gaze. The page displays 4 to 5 detailed sketches of the pet's head from varying angles (frontal, 3/4 profile, slight tilt) arranged dynamically across the aged ivory drawing paper. Rendered in delicate graphite pencil cross-hatching combined with soft warm watercolor washes. Scattered with faint vintage cursive architectural studio notes and anatomical sketches in the margins. Authentic artist sketchbook paper grain, expressive unfinished edge strokes, high-end fine art drawing aesthetic.",
+    'models/line_art.png',
     'realistic pencil sketch, colorful, gray gradient, smooth vector lines, 3D render, solid black fill, busy background, cropped subject, typography covering subject, long text, gibberish letters, misspelled words, over-stylized unrecognizable cartoon'
-  ),
-  makeItem(
-    'rembrandt',
-    '伦勃朗《夜巡与自画像》',
-    'Rembrandt Chiaroscuro Masterpiece',
-    '明暗对照法',
-    'Rembrandt style historic oil painting, pet wearing an elaborate layered pleated white linen Elizabethan ruff collar and dark heavy velvet tunic, authentic Rembrandt triangle lighting on face, rich impasto oil paint texture with subtle craquelure, dramatic dark museum depth.'
-  ),
-  makeItem(
-    'las_meninas',
-    '委拉斯凯兹《宫娥》',
-    'Las Meninas by Diego Velazquez',
-    '西班牙宫廷',
-    'Velazquez Spanish royal court style, the pet wearing an ornate silver-grey damask silk dress bodice with crimson satin ribbon rosettes and pearl buttons, majestic Prado museum lighting, stately baroque composition.'
-  )
-];
-
-export const FINE_ART_IMPRESSIONIST: CascadingItem[] = [
-  makeItem(
-    'starry_night',
-    '梵高《星月夜与向日葵》',
-    'Van Gogh: Starry Night & Sunflowers',
-    '后印象派',
-    'Vincent van Gogh aesthetic, pet wearing a midnight cobalt blue heavy wool jacket with a vibrant chrome-yellow sunflower silk ascot tie, iconic swirling dynamic Starry Night brushstrokes in the background, thick impasto oil paint texture, intense emotional post-impressionist color palette.'
-  ),
-  makeItem(
-    'water_lilies',
-    '莫奈《睡莲与日本桥》',
-    'Monet: Water Lilies & Giverny',
-    '莫奈花园',
-    'Claude Monet plein-air impressionism, pet wearing a delicate pastel sage-green and soft petal-pink raw linen shirt, tiny water lily blossom on lapel, luminous dappled sunlight reflections, soft-focus Giverny pond bokeh, dreamy aesthetic.'
-  ),
-  makeItem(
-    'the_kiss',
-    '克里姆特《吻》黄金华服',
-    'Gustav Klimt: The Golden Kiss',
-    '维也纳分离派',
-    'Gustav Klimt golden phase masterpiece, pet adorned in an opulent gilded mantle covered with geometric mosaic patterns, gold leaf flakes, spiraling decorative Art Nouveau patterns, shimmering luxurious gold texture.'
-  ),
-  makeItem(
-    'the_scream',
-    '蒙克《呐喊》表现主义风暴',
-    'Edvard Munch: The Scream',
-    '表现主义',
-    'Edvard Munch expressionist painting style, pet wearing a flowing dark crimson and navy trench collar, dramatic fiery blood-orange undulating sunset sky backdrop, intense emotional brushwork, iconic Nordic art atmosphere.'
-  )
-];
-
-export const FINE_ART_POP: CascadingItem[] = [
-  makeItem(
-    'warhol',
-    '安迪·沃霍尔《玛丽莲双联画》',
-    'Andy Warhol: Pop Screenprint',
-    '波普丝网印',
-    'Andy Warhol 1960s pop art style, pet wearing an electric neon yellow pop-art vest with bold black industrial zipper, vivid four-panel silkscreen color-block background in hot pink and turquoise, iconic retro modern vibe.'
-  ),
-  makeItem(
-    'picasso',
-    '毕加索《亚威农少女》',
-    'Picasso: Cubist Geometry',
-    '立体几何',
-    'Pablo Picasso analytic cubism, pet dressed in an avant-garde deconstructed jacket with fragmented geometric angular color blocks in terracotta, slate grey and ochre, sharp cubist facet shading, modern museum art.'
-  ),
-  makeItem(
-    'keith_haring',
-    '凯斯·哈林发光波普涂鸦',
-    'Keith Haring Radiant Pop',
-    '街头艺术',
-    'Keith Haring 1980s street art inspired style, pet wearing a crisp white athletic collar covered in bold black graphic dancing dog doodles and radiant heart motifs, clean vibrant primary colors, urban pop art energy.'
-  ),
-  makeItem(
-    'atelier_sketch',
-    '时装周黑白炭笔极简速写手稿',
-    'Paris Atelier Fashion Sketch',
-    '高定手稿',
-    'Haute couture fashion designer sketch portrait, pet wearing a tailored charcoal wool coat combined with visible hand-drawn charcoal pencil sketch lines and tailor chalk markings, minimalist chic, Vogue runway concept aesthetic.'
   )
 ];
 
 // ----------------------------------------------------------------------
 // 2. CORPORATE (职场打工与真实生活切面)
 // ----------------------------------------------------------------------
-export const CORPORATE_CORE_TRIO: CascadingItem[] = [
-  makeItem(
-    'chill_intern',
-    '反内卷摸鱼实习生',
-    'The Chill Intern',
-    '反内卷',
-    'The chill anti-hustle corporate intern pet portrait. Pet naturally seated with an adorable relaxed, unbothered expression, looking directly at camera. Wearing an oversized comfortable heather-grey soft fleece crewneck sweatshirt, draped with a vibrant blue fabric company lanyard around the neck displaying a prominent miniature plastic ID badge clearly labeled "INTERN". Front furry paws resting casually on clean minimalist desk surface. Gentle bright modern open-plan office background with soft bokeh, authentic pet anatomy, strictly NO human arms or hands.',
-    'models/milo_gentle_prince_of_wales.webp',
-    'stressed expression, angry boss, corporate business suit, human arms, human fingers, human hands, tight collar choking pet, badge covering face, badge piercing skin, dark gloomy lighting, messy trash'
-  ),
+export const CORPORATE_TEMPLATES: CascadingItem[] = [
   makeItem(
     'coffee_pro',
-    '咖啡续命打工狗',
-    'The Caffeinated Pro',
-    '咖啡续命',
-    'The coffee-fueled 9-to-5 corporate professional pet portrait. Wearing a crisp sky-blue and white micro-striped casual button-down work shirt with a slightly loosened top collar, tailored navy work jacket shoulders. Seated politely with one furry paw resting naturally next to an authentic artisan takeaway coffee cup with a kraft cardboard heat sleeve and white lid. Soft morning 5600K office studio lighting, subtle corporate glass architecture bokeh in background, humorous relatable hardworking pet aesthetic, strictly authentic pet anatomy.',
-    'models/milo_techwear_cobalt_cyber.webp',
-    'coffee spilled on fur, pet drinking hot coffee, burned fur, open flames, plastic trash, human hands holding cup, human arms, dislocated paws, formal tuxedo, evening gown'
+    '早八打工摸鱼狗',
+    'Daily Life of a 9-to-5 Working Pet',
+    '打工日常',
+    "A humorous, hyperrealistic workplace documentary portrait of the specific pet from Photo 1, themed Daily Life of a 9-to-5 Working Pet. Shot from a third-person perspective with an 85mm portrait lens, eye-level with the pet at its office workstation. The pet sits comfortably upright on an office chair. Both of its natural furry animal paws with soft pink pads are resting flat on the clean white desk surface in front of a keyboard. On the desk directly in front of the pet sits a clear plastic takeaway cup filled with iced Americano coffee and ice cubes, with a white drinking straw near the pet's muzzle. The pet wears a snug, dark chocolate brown ribbed knit turtleneck sweater with clean cuffs around its furry ankles. Around its neck hangs a realistic acrylic corporate employee badge on a blue lanyard with legible text 'Professional Slacker'. In the background, an authentic modern open-plan office with soft out-of-focus computer screens, colorful sticky notes, and warm indoor office lighting. Pure animal anatomy, natural glossy fur, expressive comedic tired expression. Absolutely no human hands or smartphones in frame.",
+    'models/caffeine_pro.png',
+    'smartphone, mobile phone, cell phone, holding phone, phone held by hand, taking selfie, selfie pose, arm reaching toward camera, human hand, human fingers, human thumb, opposable thumb, human palm, fingernails, human wrist, human arm, human skin, chimera, half-human, hybrid hands, hands holding cup, coffee spilled on fur, pet drinking hot coffee, dislocated paws'
   ),
   makeItem(
-    'ivy_prep',
-    '常青藤老钱学者',
-    'The Ivy League Scholar',
-    '老钱学院',
-    'Ivy League scholar pet, wearing an oversized Ralph Lauren style cream cable-knit V-neck tennis sweater with a neat light-blue Oxford collared shirt underneath, cozy vintage mahogany university library background with warm brass lamp glow, preppy old-money aesthetic.',
-    'models/milo_knitwear_oatmeal_cable.webp',
-    'human hands holding books, book glued to fur, deformed sweater collar, loose threads, synthetic polyester sheen, modern neon'
-  )
-];
-
-export const CORPORATE_ENTRY: CascadingItem[] = [
-  ...CORPORATE_CORE_TRIO,
-  makeItem(
-    'ceo_titan',
-    '华尔街商业掌门人',
-    'The Wall Street CEO',
-    '权力西装',
-    'Wall Street investment titan pet portrait, wearing a bespoke charcoal pinstripe double-breasted suit with broad peak lapels, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, corner office with panoramic Manhattan skyline sunset bokeh, power-broker luxury.'
-  ),
-  makeItem(
-    'tech_visionary',
-    '硅谷科技领袖',
-    'The Silicon Valley Visionary',
-    '极客领袖',
-    'Silicon Valley tech visionary pet leader, wearing a minimalist black fine-gauge cashmere turtleneck sweater, designer tortoiseshell wire-rim round glasses, modern sunlit Scandinavian loft studio background, sleek espresso, visionary leadership aesthetic.'
-  ),
-  makeItem(
-    'programmer',
-    '程序员与技术码农',
-    'Software Engineer & Developer',
-    '码农工位风',
-    'Tech company software engineer dog portrait, wearing a worn heather-grey hoodie under a navy fleece vest, professional over-ear studio headphones resting around neck, glowing dual monitor glow in background, relatable programmer aesthetic.'
-  ),
-  makeItem(
-    'customer_support',
-    '新媒体运营与客服',
-    'Social Media & Customer Support',
-    '周一早八风',
-    'Social media specialist pet, wearing a light-blue casual Oxford button-up shirt with an open collar, company lanyard and photo ID badge hanging around neck, exhausted Monday morning office lighting, subtle iced coffee cup on desk edge.'
-  ),
-  makeItem(
-    'night_shift',
-    '熬夜审核打工人',
-    'Night Shift Operations Specialist',
-    '冷白加班灯',
-    'Late night shift operations specialist, wearing a loose navy blue nylon windbreaker, neon yellow highlighter in chest pocket, cool 5600K fluorescent office lamp light, humorous overworked corporate irony.'
-  ),
-  makeItem(
-    'intern',
-    '摸鱼实习生',
-    'Quiet Quitting Intern',
-    '大学牲摸鱼',
-    'Quiet quitting college intern pet, wearing an oversized cream cable-knit V-neck tennis sweater with a neat white collared shirt underneath, heavy canvas tote bag strap across chest, fresh youthful collegiate vibe.'
-  )
-];
-
-export const CORPORATE_MANAGEMENT: CascadingItem[] = [
-  makeItem(
-    'scrum_master',
-    '敏捷项目经理',
-    'Agile Scrum Master',
-    '看板站会风',
-    'Agile Scrum Master pet portrait, wearing a fitted light-grey merino crewneck sweater over a subtle gingham checked shirt, colorful sticky notes on glass wall bokeh in background, sharp professional office lighting.'
-  ),
-  makeItem(
-    'hr_director',
-    '严苛人事主管',
-    'HR Director & Recruiter',
-    '面试官气场',
-    'Strict HR director pet, wearing an impeccable tailored black wool blazer with sharp lapels, sleek black cat-eye reading glasses perched neatly, immaculate corporate interview backdrop, intimidating yet humorous elegance.'
-  ),
-  makeItem(
-    'product_vp',
-    '满嘴黑话产品总监',
-    'Product Management VP',
-    '硅谷极客黑',
-    'Silicon Valley product executive, wearing a minimalist black fine-gauge cashmere turtleneck sweater, charcoal wool unconstructed overcoat wide collar, sleek keynote presentation aesthetic, visionary tech leadership vibe.'
-  )
-];
-
-export const CORPORATE_SPECIALISTS: CascadingItem[] = [
-  makeItem(
-    'ceo_titan',
-    '华尔街商业掌门人',
-    'The Wall Street CEO',
-    '权力西装',
-    'Wall Street investment titan pet portrait, wearing a bespoke charcoal pinstripe double-breasted suit with broad peak lapels, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, corner office with panoramic Manhattan skyline sunset bokeh, power-broker luxury.'
-  ),
-  makeItem(
-    'tech_visionary',
-    '硅谷科技领袖',
-    'The Silicon Valley Visionary',
-    '极客领袖',
-    'Silicon Valley tech visionary pet leader, wearing a minimalist black fine-gauge cashmere turtleneck sweater, designer tortoiseshell wire-rim round glasses, modern sunlit Scandinavian loft studio background, sleek espresso, visionary leadership aesthetic.'
-  ),
-  makeItem(
-    'wall_street_trader',
-    '华尔街投行分析师',
-    'Wall Street Investment Banker',
-    '双排扣细条纹',
-    'Wall Street investment banker pet, wearing a bespoke charcoal pinstripe double-breasted suit lapel, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, Bloomberg terminal bokeh, power-broker luxury.'
-  ),
-  makeItem(
-    'trial_attorney',
-    '诉讼大律师',
-    'Senior Trial Attorney',
-    '萨维尔街三件套',
-    'Prestigious trial attorney pet, wearing a bespoke three-piece navy wool suit with tailored vest and gold pocket watch chain peeking out, warm mahogany law library bookshelf background, authoritative high-fashion legal portrait.'
-  ),
-  makeItem(
-    'startup_ceo',
-    '初创独角兽 CEO',
-    'Tech Unicorn Founder & CEO',
-    '敲钟领袖风',
-    'Tech startup billionaire CEO, wearing a luxury unstructured midnight blue blazer over a pristine heavyweight white designer tee, subtle titanium luxury watch rim, clean minimalist studio lighting, Forbes 30 Under 30 cover style.'
-  ),
-  makeItem(
-    'airline_pilot',
+    'airline_captain',
+    '顶级民航机长',
+    'The Airline Captain',
     '民航机长',
-    'Commercial Airline Captain',
-    '四道杠金肩章',
-    'Commercial airline captain pet, wearing an authentic navy blue four-stripe gold braided pilot epaulet blazer, crisp white pilot shirt and black tie, warm cockpit ambient dashboard glow, heroic aviation portrait.'
+    "Extreme close-up fisheye lens perspective (GoPro style) with dramatic barrel distortion, humorous meme-avatar aesthetic. A detailed close-up portrait of the specific pet from the uploaded reference image, reimagined as a veteran pilot, meticulously preserving the unique facial structure, fur pattern, color, and eye color from the reference. The pet is wearing vintage aviator goggles pushed up on its head, and a secure black tactical flight harness/vest with silver buckles over its fur, sitting in the pilot's seat and looking directly at the camera with a stoic expression. Both front limbs are natural furry paws resting calmly on the seat armrests. Crucially, the scene is grounded inside a complex aircraft cockpit. The extreme fisheye perspective captures the detailed instrument panel, switches, and screens of the cockpit. Viewed through the cockpit windows, there is absolutely NO sky or clouds; instead, the view shows the concrete of an airport tarmac (ground asphalt), ground service equipment, and parked planes, all distorted by the wide lens. The cockpit interior lighting is detailed, with lights reflecting on the goggle lenses.",
+    'models/airline_captain.png',
+    'human arms, human body, human fingers, human hands, human thumb, opposable thumb, person holding controls, distorted dials, high altitude sky, clouds in window, flying in sky, dislocated paws, cartoon, 3d render, blurry, distorted face, changing pet identity'
+  ),
+  makeItem(
+    'michelin_chef',
+    '宠物大厨做饭日常',
+    'The Michelin Executive Chef',
+    '米其林主厨',
+    "A delightful, viral comedic portrait of the specific pet from Photo 1 as an executive chef. Meticulously preserve the pet's authentic facial identity, realistic fur texture, whisker details, and eye color from Photo 1. The pet stands at a clean wooden kitchen prep counter wearing a tall puffy white pleated chef toque hat on its head and a crisp beige-and-brown checkered kitchen apron tied snugly around its chest. Both of its front paws are authentic furry animal paws resting flat and neatly on the cutting board beside a miniature stainless steel pan and a tiny silicone spatula. Minimalist warm restaurant kitchen studio background with soft warm lighting. Photorealistic pet fur, delightful meme avatar aesthetic. Absolutely no human hands, no human arms, no flesh-toned appendages.",
+    'models/michelin_chef.png',
+    'realistic human fingers, realistic human arms, human hands, human thumbs, fleshy hands, human skin, hairy arms, furry paws holding spatula, dirty apron, grease stains, dark gloomy messy kitchen, burning stove, chef hat covering eyes, hat swallowing ears, hat piercing skull, deformed hands'
   )
 ];
 
 // ----------------------------------------------------------------------
-// 3. COSPLAY (角色扮演 & 传奇名流)
+// 3. COSPLAY (角色扮演)
 // ----------------------------------------------------------------------
-export const COSPLAY_LEGENDS: CascadingItem[] = [
+export const COSPLAY_TEMPLATES: CascadingItem[] = [
   makeItem(
-    'royal_monarch',
-    '文艺复兴皇室君主',
-    'The Renaissance Monarch',
-    '皇室贵族',
-    'Regal Renaissance royal monarch pet portrait, wearing a deep royal crimson and gold embroidered velvet mantle with ermine fur lining, ornate antique lace ruff collar, royal sash with gold heraldic medal crest, majestic European palace throne room lighting, Crown and Paw prestige.',
-    'models/milo_gentle_navy_velvet.webp',
-    'human arms, human hands, human fingers, crown obscuring eyes, deformed skull, cheap costume, plastic jewels, human skin exposed'
+    'assumption_of_mary',
+    '巴洛克《圣母升天》古典名画',
+    'The Assumption of the Virgin',
+    '神圣升天',
+    "A dramatic Baroque religious classical oil painting in the style of Titian and Peter Paul Rubens' The Assumption of the Virgin, starring the specific pet from Photo 1. Meticulously preserve the pet's authentic facial features, fur markings, and eye color. The pet is the divine protagonist, ascending gracefully toward heaven on glowing golden clouds, draped in billowing crimson and white silk robes. Both furry paws are raised outward in divine blessing. Overhead radiates a magnificent golden heavenly halo and light rays. Choirs of cherubs and putti flutter admiringly in the misty skies around it. Below, reverent disciples gaze upward in awe. Dramatic chiaroscuro, rich red and gold oil palette, craquelure canvas texture.",
+    'models/assumption_of_mary.png',
+    'human body on pet, human head on pet, pet with human arms, pet with human fingers, human hands, human fingers, human wrists, human skin, human elbows, five fingers, plain background, studio backdrop, pet face distorted, halo piercing skull, deformed paws'
   ),
   makeItem(
-    'witch',
-    '神秘奇幻小女巫',
-    'The Midnight Witch',
-    '魔法奇境',
-    'Mystical fantasy witch pet studio portrait. Wearing an elegant miniature midnight-purple or deep navy velvet witch pointed hat softly tilted between the ears, with the pet\'s two authentic furry ears resting naturally and completely visible at the sides of the brim, never flattening the skull or covering the eyes. Draped in a matching dark velvet capelet with delicate gold star embroidery and an antique bronze celestial moon clasp at chest. Soft ambient glow with floating warm amber and emerald fairy firefly sparkles bokeh, mysterious yet heartwarming and adorable, strictly authentic animal anatomy.',
-    'models/milo_techwear_arctic_yellow.webp',
-    'human arms, human ears, hat covering eyes, hat swallowing ears, hat piercing skull, scary horror gore, skulls, blood, spiderwebs, dark pitch black, ugly witch nose, human hands, deformed paws'
+    'caribbean_pirate',
+    '加勒比海盗船长',
+    'Pirates of the Caribbean',
+    '传奇海盗',
+    "A detailed cinematic film still of the specific pet from the uploaded reference image, perfectly maintaining its facial features, fur pattern, muzzle shape, and intense eye color. The pet is depicted as a ruthless pirate captain in a dramatic medium close-up shot. It wears a large, detailed, weathered crimson-red pirate tricorne hat with gold trim and a prominent white skull and crossbones emblem (Jolly Roger) on the front, identical to the style in the reference image. Crucially, the pet's expression, while rugged and experienced, is now marked by an intense, steely grimace, its gaze slightly narrowed and piercing, looking directly forward with unmistakable determination and authority. The context is a major naval battle during the golden age of piracy. The pet stands on the quarterdeck of a pirate ship, with background cannon smoke and distant burning ships across dark water under a moody, golden hour sunset sky. The entire scene is bathed in dramatic theatrical lighting, mixing warm sunset hues with fiery orange highlights against weathered wood. Both paws are natural animal paws resting on the ship railing. Absolutely no human arms, no human hands. Cinematic depth of field, high-fidelity textures, epic adventure film style.",
+    'models/caribbean_pirate.png',
+    'human hands, human arms, human fingers, human thumb, opposable thumb, human wrist, human skin, person holding camera, taking selfie, text, watermark, subtitle, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, human body, human face, extra limbs'
   ),
   makeItem(
-    'cowboy',
-    '西部荒野牛仔与浪漫女牛仔',
-    'The Wild West Cowboy & Cowgirl',
-    '西部传奇',
-    'Chic Americana Wild West cowboy and Coastal Cowgirl pet portrait. Wearing a stylish miniature tan suede wide-brimmed cowboy hat resting gently on top head between natural furry ears, ears completely visible and uncompressed, unobstructed clear eyes and facial markings. Loosely tied caramel brown and soft vintage red paisley cotton bandana neckerchief around lower neck. Warm golden hour sunset prairie lighting, soft rustic wooden porch bokeh, free-spirited, charming and sunlit aesthetic, strictly authentic animal anatomy.',
-    'models/milo_aviator_vintage_shearling.webp',
-    'sunglasses obscuring eyes, heavy firearms, gun, saddle on back, plastic hat, hat crushing ears, choked neck, dirty mud, dust covering face, human arms, human fingers, dark dreary shadows'
-  ),
-  makeItem(
-    'detective',
-    '贝克街维多利亚大侦探',
-    'The Baker Street Sleuth',
-    '英伦神探',
-    'Victorian Baker Street detective pet, wearing a classic British houndstooth wool tweed Inverness cape trench coat, antique silver monocle on delicate chain, vintage gaslight foggy London streetscape, dark academia mystery atmosphere.'
-  ),
-  makeItem(
-    'aviator',
-    '美式传奇王牌飞行员',
-    'The Vintage Aviator Ace',
-    '王牌飞行',
-    'Vintage American aviator ace pet, wearing a rugged distressed brown B-3 shearling leather flight bomber jacket with plush sheepskin fleece collar, vintage brass aviator goggles pushed up over brow, silk flight scarf, golden sunset runway airfield bokeh, Top Gun heroism.'
-  )
-];
-
-export const COSPLAY_MARVEL: CascadingItem[] = [
-  makeItem(
-    'iron_man',
-    '钢铁侠：纳米 Mark 85 胸甲',
-    'Iron Man Mark 85 (Unmasked)',
-    '纳米反应堆',
-    'Iron Man inspired superhero pet (no helmet, face fully natural), wearing a high-gloss hot-rod red and metallic gold nano-tech chest armor breastplate, glowing bright cyan triangular arc reactor in the center, mechanical shoulder joints, epic cinematic Marvel studio lighting.'
-  ),
-  makeItem(
-    'spider_man',
-    '蜘蛛侠：经典战衣与蛛丝肩甲',
-    'Spider-Man Suit (Unmasked)',
-    '立体蛛网纹',
-    'Spider-Man inspired pet hero (unmasked, original pet face and eyes completely visible), wearing a tailored red spandex superhero suit collar with raised black webbing texture, matte black spider emblem on chest, New York city skyline dusk lighting.'
-  ),
-  makeItem(
-    'deadpool',
-    '死侍：战损背带与红黑工装',
-    'Deadpool & Dogpool Suit',
-    '双刀战损风',
-    'Deadpool and Dogpool inspired battle-worn suit (unmasked face), wearing a distressed crimson and black leather tactical chest harness, twin katana hilt handles strapped over back, rugged brass buckle details, humorous antihero cinematic studio shot.'
-  ),
-  makeItem(
-    'thor',
-    '雷神：阿斯加德银鳞重铠',
-    'Thor Odinson Heavy Armor',
-    '神域重铠',
-    'Thor God of Thunder pet warrior, wearing heavy silver metallic disc plate chest armor with Nordic filigree engravings, a regal flowing bright crimson velvet cape clasped at shoulders, subtle lightning sparks bokeh, cinematic blockbuster realism.'
-  )
-];
-
-export const COSPLAY_DC: CascadingItem[] = [
-  makeItem(
-    'batman',
-    '蝙蝠侠：哥谭暗黑凯夫拉战衣',
-    'The Dark Knight Armor (Unmasked)',
-    '凯夫拉防弹',
-    'The Dark Knight Batman aesthetic (unmasked, natural pet head), wearing a tactical matte-black Kevlar chest plate with embossed bat emblem, heavy utility shoulder straps, wet rain reflections, moody Gotham neo-noir rim light.'
-  ),
-  makeItem(
-    'superman',
-    '超人：氪星深蓝纳米战衣',
-    'Superman Kryptonian Suit',
-    '氪星红黄盾',
-    'Superman inspired hero suit, wearing an alien deep royal blue chainmail texture chest suit with the iconic red and yellow House of El diamond crest, rich flowing red cape draped behind shoulders, sun-flare heroic lighting.'
-  ),
-  makeItem(
-    'joker',
-    '小丑：哥谭紫绿撞色条纹三件套',
-    'The Joker Vintage Tailoring',
-    '紫绿撞色',
-    'The Joker inspired villain fashion, wearing a vibrant deep purple tailored wool suit lapel, neon chartreuse green satin vest, vintage patterned silk tie, tiny lapel flower, dramatic theatrical circus lighting, stylish camp aesthetic.'
-  )
-];
-
-export const COSPLAY_SCIFI: CascadingItem[] = [
-  makeItem(
-    'terminator',
-    '终结者 T-800：经典皮夹克与机械臂',
-    'Terminator T-800 Cybernetic Biker',
-    '机车皮衣',
-    'Terminator T-800 inspired pet, wearing a heavy distressed black motorcycle leather biker jacket with asymmetrical silver zippers and studs, subtle chrome cybernetic endoskeleton exposed at one shoulder, dystopian blue night highway light.'
-  ),
-  makeItem(
-    'matrix_neo',
-    '黑客帝国：尼奥立领暗黑风衣',
-    'The Matrix Neo Trench Coat',
-    '极客黑长袍',
-    'The Matrix Neo inspired cyber coat, wearing a minimalist structured black gabardine high-collar trench coat, sleek micro oval sunglasses resting effortlessly, faint emerald green digital rain code bokeh in background.'
-  ),
-  makeItem(
-    'jedi_knight',
-    '绝地武士：星球大战绝地长袍',
-    'Star Wars Jedi Knight Robe',
-    '双层亚麻长袍',
-    'Star Wars Jedi Knight robes, pet dressed in authentic textured natural oatmeal linen tunic with overlapping earthy brown hooded cloak draped on shoulders, wide leather utility belt buckle, cinematic dual-sun Tatooine glow.'
+    'secret_agent',
+    '宠物笨贼/土味特工',
+    'The Secret Agent',
+    '土味特工',
+    "A hilarious viral 0.5x ultra-wide fisheye snapshot of the specific pet from Photo 1 caught in the act as a comical burglar. The camera is positioned extremely close below the pet's face, dramatically magnifying its wet black snout and twitching whiskers with funny barrel distortion. The pet wears a tight black ribbed knit balaclava ski mask with cutouts revealing its wide, stunned innocent round eyes and whiskers. An expression of utter shock and guilt as if caught red-handed. Set in a natural everyday home interior with authentic indoor lighting. True candid phone camera snapshot texture, real fur, zero CGI. Strictly animal head portrait with no limbs, no hands, no paws.",
+    'models/secret_agent.png',
+    'human hands, human fingers, human arms, human thumb, human body, person taking picture, holding phone, smartphone in hand, studio lighting, 3D render, CGI, digital illustration, cartoon, anime, scary horror, blood, gun, weapon, violent, deformed snout, deformed eyes'
   )
 ];
 
 // ----------------------------------------------------------------------
 // 4. CELEBRATION (节日庆典)
 // ----------------------------------------------------------------------
-export const CELEBRATION_HOLIDAYS: CascadingItem[] = [
+export const CELEBRATION_TEMPLATES: CascadingItem[] = [
   makeItem(
     'christmas',
-    '圣诞深红丝绒礼盒暖冬写真',
-    'Christmas Velvet Box & Hearth',
+    '英伦圣诞礼盒主题写真',
+    'British Christmas Velvet Box',
     '圣诞盛典',
-    'Christmas holiday luxury pet portrait. Pet naturally seated inside an open rich deep crimson velvet gift box, both front paws resting naturally and neatly over the front edge of the box without clipping legs. Wearing a deep forest-green plush fleece scarf collar adorned with a festive red silk ribbon and an opulent gold satin bow at chest. In the warm bokeh background stands a magnificently decorated grand Christmas tree with red and gold baubles, warm fairy lights, and neatly stacked holiday gift boxes, subtle tiny soft snowflakes gently drifting down, 50mm portrait lens, warm golden hearth glow.',
-    'models/milo_warm.webp',
-    'gift box cutting off front legs, paws trapped in box rim, gift box piercing body, scarf or bow covering face, decorations piercing fur, snowflakes covering eyes, gifts obscuring subject, overly crowded background, duplicate text, typo, gibberish, Christmas tree growing out of pet, pet wrapped like a package, wrong paw count'
+    "A warm, festive British Christmas photographic portrait starring the specific pet from Photo 1. Meticulously preserving the pet's authentic facial features, fur texture, and eye color. The pet sits inside a luxurious vintage burgundy velvet Christmas gift box with ornate gold filigree trim, its front paws resting casually on the box edge. Wearing a rich dark green knit holiday scarf with a large golden ribbon bow and star brooch. Background features a lush Christmas tree lavishly decorated with red and gold baubles, gingerbread ornaments, and gentle falling snow. Surrounded by silk-ribboned presents on fresh faux snow. Soft warm cinematic holiday lighting, shallow depth of field.",
+    'models/christmas.png',
+    'text, watermark, subtitle, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, extra limbs'
   ),
   makeItem(
     'halloween',
-    '万圣节软萌小恶魔与南瓜写真',
-    'Halloween Spooky Magic & Pumpkins',
+    '万圣节南瓜灯马车奇境',
+    'Halloween Magical Pumpkin Carriage',
     '万圣奇境',
-    'Whimsical cozy and cute Halloween pet studio portrait. Completely non-frightening, adorable and heartwarming. Pet wearing delicate miniature velvety devil horns resting gently on top fur without piercing skull or ears, and a dainty dark velvet bow tie below chin. Scattered around pet on floor are gently glowing carved jack-o-lantern mini pumpkins, curly dried vines, tiny black bat ornaments, and purple autumn leaves. Moody warm candlelight bokeh background, soft warm orange illumination, cozy luxury pet celebration.',
-    'models/milo_techwear_arctic_yellow.webp',
-    'horror, bloody, skulls, open wounds, sharp fangs, scary menacing expression, heavy bulky costume, giant devil horns, horns piercing ears, horns penetrating skull, bats covering face, pumpkin fused with body, cluttered props, pitch black background, frightening lighting'
+    "An enchanting Halloween fairy-tale photographic portrait featuring the specific pet from Photo 1. Meticulously preserving the pet's exact facial structure, fur markings, and eye color. The adorable pet sits inside an enormous glowing Jack-o'-lantern pumpkin carriage, filled with colorful candies. The pet wears a vintage black pointed witch hat adorned with a gold crescent moon pendant, and a frilly pink collar, holding a glowing star wand. Set in a magical twilight forest with soft purple mist, floating translucent ghost balloons, tiny flying bats, and glowing mushrooms. Warm pumpkin lantern glow, whimsical storybook aesthetic, rich 8k photographic detail.",
+    'models/halloween.png',
+    'deformed face, scary horror, blood, text, watermark, extra limbs, human face, cartoon illustration, anime, noise'
   ),
-  makeItem(
-    'easter',
-    '复活节：春日马卡龙粉蓝碎花领结',
-    'Easter Garden Party',
-    '春日碎花',
-    'Easter garden gala pet portrait, wearing a tailored pastel mint-green and baby-pink linen waistcoat, delicate daisy floral print silk bow tie, soft morning spring garden sunlight, pastel painted eggs in blurred foreground.'
-  ),
-  makeItem(
-    'thanksgiving',
-    '感恩节：秋日焦糖大地色羊毛猎装',
-    'Thanksgiving Autumn Harvest',
-    '丰收金秋',
-    'Thanksgiving harvest celebration, pet wearing an authentic caramel brown and warm oatmeal houndstooth wool hacking jacket, olive knit inner collar, golden autumn maple leaf bokeh, rich warm sunset glow.'
-  )
-];
-
-export const CELEBRATION_MILESTONES: CascadingItem[] = [
   makeItem(
     'birthday_vip',
-    '生日 VIP 浮雕小蛋糕礼宾写真',
-    'Birthday VIP Gala & Cake',
+    'VIP专属生日盛典写真',
+    'VIP Birthday Gala & Cake',
     '生日专属',
-    'VIP Birthday celebration pet studio portrait. Natural relaxed sitting or lying pose facing camera with adorable calm expression. Wearing a lightweight macaron pastel party hat centered on head with natural volume without piercing ears, soft pink ruffled collar necklace loosely draped around lower chest. In front sits an artisanal mini pet birthday cake made of gourmet meat pâté and shrimp on a delicate embossed porcelain plate, topped with a single gently glowing lit birthday candle providing warm amber ambient candlelight, shallow depth of field, high resolution luxury pet studio photography.',
-    'models/milo_gentle.webp',
-    'hat penetrating ears, strap digging into skin, collar covering mouth, pet touching flame, candle too close to fur, multiple candles, cake fused with paws, cake attached to human body, underexposed, forced human grin, dangerous flame, dripping wax'
-  ),
-  makeItem(
-    'debutante',
-    '名媛成人礼：巴洛克多圈天然微型珍珠项链',
-    'The Debutante Ball Gala',
-    '巴洛克珍珠',
-    'Debutante ball high-society gala portrait, pet wearing a lavish multi-strand baroque seed-pearl choker necklace with a miniature emerald gem pendant, blush-pink tulle gown collar, soft aristocratic salon chandelier lighting.'
-  ),
-  makeItem(
-    'graduation',
-    '毕业典礼：微型学士垂布与荣誉勋带',
-    'The Ivy League Graduation',
-    '常青藤学士',
-    'Ivy League pet graduation portrait, pet wearing a formal black academic gown collar with deep crimson and navy blue silk graduation hood trim, golden honor stole across chest, warm library atmosphere, proud milestone finish.'
-  ),
-  makeItem(
-    'wedding_ringbearer',
-    '婚礼花童伴宠：极简象牙白缎面领结',
-    'Wedding Ring-Bearer Tuxedo',
-    '婚典花童',
-    'Wedding ring-bearer pet fashion portrait, pet wearing a crisp pure white dress shirt collar with an exquisite double-layered ivory silk satin bow tie, tiny woven gold ring motif, romantic soft-focus white rose floral arch background.'
+    "An intimate, heartwarming VIP pet birthday celebration photograph starring the specific pet from Photo 1. Meticulously preserving the pet's exact facial features, fur texture, and soulful eye color. The pet wears a festive polka-dot cone party hat with a fluffy pom-pom and a cute pink patterned bib, resting comfortably on a warm hardwood floor. Before it sits a ceramic floral plate with a gourmet double-layer pet meat cake topped with fresh shrimp and a single burning pink-and-white striped candle with delicate wisps of smoke. Warm, dim ambient lighting with twinkling golden fairy string lights and soft blurred balloons in the background. Photorealistic cozy celebration atmosphere.",
+    'models/birthday_vip.png',
+    'text, watermark, subtitle, signature, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, extra fingers'
   )
 ];
 
@@ -537,22 +215,10 @@ export const CASCADING_THEMES: Record<CoreThemeKey, CascadingTheme> = {
     fallbackImageUrl: 'https://vivibon-cover.pages.dev/models/milo_gentle.webp',
     subCategories: [
       {
-        id: 'classical_masters',
-        nameZh: '古典名画派',
-        nameEn: 'Classical Masters',
-        items: FINE_ART_CLASSICAL
-      },
-      {
-        id: 'impressionist',
-        nameZh: '现代主义与印象派',
-        nameEn: 'Modern & Impressionist',
-        items: FINE_ART_IMPRESSIONIST
-      },
-      {
-        id: 'pop_contemporary',
-        nameZh: '先锋插画与波普',
-        nameEn: 'Pop & Contemporary',
-        items: FINE_ART_POP
+        id: 'featured',
+        nameZh: '精选高定模板',
+        nameEn: 'Featured Templates',
+        items: FINE_ART_TEMPLATES
       }
     ]
   },
@@ -564,22 +230,10 @@ export const CASCADING_THEMES: Record<CoreThemeKey, CascadingTheme> = {
     fallbackImageUrl: 'https://vivibon-cover.pages.dev/models/milo_detective.webp',
     subCategories: [
       {
-        id: 'entry_level',
-        nameZh: '工位基层牛马',
-        nameEn: 'Entry-Level Drones',
-        items: CORPORATE_ENTRY
-      },
-      {
-        id: 'management',
-        nameZh: '管理与中层',
-        nameEn: 'Management & Leads',
-        items: CORPORATE_MANAGEMENT
-      },
-      {
-        id: 'specialists',
-        nameZh: '行业专业人员',
-        nameEn: 'Specialists & Execs',
-        items: CORPORATE_SPECIALISTS
+        id: 'featured',
+        nameZh: '精选高定模板',
+        nameEn: 'Featured Templates',
+        items: CORPORATE_TEMPLATES
       }
     ]
   },
@@ -591,28 +245,10 @@ export const CASCADING_THEMES: Record<CoreThemeKey, CascadingTheme> = {
     fallbackImageUrl: 'https://vivibon-cover.pages.dev/models/milo_street.webp',
     subCategories: [
       {
-        id: 'legends',
-        nameZh: '公有领域传奇人物',
-        nameEn: 'Legendary Personas',
-        items: COSPLAY_LEGENDS
-      },
-      {
-        id: 'marvel',
-        nameZh: '漫威英雄联盟',
-        nameEn: 'Marvel Icons',
-        items: COSPLAY_MARVEL
-      },
-      {
-        id: 'dc',
-        nameZh: 'DC 黑暗宇宙',
-        nameEn: 'DC Universe',
-        items: COSPLAY_DC
-      },
-      {
-        id: 'scifi',
-        nameZh: '科幻经典银幕',
-        nameEn: 'Sci-Fi Legends',
-        items: COSPLAY_SCIFI
+        id: 'featured',
+        nameZh: '精选高定模板',
+        nameEn: 'Featured Templates',
+        items: COSPLAY_TEMPLATES
       }
     ]
   },
@@ -624,16 +260,10 @@ export const CASCADING_THEMES: Record<CoreThemeKey, CascadingTheme> = {
     fallbackImageUrl: 'https://vivibon-cover.pages.dev/models/milo_warm.webp',
     subCategories: [
       {
-        id: 'holidays',
-        nameZh: '西方传统盛大节日',
-        nameEn: 'Major Holidays',
-        items: CELEBRATION_HOLIDAYS
-      },
-      {
-        id: 'milestones',
-        nameZh: '人生高光时刻',
-        nameEn: 'Milestone Events',
-        items: CELEBRATION_MILESTONES
+        id: 'featured',
+        nameZh: '精选高定模板',
+        nameEn: 'Featured Templates',
+        items: CELEBRATION_TEMPLATES
       }
     ]
   }
@@ -664,7 +294,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'fine_art',
     name: 'Fine Art',
     subtitle: 'Classical Masterpieces & Modern Pop',
-    prompt: FINE_ART_CLASSICAL[0].fullPrompt,
+    prompt: FINE_ART_TEMPLATES[0].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.fine_art.fallbackImageUrl,
     variants: cascadingToLegacyVariants('fine_art')
   },
@@ -672,7 +302,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'corporate',
     name: 'Corporate',
     subtitle: 'Silicon Valley & Wall Street 9-to-5',
-    prompt: CORPORATE_ENTRY[0].fullPrompt,
+    prompt: CORPORATE_TEMPLATES[0].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.corporate.fallbackImageUrl,
     variants: cascadingToLegacyVariants('corporate')
   },
@@ -680,7 +310,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'cosplay',
     name: 'Cosplay',
     subtitle: 'Historical Royalty & Iconic Legends',
-    prompt: COSPLAY_LEGENDS[0].fullPrompt,
+    prompt: COSPLAY_TEMPLATES[0].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.cosplay.fallbackImageUrl,
     variants: cascadingToLegacyVariants('cosplay')
   },
@@ -688,7 +318,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'celebration',
     name: 'Celebration',
     subtitle: 'Holiday Galas & VIP Milestones',
-    prompt: CELEBRATION_HOLIDAYS[0].fullPrompt,
+    prompt: CELEBRATION_TEMPLATES[0].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.celebration.fallbackImageUrl,
     variants: cascadingToLegacyVariants('celebration')
   },
@@ -697,7 +327,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'gentle',
     name: 'Fine Art (Legacy)',
     subtitle: 'Classical Art Masterpieces',
-    prompt: FINE_ART_CLASSICAL[1].fullPrompt,
+    prompt: FINE_ART_TEMPLATES[1].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.fine_art.fallbackImageUrl,
     variants: cascadingToLegacyVariants('fine_art')
   },
@@ -705,7 +335,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'detective',
     name: 'Corporate (Legacy)',
     subtitle: 'Executive & Aviator',
-    prompt: CORPORATE_SPECIALISTS[3].fullPrompt,
+    prompt: CORPORATE_TEMPLATES[1].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.corporate.fallbackImageUrl,
     variants: cascadingToLegacyVariants('corporate')
   },
@@ -713,7 +343,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'street',
     name: 'Cosplay (Legacy)',
     subtitle: 'Cyber & Superhero',
-    prompt: COSPLAY_MARVEL[0].fullPrompt,
+    prompt: COSPLAY_TEMPLATES[1].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.cosplay.fallbackImageUrl,
     variants: cascadingToLegacyVariants('cosplay')
   },
@@ -721,7 +351,7 @@ export const STYLE_CONFIGS: Record<StyleKey, StyleConfig> = {
     key: 'warm',
     name: 'Celebration (Legacy)',
     subtitle: 'Festive & Winter Holiday',
-    prompt: CELEBRATION_HOLIDAYS[0].fullPrompt,
+    prompt: CELEBRATION_TEMPLATES[1].fullPrompt,
     fallbackImageUrl: CASCADING_THEMES.celebration.fallbackImageUrl,
     variants: cascadingToLegacyVariants('celebration')
   }
@@ -754,9 +384,12 @@ export function resolveCascadingItem(
 
   // 2. If itemId is provided, search all subcategories for this item
   if (itemId) {
+    let targetId = itemId;
+    if (itemId === 'dark_knight') targetId = 'secret_agent';
+    else if (itemId === 'witch') targetId = 'caribbean_pirate';
     for (const sub of theme.subCategories) {
       if (!subId || sub.id === subId) {
-        const found = sub.items.find((it) => it.id === itemId);
+        const found = sub.items.find((it) => it.id === targetId);
         if (found) return found;
       }
     }
@@ -824,7 +457,7 @@ export function assembleDynamicPrompt(
   const skillDirective = THEME_SKILL_DIRECTIVES[targetThemeKey];
   const skillNegativeConstraint = THEME_NEGATIVE_CONSTRAINTS[targetThemeKey];
 
-  const fullPrompt = `${IDENTITY_ANCHOR} ${item.wardrobePrompt} ${skillDirective} ${STUDIO_FINISH}`;
+  const fullPrompt = `${item.wardrobePrompt} ${IDENTITY_ANCHOR} ${skillDirective} ${STUDIO_FINISH}`;
   const exclusiveNegative = item.exclusiveNegativePrompt ? `, ${item.exclusiveNegativePrompt}` : '';
   const negativePrompt = `${NEGATIVE_PROMPT}${skillNegativeConstraint}${exclusiveNegative}`;
 

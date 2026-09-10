@@ -34,7 +34,8 @@ export const GenerateRequestSchema = z.object({
       params: { errorCode: 'IMAGE_TOO_LARGE' }
     }
   ),
-  isDefaultSample: z.boolean().default(true)
+  isDefaultSample: z.boolean().default(true),
+  referenceImageUrl: z.string().url().optional()
 });
 
 export type GenerateRequest = z.infer<typeof GenerateRequestSchema>;
@@ -48,6 +49,7 @@ export interface GenerateResponseSuccess {
     petName: string;
     latencyMs: number;
     isFallback: boolean;
+    activeProvider?: string;
     capsuleVariant?: {
       id: string;
       name: string;

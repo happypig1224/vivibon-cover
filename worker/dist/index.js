@@ -3273,20 +3273,11 @@ var require_cjs = __commonJS({
 var styles_exports = {};
 __export(styles_exports, {
   CASCADING_THEMES: () => CASCADING_THEMES,
-  CELEBRATION_HOLIDAYS: () => CELEBRATION_HOLIDAYS,
-  CELEBRATION_MILESTONES: () => CELEBRATION_MILESTONES,
+  CELEBRATION_TEMPLATES: () => CELEBRATION_TEMPLATES,
   CORE_THEME_KEYS: () => CORE_THEME_KEYS,
-  CORPORATE_CORE_TRIO: () => CORPORATE_CORE_TRIO,
-  CORPORATE_ENTRY: () => CORPORATE_ENTRY,
-  CORPORATE_MANAGEMENT: () => CORPORATE_MANAGEMENT,
-  CORPORATE_SPECIALISTS: () => CORPORATE_SPECIALISTS,
-  COSPLAY_DC: () => COSPLAY_DC,
-  COSPLAY_LEGENDS: () => COSPLAY_LEGENDS,
-  COSPLAY_MARVEL: () => COSPLAY_MARVEL,
-  COSPLAY_SCIFI: () => COSPLAY_SCIFI,
-  FINE_ART_CLASSICAL: () => FINE_ART_CLASSICAL,
-  FINE_ART_IMPRESSIONIST: () => FINE_ART_IMPRESSIONIST,
-  FINE_ART_POP: () => FINE_ART_POP,
+  CORPORATE_TEMPLATES: () => CORPORATE_TEMPLATES,
+  COSPLAY_TEMPLATES: () => COSPLAY_TEMPLATES,
+  FINE_ART_TEMPLATES: () => FINE_ART_TEMPLATES,
   IDENTITY_ANCHOR: () => IDENTITY_ANCHOR,
   NEGATIVE_PROMPT: () => NEGATIVE_PROMPT,
   STUDIO_FINISH: () => STUDIO_FINISH,
@@ -3326,7 +3317,7 @@ function makeItem(id, nameZh, nameEn, badge, wardrobePrompt, sampleImageUrl, exc
     nameEn,
     badge,
     wardrobePrompt,
-    fullPrompt: `${IDENTITY_ANCHOR} ${wardrobePrompt} ${STUDIO_FINISH}`,
+    fullPrompt: `${wardrobePrompt} ${IDENTITY_ANCHOR} ${STUDIO_FINISH}`,
     sampleImageUrl,
     exclusiveNegativePrompt
   };
@@ -3356,9 +3347,12 @@ function resolveCascadingItem(styleKey, subId, itemId, variantIndex) {
   else targetThemeKey = "fine_art";
   const theme = CASCADING_THEMES[targetThemeKey];
   if (itemId) {
+    let targetId = itemId;
+    if (itemId === "dark_knight") targetId = "secret_agent";
+    else if (itemId === "witch") targetId = "caribbean_pirate";
     for (const sub of theme.subCategories) {
       if (!subId || sub.id === subId) {
-        const found = sub.items.find((it) => it.id === itemId);
+        const found = sub.items.find((it) => it.id === targetId);
         if (found) return found;
       }
     }
@@ -3391,7 +3385,7 @@ function assembleDynamicPrompt(styleKey, itemId, subId, variantIndex) {
   const item = resolveCascadingItem(styleKey, subId, itemId, variantIndex);
   const skillDirective = THEME_SKILL_DIRECTIVES[targetThemeKey];
   const skillNegativeConstraint = THEME_NEGATIVE_CONSTRAINTS[targetThemeKey];
-  const fullPrompt = `${IDENTITY_ANCHOR} ${item.wardrobePrompt} ${skillDirective} ${STUDIO_FINISH}`;
+  const fullPrompt = `${item.wardrobePrompt} ${IDENTITY_ANCHOR} ${skillDirective} ${STUDIO_FINISH}`;
   const exclusiveNegative = item.exclusiveNegativePrompt ? `, ${item.exclusiveNegativePrompt}` : "";
   const negativePrompt = `${NEGATIVE_PROMPT}${skillNegativeConstraint}${exclusiveNegative}`;
   return {
@@ -3415,21 +3409,21 @@ function getStyleVariant(styleKey, index, subId, itemId) {
     fullPrompt: assembled.fullPrompt
   };
 }
-var IDENTITY_ANCHOR, STUDIO_FINISH, NEGATIVE_PROMPT, FINE_ART_CLASSICAL, FINE_ART_IMPRESSIONIST, FINE_ART_POP, CORPORATE_CORE_TRIO, CORPORATE_ENTRY, CORPORATE_MANAGEMENT, CORPORATE_SPECIALISTS, COSPLAY_LEGENDS, COSPLAY_MARVEL, COSPLAY_DC, COSPLAY_SCIFI, CELEBRATION_HOLIDAYS, CELEBRATION_MILESTONES, CASCADING_THEMES, STYLE_CONFIGS, SUPPORTED_STYLE_KEYS, CORE_THEME_KEYS, THEME_SKILL_DIRECTIVES, THEME_NEGATIVE_CONSTRAINTS;
+var IDENTITY_ANCHOR, STUDIO_FINISH, NEGATIVE_PROMPT, FINE_ART_TEMPLATES, CORPORATE_TEMPLATES, COSPLAY_TEMPLATES, CELEBRATION_TEMPLATES, CASCADING_THEMES, STYLE_CONFIGS, SUPPORTED_STYLE_KEYS, CORE_THEME_KEYS, THEME_SKILL_DIRECTIVES, THEME_NEGATIVE_CONSTRAINTS;
 var init_styles = __esm({
   "src/config/styles.ts"() {
     "use strict";
-    IDENTITY_ANCHOR = "Dress the EXACT SAME dog from the input image from the neck and shoulders down. Strictly preserve the original pet's facial structure, eyes, snout geometry, ear shape and position, native fur coloration, distinctive markings, body proportions and age 100% unchanged. Maintain authentic animal anatomy: exactly one head, two eyes, two ears, one nose, and natural furry legs and paws matching the species. Strictly NO human arms, hands, fingers, skin, human neck or human body. Unmasked face, head and eyes fully visible and natural, non-distorted.";
-    STUDIO_FINISH = "High-end commercial luxury pet portrait photography, 85mm portrait lens, rich vibrant natural color grading, high dynamic range, glossy fur highlights, deep warm studio lighting, delicate studio rim light accentuating authentic fur texture, sharp focus on pet eyes, clean solid seamless studio backdrop, ample negative space at top for magazine typography, hyperdetailed, 8k resolution, no text, no logo, award-winning studio portrait.";
-    NEGATIVE_PROMPT = "second pet, other animals, duplicate subject, breed change, facial change, fur color change, marking change, eye asymmetry, strabismus, human body, human arms, human hands, human fingers, human skin, human neck, hybrid human-animal, clothes clipping, accessories clipping, distorted anatomy, warped snout, deformed eyes, extra legs, missing legs, extra paws, fused limbs, severed limbs, blurry, low quality, noisy, jpeg artifacts, text, typography, letters, watermark, signature, logo, brand name, cartoon, 3D render, CGI doll, monochrome, black and white, grayscale, desaturated, dull colors, washed out, low contrast, hazy, dim, underexposed, dark muddy shadows, plastic texture, human cleavage, bare skin, naked, nude, bikini, erotic, suggestive, extra fingers, deformed paws.";
-    FINE_ART_CLASSICAL = [
+    IDENTITY_ANCHOR = "Dress the EXACT SAME pet from the input image from the neck and shoulders down. Strictly preserve the original pet's facial structure, eyes, snout geometry, ear shape and position, native fur coloration, distinctive markings, body proportions and age 100% unchanged. Strict quadruped anatomical law: The subject is a 100% pure animal pet. All visible front limbs must terminate solely in authentic, fluffy animal paws with species-correct fur and soft paw pads. Strictly and absolutely NO human arms, NO human hands, NO human fingers, NO human thumbs, NO opposable thumbs, NO fingernails, NO human skin or flesh, NO human wrists, NO human joints, NO hybrid chimera anatomy. Both animal paws must rest naturally and flat on surfaces. Absolutely NO person or human body parts in frame, NO hands holding cameras, NO hands holding phones, NO hands holding cups, NO selfie sticks. Unmasked face, head and eyes fully visible and natural, non-distorted.";
+    STUDIO_FINISH = "Hyperdetailed, 8k resolution, cinematic lighting, sharp focus on pet eyes, rich vibrant natural color grading, high dynamic range, glossy fur highlights, deep warm studio lighting, masterpiece quality, no text, no logo, award-winning composition.";
+    NEGATIVE_PROMPT = "human hand, human hands, human fingers, human thumb, human palm, fingernails, human wrist, human skin, human arms, human body, person holding camera, person holding phone, human hand holding phone, taking selfie, smartphone in hand, hand reaching into frame, selfie stick, person in photo, human taking picture, chimera, hybrid human-animal, anthropomorphic hands, furry hands, human hands on pet, human arms on pet, bare skin, fleshy fingers, knuckles, second pet, other animals, duplicate subject, breed change, facial change, fur color change, marking change, eye asymmetry, strabismus, clothes clipping, accessories clipping, distorted anatomy, warped snout, deformed eyes, extra legs, missing legs, extra paws, fused limbs, severed limbs, blurry, low quality, noisy, jpeg artifacts, text, typography, letters, watermark, signature, logo, brand name, cartoon, 3D render, CGI doll, monochrome, black and white, grayscale, desaturated, dull colors, washed out, low contrast, hazy, dim, underexposed, dark muddy shadows, plastic texture, human cleavage, bare skin, naked, nude, bikini, erotic, suggestive, extra fingers, deformed paws.";
+    FINE_ART_TEMPLATES = [
       makeItem(
         "mona_lisa",
         "\u590D\u523B\u300A\u8499\u5A1C\u4E3D\u838E\u300B\u53E4\u5178\u6CB9\u753B",
         "The Mona Lisa Smile",
         "\u6587\u827A\u590D\u5174",
-        "Mona Lisa Renaissance fine art portrait. Dressed in Mona Lisa vintage dark long pleated robe, collar resting outside chest fur without exposing human skin or neck, natural dark vintage wig contouring head with both animal ears emerging naturally through openings. Front paws naturally crossed and resting together on chest in faithful reference to the original painting while strictly respecting natural canine and feline anatomy and joint mobility, claw tips visible, no human arms or fingers. Sfumato chiaroscuro lighting, earthy amber and dark golden museum oil canvas texture, tranquil classical expression.",
-        "models/milo_gentle.webp",
+        "A masterwork classical Renaissance oil painting in the style of Leonardo da Vinci's Mona Lisa, starring the specific pet from Photo 1. Meticulously preserve the pet's exact facial structure, eye shape, pupil color, whisker placement, and native fur coloration and markings. The pet has soft dark waves of fur framing its face like the iconic Mona Lisa silhouette. Sitting in a classic 3/4 turn pose, gazing serenely forward with a subtle enigmatic smile. Dressed in the authentic dark olive-green pleated Renaissance velvet gown with gold embroidery. Both front legs end in natural furry paws folded gracefully in its lap. Sfumato soft chiaroscuro lighting, warm golden-brown undertones, misty river and mountain landscape in background, realistic antique oil painting canvas craquelure texture.",
+        "models/mona_lisa.png",
         "human ears, ears hidden inside wig, wig covering eyes, wig covering snout, front legs stretched into human arms, human fingers, human hands, human neck, human skin exposed, fused paws, long robe penetrating body"
       ),
       makeItem(
@@ -3437,418 +3431,105 @@ var init_styles = __esm({
         "\u300A\u6234\u73CD\u73E0\u8033\u73AF\u7684\u5C11\u5973\u300B\u53E4\u5178\u8096\u50CF",
         "Girl with a Pearl Earring",
         "\u8377\u5170\u9EC4\u91D1\u65F6\u4EE3",
-        "Girl with a Pearl Earring fine art portrait. Pure black deep background, the pet body slightly turned in 3/4 pose with head looking back toward camera. Adorned in iconic royal ultramarine blue and ochre gold draped silk turban wrapped around head without flattening skull, native ears neatly enclosed beneath fabric, single large glowing baroque teardrop pearl pendant fastened at the lower edge of turban fabric without penetrating ear cartilage or skin. Warm ochre jacket with white collar fabric draped outside chest, soft chiaroscuro side window lighting illuminating eyes and snout.",
-        "models/milo_gentle_navy_velvet.webp",
-        "visible pet ears, human ears, two or more pearls, pearl penetrating skin, pearl penetrating turban, turban flattening skull, turban covering eyes, distorted neck, human neck, human collarbone, exposed human skin"
+        "A classical 17th-century Dutch Golden Age master oil painting in the exact iconic composition and posture of Johannes Vermeer's Girl with a Pearl Earring, featuring the specific pet from Photo 1. Meticulously preserve the pet's authentic facial identity, fur pattern, snout geometry, and luminous eye color. The pet's body is positioned in a strict side profile facing away to the right, turning its head back over its left shoulder to look directly at the viewer with an enigmatic gaze, exactly matching the 3/4 Vermeer pose. Wearing an iconic ultramarine blue and gold silk turban wrapped gracefully around its head, with a single large luminous teardrop pearl earring catchlight beside its left ear. Dressed in a muted golden-ochre Dutch wool coat with long full sleeves that completely cover its body and shoulders down to the chest, with a crisp, closed high white inner collar cleanly wrapping the neck. Absolutely NO exposed paws, NO bare arms, NO open chest, NO V-neck. Deep dramatic chiaroscuro with a pure dark void background, delicate directional raking light sculpting the side of the face and glistening on the pearl, rich craquelure oil painting glaze texture.",
+        "models/pearl_earring.png",
+        "visible pet ears, human ears, two or more pearls, pearl penetrating skin, pearl penetrating turban, turban flattening skull, turban covering eyes, distorted neck, human neck, human collarbone, exposed human skin, bare arms, bare paws, exposed paws, uncovered paws, bare fur on torso, open chest, deep V-neck, frontal pose, facing front, symmetrical shoulders, casual clothes"
       ),
       makeItem(
         "line_art",
-        "\u6781\u7B80\u9ED1\u767D\u7EBF\u6761\u7ED8\u753B\u624B\u7A3F",
-        "The Minimalist Line Art",
-        "\u6781\u7B80\u9ED1\u767D",
-        "Minimalist black and white rough crayon, charcoal pencil, and dry-brush hand-drawn illustration poster on warm off-white cream paper. Not realistic sketch, non-photorealistic artistic hand drawing. Only using black textured lines and raw paper background, no other colors, no gray gradients. Rough textured brushstrokes, deliberate white spaces, visible paper fiber texture, charming vintage children picture book combined with high-fashion independent magazine editorial aesthetic. Pet subject occupying top 65% to 75% of canvas with pristine ample negative space below.",
-        "models/milo_street.webp",
+        "\u5927\u5E08\u7EA7\u624B\u7ED8\u901F\u5199\u7814\u7A76\u672C",
+        "Master's Sketchbook Study",
+        "\u624B\u7ED8\u901F\u5199",
+        "A masterclass sketchbook study page titled 'Study of My Pet', featuring the exact pet from Photo 1. Meticulously preserve the pet's distinct facial anatomy, fur markings, and gaze. The page displays 4 to 5 detailed sketches of the pet's head from varying angles (frontal, 3/4 profile, slight tilt) arranged dynamically across the aged ivory drawing paper. Rendered in delicate graphite pencil cross-hatching combined with soft warm watercolor washes. Scattered with faint vintage cursive architectural studio notes and anatomical sketches in the margins. Authentic artist sketchbook paper grain, expressive unfinished edge strokes, high-end fine art drawing aesthetic.",
+        "models/line_art.png",
         "realistic pencil sketch, colorful, gray gradient, smooth vector lines, 3D render, solid black fill, busy background, cropped subject, typography covering subject, long text, gibberish letters, misspelled words, over-stylized unrecognizable cartoon"
-      ),
-      makeItem(
-        "rembrandt",
-        "\u4F26\u52C3\u6717\u300A\u591C\u5DE1\u4E0E\u81EA\u753B\u50CF\u300B",
-        "Rembrandt Chiaroscuro Masterpiece",
-        "\u660E\u6697\u5BF9\u7167\u6CD5",
-        "Rembrandt style historic oil painting, pet wearing an elaborate layered pleated white linen Elizabethan ruff collar and dark heavy velvet tunic, authentic Rembrandt triangle lighting on face, rich impasto oil paint texture with subtle craquelure, dramatic dark museum depth."
-      ),
-      makeItem(
-        "las_meninas",
-        "\u59D4\u62C9\u65AF\u51EF\u5179\u300A\u5BAB\u5A25\u300B",
-        "Las Meninas by Diego Velazquez",
-        "\u897F\u73ED\u7259\u5BAB\u5EF7",
-        "Velazquez Spanish royal court style, the pet wearing an ornate silver-grey damask silk dress bodice with crimson satin ribbon rosettes and pearl buttons, majestic Prado museum lighting, stately baroque composition."
       )
     ];
-    FINE_ART_IMPRESSIONIST = [
-      makeItem(
-        "starry_night",
-        "\u68B5\u9AD8\u300A\u661F\u6708\u591C\u4E0E\u5411\u65E5\u8475\u300B",
-        "Van Gogh: Starry Night & Sunflowers",
-        "\u540E\u5370\u8C61\u6D3E",
-        "Vincent van Gogh aesthetic, pet wearing a midnight cobalt blue heavy wool jacket with a vibrant chrome-yellow sunflower silk ascot tie, iconic swirling dynamic Starry Night brushstrokes in the background, thick impasto oil paint texture, intense emotional post-impressionist color palette."
-      ),
-      makeItem(
-        "water_lilies",
-        "\u83AB\u5948\u300A\u7761\u83B2\u4E0E\u65E5\u672C\u6865\u300B",
-        "Monet: Water Lilies & Giverny",
-        "\u83AB\u5948\u82B1\u56ED",
-        "Claude Monet plein-air impressionism, pet wearing a delicate pastel sage-green and soft petal-pink raw linen shirt, tiny water lily blossom on lapel, luminous dappled sunlight reflections, soft-focus Giverny pond bokeh, dreamy aesthetic."
-      ),
-      makeItem(
-        "the_kiss",
-        "\u514B\u91CC\u59C6\u7279\u300A\u543B\u300B\u9EC4\u91D1\u534E\u670D",
-        "Gustav Klimt: The Golden Kiss",
-        "\u7EF4\u4E5F\u7EB3\u5206\u79BB\u6D3E",
-        "Gustav Klimt golden phase masterpiece, pet adorned in an opulent gilded mantle covered with geometric mosaic patterns, gold leaf flakes, spiraling decorative Art Nouveau patterns, shimmering luxurious gold texture."
-      ),
-      makeItem(
-        "the_scream",
-        "\u8499\u514B\u300A\u5450\u558A\u300B\u8868\u73B0\u4E3B\u4E49\u98CE\u66B4",
-        "Edvard Munch: The Scream",
-        "\u8868\u73B0\u4E3B\u4E49",
-        "Edvard Munch expressionist painting style, pet wearing a flowing dark crimson and navy trench collar, dramatic fiery blood-orange undulating sunset sky backdrop, intense emotional brushwork, iconic Nordic art atmosphere."
-      )
-    ];
-    FINE_ART_POP = [
-      makeItem(
-        "warhol",
-        "\u5B89\u8FEA\xB7\u6C83\u970D\u5C14\u300A\u739B\u4E3D\u83B2\u53CC\u8054\u753B\u300B",
-        "Andy Warhol: Pop Screenprint",
-        "\u6CE2\u666E\u4E1D\u7F51\u5370",
-        "Andy Warhol 1960s pop art style, pet wearing an electric neon yellow pop-art vest with bold black industrial zipper, vivid four-panel silkscreen color-block background in hot pink and turquoise, iconic retro modern vibe."
-      ),
-      makeItem(
-        "picasso",
-        "\u6BD5\u52A0\u7D22\u300A\u4E9A\u5A01\u519C\u5C11\u5973\u300B",
-        "Picasso: Cubist Geometry",
-        "\u7ACB\u4F53\u51E0\u4F55",
-        "Pablo Picasso analytic cubism, pet dressed in an avant-garde deconstructed jacket with fragmented geometric angular color blocks in terracotta, slate grey and ochre, sharp cubist facet shading, modern museum art."
-      ),
-      makeItem(
-        "keith_haring",
-        "\u51EF\u65AF\xB7\u54C8\u6797\u53D1\u5149\u6CE2\u666E\u6D82\u9E26",
-        "Keith Haring Radiant Pop",
-        "\u8857\u5934\u827A\u672F",
-        "Keith Haring 1980s street art inspired style, pet wearing a crisp white athletic collar covered in bold black graphic dancing dog doodles and radiant heart motifs, clean vibrant primary colors, urban pop art energy."
-      ),
-      makeItem(
-        "atelier_sketch",
-        "\u65F6\u88C5\u5468\u9ED1\u767D\u70AD\u7B14\u6781\u7B80\u901F\u5199\u624B\u7A3F",
-        "Paris Atelier Fashion Sketch",
-        "\u9AD8\u5B9A\u624B\u7A3F",
-        "Haute couture fashion designer sketch portrait, pet wearing a tailored charcoal wool coat combined with visible hand-drawn charcoal pencil sketch lines and tailor chalk markings, minimalist chic, Vogue runway concept aesthetic."
-      )
-    ];
-    CORPORATE_CORE_TRIO = [
-      makeItem(
-        "chill_intern",
-        "\u53CD\u5185\u5377\u6478\u9C7C\u5B9E\u4E60\u751F",
-        "The Chill Intern",
-        "\u53CD\u5185\u5377",
-        'The chill anti-hustle corporate intern pet portrait. Pet naturally seated with an adorable relaxed, unbothered expression, looking directly at camera. Wearing an oversized comfortable heather-grey soft fleece crewneck sweatshirt, draped with a vibrant blue fabric company lanyard around the neck displaying a prominent miniature plastic ID badge clearly labeled "INTERN". Front furry paws resting casually on clean minimalist desk surface. Gentle bright modern open-plan office background with soft bokeh, authentic pet anatomy, strictly NO human arms or hands.',
-        "models/milo_gentle_prince_of_wales.webp",
-        "stressed expression, angry boss, corporate business suit, human arms, human fingers, human hands, tight collar choking pet, badge covering face, badge piercing skin, dark gloomy lighting, messy trash"
-      ),
+    CORPORATE_TEMPLATES = [
       makeItem(
         "coffee_pro",
-        "\u5496\u5561\u7EED\u547D\u6253\u5DE5\u72D7",
-        "The Caffeinated Pro",
-        "\u5496\u5561\u7EED\u547D",
-        "The coffee-fueled 9-to-5 corporate professional pet portrait. Wearing a crisp sky-blue and white micro-striped casual button-down work shirt with a slightly loosened top collar, tailored navy work jacket shoulders. Seated politely with one furry paw resting naturally next to an authentic artisan takeaway coffee cup with a kraft cardboard heat sleeve and white lid. Soft morning 5600K office studio lighting, subtle corporate glass architecture bokeh in background, humorous relatable hardworking pet aesthetic, strictly authentic pet anatomy.",
-        "models/milo_techwear_cobalt_cyber.webp",
-        "coffee spilled on fur, pet drinking hot coffee, burned fur, open flames, plastic trash, human hands holding cup, human arms, dislocated paws, formal tuxedo, evening gown"
+        "\u65E9\u516B\u6253\u5DE5\u6478\u9C7C\u72D7",
+        "Daily Life of a 9-to-5 Working Pet",
+        "\u6253\u5DE5\u65E5\u5E38",
+        "A humorous, hyperrealistic workplace documentary portrait of the specific pet from Photo 1, themed Daily Life of a 9-to-5 Working Pet. Shot from a third-person perspective with an 85mm portrait lens, eye-level with the pet at its office workstation. The pet sits comfortably upright on an office chair. Both of its natural furry animal paws with soft pink pads are resting flat on the clean white desk surface in front of a keyboard. On the desk directly in front of the pet sits a clear plastic takeaway cup filled with iced Americano coffee and ice cubes, with a white drinking straw near the pet's muzzle. The pet wears a snug, dark chocolate brown ribbed knit turtleneck sweater with clean cuffs around its furry ankles. Around its neck hangs a realistic acrylic corporate employee badge on a blue lanyard with legible text 'Professional Slacker'. In the background, an authentic modern open-plan office with soft out-of-focus computer screens, colorful sticky notes, and warm indoor office lighting. Pure animal anatomy, natural glossy fur, expressive comedic tired expression. Absolutely no human hands or smartphones in frame.",
+        "models/caffeine_pro.png",
+        "smartphone, mobile phone, cell phone, holding phone, phone held by hand, taking selfie, selfie pose, arm reaching toward camera, human hand, human fingers, human thumb, opposable thumb, human palm, fingernails, human wrist, human arm, human skin, chimera, half-human, hybrid hands, hands holding cup, coffee spilled on fur, pet drinking hot coffee, dislocated paws"
       ),
       makeItem(
-        "ivy_prep",
-        "\u5E38\u9752\u85E4\u8001\u94B1\u5B66\u8005",
-        "The Ivy League Scholar",
-        "\u8001\u94B1\u5B66\u9662",
-        "Ivy League scholar pet, wearing an oversized Ralph Lauren style cream cable-knit V-neck tennis sweater with a neat light-blue Oxford collared shirt underneath, cozy vintage mahogany university library background with warm brass lamp glow, preppy old-money aesthetic.",
-        "models/milo_knitwear_oatmeal_cable.webp",
-        "human hands holding books, book glued to fur, deformed sweater collar, loose threads, synthetic polyester sheen, modern neon"
-      )
-    ];
-    CORPORATE_ENTRY = [
-      ...CORPORATE_CORE_TRIO,
-      makeItem(
-        "ceo_titan",
-        "\u534E\u5C14\u8857\u5546\u4E1A\u638C\u95E8\u4EBA",
-        "The Wall Street CEO",
-        "\u6743\u529B\u897F\u88C5",
-        "Wall Street investment titan pet portrait, wearing a bespoke charcoal pinstripe double-breasted suit with broad peak lapels, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, corner office with panoramic Manhattan skyline sunset bokeh, power-broker luxury."
-      ),
-      makeItem(
-        "tech_visionary",
-        "\u7845\u8C37\u79D1\u6280\u9886\u8896",
-        "The Silicon Valley Visionary",
-        "\u6781\u5BA2\u9886\u8896",
-        "Silicon Valley tech visionary pet leader, wearing a minimalist black fine-gauge cashmere turtleneck sweater, designer tortoiseshell wire-rim round glasses, modern sunlit Scandinavian loft studio background, sleek espresso, visionary leadership aesthetic."
-      ),
-      makeItem(
-        "programmer",
-        "\u7A0B\u5E8F\u5458\u4E0E\u6280\u672F\u7801\u519C",
-        "Software Engineer & Developer",
-        "\u7801\u519C\u5DE5\u4F4D\u98CE",
-        "Tech company software engineer dog portrait, wearing a worn heather-grey hoodie under a navy fleece vest, professional over-ear studio headphones resting around neck, glowing dual monitor glow in background, relatable programmer aesthetic."
-      ),
-      makeItem(
-        "customer_support",
-        "\u65B0\u5A92\u4F53\u8FD0\u8425\u4E0E\u5BA2\u670D",
-        "Social Media & Customer Support",
-        "\u5468\u4E00\u65E9\u516B\u98CE",
-        "Social media specialist pet, wearing a light-blue casual Oxford button-up shirt with an open collar, company lanyard and photo ID badge hanging around neck, exhausted Monday morning office lighting, subtle iced coffee cup on desk edge."
-      ),
-      makeItem(
-        "night_shift",
-        "\u71AC\u591C\u5BA1\u6838\u6253\u5DE5\u4EBA",
-        "Night Shift Operations Specialist",
-        "\u51B7\u767D\u52A0\u73ED\u706F",
-        "Late night shift operations specialist, wearing a loose navy blue nylon windbreaker, neon yellow highlighter in chest pocket, cool 5600K fluorescent office lamp light, humorous overworked corporate irony."
-      ),
-      makeItem(
-        "intern",
-        "\u6478\u9C7C\u5B9E\u4E60\u751F",
-        "Quiet Quitting Intern",
-        "\u5927\u5B66\u7272\u6478\u9C7C",
-        "Quiet quitting college intern pet, wearing an oversized cream cable-knit V-neck tennis sweater with a neat white collared shirt underneath, heavy canvas tote bag strap across chest, fresh youthful collegiate vibe."
-      )
-    ];
-    CORPORATE_MANAGEMENT = [
-      makeItem(
-        "scrum_master",
-        "\u654F\u6377\u9879\u76EE\u7ECF\u7406",
-        "Agile Scrum Master",
-        "\u770B\u677F\u7AD9\u4F1A\u98CE",
-        "Agile Scrum Master pet portrait, wearing a fitted light-grey merino crewneck sweater over a subtle gingham checked shirt, colorful sticky notes on glass wall bokeh in background, sharp professional office lighting."
-      ),
-      makeItem(
-        "hr_director",
-        "\u4E25\u82DB\u4EBA\u4E8B\u4E3B\u7BA1",
-        "HR Director & Recruiter",
-        "\u9762\u8BD5\u5B98\u6C14\u573A",
-        "Strict HR director pet, wearing an impeccable tailored black wool blazer with sharp lapels, sleek black cat-eye reading glasses perched neatly, immaculate corporate interview backdrop, intimidating yet humorous elegance."
-      ),
-      makeItem(
-        "product_vp",
-        "\u6EE1\u5634\u9ED1\u8BDD\u4EA7\u54C1\u603B\u76D1",
-        "Product Management VP",
-        "\u7845\u8C37\u6781\u5BA2\u9ED1",
-        "Silicon Valley product executive, wearing a minimalist black fine-gauge cashmere turtleneck sweater, charcoal wool unconstructed overcoat wide collar, sleek keynote presentation aesthetic, visionary tech leadership vibe."
-      )
-    ];
-    CORPORATE_SPECIALISTS = [
-      makeItem(
-        "ceo_titan",
-        "\u534E\u5C14\u8857\u5546\u4E1A\u638C\u95E8\u4EBA",
-        "The Wall Street CEO",
-        "\u6743\u529B\u897F\u88C5",
-        "Wall Street investment titan pet portrait, wearing a bespoke charcoal pinstripe double-breasted suit with broad peak lapels, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, corner office with panoramic Manhattan skyline sunset bokeh, power-broker luxury."
-      ),
-      makeItem(
-        "tech_visionary",
-        "\u7845\u8C37\u79D1\u6280\u9886\u8896",
-        "The Silicon Valley Visionary",
-        "\u6781\u5BA2\u9886\u8896",
-        "Silicon Valley tech visionary pet leader, wearing a minimalist black fine-gauge cashmere turtleneck sweater, designer tortoiseshell wire-rim round glasses, modern sunlit Scandinavian loft studio background, sleek espresso, visionary leadership aesthetic."
-      ),
-      makeItem(
-        "wall_street_trader",
-        "\u534E\u5C14\u8857\u6295\u884C\u5206\u6790\u5E08",
-        "Wall Street Investment Banker",
-        "\u53CC\u6392\u6263\u7EC6\u6761\u7EB9",
-        "Wall Street investment banker pet, wearing a bespoke charcoal pinstripe double-breasted suit lapel, crisp white dress shirt with gold cufflinks, rich crimson silk tie with tie clip, Bloomberg terminal bokeh, power-broker luxury."
-      ),
-      makeItem(
-        "trial_attorney",
-        "\u8BC9\u8BBC\u5927\u5F8B\u5E08",
-        "Senior Trial Attorney",
-        "\u8428\u7EF4\u5C14\u8857\u4E09\u4EF6\u5957",
-        "Prestigious trial attorney pet, wearing a bespoke three-piece navy wool suit with tailored vest and gold pocket watch chain peeking out, warm mahogany law library bookshelf background, authoritative high-fashion legal portrait."
-      ),
-      makeItem(
-        "startup_ceo",
-        "\u521D\u521B\u72EC\u89D2\u517D CEO",
-        "Tech Unicorn Founder & CEO",
-        "\u6572\u949F\u9886\u8896\u98CE",
-        "Tech startup billionaire CEO, wearing a luxury unstructured midnight blue blazer over a pristine heavyweight white designer tee, subtle titanium luxury watch rim, clean minimalist studio lighting, Forbes 30 Under 30 cover style."
-      ),
-      makeItem(
-        "airline_pilot",
+        "airline_captain",
+        "\u9876\u7EA7\u6C11\u822A\u673A\u957F",
+        "The Airline Captain",
         "\u6C11\u822A\u673A\u957F",
-        "Commercial Airline Captain",
-        "\u56DB\u9053\u6760\u91D1\u80A9\u7AE0",
-        "Commercial airline captain pet, wearing an authentic navy blue four-stripe gold braided pilot epaulet blazer, crisp white pilot shirt and black tie, warm cockpit ambient dashboard glow, heroic aviation portrait."
+        "Extreme close-up fisheye lens perspective (GoPro style) with dramatic barrel distortion, humorous meme-avatar aesthetic. A detailed close-up portrait of the specific pet from the uploaded reference image, reimagined as a veteran pilot, meticulously preserving the unique facial structure, fur pattern, color, and eye color from the reference. The pet is wearing vintage aviator goggles pushed up on its head, and a secure black tactical flight harness/vest with silver buckles over its fur, sitting in the pilot's seat and looking directly at the camera with a stoic expression. Both front limbs are natural furry paws resting calmly on the seat armrests. Crucially, the scene is grounded inside a complex aircraft cockpit. The extreme fisheye perspective captures the detailed instrument panel, switches, and screens of the cockpit. Viewed through the cockpit windows, there is absolutely NO sky or clouds; instead, the view shows the concrete of an airport tarmac (ground asphalt), ground service equipment, and parked planes, all distorted by the wide lens. The cockpit interior lighting is detailed, with lights reflecting on the goggle lenses.",
+        "models/airline_captain.png",
+        "human arms, human body, human fingers, human hands, human thumb, opposable thumb, person holding controls, distorted dials, high altitude sky, clouds in window, flying in sky, dislocated paws, cartoon, 3d render, blurry, distorted face, changing pet identity"
+      ),
+      makeItem(
+        "michelin_chef",
+        "\u5BA0\u7269\u5927\u53A8\u505A\u996D\u65E5\u5E38",
+        "The Michelin Executive Chef",
+        "\u7C73\u5176\u6797\u4E3B\u53A8",
+        "A delightful, viral comedic portrait of the specific pet from Photo 1 as an executive chef. Meticulously preserve the pet's authentic facial identity, realistic fur texture, whisker details, and eye color from Photo 1. The pet stands at a clean wooden kitchen prep counter wearing a tall puffy white pleated chef toque hat on its head and a crisp beige-and-brown checkered kitchen apron tied snugly around its chest. Both of its front paws are authentic furry animal paws resting flat and neatly on the cutting board beside a miniature stainless steel pan and a tiny silicone spatula. Minimalist warm restaurant kitchen studio background with soft warm lighting. Photorealistic pet fur, delightful meme avatar aesthetic. Absolutely no human hands, no human arms, no flesh-toned appendages.",
+        "models/michelin_chef.png",
+        "realistic human fingers, realistic human arms, human hands, human thumbs, fleshy hands, human skin, hairy arms, furry paws holding spatula, dirty apron, grease stains, dark gloomy messy kitchen, burning stove, chef hat covering eyes, hat swallowing ears, hat piercing skull, deformed hands"
       )
     ];
-    COSPLAY_LEGENDS = [
+    COSPLAY_TEMPLATES = [
       makeItem(
-        "royal_monarch",
-        "\u6587\u827A\u590D\u5174\u7687\u5BA4\u541B\u4E3B",
-        "The Renaissance Monarch",
-        "\u7687\u5BA4\u8D35\u65CF",
-        "Regal Renaissance royal monarch pet portrait, wearing a deep royal crimson and gold embroidered velvet mantle with ermine fur lining, ornate antique lace ruff collar, royal sash with gold heraldic medal crest, majestic European palace throne room lighting, Crown and Paw prestige.",
-        "models/milo_gentle_navy_velvet.webp",
-        "human arms, human hands, human fingers, crown obscuring eyes, deformed skull, cheap costume, plastic jewels, human skin exposed"
+        "assumption_of_mary",
+        "\u5DF4\u6D1B\u514B\u300A\u5723\u6BCD\u5347\u5929\u300B\u53E4\u5178\u540D\u753B",
+        "The Assumption of the Virgin",
+        "\u795E\u5723\u5347\u5929",
+        "A dramatic Baroque religious classical oil painting in the style of Titian and Peter Paul Rubens' The Assumption of the Virgin, starring the specific pet from Photo 1. Meticulously preserve the pet's authentic facial features, fur markings, and eye color. The pet is the divine protagonist, ascending gracefully toward heaven on glowing golden clouds, draped in billowing crimson and white silk robes. Both furry paws are raised outward in divine blessing. Overhead radiates a magnificent golden heavenly halo and light rays. Choirs of cherubs and putti flutter admiringly in the misty skies around it. Below, reverent disciples gaze upward in awe. Dramatic chiaroscuro, rich red and gold oil palette, craquelure canvas texture.",
+        "models/assumption_of_mary.png",
+        "human body on pet, human head on pet, pet with human arms, pet with human fingers, human hands, human fingers, human wrists, human skin, human elbows, five fingers, plain background, studio backdrop, pet face distorted, halo piercing skull, deformed paws"
       ),
       makeItem(
-        "witch",
-        "\u795E\u79D8\u5947\u5E7B\u5C0F\u5973\u5DEB",
-        "The Midnight Witch",
-        "\u9B54\u6CD5\u5947\u5883",
-        "Mystical fantasy witch pet studio portrait. Wearing an elegant miniature midnight-purple or deep navy velvet witch pointed hat softly tilted between the ears, with the pet's two authentic furry ears resting naturally and completely visible at the sides of the brim, never flattening the skull or covering the eyes. Draped in a matching dark velvet capelet with delicate gold star embroidery and an antique bronze celestial moon clasp at chest. Soft ambient glow with floating warm amber and emerald fairy firefly sparkles bokeh, mysterious yet heartwarming and adorable, strictly authentic animal anatomy.",
-        "models/milo_techwear_arctic_yellow.webp",
-        "human arms, human ears, hat covering eyes, hat swallowing ears, hat piercing skull, scary horror gore, skulls, blood, spiderwebs, dark pitch black, ugly witch nose, human hands, deformed paws"
+        "caribbean_pirate",
+        "\u52A0\u52D2\u6BD4\u6D77\u76D7\u8239\u957F",
+        "Pirates of the Caribbean",
+        "\u4F20\u5947\u6D77\u76D7",
+        "A detailed cinematic film still of the specific pet from the uploaded reference image, perfectly maintaining its facial features, fur pattern, muzzle shape, and intense eye color. The pet is depicted as a ruthless pirate captain in a dramatic medium close-up shot. It wears a large, detailed, weathered crimson-red pirate tricorne hat with gold trim and a prominent white skull and crossbones emblem (Jolly Roger) on the front, identical to the style in the reference image. Crucially, the pet's expression, while rugged and experienced, is now marked by an intense, steely grimace, its gaze slightly narrowed and piercing, looking directly forward with unmistakable determination and authority. The context is a major naval battle during the golden age of piracy. The pet stands on the quarterdeck of a pirate ship, with background cannon smoke and distant burning ships across dark water under a moody, golden hour sunset sky. The entire scene is bathed in dramatic theatrical lighting, mixing warm sunset hues with fiery orange highlights against weathered wood. Both paws are natural animal paws resting on the ship railing. Absolutely no human arms, no human hands. Cinematic depth of field, high-fidelity textures, epic adventure film style.",
+        "models/caribbean_pirate.png",
+        "human hands, human arms, human fingers, human thumb, opposable thumb, human wrist, human skin, person holding camera, taking selfie, text, watermark, subtitle, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, human body, human face, extra limbs"
       ),
       makeItem(
-        "cowboy",
-        "\u897F\u90E8\u8352\u91CE\u725B\u4ED4\u4E0E\u6D6A\u6F2B\u5973\u725B\u4ED4",
-        "The Wild West Cowboy & Cowgirl",
-        "\u897F\u90E8\u4F20\u5947",
-        "Chic Americana Wild West cowboy and Coastal Cowgirl pet portrait. Wearing a stylish miniature tan suede wide-brimmed cowboy hat resting gently on top head between natural furry ears, ears completely visible and uncompressed, unobstructed clear eyes and facial markings. Loosely tied caramel brown and soft vintage red paisley cotton bandana neckerchief around lower neck. Warm golden hour sunset prairie lighting, soft rustic wooden porch bokeh, free-spirited, charming and sunlit aesthetic, strictly authentic animal anatomy.",
-        "models/milo_aviator_vintage_shearling.webp",
-        "sunglasses obscuring eyes, heavy firearms, gun, saddle on back, plastic hat, hat crushing ears, choked neck, dirty mud, dust covering face, human arms, human fingers, dark dreary shadows"
-      ),
-      makeItem(
-        "detective",
-        "\u8D1D\u514B\u8857\u7EF4\u591A\u5229\u4E9A\u5927\u4FA6\u63A2",
-        "The Baker Street Sleuth",
-        "\u82F1\u4F26\u795E\u63A2",
-        "Victorian Baker Street detective pet, wearing a classic British houndstooth wool tweed Inverness cape trench coat, antique silver monocle on delicate chain, vintage gaslight foggy London streetscape, dark academia mystery atmosphere."
-      ),
-      makeItem(
-        "aviator",
-        "\u7F8E\u5F0F\u4F20\u5947\u738B\u724C\u98DE\u884C\u5458",
-        "The Vintage Aviator Ace",
-        "\u738B\u724C\u98DE\u884C",
-        "Vintage American aviator ace pet, wearing a rugged distressed brown B-3 shearling leather flight bomber jacket with plush sheepskin fleece collar, vintage brass aviator goggles pushed up over brow, silk flight scarf, golden sunset runway airfield bokeh, Top Gun heroism."
+        "secret_agent",
+        "\u5BA0\u7269\u7B28\u8D3C/\u571F\u5473\u7279\u5DE5",
+        "The Secret Agent",
+        "\u571F\u5473\u7279\u5DE5",
+        "A hilarious viral 0.5x ultra-wide fisheye snapshot of the specific pet from Photo 1 caught in the act as a comical burglar. The camera is positioned extremely close below the pet's face, dramatically magnifying its wet black snout and twitching whiskers with funny barrel distortion. The pet wears a tight black ribbed knit balaclava ski mask with cutouts revealing its wide, stunned innocent round eyes and whiskers. An expression of utter shock and guilt as if caught red-handed. Set in a natural everyday home interior with authentic indoor lighting. True candid phone camera snapshot texture, real fur, zero CGI. Strictly animal head portrait with no limbs, no hands, no paws.",
+        "models/secret_agent.png",
+        "human hands, human fingers, human arms, human thumb, human body, person taking picture, holding phone, smartphone in hand, studio lighting, 3D render, CGI, digital illustration, cartoon, anime, scary horror, blood, gun, weapon, violent, deformed snout, deformed eyes"
       )
     ];
-    COSPLAY_MARVEL = [
-      makeItem(
-        "iron_man",
-        "\u94A2\u94C1\u4FA0\uFF1A\u7EB3\u7C73 Mark 85 \u80F8\u7532",
-        "Iron Man Mark 85 (Unmasked)",
-        "\u7EB3\u7C73\u53CD\u5E94\u5806",
-        "Iron Man inspired superhero pet (no helmet, face fully natural), wearing a high-gloss hot-rod red and metallic gold nano-tech chest armor breastplate, glowing bright cyan triangular arc reactor in the center, mechanical shoulder joints, epic cinematic Marvel studio lighting."
-      ),
-      makeItem(
-        "spider_man",
-        "\u8718\u86DB\u4FA0\uFF1A\u7ECF\u5178\u6218\u8863\u4E0E\u86DB\u4E1D\u80A9\u7532",
-        "Spider-Man Suit (Unmasked)",
-        "\u7ACB\u4F53\u86DB\u7F51\u7EB9",
-        "Spider-Man inspired pet hero (unmasked, original pet face and eyes completely visible), wearing a tailored red spandex superhero suit collar with raised black webbing texture, matte black spider emblem on chest, New York city skyline dusk lighting."
-      ),
-      makeItem(
-        "deadpool",
-        "\u6B7B\u4F8D\uFF1A\u6218\u635F\u80CC\u5E26\u4E0E\u7EA2\u9ED1\u5DE5\u88C5",
-        "Deadpool & Dogpool Suit",
-        "\u53CC\u5200\u6218\u635F\u98CE",
-        "Deadpool and Dogpool inspired battle-worn suit (unmasked face), wearing a distressed crimson and black leather tactical chest harness, twin katana hilt handles strapped over back, rugged brass buckle details, humorous antihero cinematic studio shot."
-      ),
-      makeItem(
-        "thor",
-        "\u96F7\u795E\uFF1A\u963F\u65AF\u52A0\u5FB7\u94F6\u9CDE\u91CD\u94E0",
-        "Thor Odinson Heavy Armor",
-        "\u795E\u57DF\u91CD\u94E0",
-        "Thor God of Thunder pet warrior, wearing heavy silver metallic disc plate chest armor with Nordic filigree engravings, a regal flowing bright crimson velvet cape clasped at shoulders, subtle lightning sparks bokeh, cinematic blockbuster realism."
-      )
-    ];
-    COSPLAY_DC = [
-      makeItem(
-        "batman",
-        "\u8759\u8760\u4FA0\uFF1A\u54E5\u8C2D\u6697\u9ED1\u51EF\u592B\u62C9\u6218\u8863",
-        "The Dark Knight Armor (Unmasked)",
-        "\u51EF\u592B\u62C9\u9632\u5F39",
-        "The Dark Knight Batman aesthetic (unmasked, natural pet head), wearing a tactical matte-black Kevlar chest plate with embossed bat emblem, heavy utility shoulder straps, wet rain reflections, moody Gotham neo-noir rim light."
-      ),
-      makeItem(
-        "superman",
-        "\u8D85\u4EBA\uFF1A\u6C2A\u661F\u6DF1\u84DD\u7EB3\u7C73\u6218\u8863",
-        "Superman Kryptonian Suit",
-        "\u6C2A\u661F\u7EA2\u9EC4\u76FE",
-        "Superman inspired hero suit, wearing an alien deep royal blue chainmail texture chest suit with the iconic red and yellow House of El diamond crest, rich flowing red cape draped behind shoulders, sun-flare heroic lighting."
-      ),
-      makeItem(
-        "joker",
-        "\u5C0F\u4E11\uFF1A\u54E5\u8C2D\u7D2B\u7EFF\u649E\u8272\u6761\u7EB9\u4E09\u4EF6\u5957",
-        "The Joker Vintage Tailoring",
-        "\u7D2B\u7EFF\u649E\u8272",
-        "The Joker inspired villain fashion, wearing a vibrant deep purple tailored wool suit lapel, neon chartreuse green satin vest, vintage patterned silk tie, tiny lapel flower, dramatic theatrical circus lighting, stylish camp aesthetic."
-      )
-    ];
-    COSPLAY_SCIFI = [
-      makeItem(
-        "terminator",
-        "\u7EC8\u7ED3\u8005 T-800\uFF1A\u7ECF\u5178\u76AE\u5939\u514B\u4E0E\u673A\u68B0\u81C2",
-        "Terminator T-800 Cybernetic Biker",
-        "\u673A\u8F66\u76AE\u8863",
-        "Terminator T-800 inspired pet, wearing a heavy distressed black motorcycle leather biker jacket with asymmetrical silver zippers and studs, subtle chrome cybernetic endoskeleton exposed at one shoulder, dystopian blue night highway light."
-      ),
-      makeItem(
-        "matrix_neo",
-        "\u9ED1\u5BA2\u5E1D\u56FD\uFF1A\u5C3C\u5965\u7ACB\u9886\u6697\u9ED1\u98CE\u8863",
-        "The Matrix Neo Trench Coat",
-        "\u6781\u5BA2\u9ED1\u957F\u888D",
-        "The Matrix Neo inspired cyber coat, wearing a minimalist structured black gabardine high-collar trench coat, sleek micro oval sunglasses resting effortlessly, faint emerald green digital rain code bokeh in background."
-      ),
-      makeItem(
-        "jedi_knight",
-        "\u7EDD\u5730\u6B66\u58EB\uFF1A\u661F\u7403\u5927\u6218\u7EDD\u5730\u957F\u888D",
-        "Star Wars Jedi Knight Robe",
-        "\u53CC\u5C42\u4E9A\u9EBB\u957F\u888D",
-        "Star Wars Jedi Knight robes, pet dressed in authentic textured natural oatmeal linen tunic with overlapping earthy brown hooded cloak draped on shoulders, wide leather utility belt buckle, cinematic dual-sun Tatooine glow."
-      )
-    ];
-    CELEBRATION_HOLIDAYS = [
+    CELEBRATION_TEMPLATES = [
       makeItem(
         "christmas",
-        "\u5723\u8BDE\u6DF1\u7EA2\u4E1D\u7ED2\u793C\u76D2\u6696\u51AC\u5199\u771F",
-        "Christmas Velvet Box & Hearth",
+        "\u82F1\u4F26\u5723\u8BDE\u793C\u76D2\u4E3B\u9898\u5199\u771F",
+        "British Christmas Velvet Box",
         "\u5723\u8BDE\u76DB\u5178",
-        "Christmas holiday luxury pet portrait. Pet naturally seated inside an open rich deep crimson velvet gift box, both front paws resting naturally and neatly over the front edge of the box without clipping legs. Wearing a deep forest-green plush fleece scarf collar adorned with a festive red silk ribbon and an opulent gold satin bow at chest. In the warm bokeh background stands a magnificently decorated grand Christmas tree with red and gold baubles, warm fairy lights, and neatly stacked holiday gift boxes, subtle tiny soft snowflakes gently drifting down, 50mm portrait lens, warm golden hearth glow.",
-        "models/milo_warm.webp",
-        "gift box cutting off front legs, paws trapped in box rim, gift box piercing body, scarf or bow covering face, decorations piercing fur, snowflakes covering eyes, gifts obscuring subject, overly crowded background, duplicate text, typo, gibberish, Christmas tree growing out of pet, pet wrapped like a package, wrong paw count"
+        "A warm, festive British Christmas photographic portrait starring the specific pet from Photo 1. Meticulously preserving the pet's authentic facial features, fur texture, and eye color. The pet sits inside a luxurious vintage burgundy velvet Christmas gift box with ornate gold filigree trim, its front paws resting casually on the box edge. Wearing a rich dark green knit holiday scarf with a large golden ribbon bow and star brooch. Background features a lush Christmas tree lavishly decorated with red and gold baubles, gingerbread ornaments, and gentle falling snow. Surrounded by silk-ribboned presents on fresh faux snow. Soft warm cinematic holiday lighting, shallow depth of field.",
+        "models/christmas.png",
+        "text, watermark, subtitle, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, extra limbs"
       ),
       makeItem(
         "halloween",
-        "\u4E07\u5723\u8282\u8F6F\u840C\u5C0F\u6076\u9B54\u4E0E\u5357\u74DC\u5199\u771F",
-        "Halloween Spooky Magic & Pumpkins",
+        "\u4E07\u5723\u8282\u5357\u74DC\u706F\u9A6C\u8F66\u5947\u5883",
+        "Halloween Magical Pumpkin Carriage",
         "\u4E07\u5723\u5947\u5883",
-        "Whimsical cozy and cute Halloween pet studio portrait. Completely non-frightening, adorable and heartwarming. Pet wearing delicate miniature velvety devil horns resting gently on top fur without piercing skull or ears, and a dainty dark velvet bow tie below chin. Scattered around pet on floor are gently glowing carved jack-o-lantern mini pumpkins, curly dried vines, tiny black bat ornaments, and purple autumn leaves. Moody warm candlelight bokeh background, soft warm orange illumination, cozy luxury pet celebration.",
-        "models/milo_techwear_arctic_yellow.webp",
-        "horror, bloody, skulls, open wounds, sharp fangs, scary menacing expression, heavy bulky costume, giant devil horns, horns piercing ears, horns penetrating skull, bats covering face, pumpkin fused with body, cluttered props, pitch black background, frightening lighting"
+        "An enchanting Halloween fairy-tale photographic portrait featuring the specific pet from Photo 1. Meticulously preserving the pet's exact facial structure, fur markings, and eye color. The adorable pet sits inside an enormous glowing Jack-o'-lantern pumpkin carriage, filled with colorful candies. The pet wears a vintage black pointed witch hat adorned with a gold crescent moon pendant, and a frilly pink collar, holding a glowing star wand. Set in a magical twilight forest with soft purple mist, floating translucent ghost balloons, tiny flying bats, and glowing mushrooms. Warm pumpkin lantern glow, whimsical storybook aesthetic, rich 8k photographic detail.",
+        "models/halloween.png",
+        "deformed face, scary horror, blood, text, watermark, extra limbs, human face, cartoon illustration, anime, noise"
       ),
-      makeItem(
-        "easter",
-        "\u590D\u6D3B\u8282\uFF1A\u6625\u65E5\u9A6C\u5361\u9F99\u7C89\u84DD\u788E\u82B1\u9886\u7ED3",
-        "Easter Garden Party",
-        "\u6625\u65E5\u788E\u82B1",
-        "Easter garden gala pet portrait, wearing a tailored pastel mint-green and baby-pink linen waistcoat, delicate daisy floral print silk bow tie, soft morning spring garden sunlight, pastel painted eggs in blurred foreground."
-      ),
-      makeItem(
-        "thanksgiving",
-        "\u611F\u6069\u8282\uFF1A\u79CB\u65E5\u7126\u7CD6\u5927\u5730\u8272\u7F8A\u6BDB\u730E\u88C5",
-        "Thanksgiving Autumn Harvest",
-        "\u4E30\u6536\u91D1\u79CB",
-        "Thanksgiving harvest celebration, pet wearing an authentic caramel brown and warm oatmeal houndstooth wool hacking jacket, olive knit inner collar, golden autumn maple leaf bokeh, rich warm sunset glow."
-      )
-    ];
-    CELEBRATION_MILESTONES = [
       makeItem(
         "birthday_vip",
-        "\u751F\u65E5 VIP \u6D6E\u96D5\u5C0F\u86CB\u7CD5\u793C\u5BBE\u5199\u771F",
-        "Birthday VIP Gala & Cake",
+        "VIP\u4E13\u5C5E\u751F\u65E5\u76DB\u5178\u5199\u771F",
+        "VIP Birthday Gala & Cake",
         "\u751F\u65E5\u4E13\u5C5E",
-        "VIP Birthday celebration pet studio portrait. Natural relaxed sitting or lying pose facing camera with adorable calm expression. Wearing a lightweight macaron pastel party hat centered on head with natural volume without piercing ears, soft pink ruffled collar necklace loosely draped around lower chest. In front sits an artisanal mini pet birthday cake made of gourmet meat p\xE2t\xE9 and shrimp on a delicate embossed porcelain plate, topped with a single gently glowing lit birthday candle providing warm amber ambient candlelight, shallow depth of field, high resolution luxury pet studio photography.",
-        "models/milo_gentle.webp",
-        "hat penetrating ears, strap digging into skin, collar covering mouth, pet touching flame, candle too close to fur, multiple candles, cake fused with paws, cake attached to human body, underexposed, forced human grin, dangerous flame, dripping wax"
-      ),
-      makeItem(
-        "debutante",
-        "\u540D\u5A9B\u6210\u4EBA\u793C\uFF1A\u5DF4\u6D1B\u514B\u591A\u5708\u5929\u7136\u5FAE\u578B\u73CD\u73E0\u9879\u94FE",
-        "The Debutante Ball Gala",
-        "\u5DF4\u6D1B\u514B\u73CD\u73E0",
-        "Debutante ball high-society gala portrait, pet wearing a lavish multi-strand baroque seed-pearl choker necklace with a miniature emerald gem pendant, blush-pink tulle gown collar, soft aristocratic salon chandelier lighting."
-      ),
-      makeItem(
-        "graduation",
-        "\u6BD5\u4E1A\u5178\u793C\uFF1A\u5FAE\u578B\u5B66\u58EB\u5782\u5E03\u4E0E\u8363\u8A89\u52CB\u5E26",
-        "The Ivy League Graduation",
-        "\u5E38\u9752\u85E4\u5B66\u58EB",
-        "Ivy League pet graduation portrait, pet wearing a formal black academic gown collar with deep crimson and navy blue silk graduation hood trim, golden honor stole across chest, warm library atmosphere, proud milestone finish."
-      ),
-      makeItem(
-        "wedding_ringbearer",
-        "\u5A5A\u793C\u82B1\u7AE5\u4F34\u5BA0\uFF1A\u6781\u7B80\u8C61\u7259\u767D\u7F0E\u9762\u9886\u7ED3",
-        "Wedding Ring-Bearer Tuxedo",
-        "\u5A5A\u5178\u82B1\u7AE5",
-        "Wedding ring-bearer pet fashion portrait, pet wearing a crisp pure white dress shirt collar with an exquisite double-layered ivory silk satin bow tie, tiny woven gold ring motif, romantic soft-focus white rose floral arch background."
+        "An intimate, heartwarming VIP pet birthday celebration photograph starring the specific pet from Photo 1. Meticulously preserving the pet's exact facial features, fur texture, and soulful eye color. The pet wears a festive polka-dot cone party hat with a fluffy pom-pom and a cute pink patterned bib, resting comfortably on a warm hardwood floor. Before it sits a ceramic floral plate with a gourmet double-layer pet meat cake topped with fresh shrimp and a single burning pink-and-white striped candle with delicate wisps of smoke. Warm, dim ambient lighting with twinkling golden fairy string lights and soft blurred balloons in the background. Photorealistic cozy celebration atmosphere.",
+        "models/birthday_vip.png",
+        "text, watermark, subtitle, signature, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, extra fingers"
       )
     ];
     CASCADING_THEMES = {
@@ -3860,22 +3541,10 @@ var init_styles = __esm({
         fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_gentle.webp",
         subCategories: [
           {
-            id: "classical_masters",
-            nameZh: "\u53E4\u5178\u540D\u753B\u6D3E",
-            nameEn: "Classical Masters",
-            items: FINE_ART_CLASSICAL
-          },
-          {
-            id: "impressionist",
-            nameZh: "\u73B0\u4EE3\u4E3B\u4E49\u4E0E\u5370\u8C61\u6D3E",
-            nameEn: "Modern & Impressionist",
-            items: FINE_ART_IMPRESSIONIST
-          },
-          {
-            id: "pop_contemporary",
-            nameZh: "\u5148\u950B\u63D2\u753B\u4E0E\u6CE2\u666E",
-            nameEn: "Pop & Contemporary",
-            items: FINE_ART_POP
+            id: "featured",
+            nameZh: "\u7CBE\u9009\u9AD8\u5B9A\u6A21\u677F",
+            nameEn: "Featured Templates",
+            items: FINE_ART_TEMPLATES
           }
         ]
       },
@@ -3887,22 +3556,10 @@ var init_styles = __esm({
         fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_detective.webp",
         subCategories: [
           {
-            id: "entry_level",
-            nameZh: "\u5DE5\u4F4D\u57FA\u5C42\u725B\u9A6C",
-            nameEn: "Entry-Level Drones",
-            items: CORPORATE_ENTRY
-          },
-          {
-            id: "management",
-            nameZh: "\u7BA1\u7406\u4E0E\u4E2D\u5C42",
-            nameEn: "Management & Leads",
-            items: CORPORATE_MANAGEMENT
-          },
-          {
-            id: "specialists",
-            nameZh: "\u884C\u4E1A\u4E13\u4E1A\u4EBA\u5458",
-            nameEn: "Specialists & Execs",
-            items: CORPORATE_SPECIALISTS
+            id: "featured",
+            nameZh: "\u7CBE\u9009\u9AD8\u5B9A\u6A21\u677F",
+            nameEn: "Featured Templates",
+            items: CORPORATE_TEMPLATES
           }
         ]
       },
@@ -3914,28 +3571,10 @@ var init_styles = __esm({
         fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_street.webp",
         subCategories: [
           {
-            id: "legends",
-            nameZh: "\u516C\u6709\u9886\u57DF\u4F20\u5947\u4EBA\u7269",
-            nameEn: "Legendary Personas",
-            items: COSPLAY_LEGENDS
-          },
-          {
-            id: "marvel",
-            nameZh: "\u6F2B\u5A01\u82F1\u96C4\u8054\u76DF",
-            nameEn: "Marvel Icons",
-            items: COSPLAY_MARVEL
-          },
-          {
-            id: "dc",
-            nameZh: "DC \u9ED1\u6697\u5B87\u5B99",
-            nameEn: "DC Universe",
-            items: COSPLAY_DC
-          },
-          {
-            id: "scifi",
-            nameZh: "\u79D1\u5E7B\u7ECF\u5178\u94F6\u5E55",
-            nameEn: "Sci-Fi Legends",
-            items: COSPLAY_SCIFI
+            id: "featured",
+            nameZh: "\u7CBE\u9009\u9AD8\u5B9A\u6A21\u677F",
+            nameEn: "Featured Templates",
+            items: COSPLAY_TEMPLATES
           }
         ]
       },
@@ -3947,16 +3586,10 @@ var init_styles = __esm({
         fallbackImageUrl: "https://vivibon-cover.pages.dev/models/milo_warm.webp",
         subCategories: [
           {
-            id: "holidays",
-            nameZh: "\u897F\u65B9\u4F20\u7EDF\u76DB\u5927\u8282\u65E5",
-            nameEn: "Major Holidays",
-            items: CELEBRATION_HOLIDAYS
-          },
-          {
-            id: "milestones",
-            nameZh: "\u4EBA\u751F\u9AD8\u5149\u65F6\u523B",
-            nameEn: "Milestone Events",
-            items: CELEBRATION_MILESTONES
+            id: "featured",
+            nameZh: "\u7CBE\u9009\u9AD8\u5B9A\u6A21\u677F",
+            nameEn: "Featured Templates",
+            items: CELEBRATION_TEMPLATES
           }
         ]
       }
@@ -3967,7 +3600,7 @@ var init_styles = __esm({
         key: "fine_art",
         name: "Fine Art",
         subtitle: "Classical Masterpieces & Modern Pop",
-        prompt: FINE_ART_CLASSICAL[0].fullPrompt,
+        prompt: FINE_ART_TEMPLATES[0].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.fine_art.fallbackImageUrl,
         variants: cascadingToLegacyVariants("fine_art")
       },
@@ -3975,7 +3608,7 @@ var init_styles = __esm({
         key: "corporate",
         name: "Corporate",
         subtitle: "Silicon Valley & Wall Street 9-to-5",
-        prompt: CORPORATE_ENTRY[0].fullPrompt,
+        prompt: CORPORATE_TEMPLATES[0].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.corporate.fallbackImageUrl,
         variants: cascadingToLegacyVariants("corporate")
       },
@@ -3983,7 +3616,7 @@ var init_styles = __esm({
         key: "cosplay",
         name: "Cosplay",
         subtitle: "Historical Royalty & Iconic Legends",
-        prompt: COSPLAY_LEGENDS[0].fullPrompt,
+        prompt: COSPLAY_TEMPLATES[0].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.cosplay.fallbackImageUrl,
         variants: cascadingToLegacyVariants("cosplay")
       },
@@ -3991,7 +3624,7 @@ var init_styles = __esm({
         key: "celebration",
         name: "Celebration",
         subtitle: "Holiday Galas & VIP Milestones",
-        prompt: CELEBRATION_HOLIDAYS[0].fullPrompt,
+        prompt: CELEBRATION_TEMPLATES[0].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.celebration.fallbackImageUrl,
         variants: cascadingToLegacyVariants("celebration")
       },
@@ -4000,7 +3633,7 @@ var init_styles = __esm({
         key: "gentle",
         name: "Fine Art (Legacy)",
         subtitle: "Classical Art Masterpieces",
-        prompt: FINE_ART_CLASSICAL[1].fullPrompt,
+        prompt: FINE_ART_TEMPLATES[1].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.fine_art.fallbackImageUrl,
         variants: cascadingToLegacyVariants("fine_art")
       },
@@ -4008,7 +3641,7 @@ var init_styles = __esm({
         key: "detective",
         name: "Corporate (Legacy)",
         subtitle: "Executive & Aviator",
-        prompt: CORPORATE_SPECIALISTS[3].fullPrompt,
+        prompt: CORPORATE_TEMPLATES[1].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.corporate.fallbackImageUrl,
         variants: cascadingToLegacyVariants("corporate")
       },
@@ -4016,7 +3649,7 @@ var init_styles = __esm({
         key: "street",
         name: "Cosplay (Legacy)",
         subtitle: "Cyber & Superhero",
-        prompt: COSPLAY_MARVEL[0].fullPrompt,
+        prompt: COSPLAY_TEMPLATES[1].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.cosplay.fallbackImageUrl,
         variants: cascadingToLegacyVariants("cosplay")
       },
@@ -4024,7 +3657,7 @@ var init_styles = __esm({
         key: "warm",
         name: "Celebration (Legacy)",
         subtitle: "Festive & Winter Holiday",
-        prompt: CELEBRATION_HOLIDAYS[0].fullPrompt,
+        prompt: CELEBRATION_TEMPLATES[1].fullPrompt,
         fallbackImageUrl: CASCADING_THEMES.celebration.fallbackImageUrl,
         variants: cascadingToLegacyVariants("celebration")
       }
@@ -8222,16 +7855,52 @@ var require_zod = __commonJS({
 var import_hono4 = __toESM(require_cjs());
 
 // src/middleware/cors.ts
+var isOriginAllowed = (origin, env) => {
+  if (!origin) {
+    return true;
+  }
+  if (env?.CORS_ORIGIN) {
+    if (env.CORS_ORIGIN === "*") return true;
+    if (env.CORS_ORIGIN === origin) return true;
+  }
+  if (origin === "https://vivibon-cover.pages.dev") return true;
+  if (/^https:\/\/[a-zA-Z0-9-]+\.vivibon-cover\.pages\.dev$/.test(origin)) return true;
+  if (origin === "http://localhost:3000" || origin === "http://127.0.0.1:3000" || origin === "http://localhost:8787" || origin === "http://127.0.0.1:8787") {
+    return true;
+  }
+  if (env?.ENVIRONMENT === "test" && (origin.includes("localhost") || origin.includes("127.0.0.1") || origin.includes("vivibon.com"))) {
+    return true;
+  }
+  return false;
+};
 var corsMiddleware = () => {
   return async (c, next) => {
-    const origin = c.env?.CORS_ORIGIN || "*";
-    c.header("Access-Control-Allow-Origin", origin);
-    c.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    c.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
-    c.header("Access-Control-Max-Age", "86400");
+    const origin = c.req.header("origin");
+    const allowed = isOriginAllowed(origin, c.env);
     if (c.req.method === "OPTIONS") {
+      if (origin && !allowed) {
+        return c.body(null, 403);
+      }
+      c.header("Access-Control-Allow-Origin", origin || "*");
+      c.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+      c.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With, x-request-timestamp, x-request-nonce, x-admin-bypass-key, x-test-bypass");
+      c.header("Access-Control-Max-Age", "86400");
       return c.body(null, 204);
     }
+    if (origin) {
+      if (!allowed) {
+        return c.json({
+          success: false,
+          errorCode: "FORBIDDEN_ORIGIN",
+          message: "Cross-origin request blocked by ViviBon security policy."
+        }, 403);
+      }
+      c.header("Access-Control-Allow-Origin", origin);
+    } else {
+      c.header("Access-Control-Allow-Origin", c.env?.CORS_ORIGIN || "*");
+    }
+    c.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    c.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With, x-request-timestamp, x-request-nonce, x-admin-bypass-key, x-test-bypass");
     await next();
   };
 };
@@ -8267,8 +7936,8 @@ var loggerMiddleware = () => {
 
 // src/middleware/rateLimiter.ts
 var DEFAULT_DAILY_BUDGET_CAP = 1500;
-var DEFAULT_IP_HOURLY_CAP = 3;
-var DEFAULT_IP_DAILY_CAP = 10;
+var DEFAULT_IP_HOURLY_CAP = 10;
+var DEFAULT_IP_DAILY_CAP = 20;
 var rateLimiterMiddleware = (options) => {
   return async (c, next) => {
     if (c.req.method !== "POST") {
@@ -8320,9 +7989,46 @@ var rateLimiterMiddleware = (options) => {
       };
       return c.json(errorResp, 429);
     }
-    const url = new URL(c.req.url);
-    const isTestBypass = c.req.header("x-test-bypass") === "1" || url.searchParams.get("test_bypass") === "1" || url.searchParams.get("debug") === "1";
-    if (!isTestBypass) {
+    const reqTimestampStr = c.req.header("x-request-timestamp");
+    const reqNonce = c.req.header("x-request-nonce");
+    if (reqTimestampStr) {
+      const reqTimestamp = parseInt(reqTimestampStr, 10);
+      if (isNaN(reqTimestamp) || Math.abs(now.getTime() - reqTimestamp) > 6e4) {
+        const errorResp = {
+          success: false,
+          errorCode: "REQUEST_EXPIRED",
+          message: "Request timestamp is invalid or expired. Please refresh the page and try again."
+        };
+        return c.json(errorResp, 403);
+      }
+    }
+    if (reqNonce) {
+      if (reqNonce.length < 8 || reqNonce.length > 64) {
+        const errorResp = {
+          success: false,
+          errorCode: "INVALID_NONCE",
+          message: "Invalid request nonce token."
+        };
+        return c.json(errorResp, 403);
+      }
+      const nonceKey = `replay:nonce:${reqNonce}`;
+      const seen = await kv.get(nonceKey);
+      if (seen) {
+        const errorResp = {
+          success: false,
+          errorCode: "REPLAY_ATTACK_DETECTED",
+          message: "Replay attack blocked. Each request token can only be used once."
+        };
+        return c.json(errorResp, 403);
+      }
+      await kv.put(nonceKey, "1", { expirationTtl: 120 });
+    }
+    const isAdminBypass = Boolean(
+      c.env?.ADMIN_BYPASS_KEY && c.req.header("x-admin-bypass-key") === c.env.ADMIN_BYPASS_KEY
+    );
+    const isTestBypass = c.env?.ENVIRONMENT !== "production" && c.req.header("x-test-bypass") === "1";
+    const shouldBypass = isAdminBypass || isTestBypass;
+    if (!shouldBypass) {
       const ipHourlyKey = `ratelimit:ip:${ip}:${hourStr}`;
       const ipDailyKey = `ratelimit:ip:${ip}:${dateStr}`;
       const ipHourlyStr = await kv.get(ipHourlyKey);
@@ -8551,8 +8257,11 @@ var antiBotMiddleware = () => {
     if (c.req.method !== "POST") {
       return await next();
     }
-    const url = new URL(c.req.url);
-    if (c.req.header("x-test-bypass") === "1" || url.searchParams.get("test_bypass") === "1" || url.searchParams.get("debug") === "1") {
+    const isAdminBypass = Boolean(
+      c.env?.ADMIN_BYPASS_KEY && c.req.header("x-admin-bypass-key") === c.env.ADMIN_BYPASS_KEY
+    );
+    const isTestBypass = c.env?.ENVIRONMENT !== "production" && c.req.header("x-test-bypass") === "1";
+    if (isAdminBypass || isTestBypass) {
       return await next();
     }
     const userAgent = c.req.header("user-agent") || "";
@@ -8668,14 +8377,15 @@ var GenerateRequestSchema = import_zod.z.object({
       params: { errorCode: "IMAGE_TOO_LARGE" }
     }
   ),
-  isDefaultSample: import_zod.z.boolean().default(true)
+  isDefaultSample: import_zod.z.boolean().default(true),
+  referenceImageUrl: import_zod.z.string().url().optional()
 });
 
 // src/services/falService.ts
 init_styles();
 
 // src/services/alertService.ts
-function classifyFailureReason(rawMessage = "") {
+function classifyFailureReason(rawMessage = "", timeoutMs) {
   const lower = rawMessage.toLowerCase();
   if (lower.includes("top_up") || lower.includes("balance") || lower.includes("insufficient") || lower.includes("quota") || lower.includes("credit") || lower.includes("arrears") || lower.includes("payment required") || lower.includes("locked")) {
     return {
@@ -8686,11 +8396,25 @@ function classifyFailureReason(rawMessage = "") {
     };
   }
   if (lower.includes("timeout") || lower.includes("abort") || lower.includes("timed out") || lower.includes("deadline exceeded")) {
+    let detectedSec = timeoutMs && timeoutMs > 0 ? Math.round(timeoutMs / 1e3) : null;
+    if (!detectedSec) {
+      const msMatch = rawMessage.match(/(\d+)\s*ms/i);
+      if (msMatch) {
+        detectedSec = Math.round(parseInt(msMatch[1], 10) / 1e3);
+      } else {
+        const sMatch = rawMessage.match(/(\d+)\s*s(?:ec)?(?:onds?)?/i);
+        if (sMatch) {
+          detectedSec = parseInt(sMatch[1], 10);
+        }
+      }
+    }
+    const secLabel = detectedSec ? `${detectedSec}s \u622A\u65AD` : "\u786C\u9608\u503C\u7194\u65AD";
+    const secDesc = detectedSec ? `\u8D85\u8FC7 ${detectedSec} \u79D2\u786C\u9608\u503C` : "\u8D85\u8FC7\u7CFB\u7EDF\u8BBE\u5B9A\u7684\u786C\u9608\u503C";
     return {
       category: "TIMEOUT_EXCEEDED",
-      labelZh: "\u7F51\u7EDC\u8BF7\u6C42\u8D85\u65F6 (30s \u622A\u65AD)",
+      labelZh: `\u7F51\u7EDC\u8BF7\u6C42\u8D85\u65F6 (${secLabel})`,
       tag: "[TIMEOUT_EXCEEDED]",
-      description: "\u5927\u6A21\u578B\u670D\u52A1\u5546\u63A8\u7406\u8017\u65F6\u8D85\u8FC7 30 \u79D2\u786C\u9608\u503C\uFF0C\u7CFB\u7EDF\u5DF2\u4E3B\u52A8\u7194\u65AD\u5E76\u89E6\u53D1\u4FDD\u62A4\u3002"
+      description: `\u5927\u6A21\u578B\u670D\u52A1\u5546\u63A8\u7406\u8017\u65F6${secDesc}\uFF0C\u7CFB\u7EDF\u5DF2\u4E3B\u52A8\u7194\u65AD\u5E76\u89E6\u53D1\u4FDD\u62A4\u3002`
     };
   }
   if (lower.includes("nsfw") || lower.includes("safety") || lower.includes("sensitive") || lower.includes("content moderation") || lower.includes("inappropriate") || lower.includes("violation") || lower.includes("policy")) {
@@ -8778,7 +8502,7 @@ var AlertService = class {
       console.warn(`[AlertService] WeChat Webhook URL not configured. Alert skipped: [${title}]`);
       return false;
     }
-    const classification = classifyFailureReason(context.errorMessage || "");
+    const classification = classifyFailureReason(context.errorMessage || "", context.timeoutMs);
     const provider = context.primaryProvider || "default";
     const debounceKey = `${classification.category}:${provider}`;
     const now = Date.now();
@@ -8834,7 +8558,8 @@ async function executeWithJitterRetry(fn, maxRetries = 1, baseDelayMs = 300, max
     try {
       return await fn(attempt);
     } catch (err) {
-      if (attempt >= maxRetries) {
+      const isTimeout = err instanceof Error && (err.name === "AbortError" || err.message.includes("aborted") || err.message.includes("timeout"));
+      if (isTimeout || attempt >= maxRetries) {
         throw err;
       }
       attempt++;
@@ -8844,11 +8569,127 @@ async function executeWithJitterRetry(fn, maxRetries = 1, baseDelayMs = 300, max
     }
   }
 }
-var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePrompt = NEGATIVE_PROMPT) => {
+var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePrompt = NEGATIVE_PROMPT, providerName, referenceImageUrl, options) => {
   if (!imageBase64) {
     throw new Error("Pure Image-to-Image required. Missing pet photo input.");
   }
-  if (apiKey.startsWith("sk-")) {
+  if (providerName === "volcengine") {
+    const endpoint2 = options?.endpoint || "https://ark.cn-beijing.volces.com/api/v3/images/generations";
+    const model = options?.modelId || "ep-20260910130528-l8thd";
+    let formattedImage = imageBase64;
+    if (!formattedImage.startsWith("http://") && !formattedImage.startsWith("https://") && !formattedImage.startsWith("data:")) {
+      formattedImage = `data:image/jpeg;base64,${formattedImage}`;
+    }
+    const payload = {
+      model,
+      prompt,
+      image: formattedImage,
+      size: options?.size || "2K",
+      // Seedream 5.0 Lite requires at least 3,686,400 pixels ("2K" preset)
+      response_format: "url"
+    };
+    const response2 = await fetch(endpoint2, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload),
+      signal
+    });
+    if (!response2.ok) {
+      const errText = await response2.text().catch(() => "");
+      throw new Error(`Volcengine upstream error: ${response2.status} ${response2.statusText} ${errText}`);
+    }
+    const data2 = await response2.json();
+    const item = data2.data?.[0];
+    let imageUrl2 = item?.url;
+    if (!imageUrl2 && item?.b64_json) {
+      imageUrl2 = `data:image/png;base64,${item.b64_json}`;
+    }
+    if (!imageUrl2) {
+      throw new Error("No image returned from Volcengine Ark");
+    }
+    return {
+      jobId: `ark_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl: imageUrl2
+    };
+  }
+  if (providerName === "wokey") {
+    const endpoint2 = "https://api.wokey.ai/v1/images/edits";
+    const cleanBase64 = imageBase64.includes("base64,") ? imageBase64.split("base64,")[1] : imageBase64;
+    let effectivePrompt = prompt;
+    let imageArray = [cleanBase64];
+    if (referenceImageUrl) {
+      try {
+        if (referenceImageUrl.startsWith("data:")) {
+          const cleanRef = referenceImageUrl.includes("base64,") ? referenceImageUrl.split("base64,")[1] : referenceImageUrl;
+          imageArray.push(cleanRef);
+        } else {
+          let fetchUrl = referenceImageUrl;
+          if (!fetchUrl.startsWith("http://") && !fetchUrl.startsWith("https://")) {
+            fetchUrl = `https://vivibon-cover.pages.dev/${fetchUrl.replace(/^\/+/, "")}`;
+          }
+          const refRes = await fetch(fetchUrl, { signal });
+          if (refRes.ok) {
+            const arrBuffer = await refRes.arrayBuffer();
+            const base64String = Buffer.from(arrBuffer).toString("base64");
+            imageArray.push(base64String);
+          } else {
+            console.warn("[Wokey] Failed to fetch reference image:", refRes.status);
+          }
+        }
+      } catch (err) {
+        console.warn("[Wokey] Error fetching reference image:", err);
+      }
+    }
+    if (imageArray.length > 1) {
+      const prefix = "[Photo 1: user pet face identity. Photo 2: outfit, pose and scene reference. Strictly preserve Photo 1 pet face, eyes, fur and breed exactly.] ";
+      const maxRemaining = 1e3 - prefix.length;
+      if (effectivePrompt.length > maxRemaining) {
+        const trimmed = effectivePrompt.slice(0, maxRemaining);
+        const lastPunct = Math.max(trimmed.lastIndexOf("."), trimmed.lastIndexOf("\uFF0C"), trimmed.lastIndexOf("\u3002"), trimmed.lastIndexOf(","));
+        effectivePrompt = lastPunct > 200 ? trimmed.slice(0, lastPunct + 1) : trimmed;
+      }
+      effectivePrompt = `${prefix}${effectivePrompt}`;
+    } else if (effectivePrompt.length > 1e3) {
+      const trimmed = effectivePrompt.slice(0, 1e3);
+      const lastPunct = Math.max(trimmed.lastIndexOf("."), trimmed.lastIndexOf("\uFF0C"), trimmed.lastIndexOf("\u3002"), trimmed.lastIndexOf(","));
+      effectivePrompt = lastPunct > 500 ? trimmed.slice(0, lastPunct + 1) : trimmed;
+    }
+    const response2 = await fetch(endpoint2, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      body: JSON.stringify({
+        model: "gpt-image-2",
+        prompt: effectivePrompt,
+        image: imageArray
+      }),
+      signal
+    });
+    if (!response2.ok) {
+      const errText = await response2.text().catch(() => "");
+      throw new Error(`Wokey upstream error: ${response2.status} ${response2.statusText} ${errText}`);
+    }
+    const data2 = await response2.json();
+    const item = data2.data?.[0];
+    let imageUrl2 = item?.url;
+    if (!imageUrl2 && item?.b64_json) {
+      imageUrl2 = `data:image/png;base64,${item.b64_json}`;
+    }
+    if (!imageUrl2) {
+      throw new Error("No image returned from Wokey");
+    }
+    return {
+      jobId: `wk_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl: imageUrl2
+    };
+  }
+  if (providerName === "siliconflow" || !providerName && apiKey.startsWith("sk-")) {
     const endpoint2 = "https://api.siliconflow.cn/v1/images/generations";
     const response2 = await fetch(endpoint2, {
       method: "POST",
@@ -8863,8 +8704,10 @@ var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePromp
         image: imageBase64,
         image_size: "768x1024",
         // 3:4 Native Aspect Ratio (1080x1440 物理保真，零拉伸变形)
-        num_inference_steps: 8
-        // 压缩推理耗时至 12~14s，同时 100% 保持 Face ID 特征
+        num_inference_steps: 20,
+        // 20 步黄金标准去噪：极致微米级毛发与面部五官保真
+        guidance_scale: 3.5
+        // 3.5 黄金引导值：紧紧锁定原图花纹分区与原生眼眸瞳色，杜绝文本大词先验污染（防杂色虎斑与变色）
       }),
       signal
     });
@@ -8917,7 +8760,7 @@ var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePromp
 var FalService = class {
   runner;
   timeoutMs;
-  constructor(runner = defaultFalRunner, timeoutMs = 3e4) {
+  constructor(runner = defaultFalRunner, timeoutMs = 6e4) {
     this.runner = runner;
     this.timeoutMs = timeoutMs;
   }
@@ -8929,7 +8772,7 @@ var FalService = class {
    * 4. Enterprise WeChat Webhook alerting on failure/arrears
    * 5. NC-4 graceful degradation to WebP sample library
    */
-  async generatePoster(styleKey, petName, imageBase64, primaryApiKey, variantIndex, subId, itemId, alertContext, webhookUrl, secondaryApiKey) {
+  async generatePoster(styleKey, petName, imageBase64, primaryApiKey, variantIndex, subId, itemId, alertContext, webhookUrl, secondaryApiKey, rails, referenceImageUrl) {
     const start = Date.now();
     const styleConfig = STYLE_CONFIGS[styleKey];
     const fallbackImage = styleConfig.fallbackImageUrl;
@@ -8953,6 +8796,132 @@ var FalService = class {
       },
       skillDirective: assembled.skillDirective
     };
+    let resolvedRefUrl = referenceImageUrl;
+    if (resolvedRefUrl && (resolvedRefUrl.includes("localhost") || resolvedRefUrl.includes("127.0.0.1"))) {
+      try {
+        const pathname = new URL(resolvedRefUrl).pathname.replace(/^\/+/, "");
+        resolvedRefUrl = `https://vivibon-cover.pages.dev/${pathname}`;
+      } catch (_) {
+        resolvedRefUrl = void 0;
+      }
+    }
+    const effectiveReferenceUrl = resolvedRefUrl || (variant.sampleImageUrl ? variant.sampleImageUrl.startsWith("http") ? variant.sampleImageUrl : `https://vivibon-cover.pages.dev/${variant.sampleImageUrl.replace(/^\/+/, "")}` : void 0);
+    if (rails && rails.length > 0) {
+      const activeRails = rails.filter((r) => Boolean(r.apiKey));
+      if (activeRails.length === 0) {
+        return {
+          ...baseResult,
+          jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
+          imageUrl: fallbackImage,
+          latencyMs: Date.now() - start,
+          isFallback: true,
+          debugReason: "NO_API_KEY_CONFIGURED"
+        };
+      }
+      const effectiveImageInput2 = imageBase64 || DEFAULT_MILO_BASE64;
+      const previousErrors = [];
+      for (let i = 0; i < activeRails.length; i++) {
+        const rail = activeRails[i];
+        const displayName = rail.provider === "volcengine" ? "Volcengine Ark (Seedream 5.0 Lite)" : rail.provider === "wokey" ? "Wokey" : rail.provider === "siliconflow" ? "SiliconFlow" : "Fal.ai";
+        const timeoutLimit = rail.timeoutMs || 6e4;
+        const runRailAttempt = async () => {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), timeoutLimit);
+          try {
+            const res = await this.runner(
+              assembled.fullPrompt,
+              effectiveImageInput2,
+              rail.apiKey,
+              controller.signal,
+              assembled.negativePrompt,
+              rail.provider,
+              effectiveReferenceUrl,
+              {
+                modelId: rail.modelId,
+                endpoint: rail.endpoint
+              }
+            );
+            clearTimeout(timeoutId);
+            return res;
+          } catch (err) {
+            clearTimeout(timeoutId);
+            throw err;
+          }
+        };
+        try {
+          const result = await executeWithJitterRetry(() => runRailAttempt(), 1);
+          if (i > 0) {
+            alertService.sendWeChatAlert(
+              webhookUrl,
+              `\u4ECE\u6A21\u578B\u63A5\u7BA1\u751F\u56FE\u6210\u529F`,
+              {
+                ...alertContext,
+                primaryProvider: activeRails[0].provider,
+                secondaryProvider: displayName,
+                errorMessage: `Primary failed with: ${previousErrors[0] || "N/A"}`,
+                durationMs: Date.now() - start,
+                timeoutMs: activeRails[0]?.timeoutMs
+              },
+              "INFO"
+            ).catch(() => {
+            });
+          }
+          return {
+            ...baseResult,
+            jobId: result.jobId,
+            imageUrl: result.imageUrl,
+            latencyMs: Date.now() - start,
+            isFallback: false,
+            failoverTriggered: i > 0,
+            activeProvider: displayName
+          };
+        } catch (err) {
+          const errorObj = err instanceof Error ? err : new Error(String(err));
+          previousErrors.push(`${displayName}: [${errorObj.message}]`);
+          console.warn(`[FalService] Rail ${i} (${displayName}) failed:`, errorObj.message);
+          if (i < activeRails.length - 1 && !errorObj.message.includes("Missing pet photo input")) {
+            alertService.sendWeChatAlert(
+              webhookUrl,
+              `\u4E3B\u6A21\u578B\u751F\u56FE\u5931\u8D25 \xB7 \u51C6\u5907\u6545\u969C\u8F6C\u79FB`,
+              {
+                ...alertContext,
+                primaryProvider: displayName,
+                secondaryProvider: activeRails[i + 1].provider,
+                errorMessage: errorObj.message,
+                durationMs: Date.now() - start,
+                timeoutMs: rail.timeoutMs
+              },
+              "WARNING"
+            ).catch(() => {
+            });
+          }
+        }
+      }
+      if (webhookUrl && previousErrors.length > 0) {
+        alertService.sendWeChatAlert(
+          webhookUrl,
+          `\u4E3B\u5907\u6A21\u578B\u5747\u8C03\u7528\u5931\u8D25 \xB7 \u89E6\u53D1\u9759\u6001\u6837\u7247\u7EC8\u6781\u964D\u7EA7`,
+          {
+            ...alertContext,
+            primaryProvider: activeRails[0]?.provider,
+            secondaryProvider: activeRails[1]?.provider || "None",
+            errorMessage: previousErrors.join(", "),
+            durationMs: Date.now() - start,
+            timeoutMs: activeRails[0]?.timeoutMs
+          },
+          "CRITICAL"
+        ).catch(() => {
+        });
+      }
+      return {
+        ...baseResult,
+        jobId: `fallback_${crypto.randomUUID().slice(0, 8)}`,
+        imageUrl: fallbackImage,
+        latencyMs: Date.now() - start,
+        isFallback: true,
+        debugReason: previousErrors.join("; ")
+      };
+    }
     if (!primaryApiKey && !secondaryApiKey) {
       return {
         ...baseResult,
@@ -8973,7 +8942,9 @@ var FalService = class {
           effectiveImageInput,
           key,
           controller.signal,
-          assembled.negativePrompt
+          assembled.negativePrompt,
+          void 0,
+          effectiveReferenceUrl
         );
         clearTimeout(timeoutId);
         return res;
@@ -9008,7 +8979,8 @@ var FalService = class {
               primaryProvider: primaryProviderName,
               secondaryProvider: secondaryApiKey ? secondaryProviderName : "None",
               errorMessage: primaryError.message,
-              durationMs: Date.now() - start
+              durationMs: Date.now() - start,
+              timeoutMs: this.timeoutLimit
             },
             "WARNING"
           ).catch(() => {
@@ -9027,7 +8999,8 @@ var FalService = class {
             primaryProvider: primaryProviderName,
             secondaryProvider: secondaryProviderName,
             errorMessage: `Primary failed with: ${primaryError?.message || "N/A"}`,
-            durationMs: Date.now() - start
+            durationMs: Date.now() - start,
+            timeoutMs: this.timeoutLimit
           },
           "INFO"
         ).catch(() => {
@@ -9053,7 +9026,8 @@ var FalService = class {
               primaryProvider: primaryProviderName,
               secondaryProvider: secondaryProviderName,
               errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
-              durationMs: Date.now() - start
+              durationMs: Date.now() - start,
+              timeoutMs: this.timeoutLimit
             },
             "CRITICAL"
           ).catch(() => {
@@ -9124,7 +9098,7 @@ var createGenerateRoute = (service = falService) => {
     }
     const effectiveStyleKey = parseResult.data.styleKey || parseResult.data.themeId || "fine_art";
     const effectiveItemId = parseResult.data.itemId || parseResult.data.templateId;
-    const { imageBase64, variantIndex, subId } = parseResult.data;
+    const { imageBase64, variantIndex, subId, referenceImageUrl } = parseResult.data;
     const safePetName = sanitizePetName(parseResult.data.petName);
     if (effectiveItemId) {
       const { CASCADING_THEMES: CASCADING_THEMES2 } = await Promise.resolve().then(() => (init_styles(), styles_exports));
@@ -9145,9 +9119,60 @@ var createGenerateRoute = (service = falService) => {
         return c.json(errorResp, 400);
       }
     }
-    const isFalPrimary = c.env?.PRIMARY_AI_PROVIDER === "fal";
-    const primaryKey = isFalPrimary ? c.env?.FAL_KEY || c.env?.SILICONFLOW_KEY : c.env?.SILICONFLOW_KEY || c.env?.FAL_KEY;
-    const secondaryKey = isFalPrimary ? c.env?.SILICONFLOW_KEY : c.env?.FAL_KEY;
+    const rails = [];
+    const primaryPref = c.env?.PRIMARY_AI_PROVIDER || "volcengine";
+    const arkKey = c.env?.ARK_API_KEY || c.env?.VOLCENGINE_API_KEY;
+    const volcengineModelId = c.env?.VOLCENGINE_MODEL_ID || "ep-20260910130528-l8thd";
+    const volcengineEndpoint = c.env?.VOLCENGINE_ENDPOINT;
+    const addVolcengine = () => {
+      if (arkKey) {
+        rails.push({
+          provider: "volcengine",
+          apiKey: arkKey,
+          timeoutMs: 6e4,
+          modelId: volcengineModelId,
+          endpoint: volcengineEndpoint
+        });
+      }
+    };
+    const addWokey = () => {
+      if (c.env?.WOKEY_API_KEY) {
+        rails.push({ provider: "wokey", apiKey: c.env.WOKEY_API_KEY, timeoutMs: 75e3 });
+      }
+    };
+    const addSiliconflow = () => {
+      if (c.env?.SILICONFLOW_KEY) {
+        rails.push({ provider: "siliconflow", apiKey: c.env.SILICONFLOW_KEY, timeoutMs: 6e4 });
+      }
+    };
+    const addFal = () => {
+      if (c.env?.FAL_KEY) {
+        rails.push({ provider: "fal", apiKey: c.env.FAL_KEY, timeoutMs: 6e4 });
+      }
+    };
+    if (primaryPref === "wokey") {
+      addWokey();
+      addSiliconflow();
+      addVolcengine();
+      addFal();
+    } else if (primaryPref === "siliconflow") {
+      addSiliconflow();
+      addVolcengine();
+      addWokey();
+      addFal();
+    } else if (primaryPref === "fal") {
+      addFal();
+      addSiliconflow();
+      addVolcengine();
+      addWokey();
+    } else {
+      addVolcengine();
+      addSiliconflow();
+      addWokey();
+      addFal();
+    }
+    const primaryKey = rails[0]?.apiKey || arkKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
+    const secondaryKey = rails[1]?.apiKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
     const alertCtx = {
       environment: c.env?.ENVIRONMENT || "production",
       traceId: c.get("traceId"),
@@ -9166,7 +9191,9 @@ var createGenerateRoute = (service = falService) => {
       effectiveItemId,
       alertCtx,
       c.env?.WECHAT_WEBHOOK_URL,
-      secondaryKey
+      secondaryKey,
+      rails,
+      referenceImageUrl
     );
     const response = {
       success: true,
@@ -9177,6 +9204,7 @@ var createGenerateRoute = (service = falService) => {
         petName: result.petName,
         latencyMs: result.latencyMs,
         isFallback: result.isFallback,
+        ...result.activeProvider ? { activeProvider: result.activeProvider } : {},
         ...result.failoverTriggered !== void 0 ? { failoverTriggered: result.failoverTriggered } : {},
         ...result.capsuleVariant ? { capsuleVariant: result.capsuleVariant } : {},
         ...result.level1Theme ? { level1Theme: result.level1Theme } : {},
@@ -9409,6 +9437,89 @@ var public_default = `<!DOCTYPE html>\r
       background: rgba(255, 255, 255, 0.9);\r
     }\r
 \r
+    /* Upload Placeholder (Clean Minimalist Luxury) */\r
+    .upload-placeholder {\r
+      position: absolute;\r
+      inset: 0;\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      justify-content: center;\r
+      padding: 32px 24px;\r
+      text-align: center;\r
+      background: radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, #FAF5EF 60%, #F3E7DC 100%);\r
+      border: 1px solid rgba(225, 195, 172, 0.55);\r
+      border-radius: 28px;\r
+      cursor: pointer;\r
+      transition: all 0.25s var(--ease-smooth);\r
+      user-select: none;\r
+      z-index: 2;\r
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 8px 24px -6px rgba(180, 135, 105, 0.14);\r
+    }\r
+    .upload-placeholder:hover {\r
+      background: radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, #FFF8F2 50%, #F5E8DC 100%);\r
+      border-color: rgba(225, 180, 150, 0.85);\r
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 12px 30px -4px rgba(215, 130, 90, 0.2);\r
+    }\r
+    .upload-placeholder:active {\r
+      transform: scale(0.988);\r
+    }\r
+    .upload-center-content {\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      justify-content: center;\r
+      gap: 16px;\r
+    }\r
+    .upload-lens-portal {\r
+      width: 76px;\r
+      height: 76px;\r
+      border-radius: 50%;\r
+      background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FDF4EB 65%, #F0DCCE 100%);\r
+      border: 1.5px solid rgba(255, 255, 255, 0.95);\r
+      box-shadow: 0 10px 24px -4px rgba(210, 130, 90, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.55);\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      color: #B8683B;\r
+      transition: transform 0.25s var(--spring-bouncy);\r
+    }\r
+    .upload-placeholder:hover .upload-lens-portal {\r
+      transform: scale(1.06);\r
+    }\r
+    .upload-placeholder-title {\r
+      font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;\r
+      font-style: italic;\r
+      font-size: 24px;\r
+      font-weight: 600;\r
+      color: #2C2018;\r
+      letter-spacing: -0.01em;\r
+      margin: 0;\r
+      line-height: 1.2;\r
+    }\r
+    .upload-placeholder-pill {\r
+      display: inline-flex;\r
+      align-items: center;\r
+      gap: 8px;\r
+      padding: 10px 24px;\r
+      border-radius: 24px;\r
+      background: linear-gradient(135deg, #FFE7D4 0%, #F5CBA5 100%);\r
+      border: 1px solid rgba(255, 255, 255, 0.85);\r
+      box-shadow: 0 8px 20px -4px rgba(215, 125, 80, 0.26), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);\r
+      color: #422F22;\r
+      font-size: 13.5px;\r
+      font-weight: 600;\r
+      letter-spacing: 0.01em;\r
+      transition: all 0.2s var(--ease-smooth);\r
+    }\r
+    .upload-placeholder-pill svg {\r
+      stroke: #422F22;\r
+    }\r
+    .upload-placeholder:hover .upload-placeholder-pill {\r
+      transform: translateY(-2px);\r
+      box-shadow: 0 10px 24px -2px rgba(215, 125, 80, 0.36), inset 0 1px 2px rgba(255, 255, 255, 1);\r
+    }\r
+\r
     /* Category Pill Selector Bar (Soft Frosted Box, 4 Columns) */\r
     .category-pills-bar {\r
       margin-top: 14px;\r
@@ -9598,7 +9709,12 @@ var public_default = `<!DOCTYPE html>\r
       top: 0;\r
       left: 0;\r
       opacity: 0;\r
-      transition: opacity 0.12s ease-out;\r
+      will-change: opacity;\r
+      transform: translateZ(0);\r
+      -webkit-transform: translateZ(0);\r
+      backface-visibility: hidden;\r
+      -webkit-backface-visibility: hidden;\r
+      transition: opacity 0.08s cubic-bezier(0.2, 0, 0, 1);\r
       z-index: 10;\r
       pointer-events: none;\r
     }\r
@@ -9673,14 +9789,28 @@ var public_default = `<!DOCTYPE html>\r
       gap: 6px;\r
       cursor: pointer;\r
       user-select: none;\r
+      -webkit-user-select: none;\r
       z-index: 20;\r
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);\r
-      transition: all 0.18s var(--ease-smooth);\r
+      transition: transform 0.12s var(--ease-smooth), background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;\r
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
+      touch-action: none;\r
+      -webkit-touch-callout: none;\r
+      -webkit-tap-highlight-color: transparent;\r
+      outline: none;\r
+    }\r
+    /* Expanded hit area (Apple HIG 44px+ touch standard) */\r
+    .compare-pill::after {\r
+      content: "";\r
+      position: absolute;\r
+      top: -14px;\r
+      bottom: -14px;\r
+      left: -14px;\r
+      right: -14px;\r
     }\r
     .compare-pill:active {\r
       transform: scale(0.93);\r
-      background: rgba(220, 222, 226, 0.9);\r
+      background: rgba(220, 222, 226, 0.92);\r
     }\r
     .compare-pill.active {\r
       background: rgba(28, 28, 30, 0.88);\r
@@ -9954,18 +10084,28 @@ var public_default = `<!DOCTYPE html>\r
       align-items: center;\r
       gap: 6px;\r
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;\r
-      font-size: 12px;\r
+      font-size: 12.5px;\r
       font-weight: 500;\r
-      color: #48484A;\r
-      background: rgba(118, 118, 128, 0.08);\r
-      border: 0.5px solid rgba(0, 0, 0, 0.06);\r
-      padding: 5px 14px;\r
+      color: #7B341E;\r
+      background: linear-gradient(135deg, #FFF1EC 0%, #FFE5DC 100%);\r
+      border: 0.5px solid rgba(232, 93, 63, 0.22);\r
+      padding: 6px 14px;\r
       border-radius: 9999px;\r
       letter-spacing: -0.1px;\r
+      animation: gentlePulse 2.2s ease-in-out infinite;\r
+    }\r
+    @keyframes gentlePulse {\r
+      0%, 100% { transform: scale(1); opacity: 0.95; }\r
+      50% { transform: scale(1.03); opacity: 1; box-shadow: 0 4px 12px rgba(232, 93, 63, 0.18); }\r
     }\r
     .save-modal-badge-icon {\r
-      color: #0071E3;\r
+      color: #E85D3F;\r
       flex-shrink: 0;\r
+      animation: fingerBounce 1.4s ease-in-out infinite;\r
+    }\r
+    @keyframes fingerBounce {\r
+      0%, 100% { transform: translateY(0); }\r
+      50% { transform: translateY(-2px); }\r
     }\r
     .save-modal-img-wrap {\r
       width: 100%;\r
@@ -10022,6 +10162,114 @@ var public_default = `<!DOCTYPE html>\r
       color: #1D1D1F;\r
     }\r
 \r
+    /* Error / Service Busy Modal (Haute Couture Studio Fallback Prevention) */\r
+    .error-modal-overlay {\r
+      position: fixed;\r
+      top: 0;\r
+      left: 0;\r
+      right: 0;\r
+      bottom: 0;\r
+      background: rgba(40, 26, 20, 0.52);\r
+      backdrop-filter: blur(24px) saturate(160%);\r
+      -webkit-backdrop-filter: blur(24px) saturate(160%);\r
+      display: none;\r
+      align-items: center;\r
+      justify-content: center;\r
+      padding: 20px;\r
+      z-index: 520;\r
+      animation: appleModalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);\r
+    }\r
+    .error-modal-card {\r
+      background: rgba(255, 252, 250, 0.96);\r
+      backdrop-filter: blur(30px);\r
+      -webkit-backdrop-filter: blur(30px);\r
+      border-radius: 28px;\r
+      padding: 28px 22px 22px;\r
+      max-width: 356px;\r
+      width: 100%;\r
+      display: flex;\r
+      flex-direction: column;\r
+      align-items: center;\r
+      text-align: center;\r
+      gap: 14px;\r
+      box-shadow: 0 28px 64px -12px rgba(60, 48, 40, 0.32), 0 0 0 0.5px rgba(232, 93, 63, 0.15);\r
+      position: relative;\r
+    }\r
+    .error-modal-icon-wrap {\r
+      width: 54px;\r
+      height: 54px;\r
+      border-radius: 50%;\r
+      background: linear-gradient(135deg, #FFF0EB 0%, #FFE2D9 100%);\r
+      border: 1px solid rgba(232, 93, 63, 0.2);\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      color: #E85D3F;\r
+      margin-bottom: 2px;\r
+      box-shadow: 0 8px 20px -4px rgba(232, 93, 63, 0.25);\r
+    }\r
+    .error-modal-title {\r
+      font-size: 19px;\r
+      font-weight: 700;\r
+      color: #2D231E;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;\r
+      letter-spacing: -0.3px;\r
+      line-height: 1.25;\r
+    }\r
+    .error-modal-desc {\r
+      font-size: 14px;\r
+      line-height: 1.5;\r
+      color: #706259;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
+      margin: 0;\r
+      padding: 0 4px;\r
+    }\r
+    .error-modal-tip {\r
+      font-size: 12px;\r
+      color: #9C8C81;\r
+      background: rgba(232, 93, 63, 0.06);\r
+      padding: 6px 12px;\r
+      border-radius: 12px;\r
+      border: 0.5px solid rgba(232, 93, 63, 0.1);\r
+      width: 100%;\r
+      box-sizing: border-box;\r
+    }\r
+    .error-modal-actions {\r
+      display: flex;\r
+      width: 100%;\r
+      gap: 10px;\r
+      margin-top: 4px;\r
+    }\r
+    .error-modal-btn {\r
+      flex: 1;\r
+      padding: 13px 16px;\r
+      border-radius: 16px;\r
+      font-size: 15px;\r
+      font-weight: 600;\r
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
+      letter-spacing: -0.2px;\r
+      border: none;\r
+      cursor: pointer;\r
+      transition: opacity 0.15s, transform 0.1s;\r
+      display: flex;\r
+      align-items: center;\r
+      justify-content: center;\r
+      gap: 6px;\r
+    }\r
+    .error-modal-btn:active {\r
+      transform: scale(0.97);\r
+      opacity: 0.88;\r
+    }\r
+    .error-modal-btn.primary {\r
+      background: linear-gradient(180deg, var(--cta-start) 0%, var(--cta-end) 100%);\r
+      color: var(--cta-text);\r
+      box-shadow: 0 8px 20px -6px rgba(232, 93, 63, 0.3);\r
+    }\r
+    .error-modal-btn.secondary {\r
+      background: rgba(118, 118, 128, 0.1);\r
+      color: #483E38;\r
+    }\r
+\r
     #render-canvas { display: none; }\r
   </style>\r
 </head>\r
@@ -10045,11 +10293,32 @@ var public_default = `<!DOCTYPE html>\r
     <div id="view-entry">\r
       \r
       <!-- Hero 3:4 Viewport -->\r
-      <div class="hero-box">\r
-        <img id="entry-preview" class="hero-img" src="models/milo_gentle.webp" alt="Pet Model Preview" />\r
+      <div class="hero-box" onclick="soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Tap to upload pet photo">\r
+        <img id="entry-preview" class="hero-img" style="display: none;" alt="Pet Preview" />\r
         \r
-        <!-- Floating Round Upload Button -->\r
-        <div class="upload-btn-floating" onclick="soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Upload Pet Photo">\r
+        <!-- Upload Placeholder (Minimalist Luxury Studio) -->\r
+        <div id="upload-placeholder" class="upload-placeholder">\r
+          <div class="upload-center-content">\r
+            <div class="upload-lens-portal">\r
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">\r
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>\r
+                <circle cx="12" cy="13" r="4"></circle>\r
+                <circle cx="12" cy="13" r="1.5" fill="currentColor"></circle>\r
+              </svg>\r
+            </div>\r
+            <div class="upload-placeholder-title">Place Your Pet on the Cover</div>\r
+            <div class="upload-placeholder-pill">\r
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">\r
+                <line x1="12" y1="5" x2="12" y2="19"></line>\r
+                <line x1="5" y1="12" x2="19" y2="12"></line>\r
+              </svg>\r
+              Choose Pet Photo\r
+            </div>\r
+          </div>\r
+        </div>\r
+\r
+        <!-- Floating Round Upload Button (Shown after photo is uploaded to allow changing photo) -->\r
+        <div id="upload-btn-floating" class="upload-btn-floating" style="display: none;" onclick="event.stopPropagation(); soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Change Pet Photo">\r
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
             <polyline points="17 8 12 3 7 8"></polyline>\r
@@ -10096,12 +10365,12 @@ var public_default = `<!DOCTYPE html>\r
         <div class="poster-overlay" id="poster-overlay" style="display: none;"></div>\r
 \r
         <!-- Floating Compare Pill matching Screenshot 2 -->\r
-        <div class="compare-pill" id="compare-btn">\r
+        <div class="compare-pill" id="compare-btn" role="button" aria-pressed="false" tabindex="0">\r
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
             <circle cx="12" cy="12" r="3"></circle>\r
           </svg>\r
-          Hold to compare\r
+          <span id="compare-label">Hold to compare</span>\r
         </div>\r
       </div>\r
 \r
@@ -10163,6 +10432,12 @@ var public_default = `<!DOCTYPE html>\r
 \r
       <div class="save-modal-header">\r
         <div class="save-modal-title">1080P Vogue Portrait</div>\r
+        <div class="save-modal-badge" id="save-modal-badge">\r
+          <svg class="save-modal-badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">\r
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5V11a1 1 0 0 0-2 0v5.5a1 1 0 0 0 2 0zm-1-8a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"></path>\r
+          </svg>\r
+          <span id="save-modal-tip-text">Press and hold image to save to Photos</span>\r
+        </div>\r
       </div>\r
 \r
       <div class="save-modal-img-wrap">\r
@@ -10170,15 +10445,56 @@ var public_default = `<!DOCTYPE html>\r
       </div>\r
 \r
       <div class="save-modal-actions">\r
-        <button id="modal-share-btn" class="save-modal-btn secondary" style="display: none;" onclick="sharePosterNative()">\r
+        <button id="modal-download-btn" class="save-modal-btn primary" onclick="triggerMobileSave()">\r
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: -2px;">\r
-            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>\r
-            <polyline points="16 6 12 2 8 6"></polyline>\r
-            <line x1="12" y1="2" x2="12" y2="15"></line>\r
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
+            <polyline points="7 10 12 15 17 10"></polyline>\r
+            <line x1="12" y1="15" x2="12" y2="3"></line>\r
           </svg>\r
-          Share\r
+          Save to Album\r
         </button>\r
-        <button class="save-modal-btn primary" onclick="closeSaveModal(event)">Done</button>\r
+        <button class="save-modal-btn secondary" onclick="closeSaveModal(event)">Done</button>\r
+      </div>\r
+    </div>\r
+  </div>\r
+\r
+  <!-- Haute Couture Studio Service Busy / Error Dialog (Prevents default fallback replacement) -->\r
+  <div id="error-modal" class="error-modal-overlay" onclick="closeErrorModal(event)">\r
+    <div class="error-modal-card" onclick="event.stopPropagation()">\r
+      <button class="save-modal-close-btn error-modal-close-trigger" onclick="closeErrorModal(event)" aria-label="Close">\r
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">\r
+          <line x1="18" y1="6" x2="6" y2="18"></line>\r
+          <line x1="6" y1="6" x2="18" y2="18"></line>\r
+        </svg>\r
+      </button>\r
+\r
+      <div class="error-modal-icon-wrap">\r
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
+          <circle cx="12" cy="12" r="10"></circle>\r
+          <line x1="12" y1="8" x2="12" y2="12"></line>\r
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>\r
+        </svg>\r
+      </div>\r
+\r
+      <div class="error-modal-title" id="error-modal-title">Service Temporarily Busy</div>\r
+      <p class="error-modal-desc" id="error-modal-desc">\r
+        Our studio AI rendering servers are experiencing heavy queue volumes. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment.\r
+      </p>\r
+      <div class="error-modal-tip">\r
+        \u2726 Tip: Your original uploaded photo is preserved\r
+      </div>\r
+\r
+      <div class="error-modal-actions">\r
+        <button class="error-modal-btn secondary error-modal-close-trigger" onclick="closeErrorModal(event)">\r
+          Keep Editing\r
+        </button>\r
+        <button class="error-modal-btn primary" onclick="retryGeneration()">\r
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">\r
+            <polyline points="1 4 1 10 7 10"></polyline>\r
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>\r
+          </svg>\r
+          Try Again\r
+        </button>\r
       </div>\r
     </div>\r
   </div>\r
@@ -10195,25 +10511,25 @@ var public_default = `<!DOCTYPE html>\r
         tag: "WORK & LIFE \xB7 01",\r
         templates: [\r
           {\r
-            id: "chill_intern",\r
-            name: "Chill Intern",\r
-            img: "models/milo_gentle_prince_of_wales.webp",\r
-            title: "The Anti-Hustle Intern",\r
-            tag: "INTERN \xB7 01"\r
+            id: "airline_captain",\r
+            name: "The Captain",\r
+            img: "models/airline_captain.webp",\r
+            title: "Elite Gold Aviator Uniform",\r
+            tag: "CAPTAIN \xB7 01"\r
           },\r
           {\r
             id: "coffee_pro",\r
             name: "Caffeine Pro",\r
-            img: "models/milo_techwear_cobalt_cyber.webp",\r
-            title: "Daily Coffee Grind",\r
+            img: "models/caffeine_pro.webp",\r
+            title: "Coffee Lifeline & Desk",\r
             tag: "CAFFEINE \xB7 02"\r
           },\r
           {\r
-            id: "ivy_prep",\r
-            name: "Ivy Scholar",\r
-            img: "models/milo_knitwear_oatmeal_cable.webp",\r
-            title: "Old Money Cable Knit",\r
-            tag: "PREPPY \xB7 03"\r
+            id: "michelin_chef",\r
+            name: "Michelin Chef",\r
+            img: "models/michelin_chef.webp",\r
+            title: "Pet Chef Cooking Daily",\r
+            tag: "CHEF \xB7 03"\r
           }\r
         ]\r
       },\r
@@ -10226,21 +10542,21 @@ var public_default = `<!DOCTYPE html>\r
           {\r
             id: "mona_lisa",\r
             name: "Mona Lisa",\r
-            img: "models/milo_gentle.webp",\r
+            img: "models/mona_lisa.webp",\r
             title: "Renaissance Masterpiece",\r
             tag: "FINE ART \xB7 01"\r
           },\r
           {\r
             id: "pearl_earring",\r
             name: "Pearl Earring",\r
-            img: "models/milo_gentle_navy_velvet.webp",\r
+            img: "models/pearl_earring.webp",\r
             title: "Girl with a Pearl Earring",\r
             tag: "DUTCH GOLDEN \xB7 02"\r
           },\r
           {\r
             id: "line_art",\r
             name: "Line Art",\r
-            img: "models/milo_street.webp",\r
+            img: "models/line_art.webp",\r
             title: "Minimalist Ink Sketch",\r
             tag: "LINE ART \xB7 03"\r
           }\r
@@ -10253,25 +10569,25 @@ var public_default = `<!DOCTYPE html>\r
         tag: "LEGEND \xB7 01",\r
         templates: [\r
           {\r
-            id: "royal_monarch",\r
-            name: "The Monarch",\r
-            img: "models/milo_gentle_navy_velvet.webp",\r
-            title: "Renaissance Royal Sovereign",\r
-            tag: "ROYALTY \xB7 01"\r
+            id: "assumption_of_mary",\r
+            name: "The Assumption",\r
+            img: "models/assumption_of_mary.webp",\r
+            title: "Titian Baroque Masterpiece",\r
+            tag: "SACRED \xB7 01"\r
           },\r
           {\r
-            id: "witch",\r
-            name: "The Witch",\r
-            img: "models/milo_techwear_arctic_yellow.webp",\r
-            title: "Midnight Magic & Stars",\r
-            tag: "SORCERY \xB7 02"\r
+            id: "caribbean_pirate",\r
+            name: "Caribbean Pirate",\r
+            img: "models/caribbean_pirate.webp",\r
+            title: "Pirates of the Caribbean",\r
+            tag: "PIRATE \xB7 02"\r
           },\r
           {\r
-            id: "cowboy",\r
-            name: "The Cowboy",\r
-            img: "models/milo_aviator_vintage_shearling.webp",\r
-            title: "Wild West & Coastal Cowgirl",\r
-            tag: "COWGIRL \xB7 03"\r
+            id: "secret_agent",\r
+            name: "Secret Agent",\r
+            img: "models/secret_agent.webp",\r
+            title: "Pet Heist Secret Agent",\r
+            tag: "AGENT \xB7 03"\r
           }\r
         ]\r
       },\r
@@ -10284,22 +10600,22 @@ var public_default = `<!DOCTYPE html>\r
           {\r
             id: "christmas",\r
             name: "Christmas Box",\r
-            img: "models/milo_warm.webp",\r
-            title: "Velvet Gift Box & Hearth",\r
+            img: "models/christmas.webp",\r
+            title: "British Velvet Gift Box",\r
             tag: "CHRISTMAS \xB7 01"\r
           },\r
           {\r
             id: "halloween",\r
-            name: "Spooky Magic",\r
-            img: "models/milo_techwear_arctic_yellow.webp",\r
-            title: "Whimsical Pumpkin & Horns",\r
-            tag: "HALLOWEEN \xB7 02"\r
+            name: "Pumpkin Carriage",\r
+            img: "models/halloween.webp",\r
+            title: "Magical Pumpkin Carriage",\r
+            tag: "PUMPKIN \xB7 02"\r
           },\r
           {\r
             id: "birthday_vip",\r
             name: "Birthday Gala",\r
-            img: "models/milo_gentle.webp",\r
-            title: "VIP Cake & Pastel Crown",\r
+            img: "models/birthday_vip.webp",\r
+            title: "VIP Cake & Birthday Gala",\r
             tag: "BIRTHDAY \xB7 03"\r
           }\r
         ]\r
@@ -10312,7 +10628,7 @@ var public_default = `<!DOCTYPE html>\r
     THEMES.drama = THEMES.cosplay;\r
 \r
     let activeThemeKey = "corporate";\r
-    let activeTemplateId = "chill_intern";\r
+    let activeTemplateId = "airline_captain";\r
     let userPhotoUrl = "models/milo_gentle.webp";\r
     let isUserUploaded = false;\r
     let defaultModelBase64 = null;\r
@@ -10666,7 +10982,7 @@ var public_default = `<!DOCTYPE html>\r
         return \`\r
           <div class="template-card \${isActive ? 'active' : ''}" id="card-\${tpl.id}" onclick="selectTemplate('\${tpl.id}')">\r
             <div class="template-thumb-box">\r
-              <img class="template-thumb" src="\${tpl.img}" alt="\${tpl.name}" loading="lazy" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />\r
+              <img class="template-thumb" src="\${tpl.img}" alt="\${tpl.name}" decoding="async" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />\r
             </div>\r
             <div class="template-label">\${tpl.name}</div>\r
           </div>\r
@@ -10676,16 +10992,39 @@ var public_default = `<!DOCTYPE html>\r
     }\r
 \r
     function selectTemplate(tplId) {\r
+      if (activeTemplateId === tplId) return;\r
       triggerHaptic(6);\r
       soundEngine.playDialClick();\r
+      \r
+      // Fast DOM active class toggle without destroying and reloading images!\r
+      const prevCard = document.getElementById(\`card-\${activeTemplateId}\`);\r
+      if (prevCard) prevCard.classList.remove('active');\r
+      \r
       activeTemplateId = tplId;\r
-      renderTemplateCards();\r
-      trackEvent("template_selected", { theme: activeThemeKey, template: tplId });\r
-\r
       const targetCard = document.getElementById(\`card-\${tplId}\`);\r
       if (targetCard) {\r
+        targetCard.classList.add('active');\r
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });\r
       }\r
+      trackEvent("template_selected", { theme: activeThemeKey, template: tplId });\r
+    }\r
+\r
+    function preloadAllTemplateThumbnails() {\r
+      const allUrls = [];\r
+      Object.values(THEMES).forEach(theme => {\r
+        if (theme.templates && Array.isArray(theme.templates)) {\r
+          theme.templates.forEach(t => {\r
+            if (t.img && !allUrls.includes(t.img)) allUrls.push(t.img);\r
+          });\r
+        }\r
+      });\r
+      allUrls.forEach(url => {\r
+        const img = new Image();\r
+        img.src = url;\r
+        if (img.decode) {\r
+          img.decode().catch(() => {});\r
+        }\r
+      });\r
     }\r
 \r
     function updateScrollEdgeHint() {\r
@@ -10809,7 +11148,15 @@ var public_default = `<!DOCTYPE html>\r
         const result = await downsampleImageFile(file, 1500, 0.85);\r
         userPhotoUrl = result.dataUrl;\r
         isUserUploaded = true;\r
-        document.getElementById("entry-preview").src = userPhotoUrl;\r
+        const preview = document.getElementById("entry-preview");\r
+        if (preview) {\r
+          preview.src = userPhotoUrl;\r
+          preview.style.display = "block";\r
+        }\r
+        const placeholder = document.getElementById("upload-placeholder");\r
+        if (placeholder) placeholder.style.display = "none";\r
+        const floatBtn = document.getElementById("upload-btn-floating");\r
+        if (floatBtn) floatBtn.style.display = "flex";\r
         document.getElementById("res-original-img").src = userPhotoUrl;\r
         showToast("Photo uploaded successfully! \u2726");\r
         triggerHaptic(10);\r
@@ -10826,7 +11173,15 @@ var public_default = `<!DOCTYPE html>\r
         reader.onload = (e) => {\r
           userPhotoUrl = e.target.result;\r
           isUserUploaded = true;\r
-          document.getElementById("entry-preview").src = userPhotoUrl;\r
+          const preview = document.getElementById("entry-preview");\r
+          if (preview) {\r
+            preview.src = userPhotoUrl;\r
+            preview.style.display = "block";\r
+          }\r
+          const placeholder = document.getElementById("upload-placeholder");\r
+          if (placeholder) placeholder.style.display = "none";\r
+          const floatBtn = document.getElementById("upload-btn-floating");\r
+          if (floatBtn) floatBtn.style.display = "flex";\r
           document.getElementById("res-original-img").src = userPhotoUrl;\r
           showToast("Photo uploaded successfully! \u2726");\r
           triggerHaptic(10);\r
@@ -10848,6 +11203,15 @@ var public_default = `<!DOCTYPE html>\r
     }\r
 \r
     async function startGeneration() {\r
+      if (!isUserUploaded || !userPhotoUrl) {\r
+        triggerHaptic(15);\r
+        soundEngine.playDialClick();\r
+        showToast("Please upload your pet's photo first \u2726");\r
+        const fileInput = document.getElementById("file-input");\r
+        if (fileInput) fileInput.click();\r
+        return;\r
+      }\r
+\r
       triggerHaptic(12);\r
       soundEngine.playShutterSnap();\r
       const theme = THEMES[activeThemeKey];\r
@@ -10890,15 +11254,21 @@ var public_default = `<!DOCTYPE html>\r
         stageTimers.push(tid);\r
       });\r
 \r
-      let finalPosterImg = tpl.img;\r
+      let finalPosterImg = null;\r
       let responseData = null;\r
+      let isSuccess = false;\r
+      let failureMsg = "";\r
 \r
-      let effectiveImageBase64 = userPhotoUrl;\r
-      if (!isUserUploaded || !effectiveImageBase64 || !effectiveImageBase64.startsWith('data:')) {\r
-        effectiveImageBase64 = await loadDefaultModelBase64();\r
-      }\r
+      const effectiveImageBase64 = userPhotoUrl;\r
 \r
       try {\r
+        const templateImagePath = tpl.img || tpl.sampleImageUrl;\r
+        const referenceImageUrl = templateImagePath\r
+          ? (templateImagePath.startsWith('http') && !templateImagePath.includes('localhost') && !templateImagePath.includes('127.0.0.1')\r
+              ? templateImagePath\r
+              : \`https://vivibon-cover.pages.dev/\${templateImagePath.replace(/^\\/+/, '')}\`)\r
+          : undefined;\r
+\r
         const payload = {\r
           styleKey: theme.backendTheme || "corporate",\r
           themeId: theme.backendTheme || "corporate",\r
@@ -10906,7 +11276,8 @@ var public_default = `<!DOCTYPE html>\r
           templateId: tpl.id,\r
           petName: "Milo",\r
           imageBase64: effectiveImageBase64 || undefined,\r
-          isDefaultSample: false\r
+          isDefaultSample: false,\r
+          referenceImageUrl: referenceImageUrl\r
         };\r
 \r
         const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';\r
@@ -10915,33 +11286,94 @@ var public_default = `<!DOCTYPE html>\r
           ? 'http://127.0.0.1:8787/api/generate'\r
           : (isPages ? 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/generate' : '/api/generate');\r
 \r
+        const reqTimestamp = Date.now().toString();\r
+        const reqNonce = (typeof crypto !== 'undefined' && crypto.randomUUID)\r
+          ? crypto.randomUUID()\r
+          : (Math.random().toString(36).slice(2) + Date.now().toString(36));\r
+\r
+        const requestHeaders = {\r
+          'Content-Type': 'application/json',\r
+          'x-request-timestamp': reqTimestamp,\r
+          'x-request-nonce': reqNonce\r
+        };\r
+\r
         const apiPromise = fetch(endpoint, {\r
           method: 'POST',\r
-          headers: { 'Content-Type': 'application/json' },\r
+          headers: requestHeaders,\r
           body: JSON.stringify(payload)\r
         }).then(async (res) => {\r
           if (res.ok) {\r
             const json = await res.json();\r
             if (json.data && json.data.imageUrl) {\r
-              responseData = json.data;\r
-              finalPosterImg = json.data.imageUrl;\r
+              if (json.data.isFallback) {\r
+                // Upstream AI models degraded to fallback sample - strictly suppress sample to preserve user pet ID\r
+                console.warn('[AI Generation] Upstream models unavailable; fallback sample suppressed per UX directive.');\r
+                isSuccess = false;\r
+                failureMsg = "Our studio AI rendering servers are currently congested. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment.";\r
+              } else {\r
+                responseData = json.data;\r
+                finalPosterImg = json.data.imageUrl;\r
+                isSuccess = true;\r
+              }\r
+            } else {\r
+              isSuccess = false;\r
+              failureMsg = "Upstream model returned an incomplete response. Please try again.";\r
+            }\r
+          } else {\r
+            isSuccess = false;\r
+            console.warn('[API HTTP Error]:', res.status);\r
+            if (res.status === 429) {\r
+              try {\r
+                const errData = await res.json();\r
+                failureMsg = errData.message || "You have reached the temporary rate limit. Please try again in a few moments.";\r
+              } catch(_) {\r
+                failureMsg = "You have reached the temporary rate limit. Please try again in a few moments.";\r
+              }\r
+            } else {\r
+              failureMsg = "Our studio rendering cluster is temporarily congested. Please tap Try Again in a moment.";\r
             }\r
           }\r
         }).catch((err) => {\r
-          console.warn('[API Joint Debugging Warning]:', err);\r
+          isSuccess = false;\r
+          console.warn('[API Network Error]:', err);\r
+          failureMsg = "Network timeout or connection blip occurred. Please check your network and tap Try Again.";\r
         });\r
 \r
         await Promise.all([\r
           apiPromise,\r
-          preloadImage(finalPosterImg),\r
-          new Promise(r => setTimeout(r, 2600))\r
+          new Promise(r => setTimeout(r, 2200))\r
         ]);\r
+\r
+        if (isSuccess && finalPosterImg) {\r
+          await preloadImage(finalPosterImg);\r
+        }\r
       } catch(err) {\r
-        console.warn('Fallback to template preview:', err);\r
-        finalPosterImg = tpl.img;\r
-        await preloadImage(finalPosterImg);\r
+        console.warn('Generation workflow exception:', err);\r
+        isSuccess = false;\r
       } finally {\r
         stageTimers.forEach(clearTimeout);\r
+\r
+        if (!isSuccess || !finalPosterImg) {\r
+          // Failure flow: Hide loader, keep user on entry studio with photo intact, DO NOT switch to result screen!\r
+          loader.style.opacity = "0";\r
+          setTimeout(() => {\r
+            loader.style.display = "none";\r
+          }, 200);\r
+\r
+          trackEvent("generation_failed", {\r
+            theme: activeThemeKey,\r
+            template: tpl.id,\r
+            is_user_uploaded: isUserUploaded\r
+          });\r
+\r
+          openErrorModal(\r
+            "Service Temporarily Busy",\r
+            failureMsg || "Our studio AI rendering servers are experiencing heavy queue volumes. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment."\r
+          );\r
+          return;\r
+        }\r
+\r
+        // Success flow: Unveil high fashion result\r
         progressFill.style.width = "100%";\r
         percentageText.innerText = "100%";\r
         loaderText.innerText = "Darkroom print developed! Unveiling cover...";\r
@@ -10949,11 +11381,15 @@ var public_default = `<!DOCTYPE html>\r
         triggerHaptic(15);\r
 \r
         document.getElementById("res-display-img").src = finalPosterImg;\r
-        document.getElementById("res-original-img").src = isUserUploaded ? userPhotoUrl : (defaultModelBase64 || 'models/milo_gentle.jpg');\r
+        document.getElementById("res-original-img").src = userPhotoUrl;\r
         const magTagEl = document.getElementById("mag-tag");\r
         if (magTagEl) magTagEl.innerText = tpl.tag;\r
         const magTitleEl = document.getElementById("mag-title");\r
         if (magTitleEl) magTitleEl.innerText = \`Milo \xB7 \${tpl.title}\`;\r
+\r
+        if (typeof window.resetCompareState === 'function') {\r
+          window.resetCompareState();\r
+        }\r
 \r
         setTimeout(() => {\r
           document.getElementById("view-entry").style.display = "none";\r
@@ -10985,6 +11421,7 @@ var public_default = `<!DOCTYPE html>\r
 \r
     function initCompareEvents() {\r
       const btn = document.getElementById("compare-btn");\r
+      const label = document.getElementById("compare-label");\r
       const originalLayer = document.getElementById("res-original-img");\r
       if (!btn || !originalLayer) return;\r
 \r
@@ -10992,88 +11429,118 @@ var public_default = `<!DOCTYPE html>\r
       let isToggled = false;\r
       let pressStartTime = 0;\r
 \r
-      function updateCompareUI(visible) {\r
+      function setCompareState(visible) {\r
         if (visible) {\r
           originalLayer.style.opacity = "1";\r
           btn.classList.add("active");\r
-          btn.innerHTML = \`\r
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
-              <circle cx="12" cy="12" r="3"></circle>\r
-            </svg>\r
-            Original\r
-          \`;\r
+          btn.setAttribute("aria-pressed", "true");\r
+          if (label) label.textContent = "Original";\r
         } else {\r
           originalLayer.style.opacity = "0";\r
           btn.classList.remove("active");\r
-          btn.innerHTML = \`\r
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
-              <circle cx="12" cy="12" r="3"></circle>\r
-            </svg>\r
-            Hold to compare\r
-          \`;\r
+          btn.setAttribute("aria-pressed", "false");\r
+          if (label) label.textContent = "Hold to compare";\r
         }\r
       }\r
 \r
       window.resetCompareState = function() {\r
         isHolding = false;\r
         isToggled = false;\r
-        updateCompareUI(false);\r
+        setCompareState(false);\r
       };\r
 \r
-      const onPointerDown = (e) => {\r
+      const handlePointerDown = (e) => {\r
         if (e) {\r
           e.stopPropagation();\r
-          if (e.cancelable && e.type === "touchstart") e.preventDefault();\r
+          if (e.cancelable) e.preventDefault();\r
+          if (btn.setPointerCapture && e.pointerId !== undefined) {\r
+            try { btn.setPointerCapture(e.pointerId); } catch(_) {}\r
+          }\r
         }\r
-        pressStartTime = Date.now();\r
+        pressStartTime = performance.now();\r
         isHolding = true;\r
         triggerHaptic(6);\r
         soundEngine.playDialClick();\r
 \r
-        if (!isToggled) {\r
-          updateCompareUI(true);\r
+        if (isToggled) {\r
+          // If already in toggled Original state, tapping prepares to switch back to AI cover\r
+          setCompareState(false);\r
+        } else {\r
+          // Instant 0ms GPU reveal of original photo\r
+          setCompareState(true);\r
           trackEvent("compare_shown", { template: activeTemplateId, mode: "hold" });\r
         }\r
       };\r
 \r
-      const onPointerUp = (e) => {\r
+      const handlePointerUp = (e) => {\r
         if (!isHolding) return;\r
         isHolding = false;\r
-        const duration = Date.now() - pressStartTime;\r
-        triggerHaptic(6);\r
-        soundEngine.playDialClick();\r
+        if (btn.releasePointerCapture && e && e.pointerId !== undefined) {\r
+          try { btn.releasePointerCapture(e.pointerId); } catch(_) {}\r
+        }\r
 \r
-        if (duration < 250) {\r
-          // Quick Tap / Click: toggle view\r
+        const duration = performance.now() - pressStartTime;\r
+        triggerHaptic(6);\r
+\r
+        if (duration < 280) {\r
+          // Quick Tap (<280ms): Toggle view state\r
           isToggled = !isToggled;\r
-          updateCompareUI(isToggled);\r
+          setCompareState(isToggled);\r
           trackEvent("compare_shown", { template: activeTemplateId, mode: isToggled ? "toggle_on" : "toggle_off" });\r
         } else {\r
-          // Long Press / Hold: release back to generated poster\r
+          // Long Press Hold (>=280ms): Releasing always returns to AI cover\r
           isToggled = false;\r
-          updateCompareUI(false);\r
+          setCompareState(false);\r
         }\r
       };\r
 \r
-      btn.addEventListener("touchstart", onPointerDown, { passive: false });\r
-      btn.addEventListener("mousedown", onPointerDown);\r
-\r
-      window.addEventListener("touchend", onPointerUp, { passive: true });\r
-      window.addEventListener("touchcancel", () => {\r
+      const handlePointerCancel = (e) => {\r
         if (isHolding) {\r
           isHolding = false;\r
           isToggled = false;\r
-          updateCompareUI(false);\r
+          setCompareState(false);\r
         }\r
-      }, { passive: true });\r
-      window.addEventListener("mouseup", onPointerUp, { passive: true });\r
+        if (btn.releasePointerCapture && e && e.pointerId !== undefined) {\r
+          try { btn.releasePointerCapture(e.pointerId); } catch(_) {}\r
+        }\r
+      };\r
+\r
+      // Modern Unified Pointer Events (Zero-latency, immune to mobile ghost click race conditions)\r
+      btn.addEventListener("pointerdown", handlePointerDown);\r
+      btn.addEventListener("pointerup", handlePointerUp);\r
+      btn.addEventListener("pointercancel", handlePointerCancel);\r
+      window.addEventListener("pointerup", handlePointerUp);\r
+      window.addEventListener("pointercancel", handlePointerCancel);\r
+\r
+      // Keyboard accessibility\r
+      btn.addEventListener("keydown", (e) => {\r
+        if (e.key === " " || e.key === "Enter") {\r
+          e.preventDefault();\r
+          isToggled = !isToggled;\r
+          setCompareState(isToggled);\r
+          triggerHaptic(6);\r
+          soundEngine.playDialClick();\r
+        }\r
+      });\r
+\r
+      // Tap on poster stage to dismiss toggle mode\r
+      const posterStage = btn.closest(".poster-stage");\r
+      if (posterStage) {\r
+        posterStage.addEventListener("click", (e) => {\r
+          if (e.target === btn || btn.contains(e.target)) return;\r
+          if (isToggled) {\r
+            isToggled = false;\r
+            setCompareState(false);\r
+            triggerHaptic(6);\r
+            soundEngine.playDialClick();\r
+          }\r
+        });\r
+      }\r
+\r
+      // Window blur safety\r
       window.addEventListener("blur", () => {\r
-        if (isHolding) {\r
-          isHolding = false;\r
-          isToggled = false;\r
-          updateCompareUI(false);\r
+        if (isHolding || isToggled) {\r
+          window.resetCompareState();\r
         }\r
       });\r
     }\r
@@ -11126,12 +11593,12 @@ var public_default = `<!DOCTYPE html>\r
             const modalImg = document.getElementById("save-modal-img");\r
             modalImg.src = dataUrl;\r
 \r
-            // Check if Web Share API with files is supported\r
-            const shareBtn = document.getElementById("modal-share-btn");\r
-            if (navigator.share) {\r
-              shareBtn.style.display = "block";\r
+            // Adaptive Tip Text for Specific Environments\r
+            const tipText = document.getElementById("save-modal-tip-text");\r
+            if (isWeChatOrInApp) {\r
+              tipText.innerText = "Press and hold image to save to Photos / Send to Chat";\r
             } else {\r
-              shareBtn.style.display = "none";\r
+              tipText.innerText = "Press and hold image to save to Photos";\r
             }\r
 \r
             document.getElementById("save-modal").style.display = "flex";\r
@@ -11158,30 +11625,72 @@ var public_default = `<!DOCTYPE html>\r
 \r
     let currentPosterDataUrl = null;\r
 \r
-    async function sharePosterNative() {\r
-      if (!currentPosterDataUrl || !navigator.share) return;\r
+    /**\r
+     * Universal Mobile Save Handler (Covering Safari, Chrome, WeChat, QQ, TikTok, etc.)\r
+     * 1. Attempts Native Web Share API (File direct to iOS/Android system Photos sheet)\r
+     * 2. Attempts Blob <a download> click for mobile browsers supporting anchor downloads\r
+     * 3. Fallbacks to clear animated guidance for long-press-to-save in in-app webviews (WeChat)\r
+     */\r
+    async function triggerMobileSave() {\r
+      if (!currentPosterDataUrl) return;\r
+      triggerHaptic(8);\r
+      soundEngine.playDialClick();\r
+\r
+      const isWeChatOrInApp = /MicroMessenger|WeChat|Weibo|Instagram|TikTok/i.test(navigator.userAgent);\r
+\r
+      // In WeChat / In-App Webview: directly highlight the long-press action since Web Share & anchor downloads are sandbox-blocked\r
+      if (isWeChatOrInApp) {\r
+        showToast("\u{1F446} Press & hold image above to save to album");\r
+        const badge = document.getElementById("save-modal-badge");\r
+        if (badge) {\r
+          badge.style.transform = "scale(1.08)";\r
+          badge.style.boxShadow = "0 0 0 3px rgba(232, 93, 63, 0.35)";\r
+          setTimeout(() => {\r
+            badge.style.transform = "";\r
+            badge.style.boxShadow = "";\r
+          }, 1200);\r
+        }\r
+        return;\r
+      }\r
+\r
+      // Step 1: Try Native Web Share API (iOS Safari & Android Chrome direct save to camera roll)\r
+      if (navigator.share && navigator.canShare) {\r
+        try {\r
+          const response = await fetch(currentPosterDataUrl);\r
+          const blob = await response.blob();\r
+          const file = new File([blob], \`ViviBon-Cover-\${Date.now()}.png\`, { type: 'image/png' });\r
+          if (navigator.canShare({ files: [file] })) {\r
+            await navigator.share({\r
+              title: 'ViviBon Cover',\r
+              files: [file]\r
+            });\r
+            trackEvent("poster_shared_native_photos");\r
+            return;\r
+          }\r
+        } catch (err) {\r
+          if (err.name === 'AbortError') return; // User closed sheet\r
+          console.warn("Web Share files failed, attempting fallback download:", err);\r
+        }\r
+      }\r
+\r
+      // Step 2: Try Direct Blob Download for mobile browsers allowing download attribute\r
       try {\r
         const response = await fetch(currentPosterDataUrl);\r
         const blob = await response.blob();\r
-        const file = new File([blob], \`ViviBon-Cover-\${Date.now()}.png\`, { type: 'image/png' });\r
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {\r
-          await navigator.share({\r
-            title: 'ViviBon Cover',\r
-            text: 'Look at my pet on the cover of Vogue! \u2726',\r
-            files: [file]\r
-          });\r
-          trackEvent("poster_shared_native");\r
-        } else {\r
-          await navigator.share({\r
-            title: 'ViviBon Cover',\r
-            text: 'Look at my pet on the cover of Vogue! \u2726',\r
-            url: window.location.href\r
-          });\r
-        }\r
-      } catch (err) {\r
-        if (err.name !== 'AbortError') {\r
-          console.warn("Web Share failed:", err);\r
-        }\r
+        const blobUrl = URL.createObjectURL(blob);\r
+        const a = document.createElement("a");\r
+        a.style.display = "none";\r
+        a.href = blobUrl;\r
+        a.download = \`ViviBon-Cover-\${Date.now()}.png\`;\r
+        document.body.appendChild(a);\r
+        a.click();\r
+        setTimeout(() => {\r
+          document.body.removeChild(a);\r
+          URL.revokeObjectURL(blobUrl);\r
+        }, 300);\r
+        showToast("Saved to Photos / Downloads! \u2726");\r
+      } catch (e) {\r
+        showToast("\u{1F446} Press & hold image to save to album");\r
       }\r
     }\r
 \r
@@ -11191,10 +11700,33 @@ var public_default = `<!DOCTYPE html>\r
       document.getElementById("save-modal").style.display = "none";\r
     }\r
 \r
+    function openErrorModal(title, message) {\r
+      triggerHaptic(15);\r
+      const modal = document.getElementById("error-modal");\r
+      if (!modal) return;\r
+      if (title) document.getElementById("error-modal-title").innerText = title;\r
+      if (message) document.getElementById("error-modal-desc").innerText = message;\r
+      modal.style.display = "flex";\r
+    }\r
+\r
+    function closeErrorModal(e) {\r
+      if (e) e.stopPropagation();\r
+      triggerHaptic(6);\r
+      soundEngine.playDialClick();\r
+      const modal = document.getElementById("error-modal");\r
+      if (modal) modal.style.display = "none";\r
+    }\r
+\r
+    function retryGeneration() {\r
+      const modal = document.getElementById("error-modal");\r
+      if (modal) modal.style.display = "none";\r
+      startGeneration();\r
+    }\r
+\r
     document.addEventListener("DOMContentLoaded", () => {\r
-      loadDefaultModelBase64();\r
       renderCategoryPills();\r
       renderTemplateCards();\r
+      preloadAllTemplateThumbnails();\r
       initDragScroll();\r
       initCompareEvents();\r
     });\r

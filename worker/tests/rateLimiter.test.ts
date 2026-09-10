@@ -29,7 +29,7 @@ describe('RateLimiter Middleware & FinOps Defenses', () => {
   });
 
   it('should allow first 3 requests from same IP in the same hour, and block the 4th with 429', async () => {
-    const app = createApp(mockFalService);
+    const app = createApp(mockFalService, { ipHourlyCap: 3 });
     const env = createTestEnv();
 
     const payload = JSON.stringify({ styleKey: 'gentle' });
@@ -58,7 +58,7 @@ describe('RateLimiter Middleware & FinOps Defenses', () => {
   });
 
   it('should allow a different IP even if another IP reached the hourly limit', async () => {
-    const app = createApp(mockFalService);
+    const app = createApp(mockFalService, { ipHourlyCap: 3 });
     const env = createTestEnv();
     const payload = JSON.stringify({ styleKey: 'detective' });
 

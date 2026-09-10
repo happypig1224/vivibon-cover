@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { Env, StyleKey } from '../types/env';
 import { GenerateRequestSchema, ErrorResponse, GenerateResponseSuccess } from '../schemas/generate';
-import { FalService, falService as defaultFalService } from '../services/falService';
+import { FalService, falService as defaultFalService, ProviderRail } from '../services/falService';
 import { sanitizePetName } from '../config/styles';
 import { metricsService } from '../services/metricsService';
 
@@ -66,7 +66,7 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
 
     const effectiveStyleKey = (parseResult.data.styleKey || parseResult.data.themeId || 'fine_art') as StyleKey;
     const effectiveItemId = parseResult.data.itemId || parseResult.data.templateId;
-    const { imageBase64, variantIndex, subId } = parseResult.data;
+    const { imageBase64, variantIndex, subId, referenceImageUrl } = parseResult.data;
     const safePetName = sanitizePetName(parseResult.data.petName);
 
     // Validate Level 2 item belongs to Level 1 style if provided
@@ -91,13 +91,71 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       }
     }
 
-    // Default to SiliconFlow as primary (low-cost, domestic RMB, Qwen-Image-Edit Face ID)
-    // Fal.ai acts as secondary failover unless PRIMARY_AI_PROVIDER is explicitly set to 'fal'
-    const isFalPrimary = c.env?.PRIMARY_AI_PROVIDER === 'fal';
-    const primaryKey = isFalPrimary
-      ? (c.env?.FAL_KEY || c.env?.SILICONFLOW_KEY)
-      : (c.env?.SILICONFLOW_KEY || c.env?.FAL_KEY);
-    const secondaryKey = isFalPrimary ? c.env?.SILICONFLOW_KEY : c.env?.FAL_KEY;
+    // Multi-rail provider configuration:
+    // Priority:
+    // 1. Volcengine Ark (Doubao-Seedream-5.0-lite) as Default Primary Model (~1.8s, 3:4 aspect ratio)
+    // 2. SiliconFlow (Qwen/Qwen-Image-Edit 20B) as Direct Failover
+    // 3. Wokey (gpt-image-2 multi-image: user pet + template reference) as Tertiary
+    // 4. Fal.ai (FLUX.1) as Quaternary
+    const rails: ProviderRail[] = [];
+    const primaryPref = c.env?.PRIMARY_AI_PROVIDER || 'volcengine';
+    const arkKey = c.env?.ARK_API_KEY || c.env?.VOLCENGINE_API_KEY;
+    const volcengineModelId = c.env?.VOLCENGINE_MODEL_ID || 'ep-20260910130528-l8thd';
+    const volcengineEndpoint = c.env?.VOLCENGINE_ENDPOINT;
+
+    const addVolcengine = () => {
+      if (arkKey) {
+        rails.push({
+          provider: 'volcengine',
+          apiKey: arkKey,
+          timeoutMs: 60000,
+          modelId: volcengineModelId,
+          endpoint: volcengineEndpoint
+        });
+      }
+    };
+    const addWokey = () => {
+      if (c.env?.WOKEY_API_KEY) {
+        rails.push({ provider: 'wokey', apiKey: c.env.WOKEY_API_KEY, timeoutMs: 75000 });
+      }
+    };
+    const addSiliconflow = () => {
+      if (c.env?.SILICONFLOW_KEY) {
+        rails.push({ provider: 'siliconflow', apiKey: c.env.SILICONFLOW_KEY, timeoutMs: 60000 });
+      }
+    };
+    const addFal = () => {
+      if (c.env?.FAL_KEY) {
+        rails.push({ provider: 'fal', apiKey: c.env.FAL_KEY, timeoutMs: 60000 });
+      }
+    };
+
+    if (primaryPref === 'wokey') {
+      addWokey();
+      addSiliconflow();
+      addVolcengine();
+      addFal();
+    } else if (primaryPref === 'siliconflow') {
+      addSiliconflow();
+      addVolcengine();
+      addWokey();
+      addFal();
+    } else if (primaryPref === 'fal') {
+      addFal();
+      addSiliconflow();
+      addVolcengine();
+      addWokey();
+    } else {
+      // Default & Primary: Volcengine Ark (Doubao Seedream 5.0 Lite)
+      // 降级模型锁定为硅基流动 (SiliconFlow Qwen-Image-Edit 20B)
+      addVolcengine();
+      addSiliconflow();
+      addWokey();
+      addFal();
+    }
+
+    const primaryKey = rails[0]?.apiKey || arkKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
+    const secondaryKey = rails[1]?.apiKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
 
     const alertCtx = {
       environment: c.env?.ENVIRONMENT || 'production',
@@ -118,7 +176,9 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       effectiveItemId,
       alertCtx,
       c.env?.WECHAT_WEBHOOK_URL,
-      secondaryKey
+      secondaryKey,
+      rails,
+      referenceImageUrl
     );
 
     const response: GenerateResponseSuccess = {
@@ -130,6 +190,7 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
         petName: result.petName,
         latencyMs: result.latencyMs,
         isFallback: result.isFallback,
+        ...(result.activeProvider ? { activeProvider: result.activeProvider } : {}),
         ...(result.failoverTriggered !== undefined ? { failoverTriggered: result.failoverTriggered } : {}),
         ...(result.capsuleVariant ? { capsuleVariant: result.capsuleVariant } : {}),
         ...(result.level1Theme ? { level1Theme: result.level1Theme } : {}),

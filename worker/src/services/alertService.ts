@@ -16,6 +16,7 @@ export interface AlertContext {
   secondaryProvider?: string;
   errorMessage?: string;
   durationMs?: number;
+  timeoutMs?: number;
 }
 
 export type FailureCategory =
@@ -36,7 +37,7 @@ export interface ClassifiedFailure {
 /**
  * Classify error message into root causes (insufficient quota, timeout, 5xx, auth, NSFW/safety violation)
  */
-export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailure {
+export function classifyFailureReason(rawMessage: string = '', timeoutMs?: number): ClassifiedFailure {
   const lower = rawMessage.toLowerCase();
 
   // 1. Quota / Balance Exhaustion
@@ -65,11 +66,28 @@ export function classifyFailureReason(rawMessage: string = ''): ClassifiedFailur
     lower.includes('timed out') ||
     lower.includes('deadline exceeded')
   ) {
+    // 优先采用传入的真实 timeoutMs，其次从报错信息自动提取 (如 "15000ms" / "60s")
+    let detectedSec: number | null = timeoutMs && timeoutMs > 0 ? Math.round(timeoutMs / 1000) : null;
+    if (!detectedSec) {
+      const msMatch = rawMessage.match(/(\d+)\s*ms/i);
+      if (msMatch) {
+        detectedSec = Math.round(parseInt(msMatch[1], 10) / 1000);
+      } else {
+        const sMatch = rawMessage.match(/(\d+)\s*s(?:ec)?(?:onds?)?/i);
+        if (sMatch) {
+          detectedSec = parseInt(sMatch[1], 10);
+        }
+      }
+    }
+
+    const secLabel = detectedSec ? `${detectedSec}s 截断` : '硬阈值熔断';
+    const secDesc = detectedSec ? `超过 ${detectedSec} 秒硬阈值` : '超过系统设定的硬阈值';
+
     return {
       category: 'TIMEOUT_EXCEEDED',
-      labelZh: '网络请求超时 (30s 截断)',
+      labelZh: `网络请求超时 (${secLabel})`,
       tag: '[TIMEOUT_EXCEEDED]',
-      description: '大模型服务商推理耗时超过 30 秒硬阈值，系统已主动熔断并触发保护。'
+      description: `大模型服务商推理耗时${secDesc}，系统已主动熔断并触发保护。`
     };
   }
 
@@ -202,7 +220,7 @@ export class AlertService {
       return false;
     }
 
-    const classification = classifyFailureReason(context.errorMessage || '');
+    const classification = classifyFailureReason(context.errorMessage || '', context.timeoutMs);
     const provider = context.primaryProvider || 'default';
     const debounceKey = `${classification.category}:${provider}`;
 

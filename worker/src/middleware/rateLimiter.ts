@@ -8,10 +8,10 @@ export interface RateLimiterOptions {
   ipDailyCap?: number;
 }
 
-// Production Hard Limits requested by Engineering Direction
+// Production Limits: 10/hr and 20/day per IP (FinOps $45 NC-3 preserved)
 const DEFAULT_DAILY_BUDGET_CAP = 1500; // 1500 requests/day ($45 budget hard cap, NC-3)
-const DEFAULT_IP_HOURLY_CAP = 3;       // 3 requests/hour per IP
-const DEFAULT_IP_DAILY_CAP = 10;       // 10 requests/day per IP
+const DEFAULT_IP_HOURLY_CAP = 10;      // 10 requests/hour per IP
+const DEFAULT_IP_DAILY_CAP = 20;       // 20 requests/day per IP
 
 export const rateLimiterMiddleware = (options?: RateLimiterOptions): MiddlewareHandler<{
   Bindings: Env;
@@ -80,13 +80,52 @@ export const rateLimiterMiddleware = (options?: RateLimiterOptions): MiddlewareH
       return c.json(errorResp, 429);
     }
 
-    // Check if test bypass is requested (owner test or query bypass)
-    const url = new URL(c.req.url);
-    const isTestBypass = c.req.header('x-test-bypass') === '1' ||
-                         url.searchParams.get('test_bypass') === '1' ||
-                         url.searchParams.get('debug') === '1';
+    // Anti-Replay & Timestamp Freshness Verification (60-second window, single-use nonce)
+    const reqTimestampStr = c.req.header('x-request-timestamp');
+    const reqNonce = c.req.header('x-request-nonce');
 
-    if (!isTestBypass) {
+    if (reqTimestampStr) {
+      const reqTimestamp = parseInt(reqTimestampStr, 10);
+      if (isNaN(reqTimestamp) || Math.abs(now.getTime() - reqTimestamp) > 60000) {
+        const errorResp: ErrorResponse = {
+          success: false,
+          errorCode: 'REQUEST_EXPIRED',
+          message: 'Request timestamp is invalid or expired. Please refresh the page and try again.'
+        };
+        return c.json(errorResp, 403);
+      }
+    }
+
+    if (reqNonce) {
+      if (reqNonce.length < 8 || reqNonce.length > 64) {
+        const errorResp: ErrorResponse = {
+          success: false,
+          errorCode: 'INVALID_NONCE',
+          message: 'Invalid request nonce token.'
+        };
+        return c.json(errorResp, 403);
+      }
+      const nonceKey = `replay:nonce:${reqNonce}`;
+      const seen = await kv.get(nonceKey);
+      if (seen) {
+        const errorResp: ErrorResponse = {
+          success: false,
+          errorCode: 'REPLAY_ATTACK_DETECTED',
+          message: 'Replay attack blocked. Each request token can only be used once.'
+        };
+        return c.json(errorResp, 403);
+      }
+      await kv.put(nonceKey, '1', { expirationTtl: 120 });
+    }
+
+    // Check if admin bypass or test harness bypass is requested (Strictly eliminate query param backdoors)
+    const isAdminBypass = Boolean(
+      c.env?.ADMIN_BYPASS_KEY && c.req.header('x-admin-bypass-key') === c.env.ADMIN_BYPASS_KEY
+    );
+    const isTestBypass = c.env?.ENVIRONMENT !== 'production' && c.req.header('x-test-bypass') === '1';
+    const shouldBypass = isAdminBypass || isTestBypass;
+
+    if (!shouldBypass) {
       const ipHourlyKey = `ratelimit:ip:${ip}:${hourStr}`;
       const ipDailyKey = `ratelimit:ip:${ip}:${dateStr}`;
 
