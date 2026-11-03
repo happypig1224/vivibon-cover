@@ -1,5 +1,9 @@
 # ViviBon Cover 宠物高定杂志封面工坊
 
+> **在线体验地址**：[https://vivibon-cover.pages.dev](https://vivibon-cover.pages.dev)  
+> **生产边缘节点**：`https://vivibon-cover-worker.zhoumiaoyin1.workers.dev`  
+> **使用建议**：移动端（微信、Safari、Chrome）或桌面端均可直达访问，免登录、免注册即开即用。
+
 ## 一、 项目简介
 
 ViviBon Cover 是一个基于边缘计算架构的先锋宠物杂志封面生成工具。
@@ -16,14 +20,18 @@ ViviBon Cover 是一个基于边缘计算架构的先锋宠物杂志封面生成
 
 ## 二、 快速上手
 
-### 1. 前端本地极速预览
+### 1. 在线真机体验（推荐）
+* 生产环境网址：[https://vivibon-cover.pages.dev](https://vivibon-cover.pages.dev)
+* 支持移动端（iOS Safari、Android、微信/社交内置 Webview）与桌面浏览器直接访问，免登录即开即用，首屏内容渲染（FCP）小于 100ms。
+
+### 2. 前端本地极速预览
 ```bash
 # 启动本地静态服务（以 public 目录作为根路径）
 python -m http.server 3000 -d public
 # 浏览器访问：http://localhost:3000
 ```
 
-### 2. 后端边缘微服务开发
+### 3. 后端边缘微服务开发
 ```bash
 cd worker
 
@@ -37,7 +45,7 @@ npm test
 npm run dev
 ```
 
-### 3. 数据工程沙盒测试
+### 4. 数据工程沙盒测试
 ```bash
 # 运行 25 项数据工程与评分沙盒自动化测试
 python -m pytest pipeline/tests -v
