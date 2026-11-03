@@ -13,6 +13,7 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
   }>();
 
   route.post('/api/generate', async (c) => {
+    const requestReceivedAt = Date.now();
     let body: unknown;
     try {
       body = await c.req.json();
@@ -93,16 +94,28 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
 
     // Multi-rail provider configuration:
     // Priority:
-    // 1. Volcengine Ark (Doubao-Seedream-5.0-lite) as Default Primary Model (~1.8s, 3:4 aspect ratio)
-    // 2. SiliconFlow (Qwen/Qwen-Image-Edit 20B) as Direct Failover
-    // 3. Wokey (gpt-image-2 multi-image: user pet + template reference) as Tertiary
-    // 4. Fal.ai (FLUX.1) as Quaternary
+    // 1. 302.AI (Gemini 3.1 Flash Lite Image) as Primary Model (~8-12s, ultra-high fidelity)
+    // 2. Volcengine Ark (Doubao-Seedream-5.0-lite) as Failover (~1.8s, 3:4 aspect ratio)
+    // 3. SiliconFlow (Qwen/Qwen-Image-Edit 20B) as Tertiary
+    // 4. Wokey (gpt-image-2 multi-image) as Quaternary
+    // 5. Fal.ai (FLUX.1) as Quinary
     const rails: ProviderRail[] = [];
-    const primaryPref = c.env?.PRIMARY_AI_PROVIDER || 'volcengine';
+    const primaryPref = c.env?.PRIMARY_AI_PROVIDER || '302ai';
     const arkKey = c.env?.ARK_API_KEY || c.env?.VOLCENGINE_API_KEY;
     const volcengineModelId = c.env?.VOLCENGINE_MODEL_ID || 'ep-20260910130528-l8thd';
     const volcengineEndpoint = c.env?.VOLCENGINE_ENDPOINT;
 
+    const add302ai = () => {
+      if (c.env?.AI302_API_KEY) {
+        rails.push({
+          provider: '302ai',
+          apiKey: c.env.AI302_API_KEY,
+          timeoutMs: 30000,
+          modelId: c.env?.AI302_MODEL_ID || 'gemini-3.1-flash-lite-image',
+          endpoint: c.env?.AI302_ENDPOINT || 'https://api.302.ai/v1/chat/completions'
+        });
+      }
+    };
     const addVolcengine = () => {
       if (arkKey) {
         rails.push({
@@ -129,32 +142,62 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
         rails.push({ provider: 'fal', apiKey: c.env.FAL_KEY, timeoutMs: 60000 });
       }
     };
+    const addSegmind = () => {
+      if (c.env?.SEGMIND_API_KEY) {
+        rails.push({ provider: 'segmind', apiKey: c.env.SEGMIND_API_KEY, timeoutMs: 25000 });
+      }
+    };
 
-    if (primaryPref === 'wokey') {
+    if (primaryPref === 'segmind') {
+      addSegmind();
+      addVolcengine();
+      add302ai();
+      addSiliconflow();
+      addFal();
+    } else if (primaryPref === '302ai') {
+      add302ai();
+      addVolcengine();
+      addSegmind();
+      addSiliconflow();
       addWokey();
+      addFal();
+    } else if (primaryPref === 'volcengine') {
+      addVolcengine();
+      addSegmind();
+      add302ai();
+      addSiliconflow();
+      addFal();
+    } else if (primaryPref === 'wokey') {
+      addWokey();
+      addSegmind();
+      add302ai();
       addSiliconflow();
       addVolcengine();
       addFal();
     } else if (primaryPref === 'siliconflow') {
       addSiliconflow();
+      addSegmind();
+      add302ai();
       addVolcengine();
       addWokey();
       addFal();
     } else if (primaryPref === 'fal') {
       addFal();
+      addSegmind();
+      add302ai();
       addSiliconflow();
       addVolcengine();
       addWokey();
     } else {
-      // Default & Primary: Volcengine Ark (Doubao Seedream 5.0 Lite)
-      // 降级模型锁定为硅基流动 (SiliconFlow Qwen-Image-Edit 20B)
+      addSegmind();
       addVolcengine();
+      add302ai();
       addSiliconflow();
       addWokey();
       addFal();
     }
 
-    const primaryKey = rails[0]?.apiKey || arkKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
+    const primaryKey = rails[0]?.apiKey || c.env?.AI302_API_KEY || arkKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
     const secondaryKey = rails[1]?.apiKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
 
     const alertCtx = {
@@ -166,6 +209,7 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       templateId: effectiveItemId
     };
 
+    const upstreamStart = Date.now();
     const result = await service.generatePoster(
       effectiveStyleKey,
       safePetName,
@@ -181,6 +225,15 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
       referenceImageUrl
     );
 
+    const upstreamMs = Date.now() - upstreamStart;
+    const workerPrepMs = upstreamStart - requestReceivedAt;
+    const totalWorkerMs = Date.now() - requestReceivedAt;
+
+    c.header('Server-Timing', `prep;dur=${workerPrepMs};desc="Worker Prep", upstream;dur=${upstreamMs};desc="AI Provider Inference", total;dur=${totalWorkerMs};desc="Total Edge Execution"`);
+    c.header('X-Model-Provider', result.activeProvider || 'Unknown');
+    c.header('X-Model-Latency-Ms', String(upstreamMs));
+    c.header('X-Worker-Total-Ms', String(totalWorkerMs));
+
     const response: GenerateResponseSuccess = {
       success: true,
       data: {
@@ -190,6 +243,11 @@ export const createGenerateRoute = (service: FalService = defaultFalService) => 
         petName: result.petName,
         latencyMs: result.latencyMs,
         isFallback: result.isFallback,
+        timings: {
+          workerPrepMs,
+          upstreamInferenceMs: upstreamMs,
+          totalWorkerMs
+        },
         ...(result.activeProvider ? { activeProvider: result.activeProvider } : {}),
         ...(result.failoverTriggered !== undefined ? { failoverTriggered: result.failoverTriggered } : {}),
         ...(result.capsuleVariant ? { capsuleVariant: result.capsuleVariant } : {}),

@@ -1,0 +1,80 @@
+{
+  "report_date": "2026-09-11",
+  "push_time": "20:00:00",
+  "total_daily_generations": 1420,
+  "overall_save_rate": "78.4%",
+  "active_templates": [
+    {
+      "id": "TPL-01",
+      "name": "Airline Captain (机长喵)",
+      "category": "Cosplay",
+      "daily_views": 3850,
+      "daily_generations": 412,
+      "save_count": 358,
+      "save_rate": 86.9,
+      "quadrant": "CHAMPION",
+      "quadrant_desc": "常驻王牌 · 保持高位展示",
+      "status": "HEALTHY"
+    },
+    {
+      "id": "TPL-02",
+      "name": "Caffeine Pro (早八冰美式)",
+      "category": "Cosplay",
+      "daily_views": 3120,
+      "daily_generations": 389,
+      "save_count": 332,
+      "save_rate": 85.3,
+      "quadrant": "CHAMPION",
+      "quadrant_desc": "常驻王牌 · 保持高位展示",
+      "status": "HEALTHY"
+    },
+    {
+      "id": "TPL-03",
+      "name": "Wes Anderson Pastel (韦斯安德森)",
+      "category": "Fine Art",
+      "daily_views": 1820,
+      "daily_generations": 245,
+      "save_count": 221,
+      "save_rate": 90.2,
+      "quadrant": "POTENTIAL_VIRAL",
+      "quadrant_desc": "潜力爆款 · 保存率极高但曝光不足，需前移提权",
+      "status": "PROMOTE_SLOT"
+    },
+    {
+      "id": "TPL-04",
+      "name": "Michelin Chef (米其林大厨)",
+      "category": "Cosplay",
+      "daily_views": 2450,
+      "daily_generations": 198,
+      "save_count": 142,
+      "save_rate": 71.7,
+      "quadrant": "STABLE",
+      "quadrant_desc": "稳定观察中",
+      "status": "HEALTHY"
+    },
+    {
+      "id": "TPL-05",
+      "name": "Secret Agent 007 (特工黑超)",
+      "category": "Cosplay",
+      "daily_views": 1450,
+      "daily_generations": 110,
+      "save_count": 68,
+      "save_rate": 61.8,
+      "quadrant": "NEED_REFINEMENT",
+      "quadrant_desc": "概念吸引但保存率偏低，需拉回阶段三修正 Prompt",
+      "status": "WARN_REFINE"
+    },
+    {
+      "id": "TPL-06",
+      "name": "French Riviera Sailor (海滨水手)",
+      "category": "Fine Art",
+      "daily_views": 620,
+      "daily_generations": 28,
+      "save_count": 12,
+      "save_rate": 42.8,
+      "quadrant": "RETIRE_POOL",
+      "quadrant_desc": "连续3天末位 · 建议淘汰下架，腾出坑位",
+      "status": "READY_TO_RETIRE"
+    }
+  ]
+}

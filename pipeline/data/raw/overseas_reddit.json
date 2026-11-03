@@ -1,0 +1,23 @@
+{
+  "source": "Reddit Overseas Primary Pipeline",
+  "subreddits": [
+    "rarepuppers",
+    "Catmemes",
+    "dogmemes",
+    "aww"
+  ],
+  "total_items": 1,
+  "items": [
+    {
+      "id": "REDDIT-test123",
+      "subreddit": "rarepuppers",
+      "title": "A very good boy testing pipeline",
+      "score": 45000,
+      "num_comments": 800,
+      "image_url": "https://i.redd.it/dummy.jpg",
+      "permalink": "https://reddit.com/r/rarepuppers/comments/dummy",
+      "created_utc": 1600000000,
+      "source": "Reddit (Test)"
+    }
+  ]
+}

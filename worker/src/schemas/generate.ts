@@ -64,6 +64,11 @@ export interface GenerateResponseSuccess {
       badge: string;
     };
     skillDirective?: string;
+    timings?: {
+      workerPrepMs: number;
+      upstreamInferenceMs: number;
+      totalWorkerMs: number;
+    };
   };
 }
 

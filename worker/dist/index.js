@@ -1775,7 +1775,7 @@ var require_hono_base = __commonJS({
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var hono_base_exports = {};
     __export2(hono_base_exports, {
-      HonoBase: () => Hono6
+      HonoBase: () => Hono7
     });
     module.exports = __toCommonJS(hono_base_exports);
     var import_compose = require_compose();
@@ -1794,7 +1794,7 @@ var require_hono_base = __commonJS({
       console.error(err);
       return c.text("Internal Server Error", 500);
     };
-    var Hono6 = class _Hono {
+    var Hono7 = class _Hono {
       get;
       post;
       put;
@@ -3215,14 +3215,14 @@ var require_hono = __commonJS({
     var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
     var hono_exports = {};
     __export2(hono_exports, {
-      Hono: () => Hono6
+      Hono: () => Hono7
     });
     module.exports = __toCommonJS(hono_exports);
     var import_hono_base = require_hono_base();
     var import_reg_exp_router = require_reg_exp_router();
     var import_smart_router = require_smart_router();
     var import_trie_router = require_trie_router();
-    var Hono6 = class extends import_hono_base.HonoBase {
+    var Hono7 = class extends import_hono_base.HonoBase {
       /**
        * Creates an instance of the Hono class.
        *
@@ -3261,10 +3261,10 @@ var require_cjs = __commonJS({
     var index_exports = {};
     __export2(index_exports, {
       Context: () => import_context.Context,
-      Hono: () => import_hono5.Hono
+      Hono: () => import_hono6.Hono
     });
     module.exports = __toCommonJS(index_exports);
-    var import_hono5 = require_hono();
+    var import_hono6 = require_hono();
     var import_context = require_context();
   }
 });
@@ -3413,7 +3413,7 @@ var IDENTITY_ANCHOR, STUDIO_FINISH, NEGATIVE_PROMPT, FINE_ART_TEMPLATES, CORPORA
 var init_styles = __esm({
   "src/config/styles.ts"() {
     "use strict";
-    IDENTITY_ANCHOR = "Dress the EXACT SAME pet from the input image from the neck and shoulders down. Strictly preserve the original pet's facial structure, eyes, snout geometry, ear shape and position, native fur coloration, distinctive markings, body proportions and age 100% unchanged. Strict quadruped anatomical law: The subject is a 100% pure animal pet. All visible front limbs must terminate solely in authentic, fluffy animal paws with species-correct fur and soft paw pads. Strictly and absolutely NO human arms, NO human hands, NO human fingers, NO human thumbs, NO opposable thumbs, NO fingernails, NO human skin or flesh, NO human wrists, NO human joints, NO hybrid chimera anatomy. Both animal paws must rest naturally and flat on surfaces. Absolutely NO person or human body parts in frame, NO hands holding cameras, NO hands holding phones, NO hands holding cups, NO selfie sticks. Unmasked face, head and eyes fully visible and natural, non-distorted.";
+    IDENTITY_ANCHOR = "Meticulously preserve the specific pet's core biological identity from Photo 1, including native fur coloration, distinctive markings, stripe geometry, natural eye hue and iris color, snout proportions, and ear structure. The pet is the expressive living protagonist of the scene: breathe lifelike emotional depth, subtle facial micro-expressions, and natural somatic posture tailored to the narrative, avoiding stiff static head-pasting. Strict quadruped anatomical law: The subject is a 100% pure animal pet. All visible limbs must terminate solely in authentic, fluffy animal paws with species-correct fur and soft paw pads. Strictly and absolutely NO human arms, NO human hands, NO human fingers, NO human thumbs, NO opposable thumbs, NO fingernails, NO human skin or flesh, NO human wrists, NO human joints, NO hybrid chimera anatomy. Both animal paws must rest naturally and interact convincingly with the scene. Absolutely NO person or human body parts in frame, NO hands holding cameras, NO hands holding phones, NO hands holding cups, NO selfie sticks. Unmasked face, natural expressive eyes and lively whiskers.";
     STUDIO_FINISH = "Hyperdetailed, 8k resolution, cinematic lighting, sharp focus on pet eyes, rich vibrant natural color grading, high dynamic range, glossy fur highlights, deep warm studio lighting, masterpiece quality, no text, no logo, award-winning composition.";
     NEGATIVE_PROMPT = "human hand, human hands, human fingers, human thumb, human palm, fingernails, human wrist, human skin, human arms, human body, person holding camera, person holding phone, human hand holding phone, taking selfie, smartphone in hand, hand reaching into frame, selfie stick, person in photo, human taking picture, chimera, hybrid human-animal, anthropomorphic hands, furry hands, human hands on pet, human arms on pet, bare skin, fleshy fingers, knuckles, second pet, other animals, duplicate subject, breed change, facial change, fur color change, marking change, eye asymmetry, strabismus, clothes clipping, accessories clipping, distorted anatomy, warped snout, deformed eyes, extra legs, missing legs, extra paws, fused limbs, severed limbs, blurry, low quality, noisy, jpeg artifacts, text, typography, letters, watermark, signature, logo, brand name, cartoon, 3D render, CGI doll, monochrome, black and white, grayscale, desaturated, dull colors, washed out, low contrast, hazy, dim, underexposed, dark muddy shadows, plastic texture, human cleavage, bare skin, naked, nude, bikini, erotic, suggestive, extra fingers, deformed paws.";
     FINE_ART_TEMPLATES = [
@@ -3422,7 +3422,7 @@ var init_styles = __esm({
         "\u590D\u523B\u300A\u8499\u5A1C\u4E3D\u838E\u300B\u53E4\u5178\u6CB9\u753B",
         "The Mona Lisa Smile",
         "\u6587\u827A\u590D\u5174",
-        "A masterwork classical Renaissance oil painting in the style of Leonardo da Vinci's Mona Lisa, starring the specific pet from Photo 1. Meticulously preserve the pet's exact facial structure, eye shape, pupil color, whisker placement, and native fur coloration and markings. The pet has soft dark waves of fur framing its face like the iconic Mona Lisa silhouette. Sitting in a classic 3/4 turn pose, gazing serenely forward with a subtle enigmatic smile. Dressed in the authentic dark olive-green pleated Renaissance velvet gown with gold embroidery. Both front legs end in natural furry paws folded gracefully in its lap. Sfumato soft chiaroscuro lighting, warm golden-brown undertones, misty river and mountain landscape in background, realistic antique oil painting canvas craquelure texture.",
+        "A masterwork classical Renaissance oil painting in the style of Leonardo da Vinci's Mona Lisa, starring the specific pet from Photo 1. Meticulously preserving the pet's authentic fur markings, facial identity, and eye color. Somatic posture: The pet is posed in the iconic Leonardo 3/4 seated turn, with its upper body angled slightly away while its head turns back toward the viewer, and both furry paws are gracefully folded over the rich pleated velvet gown. Contextual facial acting: The pet radiates the quintessential Mona Lisa enigma\u2014gentle, wise, and serene eyes meeting the viewer's gaze, with a faint, subtle, almost imperceptible upturn at the corners of its mouth forming that famous mysterious smile. Dressed in the authentic dark olive-green pleated Renaissance velvet gown with gold embroidery. Sfumato soft chiaroscuro lighting, misty river and mountain landscape in the distant background, antique oil painting canvas craquelure texture.",
         "models/mona_lisa.png",
         "human ears, ears hidden inside wig, wig covering eyes, wig covering snout, front legs stretched into human arms, human fingers, human hands, human neck, human skin exposed, fused paws, long robe penetrating body"
       ),
@@ -3431,7 +3431,7 @@ var init_styles = __esm({
         "\u300A\u6234\u73CD\u73E0\u8033\u73AF\u7684\u5C11\u5973\u300B\u53E4\u5178\u8096\u50CF",
         "Girl with a Pearl Earring",
         "\u8377\u5170\u9EC4\u91D1\u65F6\u4EE3",
-        "A classical 17th-century Dutch Golden Age master oil painting in the exact iconic composition and posture of Johannes Vermeer's Girl with a Pearl Earring, featuring the specific pet from Photo 1. Meticulously preserve the pet's authentic facial identity, fur pattern, snout geometry, and luminous eye color. The pet's body is positioned in a strict side profile facing away to the right, turning its head back over its left shoulder to look directly at the viewer with an enigmatic gaze, exactly matching the 3/4 Vermeer pose. Wearing an iconic ultramarine blue and gold silk turban wrapped gracefully around its head, with a single large luminous teardrop pearl earring catchlight beside its left ear. Dressed in a muted golden-ochre Dutch wool coat with long full sleeves that completely cover its body and shoulders down to the chest, with a crisp, closed high white inner collar cleanly wrapping the neck. Absolutely NO exposed paws, NO bare arms, NO open chest, NO V-neck. Deep dramatic chiaroscuro with a pure dark void background, delicate directional raking light sculpting the side of the face and glistening on the pearl, rich craquelure oil painting glaze texture.",
+        "A classical 17th-century Dutch Golden Age master oil painting in the exact composition of Johannes Vermeer's Girl with a Pearl Earring, featuring the specific pet from Photo 1. Somatic posture: The pet is positioned in a dynamic over-the-shoulder turn, body facing away toward the right with shoulders shrouded in an ochre wool coat, turning its head sharply back to look directly into the camera lens over its left shoulder. Contextual facial acting: A luminous, intimate gaze\u2014wide, clear, glistening moist eyes reflecting the studio light, mouth relaxed and parted by a millimeter in spontaneous wonder, conveying a captivating momentary glance as if called by name. Wearing an iconic ultramarine blue and gold silk turban wrapped around its head, beside which hangs a single large, radiant teardrop pearl catchlight. Deep dramatic chiaroscuro against a pure dark backdrop, delicate directional light caressing the cheek and iris, rich craquelure glaze.",
         "models/pearl_earring.png",
         "visible pet ears, human ears, two or more pearls, pearl penetrating skin, pearl penetrating turban, turban flattening skull, turban covering eyes, distorted neck, human neck, human collarbone, exposed human skin, bare arms, bare paws, exposed paws, uncovered paws, bare fur on torso, open chest, deep V-neck, frontal pose, facing front, symmetrical shoulders, casual clothes"
       ),
@@ -3440,7 +3440,7 @@ var init_styles = __esm({
         "\u5927\u5E08\u7EA7\u624B\u7ED8\u901F\u5199\u7814\u7A76\u672C",
         "Master's Sketchbook Study",
         "\u624B\u7ED8\u901F\u5199",
-        "A masterclass sketchbook study page titled 'Study of My Pet', featuring the exact pet from Photo 1. Meticulously preserve the pet's distinct facial anatomy, fur markings, and gaze. The page displays 4 to 5 detailed sketches of the pet's head from varying angles (frontal, 3/4 profile, slight tilt) arranged dynamically across the aged ivory drawing paper. Rendered in delicate graphite pencil cross-hatching combined with soft warm watercolor washes. Scattered with faint vintage cursive architectural studio notes and anatomical sketches in the margins. Authentic artist sketchbook paper grain, expressive unfinished edge strokes, high-end fine art drawing aesthetic.",
+        "A masterclass artist sketchbook study page featuring the specific pet from Photo 1. The page presents 4 dynamic charcoal-and-watercolor study sketches capturing the pet in varied lifelike emotional states: a focused frontal study, an inquisitive 3/4 tilted head glance, a yawn with curled tongue, and a tranquil sleeping pose. Subtle vintage cursive handwritten anatomical and shading notes in the sepia margins. Authentic deckle-edge aged parchment texture, expressive contour strokes, fine art museum draftsmanship.",
         "models/line_art.png",
         "realistic pencil sketch, colorful, gray gradient, smooth vector lines, 3D render, solid black fill, busy background, cropped subject, typography covering subject, long text, gibberish letters, misspelled words, over-stylized unrecognizable cartoon"
       )
@@ -3451,25 +3451,25 @@ var init_styles = __esm({
         "\u65E9\u516B\u6253\u5DE5\u6478\u9C7C\u72D7",
         "Daily Life of a 9-to-5 Working Pet",
         "\u6253\u5DE5\u65E5\u5E38",
-        "A humorous, hyperrealistic workplace documentary portrait of the specific pet from Photo 1, themed Daily Life of a 9-to-5 Working Pet. Shot from a third-person perspective with an 85mm portrait lens, eye-level with the pet at its office workstation. The pet sits comfortably upright on an office chair. Both of its natural furry animal paws with soft pink pads are resting flat on the clean white desk surface in front of a keyboard. On the desk directly in front of the pet sits a clear plastic takeaway cup filled with iced Americano coffee and ice cubes, with a white drinking straw near the pet's muzzle. The pet wears a snug, dark chocolate brown ribbed knit turtleneck sweater with clean cuffs around its furry ankles. Around its neck hangs a realistic acrylic corporate employee badge on a blue lanyard with legible text 'Professional Slacker'. In the background, an authentic modern open-plan office with soft out-of-focus computer screens, colorful sticky notes, and warm indoor office lighting. Pure animal anatomy, natural glossy fur, expressive comedic tired expression. Absolutely no human hands or smartphones in frame.",
+        "A humorous, hyperrealistic workplace documentary portrait of the specific pet from Photo 1, themed Daily Life of a 9-to-5 Working Pet. Somatic posture: The pet exhibits a relatable, weary forward-slumping desk posture, leaning softly over its office workstation. Both authentic furry animal paws with soft pads rest naturally on the desk surface\u2014one paw limp beside the keyboard, the other softly steadying a clear takeaway cup filled with iced Americano. Contextual facial acting: The pet radiates the quintessential exhausted 9-to-5 corporate mood\u2014weary, heavy-lidded half-open eyes with a relatable glazed Monday-morning stare, yet its pupils are sharp and sparked with subtle caffeine alertness. Its furry mouth and lips are gently pursed directly around the drinking straw, actively sipping the cold beverage, whiskers twitched forward in realistic suction motion. Dressed in a snug dark chocolate brown ribbed knit turtleneck sweater with clean cuffs around its furry ankles and a clear acrylic employee lanyard badge labeled 'Professional Slacker'. Crucial photographic identity consistency: The miniature ID photo printed on the employee badge must show the identical face of the specific pet from Photo 1 (matching its exact breed, fur color, and tabby markings), serving as the pet's own official employee ID photo. Authentic modern open-plan office background with soft out-of-focus computer screens and warm indoor lighting. Pure animal anatomy, natural glossy fur. Absolutely no human hands or smartphones in frame.",
         "models/caffeine_pro.png",
-        "smartphone, mobile phone, cell phone, holding phone, phone held by hand, taking selfie, selfie pose, arm reaching toward camera, human hand, human fingers, human thumb, opposable thumb, human palm, fingernails, human wrist, human arm, human skin, chimera, half-human, hybrid hands, hands holding cup, coffee spilled on fur, pet drinking hot coffee, dislocated paws"
+        "different pet on employee badge, mismatching animal on ID card, white cat on badge, human face on badge, wrong photo on employee card, smartphone, mobile phone, cell phone, holding phone, phone held by hand, taking selfie, selfie pose, arm reaching toward camera, human hand, human fingers, human thumb, opposable thumb, human palm, fingernails, human wrist, human arm, human skin, chimera, half-human, hybrid hands, hands holding cup, coffee spilled on fur, pet drinking hot coffee, dislocated paws"
       ),
       makeItem(
         "airline_captain",
         "\u9876\u7EA7\u6C11\u822A\u673A\u957F",
         "The Airline Captain",
         "\u6C11\u822A\u673A\u957F",
-        "Extreme close-up fisheye lens perspective (GoPro style) with dramatic barrel distortion, humorous meme-avatar aesthetic. A detailed close-up portrait of the specific pet from the uploaded reference image, reimagined as a veteran pilot, meticulously preserving the unique facial structure, fur pattern, color, and eye color from the reference. The pet is wearing vintage aviator goggles pushed up on its head, and a secure black tactical flight harness/vest with silver buckles over its fur, sitting in the pilot's seat and looking directly at the camera with a stoic expression. Both front limbs are natural furry paws resting calmly on the seat armrests. Crucially, the scene is grounded inside a complex aircraft cockpit. The extreme fisheye perspective captures the detailed instrument panel, switches, and screens of the cockpit. Viewed through the cockpit windows, there is absolutely NO sky or clouds; instead, the view shows the concrete of an airport tarmac (ground asphalt), ground service equipment, and parked planes, all distorted by the wide lens. The cockpit interior lighting is detailed, with lights reflecting on the goggle lenses.",
+        "A humorous and delightful, viral ultra-wide fisheye cockpit documentary selfie of the specific pet from Photo 1 as an authentic commercial airline captain. Composition and camera: Dramatic close-up wide-angle GoPro cockpit selfie perspective with subtle curved barrel distortion. The pet's large, adorable face is centered close to the camera lens with engaging visual impact. Somatic posture and headwear: Wearing dark olive-green tactical aviator goggles stylishly pushed up onto its forehead/brow, allowing both furry animal ears to perk up naturally on either side (no bulky pilot hat, no peaked cap). Contextual facial acting: Big round curious eyes looking directly into the camera lens with irresistible charismatic charm, pink nose, whiskers flared outward in alert concentration. Attire: Fitted with a snug black tactical flight harness and seatbelt straps featuring silver and yellow safety buckles strapped over its animal chest and shoulders (no human suit jacket, no necktie). Environment: Inside an authentic airplane flight deck cockpit, surrounded by glowing overhead panels, illuminated switchboards, and multi-function flight displays. Through the panoramic cockpit windshield, an airport tarmac apron with parked ground service vehicles is visible under natural bright daylight. Razor-sharp glossy fur texture, photorealistic animal anatomy, high-fashion pet meme masterpiece.",
         "models/airline_captain.png",
-        "human arms, human body, human fingers, human hands, human thumb, opposable thumb, person holding controls, distorted dials, high altitude sky, clouds in window, flying in sky, dislocated paws, cartoon, 3d render, blurry, distorted face, changing pet identity"
+        "peaked cap, pilot cap, captain hat, service cap, visor hat, hat covering ears, uniform jacket, formal suit, necktie, buttoned blazer, epaulettes, distant horizon gaze, looking away from camera, telephoto lens, zoomed out, full body portrait, human arms, human body, human fingers, human hands, human thumb, opposable thumb, person holding controls, distorted dials, high altitude sky, clouds in window, flying in sky, dislocated paws, cartoon, 3d render, blurry, distorted face, changing pet identity"
       ),
       makeItem(
         "michelin_chef",
         "\u5BA0\u7269\u5927\u53A8\u505A\u996D\u65E5\u5E38",
         "The Michelin Executive Chef",
         "\u7C73\u5176\u6797\u4E3B\u53A8",
-        "A delightful, viral comedic portrait of the specific pet from Photo 1 as an executive chef. Meticulously preserve the pet's authentic facial identity, realistic fur texture, whisker details, and eye color from Photo 1. The pet stands at a clean wooden kitchen prep counter wearing a tall puffy white pleated chef toque hat on its head and a crisp beige-and-brown checkered kitchen apron tied snugly around its chest. Both of its front paws are authentic furry animal paws resting flat and neatly on the cutting board beside a miniature stainless steel pan and a tiny silicone spatula. Minimalist warm restaurant kitchen studio background with soft warm lighting. Photorealistic pet fur, delightful meme avatar aesthetic. Absolutely no human hands, no human arms, no flesh-toned appendages.",
+        "A delightful, viral comedic culinary portrait of the specific pet from Photo 1 as an executive Michelin chef. Somatic posture: The pet leans forward over a pristine stainless steel prep counter, body angled with professional culinary focus. One furry paw rests firmly on the cutting board beside miniature culinary pans, while its other paw is delicately hovering above a gourmet dish as if placing the final micro-herb with artistic precision. Contextual facial acting: The pet bears the quintessential discerning critique of a three-star chef\u2014sharp focused eyes looking down intensely at the plating, whiskers angled downward with concentrated scrutiny, and mouth set in a proud, exacting line. Wearing a tall puffy white pleated chef toque hat on its head and a crisp beige-and-brown checkered kitchen apron tied snugly around its chest. Warm, bustling professional restaurant kitchen background with soft bokeh. Photorealistic pet fur, delightful high-fashion meme aesthetic.",
         "models/michelin_chef.png",
         "realistic human fingers, realistic human arms, human hands, human thumbs, fleshy hands, human skin, hairy arms, furry paws holding spatula, dirty apron, grease stains, dark gloomy messy kitchen, burning stove, chef hat covering eyes, hat swallowing ears, hat piercing skull, deformed hands"
       )
@@ -3480,7 +3480,7 @@ var init_styles = __esm({
         "\u5DF4\u6D1B\u514B\u300A\u5723\u6BCD\u5347\u5929\u300B\u53E4\u5178\u540D\u753B",
         "The Assumption of the Virgin",
         "\u795E\u5723\u5347\u5929",
-        "A dramatic Baroque religious classical oil painting in the style of Titian and Peter Paul Rubens' The Assumption of the Virgin, starring the specific pet from Photo 1. Meticulously preserve the pet's authentic facial features, fur markings, and eye color. The pet is the divine protagonist, ascending gracefully toward heaven on glowing golden clouds, draped in billowing crimson and white silk robes. Both furry paws are raised outward in divine blessing. Overhead radiates a magnificent golden heavenly halo and light rays. Choirs of cherubs and putti flutter admiringly in the misty skies around it. Below, reverent disciples gaze upward in awe. Dramatic chiaroscuro, rich red and gold oil palette, craquelure canvas texture.",
+        "A dramatic Baroque religious classical oil painting in the style of Titian and Peter Paul Rubens' The Assumption of the Virgin, starring the specific pet from Photo 1. Somatic posture: The pet is ascending gracefully toward heaven on glowing golden clouds, body weightlessly buoyed upwards with limbs elegantly outstretched, wrapped in billowing crimson and white silk robes. Both furry paws are raised outward in gentle divine blessing. Contextual facial acting: The pet radiates transcendent serenity and sublime bliss\u2014reverent eyes lifted upward toward the celestial golden light, mouth relaxed in peaceful divine beatitude, ears framed by a glowing heavenly halo with radiant sunbeams. Choirs of fluttering cherubs surround it in misty golden skies, while mortal disciples gaze up from below in awe. Rich Venetian red and gold palette, authentic craquelure oil painting glaze.",
         "models/assumption_of_mary.png",
         "human body on pet, human head on pet, pet with human arms, pet with human fingers, human hands, human fingers, human wrists, human skin, human elbows, five fingers, plain background, studio backdrop, pet face distorted, halo piercing skull, deformed paws"
       ),
@@ -3489,7 +3489,7 @@ var init_styles = __esm({
         "\u52A0\u52D2\u6BD4\u6D77\u76D7\u8239\u957F",
         "Pirates of the Caribbean",
         "\u4F20\u5947\u6D77\u76D7",
-        "A detailed cinematic film still of the specific pet from the uploaded reference image, perfectly maintaining its facial features, fur pattern, muzzle shape, and intense eye color. The pet is depicted as a ruthless pirate captain in a dramatic medium close-up shot. It wears a large, detailed, weathered crimson-red pirate tricorne hat with gold trim and a prominent white skull and crossbones emblem (Jolly Roger) on the front, identical to the style in the reference image. Crucially, the pet's expression, while rugged and experienced, is now marked by an intense, steely grimace, its gaze slightly narrowed and piercing, looking directly forward with unmistakable determination and authority. The context is a major naval battle during the golden age of piracy. The pet stands on the quarterdeck of a pirate ship, with background cannon smoke and distant burning ships across dark water under a moody, golden hour sunset sky. The entire scene is bathed in dramatic theatrical lighting, mixing warm sunset hues with fiery orange highlights against weathered wood. Both paws are natural animal paws resting on the ship railing. Absolutely no human arms, no human hands. Cinematic depth of field, high-fidelity textures, epic adventure film style.",
+        "A detailed cinematic film still of the specific pet from Photo 1 as a legendary pirate captain of the high seas. Somatic posture: The pet stands resolutely on the quarterdeck of a wooden galleon, body tilted into the sea wind with front paws gripping the weathered wooden ship railing. Contextual facial acting: An iconic roguish smirk\u2014one eye slightly narrowed with seasoned cunning, piercing confident gaze locking onto the viewer, whiskers bristled defiantly against the salty spray, projecting unmistakable pirate bravado and maritime leadership. Wearing an ornate weathered crimson-red leather tricorne hat with gold embroidery and a skull emblem, draped in a rich velvet captain coat. Background features stormy ocean waves, distant tall ships, and a moody golden hour sunset sky with theatrical rim lighting. Pure animal anatomy, cinematic depth of field.",
         "models/caribbean_pirate.png",
         "human hands, human arms, human fingers, human thumb, opposable thumb, human wrist, human skin, person holding camera, taking selfie, text, watermark, subtitle, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, human body, human face, extra limbs"
       ),
@@ -3498,9 +3498,9 @@ var init_styles = __esm({
         "\u5BA0\u7269\u7B28\u8D3C/\u571F\u5473\u7279\u5DE5",
         "The Secret Agent",
         "\u571F\u5473\u7279\u5DE5",
-        "A hilarious viral 0.5x ultra-wide fisheye snapshot of the specific pet from Photo 1 caught in the act as a comical burglar. The camera is positioned extremely close below the pet's face, dramatically magnifying its wet black snout and twitching whiskers with funny barrel distortion. The pet wears a tight black ribbed knit balaclava ski mask with cutouts revealing its wide, stunned innocent round eyes and whiskers. An expression of utter shock and guilt as if caught red-handed. Set in a natural everyday home interior with authentic indoor lighting. True candid phone camera snapshot texture, real fur, zero CGI. Strictly animal head portrait with no limbs, no hands, no paws.",
+        "A hilarious viral 0.5x ultra-wide fisheye snapshot of the specific pet from Photo 1 caught in a comical stealth mission. Somatic posture: Close-up low-angle framing, head pulled back slightly into its shoulders in guilty surprise, with body crouched behind a shadowy living room sofa. Contextual facial acting: An unforgettable expression of comical shock\u2014huge round innocent eyes wide open in startled disbelief as if caught red-handed, dilated pupils, and whiskers splayed forward with tension. A snug black ribbed knit balaclava hood is stretched securely over its head, snugly framing its cheeks and snout while exposing its expressive eyes and pink nose. Genuine iPhone snapshot flash lighting texture, real glistening fur, comedic suspense mood.",
         "models/secret_agent.png",
-        "human hands, human fingers, human arms, human thumb, human body, person taking picture, holding phone, smartphone in hand, studio lighting, 3D render, CGI, digital illustration, cartoon, anime, scary horror, blood, gun, weapon, violent, deformed snout, deformed eyes"
+        "human hands, human fingers, human arms, human thumb, human body, person taking picture, holding phone, smartphone in hand, studio lighting, 3D render, CGI, digital illustration, cartoon, anime, horror, deformed snout, deformed eyes"
       )
     ];
     CELEBRATION_TEMPLATES = [
@@ -3509,7 +3509,7 @@ var init_styles = __esm({
         "\u82F1\u4F26\u5723\u8BDE\u793C\u76D2\u4E3B\u9898\u5199\u771F",
         "British Christmas Velvet Box",
         "\u5723\u8BDE\u76DB\u5178",
-        "A warm, festive British Christmas photographic portrait starring the specific pet from Photo 1. Meticulously preserving the pet's authentic facial features, fur texture, and eye color. The pet sits inside a luxurious vintage burgundy velvet Christmas gift box with ornate gold filigree trim, its front paws resting casually on the box edge. Wearing a rich dark green knit holiday scarf with a large golden ribbon bow and star brooch. Background features a lush Christmas tree lavishly decorated with red and gold baubles, gingerbread ornaments, and gentle falling snow. Surrounded by silk-ribboned presents on fresh faux snow. Soft warm cinematic holiday lighting, shallow depth of field.",
+        "A warm, festive British Christmas fine-art photographic portrait starring the specific pet from Photo 1. Somatic posture: The pet is nestled luxuriously inside a vintage burgundy velvet Christmas gift box, body comfortably sinking into plush silk cushions, with its front furry paws resting casually over the ornate gold filigree rim of the box. Contextual facial acting: The pet radiates cozy, aristocratic contentment\u2014soft half-lidded almond eyes glowing with warmth from the nearby hearth, relaxed gentle expression, ears softly resting under a festive dark green knit scarf with a golden ribbon bow. Surrounded by twinkling fairy lights, decorated evergreen boughs with red baubles, and gentle falling snow dust. Rich warm cinematic bokeh, magazine editorial luxury.",
         "models/christmas.png",
         "text, watermark, subtitle, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, extra limbs"
       ),
@@ -3518,16 +3518,16 @@ var init_styles = __esm({
         "\u4E07\u5723\u8282\u5357\u74DC\u706F\u9A6C\u8F66\u5947\u5883",
         "Halloween Magical Pumpkin Carriage",
         "\u4E07\u5723\u5947\u5883",
-        "An enchanting Halloween fairy-tale photographic portrait featuring the specific pet from Photo 1. Meticulously preserving the pet's exact facial structure, fur markings, and eye color. The adorable pet sits inside an enormous glowing Jack-o'-lantern pumpkin carriage, filled with colorful candies. The pet wears a vintage black pointed witch hat adorned with a gold crescent moon pendant, and a frilly pink collar, holding a glowing star wand. Set in a magical twilight forest with soft purple mist, floating translucent ghost balloons, tiny flying bats, and glowing mushrooms. Warm pumpkin lantern glow, whimsical storybook aesthetic, rich 8k photographic detail.",
+        "An enchanting Halloween fairy-tale photographic portrait featuring the specific pet from Photo 1. Somatic posture: The adorable pet peeks inquisitively out from the hollow window of an enormous glowing Jack-o'-lantern carriage, with one curious paw resting lightly on the carved pumpkin sill. Contextual facial acting: Wide, glistening eyes full of childlike wonder and playful mischief reflecting the amber candle glow, head tilted inquisitively by a few degrees, whiskers perked with curiosity. Wearing a tiny vintage velvet pointed witch hat with a crescent moon clasp and a delicate frilled ruff collar. Magical twilight enchanted forest background with soft violet mist, floating translucent ghost lanterns, and warm firefly sparkles. Masterpiece storybook cinematic lighting.",
         "models/halloween.png",
-        "deformed face, scary horror, blood, text, watermark, extra limbs, human face, cartoon illustration, anime, noise"
+        "deformed face, scary horror, text, watermark, extra limbs, human face, cartoon illustration, anime, noise"
       ),
       makeItem(
         "birthday_vip",
         "VIP\u4E13\u5C5E\u751F\u65E5\u76DB\u5178\u5199\u771F",
         "VIP Birthday Gala & Cake",
         "\u751F\u65E5\u4E13\u5C5E",
-        "An intimate, heartwarming VIP pet birthday celebration photograph starring the specific pet from Photo 1. Meticulously preserving the pet's exact facial features, fur texture, and soulful eye color. The pet wears a festive polka-dot cone party hat with a fluffy pom-pom and a cute pink patterned bib, resting comfortably on a warm hardwood floor. Before it sits a ceramic floral plate with a gourmet double-layer pet meat cake topped with fresh shrimp and a single burning pink-and-white striped candle with delicate wisps of smoke. Warm, dim ambient lighting with twinkling golden fairy string lights and soft blurred balloons in the background. Photorealistic cozy celebration atmosphere.",
+        "An intimate, heartwarming VIP pet birthday celebration photograph starring the specific pet from Photo 1. Somatic posture: The pet sits dutifully on a warm polished hardwood floor, front paws tucked neatly together in patient anticipation before a fine porcelain floral plate. Contextual facial acting: Pure, unadulterated joy and longing\u2014eyes sparkling with eager excitement locked onto a gourmet meat birthday cake topped with plump fresh shrimp, tongue tip subtly peeking out in lip-licking anticipation, whiskers twitching with delight. Wearing a playful polka-dot cone party hat with a fluffy pom-pom and a festive satin collar. Background glows with warm golden fairy string lights and soft out-of-focus pastel balloons. Photorealistic cozy celebration atmosphere.",
         "models/birthday_vip.png",
         "text, watermark, subtitle, signature, logo, cartoon, anime, illustration, deformed limbs, distorted face, changing pet identity, overly smooth skin, plastic texture, low quality, blurry, extra fingers"
       )
@@ -7852,7 +7852,7 @@ var require_zod = __commonJS({
 });
 
 // src/index.ts
-var import_hono4 = __toESM(require_cjs());
+var import_hono5 = __toESM(require_cjs());
 
 // src/middleware/cors.ts
 var isOriginAllowed = (origin, env) => {
@@ -7901,6 +7901,7 @@ var corsMiddleware = () => {
     }
     c.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     c.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With, x-request-timestamp, x-request-nonce, x-admin-bypass-key, x-test-bypass");
+    c.header("Access-Control-Expose-Headers", "Server-Timing, X-Model-Provider, X-Model-Latency-Ms, X-Worker-Total-Ms");
     await next();
   };
 };
@@ -8327,10 +8328,26 @@ healthRoute.get("/health", (c) => {
   });
 });
 
-// src/routes/styles.ts
+// src/routes/ping.ts
 var import_hono2 = __toESM(require_cjs(), 1);
+var pingRouter = new import_hono2.Hono();
+pingRouter.get("/", (c) => {
+  c.header("Cache-Control", "no-store, no-cache, must-revalidate");
+  c.header("Access-Control-Allow-Origin", "*");
+  c.header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
+  return c.body(null, 204);
+});
+pingRouter.all("/", (c) => {
+  c.header("Cache-Control", "no-store, no-cache, must-revalidate");
+  c.header("Access-Control-Allow-Origin", "*");
+  c.header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
+  return c.body(null, 204);
+});
+
+// src/routes/styles.ts
+var import_hono3 = __toESM(require_cjs(), 1);
 init_styles();
-var stylesRoute = new import_hono2.Hono();
+var stylesRoute = new import_hono3.Hono();
 stylesRoute.get("/api/styles", (c) => {
   const themes = CORE_THEME_KEYS.map((key) => CASCADING_THEMES[key]);
   return c.json({
@@ -8342,7 +8359,7 @@ stylesRoute.get("/api/styles", (c) => {
 });
 
 // src/routes/generate.ts
-var import_hono3 = __toESM(require_cjs(), 1);
+var import_hono4 = __toESM(require_cjs(), 1);
 
 // src/schemas/generate.ts
 var import_zod = __toESM(require_zod(), 1);
@@ -8572,6 +8589,177 @@ async function executeWithJitterRetry(fn, maxRetries = 1, baseDelayMs = 300, max
 var defaultFalRunner = async (prompt, imageBase64, apiKey, signal, negativePrompt = NEGATIVE_PROMPT, providerName, referenceImageUrl, options) => {
   if (!imageBase64) {
     throw new Error("Pure Image-to-Image required. Missing pet photo input.");
+  }
+  if (providerName === "302ai") {
+    const endpoint2 = options?.endpoint || "https://api.302.ai/v1/chat/completions";
+    const model = options?.modelId || "gemini-3.1-flash-lite-image";
+    let formattedImage = imageBase64;
+    if (!formattedImage.startsWith("http://") && !formattedImage.startsWith("https://") && !formattedImage.startsWith("data:")) {
+      formattedImage = `data:image/jpeg;base64,${formattedImage}`;
+    }
+    const contentList = [
+      { type: "text", text: prompt },
+      { type: "image_url", image_url: { url: formattedImage } }
+    ];
+    if (referenceImageUrl) {
+      let resolvedRef = referenceImageUrl;
+      if (!resolvedRef.startsWith("http") && !resolvedRef.startsWith("data:")) {
+        resolvedRef = `https://vivibon-cover.pages.dev/${resolvedRef.replace(/^\/+/, "")}`;
+      }
+      contentList.push({
+        type: "image_url",
+        image_url: { url: resolvedRef }
+      });
+    }
+    const payload = {
+      model,
+      messages: [
+        {
+          role: "user",
+          content: contentList
+        }
+      ]
+    };
+    const t302Start = Date.now();
+    const response2 = await fetch(endpoint2, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload),
+      signal
+    });
+    const t302TTFBMs = Date.now() - t302Start;
+    if (!response2.ok) {
+      const errText = await response2.text().catch(() => "");
+      throw new Error(`302.ai upstream error: ${response2.status} ${response2.statusText} ${errText}`);
+    }
+    const rawText = await response2.text().catch(() => "");
+    const t302TotalMs = Date.now() - t302Start;
+    const t302TransferMs = t302TotalMs - t302TTFBMs;
+    console.log(`[302.AI Network Telemetry] TTFB (GPU Compute + Proxy Queue): ${t302TTFBMs}ms, Body Transfer: ${t302TransferMs}ms, Total: ${t302TotalMs}ms`);
+    let data2;
+    try {
+      data2 = JSON.parse(rawText);
+    } catch {
+      const firstCloseBrace = rawText.indexOf("}}");
+      if (firstCloseBrace !== -1) {
+        try {
+          data2 = JSON.parse(rawText.slice(0, firstCloseBrace + 2));
+        } catch {
+          throw new Error(`Invalid JSON returned from 302.ai Gemini: ${rawText.slice(0, 200)}`);
+        }
+      } else {
+        throw new Error(`Failed to parse 302.ai response: ${rawText.slice(0, 200)}`);
+      }
+    }
+    let imageUrl2;
+    if (data2.choices && data2.choices[0]?.message?.content) {
+      const content = data2.choices[0].message.content;
+      const mdMatch = content.match(/!\[.*?\]\((https?:\/\/[^\s\)]+)\)/i);
+      if (mdMatch) {
+        imageUrl2 = mdMatch[1];
+      } else {
+        const urlMatch = content.match(/(https?:\/\/[^\s\)\"\'\<\>]+)/i);
+        if (urlMatch) {
+          imageUrl2 = urlMatch[1];
+        } else if (content.startsWith("data:image/")) {
+          imageUrl2 = content.trim();
+        }
+      }
+    }
+    if (!imageUrl2 && data2.data && data2.data[0]) {
+      const item = data2.data[0];
+      if (item.url) {
+        imageUrl2 = item.url;
+      } else if (item.b64_json) {
+        imageUrl2 = item.b64_json.startsWith("data:") ? item.b64_json : `data:image/jpeg;base64,${item.b64_json}`;
+      }
+    }
+    if (!imageUrl2) {
+      throw new Error("No image returned from 302.ai Gemini");
+    }
+    if (imageUrl2.startsWith("http://") || imageUrl2.startsWith("https://")) {
+      try {
+        const relayRes = await fetch(imageUrl2, {
+          headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" },
+          signal
+        });
+        if (relayRes.ok) {
+          const buf = await relayRes.arrayBuffer();
+          if (buf.byteLength >= 15e3) {
+            const bytes = new Uint8Array(buf);
+            const CHUNK_SZ = 32768;
+            const chunks = [];
+            for (let i = 0; i < bytes.length; i += CHUNK_SZ) {
+              chunks.push(String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK_SZ)));
+            }
+            const b64 = btoa(chunks.join(""));
+            const rawType = relayRes.headers.get("content-type") || "image/jpeg";
+            const cleanType = rawType.split(";")[0].trim();
+            imageUrl2 = `data:${cleanType};base64,${b64}`;
+          } else {
+            console.warn(`[302.ai Edge Inlining Warning]: Image byte length abnormally small (${buf.byteLength} bytes)`);
+          }
+        }
+      } catch (relayErr) {
+        console.warn("[302.ai Edge Inlining Warning]: Failed to inline remote image:", relayErr);
+      }
+    }
+    return {
+      jobId: `gemini_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl: imageUrl2
+    };
+  }
+  if (providerName === "segmind") {
+    const endpoint2 = options?.endpoint || "https://api.segmind.com/v1/sdxl-img2img";
+    const cleanBase64 = imageBase64.includes("base64,") ? imageBase64.split("base64,")[1] : imageBase64;
+    const payload = {
+      image: cleanBase64,
+      prompt,
+      negative_prompt: negativePrompt || "ugly, deformed, disfigured, blurry, low quality, bad anatomy, mutated",
+      samples: 1,
+      scheduler: "EulerDiscreteScheduler",
+      num_inference_steps: 25,
+      guidance_scale: 7.5,
+      strength: 0.65,
+      base64: true
+    };
+    const response2 = await fetch(endpoint2, {
+      method: "POST",
+      headers: {
+        "x-api-key": apiKey,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload),
+      signal
+    });
+    if (!response2.ok) {
+      const errText = await response2.text().catch(() => "");
+      throw new Error(`Segmind upstream error: ${response2.status} ${response2.statusText} ${errText}`);
+    }
+    const contentType = response2.headers.get("content-type") || "";
+    let imageUrl2 = "";
+    if (contentType.includes("application/json")) {
+      const data2 = await response2.json();
+      if (data2.image) {
+        imageUrl2 = data2.image.startsWith("data:") ? data2.image : `data:image/jpeg;base64,${data2.image}`;
+      } else if (data2.data) {
+        imageUrl2 = data2.data.startsWith("data:") ? data2.data : `data:image/jpeg;base64,${data2.data}`;
+      }
+    } else {
+      const arrBuffer = await response2.arrayBuffer();
+      const b64 = Buffer.from(arrBuffer).toString("base64");
+      imageUrl2 = `data:image/jpeg;base64,${b64}`;
+    }
+    if (!imageUrl2) {
+      throw new Error("No image returned from Segmind");
+    }
+    return {
+      jobId: `segmind_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl: imageUrl2
+    };
   }
   if (providerName === "volcengine") {
     const endpoint2 = options?.endpoint || "https://ark.cn-beijing.volces.com/api/v3/images/generations";
@@ -8805,7 +8993,8 @@ var FalService = class {
         resolvedRefUrl = void 0;
       }
     }
-    const effectiveReferenceUrl = resolvedRefUrl || (variant.sampleImageUrl ? variant.sampleImageUrl.startsWith("http") ? variant.sampleImageUrl : `https://vivibon-cover.pages.dev/${variant.sampleImageUrl.replace(/^\/+/, "")}` : void 0);
+    const isUserUpload = Boolean(imageBase64 && imageBase64 !== DEFAULT_MILO_BASE64);
+    const effectiveReferenceUrl = resolvedRefUrl || (!isUserUpload && variant.sampleImageUrl ? variant.sampleImageUrl.startsWith("http") ? variant.sampleImageUrl : `https://vivibon-cover.pages.dev/${variant.sampleImageUrl.replace(/^\/+/, "")}` : void 0);
     if (rails && rails.length > 0) {
       const activeRails = rails.filter((r) => Boolean(r.apiKey));
       if (activeRails.length === 0) {
@@ -8822,7 +9011,7 @@ var FalService = class {
       const previousErrors = [];
       for (let i = 0; i < activeRails.length; i++) {
         const rail = activeRails[i];
-        const displayName = rail.provider === "volcengine" ? "Volcengine Ark (Seedream 5.0 Lite)" : rail.provider === "wokey" ? "Wokey" : rail.provider === "siliconflow" ? "SiliconFlow" : "Fal.ai";
+        const displayName = rail.provider === "segmind" ? "Segmind (SDXL Img2Img)" : rail.provider === "302ai" ? "302.AI (Gemini 3.1 Flash Lite)" : rail.provider === "volcengine" ? "Volcengine Ark (Seedream 5.0 Lite)" : rail.provider === "wokey" ? "Wokey" : rail.provider === "siliconflow" ? "SiliconFlow" : "Fal.ai";
         const timeoutLimit = rail.timeoutMs || 6e4;
         const runRailAttempt = async () => {
           const controller = new AbortController();
@@ -8980,7 +9169,7 @@ var FalService = class {
               secondaryProvider: secondaryApiKey ? secondaryProviderName : "None",
               errorMessage: primaryError.message,
               durationMs: Date.now() - start,
-              timeoutMs: this.timeoutLimit
+              timeoutMs: this.timeoutMs
             },
             "WARNING"
           ).catch(() => {
@@ -9000,7 +9189,7 @@ var FalService = class {
             secondaryProvider: secondaryProviderName,
             errorMessage: `Primary failed with: ${primaryError?.message || "N/A"}`,
             durationMs: Date.now() - start,
-            timeoutMs: this.timeoutLimit
+            timeoutMs: this.timeoutMs
           },
           "INFO"
         ).catch(() => {
@@ -9027,7 +9216,7 @@ var FalService = class {
               secondaryProvider: secondaryProviderName,
               errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
               durationMs: Date.now() - start,
-              timeoutMs: this.timeoutLimit
+              timeoutMs: this.timeoutMs
             },
             "CRITICAL"
           ).catch(() => {
@@ -9051,8 +9240,9 @@ var falService = new FalService();
 // src/routes/generate.ts
 init_styles();
 var createGenerateRoute = (service = falService) => {
-  const route = new import_hono3.Hono();
+  const route = new import_hono4.Hono();
   route.post("/api/generate", async (c) => {
+    const requestReceivedAt = Date.now();
     let body;
     try {
       body = await c.req.json();
@@ -9120,10 +9310,21 @@ var createGenerateRoute = (service = falService) => {
       }
     }
     const rails = [];
-    const primaryPref = c.env?.PRIMARY_AI_PROVIDER || "volcengine";
+    const primaryPref = c.env?.PRIMARY_AI_PROVIDER || "302ai";
     const arkKey = c.env?.ARK_API_KEY || c.env?.VOLCENGINE_API_KEY;
     const volcengineModelId = c.env?.VOLCENGINE_MODEL_ID || "ep-20260910130528-l8thd";
     const volcengineEndpoint = c.env?.VOLCENGINE_ENDPOINT;
+    const add302ai = () => {
+      if (c.env?.AI302_API_KEY) {
+        rails.push({
+          provider: "302ai",
+          apiKey: c.env.AI302_API_KEY,
+          timeoutMs: 3e4,
+          modelId: c.env?.AI302_MODEL_ID || "gemini-3.1-flash-lite-image",
+          endpoint: c.env?.AI302_ENDPOINT || "https://api.302.ai/v1/chat/completions"
+        });
+      }
+    };
     const addVolcengine = () => {
       if (arkKey) {
         rails.push({
@@ -9150,28 +9351,60 @@ var createGenerateRoute = (service = falService) => {
         rails.push({ provider: "fal", apiKey: c.env.FAL_KEY, timeoutMs: 6e4 });
       }
     };
-    if (primaryPref === "wokey") {
+    const addSegmind = () => {
+      if (c.env?.SEGMIND_API_KEY) {
+        rails.push({ provider: "segmind", apiKey: c.env.SEGMIND_API_KEY, timeoutMs: 25e3 });
+      }
+    };
+    if (primaryPref === "segmind") {
+      addSegmind();
+      addVolcengine();
+      add302ai();
+      addSiliconflow();
+      addFal();
+    } else if (primaryPref === "302ai") {
+      add302ai();
+      addVolcengine();
+      addSegmind();
+      addSiliconflow();
       addWokey();
+      addFal();
+    } else if (primaryPref === "volcengine") {
+      addVolcengine();
+      addSegmind();
+      add302ai();
+      addSiliconflow();
+      addFal();
+    } else if (primaryPref === "wokey") {
+      addWokey();
+      addSegmind();
+      add302ai();
       addSiliconflow();
       addVolcengine();
       addFal();
     } else if (primaryPref === "siliconflow") {
       addSiliconflow();
+      addSegmind();
+      add302ai();
       addVolcengine();
       addWokey();
       addFal();
     } else if (primaryPref === "fal") {
       addFal();
+      addSegmind();
+      add302ai();
       addSiliconflow();
       addVolcengine();
       addWokey();
     } else {
+      addSegmind();
       addVolcengine();
+      add302ai();
       addSiliconflow();
       addWokey();
       addFal();
     }
-    const primaryKey = rails[0]?.apiKey || arkKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
+    const primaryKey = rails[0]?.apiKey || c.env?.AI302_API_KEY || arkKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
     const secondaryKey = rails[1]?.apiKey || c.env?.SILICONFLOW_KEY || c.env?.WOKEY_API_KEY || c.env?.FAL_KEY;
     const alertCtx = {
       environment: c.env?.ENVIRONMENT || "production",
@@ -9181,6 +9414,7 @@ var createGenerateRoute = (service = falService) => {
       styleKey: effectiveStyleKey,
       templateId: effectiveItemId
     };
+    const upstreamStart = Date.now();
     const result = await service.generatePoster(
       effectiveStyleKey,
       safePetName,
@@ -9195,6 +9429,13 @@ var createGenerateRoute = (service = falService) => {
       rails,
       referenceImageUrl
     );
+    const upstreamMs = Date.now() - upstreamStart;
+    const workerPrepMs = upstreamStart - requestReceivedAt;
+    const totalWorkerMs = Date.now() - requestReceivedAt;
+    c.header("Server-Timing", `prep;dur=${workerPrepMs};desc="Worker Prep", upstream;dur=${upstreamMs};desc="AI Provider Inference", total;dur=${totalWorkerMs};desc="Total Edge Execution"`);
+    c.header("X-Model-Provider", result.activeProvider || "Unknown");
+    c.header("X-Model-Latency-Ms", String(upstreamMs));
+    c.header("X-Worker-Total-Ms", String(totalWorkerMs));
     const response = {
       success: true,
       data: {
@@ -9204,6 +9445,11 @@ var createGenerateRoute = (service = falService) => {
         petName: result.petName,
         latencyMs: result.latencyMs,
         isFallback: result.isFallback,
+        timings: {
+          workerPrepMs,
+          upstreamInferenceMs: upstreamMs,
+          totalWorkerMs
+        },
         ...result.activeProvider ? { activeProvider: result.activeProvider } : {},
         ...result.failoverTriggered !== void 0 ? { failoverTriggered: result.failoverTriggered } : {},
         ...result.capsuleVariant ? { capsuleVariant: result.capsuleVariant } : {},
@@ -9235,2515 +9481,3157 @@ var createGenerateRoute = (service = falService) => {
 var generateRoute = createGenerateRoute();
 
 // ../public/index.html
-var public_default = `<!DOCTYPE html>\r
-<html lang="en">\r
-<head>\r
-  <meta charset="UTF-8" />\r
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />\r
-  <title>ViviBon Cover</title>\r
-\r
-  <!-- Google Fonts for Elegance -->\r
-  <link rel="preconnect" href="https://fonts.googleapis.com">\r
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\r
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Cinzel:wght@500;600;700;800&display=swap" rel="stylesheet">\r
-\r
-  <!-- Microsoft Clarity (100% Free, Unlimited Replay & Heatmaps) -->\r
-  <script type="text/javascript">\r
-    (function(c,l,a,r,i,t,y){\r
-      try {\r
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r
-      } catch(e){ console.warn('[Clarity] Init error:', e); }\r
-    })(window, document, "clarity", "script", "yf41ikpys2");\r
-  </script>\r
-\r
-  <style>\r
-    :root {\r
-      /* Warm Peach Cream Palette matching user reference image */\r
-      --bg-page: #FFF8F3;\r
-      --bg-card: #FFF8F3;\r
-      --card-border: rgba(255, 255, 255, 0.9);\r
-      --text-main: #3C3028;\r
-      --text-subtle: #7A6D63;\r
-      --text-muted: #9E9085;\r
-      \r
-      /* Active Highlight Accent (Coral / Warm Terracotta) */\r
-      --coral-accent: #E85D3F;\r
-      --coral-glow-border: #FF8F73;\r
-      --coral-bg-pill: #FFFFFF;\r
-      --coral-shadow-glow: rgba(232, 93, 63, 0.22);\r
-      \r
-      /* CTA Warm Butter-Peach Gradient */\r
-      --cta-start: #FEE7D6;\r
-      --cta-end: #F6CCA7;\r
-      --cta-text: #4A3B31;\r
-      \r
-      /* iOS 18 Fluid Spring Physics Curves */\r
-      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);\r
-      --spring-tight: cubic-bezier(0.2, 0.8, 0.2, 1);\r
-      --spring-fluid: cubic-bezier(0.32, 0.72, 0, 1);\r
-      --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);\r
-    }\r
-\r
-    /* Apple Display P3 Wide Color Gamut (iPhone / Retina OLED Enhancement) */\r
-    @supports (color: color(display-p3 1 1 1)) {\r
-      :root {\r
-        --bg-page: color(display-p3 0.996 0.973 0.953);\r
-        --bg-card: color(display-p3 0.996 0.973 0.953);\r
-        --text-main: color(display-p3 0.235 0.188 0.157);\r
-        --coral-accent: color(display-p3 0.910 0.365 0.247);\r
-        --coral-glow-border: color(display-p3 1 0.561 0.451);\r
-        --coral-shadow-glow: color(display-p3 0.910 0.365 0.247 / 0.25);\r
-        --cta-start: color(display-p3 0.996 0.906 0.839);\r
-        --cta-end: color(display-p3 0.965 0.800 0.655);\r
-        --cta-text: color(display-p3 0.290 0.231 0.192);\r
-      }\r
-    }\r
-\r
-    * {\r
-      box-sizing: border-box;\r
-      margin: 0;\r
-      padding: 0;\r
-      -webkit-tap-highlight-color: transparent;\r
-      -webkit-font-smoothing: antialiased;\r
-    }\r
-\r
-    body {\r
-      background: var(--bg-page);\r
-      color: var(--text-main);\r
-      min-height: 100vh;\r
-      display: flex;\r
-      justify-content: center;\r
-      align-items: center;\r
-      padding: 12px 10px;\r
-      font-family: "Cormorant Garamond", -apple-system, BlinkMacSystemFont, "Playfair Display", serif;\r
-      overflow-x: hidden;\r
-    }\r
-\r
-    /* Ambient Warm Glow */\r
-    .ambient-glow-top {\r
-      position: fixed;\r
-      top: -120px;\r
-      left: 50%;\r
-      transform: translateX(-50%);\r
-      width: 500px;\r
-      height: 380px;\r
-      background: radial-gradient(circle, rgba(254, 235, 220, 0.8) 0%, rgba(255, 248, 243, 0) 70%);\r
-      filter: blur(50px);\r
-      pointer-events: none;\r
-      z-index: 0;\r
-    }\r
-\r
-    /* Outer Container: Clean Warm Cream Box */\r
-    .app-card {\r
-      position: relative;\r
-      z-index: 1;\r
-      width: 100%;\r
-      max-width: 390px;\r
-      background: var(--bg-card);\r
-      padding: 12px 16px 20px 16px;\r
-      display: flex;\r
-      flex-direction: column;\r
-    }\r
-\r
-    /* Top Centered Header - Elegant Cursive Title */\r
-    .header-bar {\r
-      position: relative;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      min-height: 42px;\r
-      margin-bottom: 12px;\r
-    }\r
-    .brand-title {\r
-      font-size: 28px;\r
-      font-weight: 500;\r
-      letter-spacing: 1px;\r
-      color: var(--text-main);\r
-      font-family: "Alex Brush", "Playfair Display", cursive, serif;\r
-      text-align: center;\r
-      transform: translateY(2px);\r
-    }\r
-    .header-back-btn {\r
-      position: absolute;\r
-      left: 0;\r
-      top: 50%;\r
-      transform: translateY(-50%);\r
-      background: transparent;\r
-      border: none;\r
-      width: 32px;\r
-      height: 32px;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      cursor: pointer;\r
-      color: var(--text-main);\r
-      transition: all 0.2s ease;\r
-    }\r
-    .header-back-btn:active {\r
-      transform: translateY(-50%) scale(0.92);\r
-      opacity: 0.7;\r
-    }\r
-\r
-    /* ================= VIEW 1: Entry Studio ================= */\r
-    #view-entry {\r
-      display: flex;\r
-      flex-direction: column;\r
-      width: 100%;\r
-    }\r
-\r
-    /* Hero Viewport (3:4 ratio with large soft rounded corners) */\r
-    .hero-box {\r
-      position: relative;\r
-      width: 100%;\r
-      aspect-ratio: 3 / 4;\r
-      border-radius: 28px;\r
-      overflow: hidden;\r
-      background: #F2E8DF;\r
-      box-shadow: 0 10px 30px -10px rgba(180, 140, 110, 0.2);\r
-    }\r
-    .hero-img {\r
-      width: 100%;\r
-      height: 100%;\r
-      object-fit: cover;\r
-      display: block;\r
-      transition: opacity 0.25s var(--ease-smooth);\r
-    }\r
-\r
-    /* Floating Round Upload Button in Bottom-Right Corner */\r
-    .upload-btn-floating {\r
-      position: absolute;\r
-      bottom: 14px;\r
-      right: 14px;\r
-      width: 44px;\r
-      height: 44px;\r
-      border-radius: 50%;\r
-      background: rgba(255, 255, 255, 0.65);\r
-      backdrop-filter: blur(14px) saturate(160%);\r
-      -webkit-backdrop-filter: blur(14px) saturate(160%);\r
-      border: 1px solid rgba(255, 255, 255, 0.9);\r
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      cursor: pointer;\r
-      color: #3C3028;\r
-      transition: transform 0.22s var(--spring-bouncy), background 0.2s var(--ease-smooth);\r
-      z-index: 5;\r
-    }\r
-    .upload-btn-floating:active {\r
-      transform: scale(0.88);\r
-      background: rgba(255, 255, 255, 0.9);\r
-    }\r
-\r
-    /* Upload Placeholder (Clean Minimalist Luxury) */\r
-    .upload-placeholder {\r
-      position: absolute;\r
-      inset: 0;\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      justify-content: center;\r
-      padding: 32px 24px;\r
-      text-align: center;\r
-      background: radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, #FAF5EF 60%, #F3E7DC 100%);\r
-      border: 1px solid rgba(225, 195, 172, 0.55);\r
-      border-radius: 28px;\r
-      cursor: pointer;\r
-      transition: all 0.25s var(--ease-smooth);\r
-      user-select: none;\r
-      z-index: 2;\r
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 8px 24px -6px rgba(180, 135, 105, 0.14);\r
-    }\r
-    .upload-placeholder:hover {\r
-      background: radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, #FFF8F2 50%, #F5E8DC 100%);\r
-      border-color: rgba(225, 180, 150, 0.85);\r
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 12px 30px -4px rgba(215, 130, 90, 0.2);\r
-    }\r
-    .upload-placeholder:active {\r
-      transform: scale(0.988);\r
-    }\r
-    .upload-center-content {\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      justify-content: center;\r
-      gap: 16px;\r
-    }\r
-    .upload-lens-portal {\r
-      width: 76px;\r
-      height: 76px;\r
-      border-radius: 50%;\r
-      background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FDF4EB 65%, #F0DCCE 100%);\r
-      border: 1.5px solid rgba(255, 255, 255, 0.95);\r
-      box-shadow: 0 10px 24px -4px rgba(210, 130, 90, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.55);\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      color: #B8683B;\r
-      transition: transform 0.25s var(--spring-bouncy);\r
-    }\r
-    .upload-placeholder:hover .upload-lens-portal {\r
-      transform: scale(1.06);\r
-    }\r
-    .upload-placeholder-title {\r
-      font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;\r
-      font-style: italic;\r
-      font-size: 24px;\r
-      font-weight: 600;\r
-      color: #2C2018;\r
-      letter-spacing: -0.01em;\r
-      margin: 0;\r
-      line-height: 1.2;\r
-    }\r
-    .upload-placeholder-pill {\r
-      display: inline-flex;\r
-      align-items: center;\r
-      gap: 8px;\r
-      padding: 10px 24px;\r
-      border-radius: 24px;\r
-      background: linear-gradient(135deg, #FFE7D4 0%, #F5CBA5 100%);\r
-      border: 1px solid rgba(255, 255, 255, 0.85);\r
-      box-shadow: 0 8px 20px -4px rgba(215, 125, 80, 0.26), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);\r
-      color: #422F22;\r
-      font-size: 13.5px;\r
-      font-weight: 600;\r
-      letter-spacing: 0.01em;\r
-      transition: all 0.2s var(--ease-smooth);\r
-    }\r
-    .upload-placeholder-pill svg {\r
-      stroke: #422F22;\r
-    }\r
-    .upload-placeholder:hover .upload-placeholder-pill {\r
-      transform: translateY(-2px);\r
-      box-shadow: 0 10px 24px -2px rgba(215, 125, 80, 0.36), inset 0 1px 2px rgba(255, 255, 255, 1);\r
-    }\r
-\r
-    /* Category Pill Selector Bar (Soft Frosted Box, 4 Columns) */\r
-    .category-pills-bar {\r
-      margin-top: 14px;\r
-      background: rgba(255, 255, 255, 0.65);\r
-      backdrop-filter: blur(12px);\r
-      -webkit-backdrop-filter: blur(12px);\r
-      border: 1px solid rgba(255, 255, 255, 0.85);\r
-      border-radius: 14px;\r
-      padding: 4px;\r
-      display: grid;\r
-      grid-template-columns: repeat(4, 1fr);\r
-      gap: 4px;\r
-    }\r
-    .category-pill {\r
-      padding: 6px 2px;\r
-      border-radius: 9px;\r
-      border: 1px solid transparent;\r
-      background: transparent;\r
-      color: var(--text-subtle);\r
-      cursor: pointer;\r
-      user-select: none;\r
-      transition: all 0.24s var(--spring-fluid);\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-    }\r
-    .category-pill:active {\r
-      transform: scale(0.93);\r
-    }\r
-    .category-pill.active {\r
-      background: #FFFFFF;\r
-      color: var(--coral-accent);\r
-      border-color: rgba(232, 93, 63, 0.15);\r
-      font-weight: 600;\r
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);\r
-    }\r
-    .category-pill-name {\r
-      font-size: 13.5px;\r
-      font-weight: 500;\r
-      letter-spacing: 0.1px;\r
-      white-space: nowrap;\r
-      font-family: "Cormorant Garamond", serif;\r
-    }\r
-\r
-    /* Reference Templates Scroll Carousel */\r
-    .template-carousel-container {\r
-      margin-top: 14px;\r
-      position: relative;\r
-      width: 100%;\r
-    }\r
-    .template-cards-row {\r
-      display: flex;\r
-      gap: 10px;\r
-      overflow-x: auto;\r
-      scroll-snap-type: x mandatory;\r
-      -webkit-overflow-scrolling: touch;\r
-      padding: 4px 2px 8px 2px;\r
-      scrollbar-width: none;\r
-    }\r
-    .template-cards-row::-webkit-scrollbar {\r
-      display: none;\r
-    }\r
-\r
-    /* Reference Template Card */\r
-    .template-card {\r
-      flex: 0 0 102px;\r
-      width: 102px;\r
-      scroll-snap-align: start;\r
-      background: #FFFFFF;\r
-      border: 1px solid rgba(255, 255, 255, 0.8);\r
-      border-radius: 16px;\r
-      padding: 6px 6px 8px 6px;\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      cursor: pointer;\r
-      user-select: none;\r
-      transition: transform 0.26s var(--spring-bouncy), border-color 0.22s ease, box-shadow 0.22s ease;\r
-      box-shadow: 0 2px 8px rgba(180, 140, 110, 0.08);\r
-      position: relative;\r
-    }\r
-    .template-card:active {\r
-      transform: scale(0.92);\r
-    }\r
-    .template-card.active {\r
-      border: 1.5px solid var(--coral-glow-border);\r
-      transform: translateY(-3px);\r
-      box-shadow: 0 0 0 2px rgba(232, 93, 63, 0.15), 0 8px 20px rgba(232, 93, 63, 0.15);\r
-    }\r
-\r
-    /* Image Box inside Template Card */\r
-    .template-thumb-box {\r
-      position: relative;\r
-      width: 100%;\r
-      aspect-ratio: 1 / 1;\r
-      border-radius: 12px;\r
-      overflow: hidden;\r
-      background: #EAE0D5;\r
-    }\r
-    .template-thumb {\r
-      width: 100%;\r
-      height: 100%;\r
-      object-fit: cover;\r
-      display: block;\r
-    }\r
-\r
-    /* Label text below thumbnail */\r
-    .template-label {\r
-      margin-top: 6px;\r
-      font-size: 11.5px;\r
-      font-weight: 500;\r
-      color: var(--text-main);\r
-      text-align: center;\r
-      white-space: nowrap;\r
-      overflow: hidden;\r
-      text-overflow: ellipsis;\r
-      width: 100%;\r
-      line-height: 1.2;\r
-      font-family: "Cormorant Garamond", serif;\r
-    }\r
-    .template-card.active .template-label {\r
-      color: var(--coral-accent);\r
-      font-weight: 600;\r
-    }\r
-\r
-    /* Right Edge Hint */\r
-    .scroll-edge-hint {\r
-      position: absolute;\r
-      top: 0;\r
-      right: 0;\r
-      bottom: 8px;\r
-      width: 24px;\r
-      background: linear-gradient(90deg, rgba(255, 248, 243, 0) 0%, var(--bg-card) 100%);\r
-      pointer-events: none;\r
-      transition: opacity 0.2s ease;\r
-    }\r
-\r
-    /* Primary CTA Button */\r
-    .btn-cta {\r
-      margin-top: 14px;\r
-      width: 100%;\r
-      padding: 14px;\r
-      border-radius: 9999px;\r
-      background: linear-gradient(180deg, var(--cta-start) 0%, var(--cta-end) 100%);\r
-      border: 1px solid rgba(255, 255, 255, 0.7);\r
-      box-shadow: 0 6px 20px -4px rgba(220, 160, 120, 0.35);\r
-      color: var(--cta-text);\r
-      font-size: 16px;\r
-      font-weight: 500;\r
-      font-family: "Cormorant Garamond", "Playfair Display", serif;\r
-      letter-spacing: 0.3px;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      gap: 8px;\r
-      cursor: pointer;\r
-      transition: transform 0.24s var(--spring-bouncy), box-shadow 0.24s var(--spring-fluid);\r
-    }\r
-    .btn-cta:active {\r
-      transform: scale(0.955) translateY(1.5px);\r
-      box-shadow: 0 2px 8px -2px rgba(220, 160, 120, 0.3);\r
-    }\r
-\r
-    /* ================= VIEW 2: Result Showcase (Exact Match to Screenshot 2) ================= */\r
-    #view-result {\r
-      display: none;\r
-      flex-direction: column;\r
-      width: 100%;\r
-    }\r
-    .poster-stage {\r
-      position: relative;\r
-      width: 100%;\r
-      aspect-ratio: 3 / 4;\r
-      border-radius: 28px;\r
-      overflow: hidden;\r
-      background: #1C1917;\r
-      box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.25);\r
-    }\r
-    .poster-img {\r
-      width: 100%;\r
-      height: 100%;\r
-      object-fit: cover;\r
-      display: block;\r
-    }\r
-    .poster-img.original-layer {\r
-      position: absolute;\r
-      top: 0;\r
-      left: 0;\r
-      opacity: 0;\r
-      will-change: opacity;\r
-      transform: translateZ(0);\r
-      -webkit-transform: translateZ(0);\r
-      backface-visibility: hidden;\r
-      -webkit-backface-visibility: hidden;\r
-      transition: opacity 0.08s cubic-bezier(0.2, 0, 0, 1);\r
-      z-index: 10;\r
-      pointer-events: none;\r
-    }\r
-\r
-    /* Magazine Typography Overlay (Exact Match) */\r
-    .poster-overlay {\r
-      position: absolute;\r
-      top: 0;\r
-      left: 0;\r
-      right: 0;\r
-      bottom: 0;\r
-      padding: 28px 24px;\r
-      display: flex;\r
-      flex-direction: column;\r
-      justify-content: space-between;\r
-      pointer-events: none;\r
-      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, transparent 25%, transparent 58%, rgba(0,0,0,0.85) 100%);\r
-      z-index: 2;\r
-      transition: opacity 0.16s var(--ease-smooth);\r
-    }\r
-    /* Top Brand: Clean White Serif Uppercase */\r
-    .poster-top-brand {\r
-      font-size: 13.5px;\r
-      font-weight: 700;\r
-      letter-spacing: 2.2px;\r
-      color: #FFFFFF;\r
-      text-transform: uppercase;\r
-      font-family: "Cinzel", "Times New Roman", serif;\r
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);\r
-    }\r
-    .poster-bottom-meta {\r
-      display: flex;\r
-      flex-direction: column;\r
-      gap: 4px;\r
-    }\r
-    /* Sub-tag: Small Muted Tracking Text */\r
-    .poster-tag {\r
-      font-size: 9.5px;\r
-      font-weight: 700;\r
-      letter-spacing: 2px;\r
-      color: rgba(255, 255, 255, 0.72);\r
-      text-transform: uppercase;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
-    }\r
-    /* Main Title: Large Bold Serif with High Editorial Presence */\r
-    .poster-title {\r
-      font-size: 26px;\r
-      font-weight: 600;\r
-      letter-spacing: 0.2px;\r
-      color: #FFFFFF;\r
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);\r
-      line-height: 1.15;\r
-      font-family: "Cormorant Garamond", "Playfair Display", serif;\r
-    }\r
-\r
-    /* Floating "Hold to compare" Pill (Matching Screenshot 2 exact grey pill) */\r
-    .compare-pill {\r
-      position: absolute;\r
-      bottom: 20px;\r
-      right: 20px;\r
-      background: rgba(200, 202, 206, 0.72);\r
-      backdrop-filter: blur(16px) saturate(180%);\r
-      -webkit-backdrop-filter: blur(16px) saturate(180%);\r
-      border: 1px solid rgba(255, 255, 255, 0.6);\r
-      border-radius: 9999px;\r
-      padding: 7px 15px;\r
-      font-size: 11px;\r
-      font-weight: 600;\r
-      color: #383735;\r
-      display: flex;\r
-      align-items: center;\r
-      gap: 6px;\r
-      cursor: pointer;\r
-      user-select: none;\r
-      -webkit-user-select: none;\r
-      z-index: 20;\r
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);\r
-      transition: transform 0.12s var(--ease-smooth), background 0.12s ease, color 0.12s ease, box-shadow 0.12s ease;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
-      touch-action: none;\r
-      -webkit-touch-callout: none;\r
-      -webkit-tap-highlight-color: transparent;\r
-      outline: none;\r
-    }\r
-    /* Expanded hit area (Apple HIG 44px+ touch standard) */\r
-    .compare-pill::after {\r
-      content: "";\r
-      position: absolute;\r
-      top: -14px;\r
-      bottom: -14px;\r
-      left: -14px;\r
-      right: -14px;\r
-    }\r
-    .compare-pill:active {\r
-      transform: scale(0.93);\r
-      background: rgba(220, 222, 226, 0.92);\r
-    }\r
-    .compare-pill.active {\r
-      background: rgba(28, 28, 30, 0.88);\r
-      color: #FFFFFF;\r
-      border-color: rgba(255, 255, 255, 0.35);\r
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);\r
-    }\r
-    .compare-pill.active svg {\r
-      stroke: #FFFFFF;\r
-    }\r
-\r
-    /* ================= LOADER COMPONENT (Lapse Darkroom Ritual & HIG Match) ================= */\r
-    .loader-overlay {\r
-      position: fixed;\r
-      top: 0;\r
-      left: 0;\r
-      right: 0;\r
-      bottom: 0;\r
-      background: rgba(14, 12, 10, 0.76);\r
-      backdrop-filter: blur(28px) saturate(160%);\r
-      -webkit-backdrop-filter: blur(28px) saturate(160%);\r
-      display: none;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      justify-content: center;\r
-      z-index: 100;\r
-      opacity: 0;\r
-      transition: opacity 0.35s var(--spring-fluid);\r
-      overflow: hidden;\r
-    }\r
-    .darkroom-ambient-glow {\r
-      position: absolute;\r
-      width: 360px;\r
-      height: 360px;\r
-      border-radius: 50%;\r
-      background: radial-gradient(circle, rgba(232, 93, 63, 0.22) 0%, rgba(200, 70, 40, 0.08) 50%, transparent 75%);\r
-      filter: blur(40px);\r
-      pointer-events: none;\r
-      animation: darkroom-pulse 3.2s ease-in-out infinite alternate;\r
-      z-index: 1;\r
-    }\r
-    @keyframes darkroom-pulse {\r
-      0% { transform: scale(0.85); opacity: 0.5; }\r
-      100% { transform: scale(1.18); opacity: 0.95; }\r
-    }\r
-    .loader-card {\r
-      position: relative;\r
-      z-index: 2;\r
-      background: rgba(255, 255, 255, 0.94);\r
-      backdrop-filter: blur(40px) saturate(190%);\r
-      -webkit-backdrop-filter: blur(40px) saturate(190%);\r
-      border: 1px solid rgba(255, 255, 255, 0.95);\r
-      border-radius: 36px;\r
-      padding: 36px 28px 30px 28px;\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      max-width: 320px;\r
-      width: 90%;\r
-      text-align: center;\r
-      box-shadow: 0 28px 64px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;\r
-      animation: loaderPopIn 0.38s var(--spring-bouncy);\r
-    }\r
-    @keyframes loaderPopIn {\r
-      0% { transform: scale(0.92); opacity: 0; }\r
-      100% { transform: scale(1); opacity: 1; }\r
-    }\r
-\r
-    /* Concentric Circles Loader (Exact Screenshot 1 Match) */\r
-    .concentric-loader-box {\r
-      position: relative;\r
-      width: 76px;\r
-      height: 76px;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      margin-bottom: 24px;\r
-    }\r
-    /* Outer subtle ring */\r
-    .concentric-ring-outer {\r
-      position: absolute;\r
-      width: 76px;\r
-      height: 76px;\r
-      border-radius: 50%;\r
-      background: rgba(0, 0, 0, 0.03);\r
-      border: 1px solid rgba(0, 0, 0, 0.05);\r
-    }\r
-    /* Animated coral arc */\r
-    .concentric-arc-svg {\r
-      position: absolute;\r
-      width: 76px;\r
-      height: 76px;\r
-      animation: spin-arc 1.6s linear infinite;\r
-    }\r
-    @keyframes spin-arc {\r
-      0% { transform: rotate(0deg); }\r
-      100% { transform: rotate(360deg); }\r
-    }\r
-    /* Inner solid glowing coral dot with aperture pulse */\r
-    .concentric-center-dot {\r
-      width: 13px;\r
-      height: 13px;\r
-      border-radius: 50%;\r
-      background: var(--coral-accent);\r
-      box-shadow: 0 0 14px rgba(232, 93, 63, 0.6);\r
-      z-index: 2;\r
-      animation: aperture-pulse 1.8s ease-in-out infinite;\r
-    }\r
-    @keyframes aperture-pulse {\r
-      0%, 100% { transform: scale(1); }\r
-      50% { transform: scale(1.25); }\r
-    }\r
-\r
-    /* Linear Progress Bar with Percentage Tag */\r
-    .loader-progress-row {\r
-      width: 100%;\r
-      display: flex;\r
-      align-items: center;\r
-      gap: 12px;\r
-      margin-bottom: 18px;\r
-    }\r
-    .loader-progress-track {\r
-      flex: 1;\r
-      height: 4px;\r
-      background: rgba(0, 0, 0, 0.08);\r
-      border-radius: 9999px;\r
-      overflow: hidden;\r
-    }\r
-    .loader-progress-fill {\r
-      height: 100%;\r
-      width: 0%;\r
-      background: var(--coral-accent);\r
-      border-radius: 9999px;\r
-      transition: width 0.35s ease;\r
-    }\r
-    .loader-percentage-text {\r
-      font-size: 13px;\r
-      font-weight: 600;\r
-      color: #1D1D1F;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;\r
-      font-variant-numeric: tabular-nums;\r
-      min-width: 38px;\r
-      text-align: right;\r
-      line-height: 1;\r
-      flex-shrink: 0;\r
-      letter-spacing: -0.2px;\r
-      -webkit-font-smoothing: antialiased;\r
-      -moz-osx-font-smoothing: grayscale;\r
-    }\r
-\r
-    /* Loader Texts */\r
-    .loader-text {\r
-      font-size: 17px;\r
-      font-weight: 600;\r
-      color: #1D1D1F;\r
-      font-family: "Cormorant Garamond", "Playfair Display", serif;\r
-      margin-bottom: 6px;\r
-      letter-spacing: 0.2px;\r
-    }\r
-    .loader-sub {\r
-      font-size: 12px;\r
-      font-weight: 500;\r
-      color: #6E6862;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;\r
-      letter-spacing: 0.1px;\r
-    }\r
-\r
-    /* Toast */\r
-    .toast-pill {\r
-      position: fixed;\r
-      top: calc(env(safe-area-inset-top) + 20px);\r
-      left: 50%;\r
-      transform: translateX(-50%) translateY(-30px);\r
-      background: rgba(45, 36, 30, 0.94);\r
-      backdrop-filter: blur(20px);\r
-      -webkit-backdrop-filter: blur(20px);\r
-      color: #FFFFFF;\r
-      font-size: 13px;\r
-      font-weight: 500;\r
-      padding: 9px 20px;\r
-      border-radius: 9999px;\r
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);\r
-      opacity: 0;\r
-      pointer-events: none;\r
-      transition: all 0.3s var(--ease-smooth);\r
-      z-index: 200;\r
-      white-space: nowrap;\r
-      font-family: -apple-system, sans-serif;\r
-    }\r
-    .toast-pill.show {\r
-      transform: translateX(-50%) translateY(0);\r
-      opacity: 1;\r
-    }\r
-\r
-    /* Apple Native Save Sheet (HIG Aligned) */\r
-    .save-modal-overlay {\r
-      position: fixed;\r
-      top: 0;\r
-      left: 0;\r
-      right: 0;\r
-      bottom: 0;\r
-      background: rgba(0, 0, 0, 0.45);\r
-      backdrop-filter: blur(20px) saturate(180%);\r
-      -webkit-backdrop-filter: blur(20px) saturate(180%);\r
-      display: none;\r
-      align-items: center;\r
-      justify-content: center;\r
-      padding: 16px;\r
-      z-index: 500;\r
-      animation: appleModalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);\r
-    }\r
-    @keyframes appleModalFadeIn {\r
-      from { opacity: 0; transform: scale(0.96); }\r
-      to { opacity: 1; transform: scale(1); }\r
-    }\r
-    .save-modal-card {\r
-      background: rgba(255, 255, 255, 0.94);\r
-      backdrop-filter: blur(30px);\r
-      -webkit-backdrop-filter: blur(30px);\r
-      border-radius: 26px;\r
-      padding: 20px 18px 18px;\r
-      max-width: 356px;\r
-      width: 100%;\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      gap: 12px;\r
-      box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.28), 0 0 0 0.5px rgba(0, 0, 0, 0.08);\r
-      position: relative;\r
-    }\r
-    .save-modal-close-btn {\r
-      position: absolute;\r
-      top: 14px;\r
-      right: 14px;\r
-      width: 28px;\r
-      height: 28px;\r
-      border-radius: 50%;\r
-      background: rgba(118, 118, 128, 0.12);\r
-      border: none;\r
-      color: #636366;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      cursor: pointer;\r
-      padding: 0;\r
-      transition: background 0.15s, transform 0.1s;\r
-      z-index: 10;\r
-    }\r
-    .save-modal-close-btn:active {\r
-      background: rgba(118, 118, 128, 0.24);\r
-      transform: scale(0.92);\r
-    }\r
-    .save-modal-header {\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      gap: 6px;\r
-      text-align: center;\r
-      width: 100%;\r
-      padding-top: 2px;\r
-    }\r
-    .save-modal-title {\r
-      font-size: 17px;\r
-      font-weight: 600;\r
-      color: #1D1D1F;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;\r
-      letter-spacing: -0.3px;\r
-    }\r
-    .save-modal-badge {\r
-      display: inline-flex;\r
-      align-items: center;\r
-      gap: 6px;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;\r
-      font-size: 12.5px;\r
-      font-weight: 500;\r
-      color: #7B341E;\r
-      background: linear-gradient(135deg, #FFF1EC 0%, #FFE5DC 100%);\r
-      border: 0.5px solid rgba(232, 93, 63, 0.22);\r
-      padding: 6px 14px;\r
-      border-radius: 9999px;\r
-      letter-spacing: -0.1px;\r
-      animation: gentlePulse 2.2s ease-in-out infinite;\r
-    }\r
-    @keyframes gentlePulse {\r
-      0%, 100% { transform: scale(1); opacity: 0.95; }\r
-      50% { transform: scale(1.03); opacity: 1; box-shadow: 0 4px 12px rgba(232, 93, 63, 0.18); }\r
-    }\r
-    .save-modal-badge-icon {\r
-      color: #E85D3F;\r
-      flex-shrink: 0;\r
-      animation: fingerBounce 1.4s ease-in-out infinite;\r
-    }\r
-    @keyframes fingerBounce {\r
-      0%, 100% { transform: translateY(0); }\r
-      50% { transform: translateY(-2px); }\r
-    }\r
-    .save-modal-img-wrap {\r
-      width: 100%;\r
-      display: flex;\r
-      justify-content: center;\r
-      align-items: center;\r
-      border-radius: 18px;\r
-      overflow: hidden;\r
-      background: #F5F5F7;\r
-      border: 0.5px solid rgba(0, 0, 0, 0.06);\r
-      box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.14);\r
-    }\r
-    .save-modal-img {\r
-      width: 100%;\r
-      max-height: 410px;\r
-      object-fit: contain;\r
-      display: block;\r
-      -webkit-touch-callout: default !important;\r
-      pointer-events: auto !important;\r
-      user-select: auto !important;\r
-      -webkit-user-select: auto !important;\r
-    }\r
-    .save-modal-actions {\r
-      display: flex;\r
-      width: 100%;\r
-      gap: 10px;\r
-      margin-top: 2px;\r
-    }\r
-    .save-modal-btn {\r
-      flex: 1;\r
-      padding: 12px 14px;\r
-      border-radius: 14px;\r
-      font-size: 15px;\r
-      font-weight: 600;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
-      letter-spacing: -0.2px;\r
-      border: none;\r
-      cursor: pointer;\r
-      transition: opacity 0.15s, transform 0.1s;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-    }\r
-    .save-modal-btn:active {\r
-      transform: scale(0.98);\r
-      opacity: 0.85;\r
-    }\r
-    .save-modal-btn.primary {\r
-      background: #1D1D1F;\r
-      color: #FFFFFF;\r
-    }\r
-    .save-modal-btn.secondary {\r
-      background: rgba(118, 118, 128, 0.12);\r
-      color: #1D1D1F;\r
-    }\r
-\r
-    /* Error / Service Busy Modal (Haute Couture Studio Fallback Prevention) */\r
-    .error-modal-overlay {\r
-      position: fixed;\r
-      top: 0;\r
-      left: 0;\r
-      right: 0;\r
-      bottom: 0;\r
-      background: rgba(40, 26, 20, 0.52);\r
-      backdrop-filter: blur(24px) saturate(160%);\r
-      -webkit-backdrop-filter: blur(24px) saturate(160%);\r
-      display: none;\r
-      align-items: center;\r
-      justify-content: center;\r
-      padding: 20px;\r
-      z-index: 520;\r
-      animation: appleModalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);\r
-    }\r
-    .error-modal-card {\r
-      background: rgba(255, 252, 250, 0.96);\r
-      backdrop-filter: blur(30px);\r
-      -webkit-backdrop-filter: blur(30px);\r
-      border-radius: 28px;\r
-      padding: 28px 22px 22px;\r
-      max-width: 356px;\r
-      width: 100%;\r
-      display: flex;\r
-      flex-direction: column;\r
-      align-items: center;\r
-      text-align: center;\r
-      gap: 14px;\r
-      box-shadow: 0 28px 64px -12px rgba(60, 48, 40, 0.32), 0 0 0 0.5px rgba(232, 93, 63, 0.15);\r
-      position: relative;\r
-    }\r
-    .error-modal-icon-wrap {\r
-      width: 54px;\r
-      height: 54px;\r
-      border-radius: 50%;\r
-      background: linear-gradient(135deg, #FFF0EB 0%, #FFE2D9 100%);\r
-      border: 1px solid rgba(232, 93, 63, 0.2);\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      color: #E85D3F;\r
-      margin-bottom: 2px;\r
-      box-shadow: 0 8px 20px -4px rgba(232, 93, 63, 0.25);\r
-    }\r
-    .error-modal-title {\r
-      font-size: 19px;\r
-      font-weight: 700;\r
-      color: #2D231E;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;\r
-      letter-spacing: -0.3px;\r
-      line-height: 1.25;\r
-    }\r
-    .error-modal-desc {\r
-      font-size: 14px;\r
-      line-height: 1.5;\r
-      color: #706259;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
-      margin: 0;\r
-      padding: 0 4px;\r
-    }\r
-    .error-modal-tip {\r
-      font-size: 12px;\r
-      color: #9C8C81;\r
-      background: rgba(232, 93, 63, 0.06);\r
-      padding: 6px 12px;\r
-      border-radius: 12px;\r
-      border: 0.5px solid rgba(232, 93, 63, 0.1);\r
-      width: 100%;\r
-      box-sizing: border-box;\r
-    }\r
-    .error-modal-actions {\r
-      display: flex;\r
-      width: 100%;\r
-      gap: 10px;\r
-      margin-top: 4px;\r
-    }\r
-    .error-modal-btn {\r
-      flex: 1;\r
-      padding: 13px 16px;\r
-      border-radius: 16px;\r
-      font-size: 15px;\r
-      font-weight: 600;\r
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;\r
-      letter-spacing: -0.2px;\r
-      border: none;\r
-      cursor: pointer;\r
-      transition: opacity 0.15s, transform 0.1s;\r
-      display: flex;\r
-      align-items: center;\r
-      justify-content: center;\r
-      gap: 6px;\r
-    }\r
-    .error-modal-btn:active {\r
-      transform: scale(0.97);\r
-      opacity: 0.88;\r
-    }\r
-    .error-modal-btn.primary {\r
-      background: linear-gradient(180deg, var(--cta-start) 0%, var(--cta-end) 100%);\r
-      color: var(--cta-text);\r
-      box-shadow: 0 8px 20px -6px rgba(232, 93, 63, 0.3);\r
-    }\r
-    .error-modal-btn.secondary {\r
-      background: rgba(118, 118, 128, 0.1);\r
-      color: #483E38;\r
-    }\r
-\r
-    #render-canvas { display: none; }\r
-  </style>\r
-</head>\r
-<body>\r
-\r
-  <div class="ambient-glow-top"></div>\r
-\r
-  <div class="app-card">\r
-    \r
-    <!-- Top Header with Cursive Branding -->\r
-    <header class="header-bar">\r
-      <button id="header-back-btn" class="header-back-btn" style="display: none;" onclick="backToEntry()">\r
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">\r
-          <polyline points="15 18 9 12 15 6"></polyline>\r
-        </svg>\r
-      </button>\r
-      <div class="brand-title">ViviBon Cover</div>\r
-    </header>\r
-\r
-    <!-- ================= VIEW 1: Entry Studio ================= -->\r
-    <div id="view-entry">\r
-      \r
-      <!-- Hero 3:4 Viewport -->\r
-      <div class="hero-box" onclick="soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Tap to upload pet photo">\r
-        <img id="entry-preview" class="hero-img" style="display: none;" alt="Pet Preview" />\r
-        \r
-        <!-- Upload Placeholder (Minimalist Luxury Studio) -->\r
-        <div id="upload-placeholder" class="upload-placeholder">\r
-          <div class="upload-center-content">\r
-            <div class="upload-lens-portal">\r
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">\r
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>\r
-                <circle cx="12" cy="13" r="4"></circle>\r
-                <circle cx="12" cy="13" r="1.5" fill="currentColor"></circle>\r
-              </svg>\r
-            </div>\r
-            <div class="upload-placeholder-title">Place Your Pet on the Cover</div>\r
-            <div class="upload-placeholder-pill">\r
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">\r
-                <line x1="12" y1="5" x2="12" y2="19"></line>\r
-                <line x1="5" y1="12" x2="19" y2="12"></line>\r
-              </svg>\r
-              Choose Pet Photo\r
-            </div>\r
-          </div>\r
-        </div>\r
-\r
-        <!-- Floating Round Upload Button (Shown after photo is uploaded to allow changing photo) -->\r
-        <div id="upload-btn-floating" class="upload-btn-floating" style="display: none;" onclick="event.stopPropagation(); soundEngine.playDialClick(); document.getElementById('file-input').click()" title="Change Pet Photo">\r
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
-            <polyline points="17 8 12 3 7 8"></polyline>\r
-            <line x1="12" y1="3" x2="12" y2="15"></line>\r
-          </svg>\r
-        </div>\r
-      </div>\r
-      <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="handleUpload(event)" />\r
-\r
-      <!-- 4 Core Category Pills Bar -->\r
-      <div class="category-pills-bar" id="category-pills-bar">\r
-        <!-- Dynamically rendered pills -->\r
-      </div>\r
-\r
-      <!-- Reference Templates Carousel -->\r
-      <div class="template-carousel-container">\r
-        <div class="template-cards-row" id="template-cards-row">\r
-          <!-- Dynamically rendered template cards -->\r
-        </div>\r
-        <div class="scroll-edge-hint" id="scroll-edge-hint"></div>\r
-      </div>\r
-\r
-      <!-- Primary CTA Button -->\r
-      <button class="btn-cta" onclick="startGeneration()">\r
-        Create my portrait\r
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">\r
-          <line x1="5" y1="12" x2="19" y2="12"></line>\r
-          <polyline points="12 5 19 12 12 19"></polyline>\r
-        </svg>\r
-      </button>\r
-\r
-    </div>\r
-\r
-    <!-- ================= VIEW 2: Result Showcase (Exact Match to Screenshot 2) ================= -->\r
-    <div id="view-result">\r
-      \r
-      <div class="poster-stage">\r
-        <!-- Generated Portrait Display -->\r
-        <img id="res-display-img" class="poster-img" src="models/milo_gentle_prince_of_wales.webp" alt="High Fashion Cover" />\r
-        <!-- Original Pet Layer (Hold to compare) -->\r
-        <img id="res-original-img" class="poster-img original-layer" src="models/milo_gentle.webp" alt="Original Pet" />\r
-\r
-        <!-- Pure unobstructed portrait stage -->\r
-        <div class="poster-overlay" id="poster-overlay" style="display: none;"></div>\r
-\r
-        <!-- Floating Compare Pill matching Screenshot 2 -->\r
-        <div class="compare-pill" id="compare-btn" role="button" aria-pressed="false" tabindex="0">\r
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>\r
-            <circle cx="12" cy="12" r="3"></circle>\r
-          </svg>\r
-          <span id="compare-label">Hold to compare</span>\r
-        </div>\r
-      </div>\r
-\r
-      <!-- Save Poster Button matching Screenshot 2 with Download Icon -->\r
-      <button class="btn-cta" onclick="exportPoster()">\r
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
-          <polyline points="7 10 12 15 17 10"></polyline>\r
-          <line x1="12" y1="15" x2="12" y2="3"></line>\r
-        </svg>\r
-        Save 1080P portrait\r
-      </button>\r
-\r
-    </div>\r
-\r
-  </div>\r
-\r
-  <!-- Fullscreen Frosted Loader Overlay (Lapse Darkroom Ritual) -->\r
-  <div class="loader-overlay" id="loader">\r
-    <div class="darkroom-ambient-glow"></div>\r
-    <div class="loader-card">\r
-      \r
-      <!-- Concentric Circular Loader (Screenshot 1) -->\r
-      <div class="concentric-loader-box">\r
-        <div class="concentric-ring-outer"></div>\r
-        <svg class="concentric-arc-svg" viewBox="0 0 76 76">\r
-          <circle cx="38" cy="38" r="36" fill="none" stroke="#E85D3F" stroke-width="3" stroke-dasharray="75 160" stroke-linecap="round"/>\r
-        </svg>\r
-        <div class="concentric-center-dot"></div>\r
-      </div>\r
-\r
-      <!-- Linear Track + Percentage Text (Screenshot 1) -->\r
-      <div class="loader-progress-row">\r
-        <div class="loader-progress-track">\r
-          <div class="loader-progress-fill" id="loader-progress-fill"></div>\r
-        </div>\r
-        <div class="loader-percentage-text" id="loader-percentage">94%</div>\r
-      </div>\r
-\r
-      <!-- Status Text and Subtext (Screenshot 1) -->\r
-      <div class="loader-text" id="loader-text">Adding the final editorial finish...</div>\r
-      <div class="loader-sub" id="loader-sub">Polishing tone and fine detail [2.5s]</div>\r
-\r
-    </div>\r
-  </div>\r
-\r
-  <!-- Toast Pill -->\r
-  <div id="toast" class="toast-pill"></div>\r
-\r
-  <!-- Mobile Save Modal (Apple Native HIG Aligned) -->\r
-  <div id="save-modal" class="save-modal-overlay" onclick="closeSaveModal(event)">\r
-    <div class="save-modal-card" onclick="event.stopPropagation()">\r
-      <button class="save-modal-close-btn" onclick="closeSaveModal(event)" aria-label="Close">\r
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">\r
-          <line x1="18" y1="6" x2="6" y2="18"></line>\r
-          <line x1="6" y1="6" x2="18" y2="18"></line>\r
-        </svg>\r
-      </button>\r
-\r
-      <div class="save-modal-header">\r
-        <div class="save-modal-title">1080P Vogue Portrait</div>\r
-        <div class="save-modal-badge" id="save-modal-badge">\r
-          <svg class="save-modal-badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">\r
-            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5V11a1 1 0 0 0-2 0v5.5a1 1 0 0 0 2 0zm-1-8a1 1 0 1 0-1-1 1 1 0 0 0 1 1z"></path>\r
-          </svg>\r
-          <span id="save-modal-tip-text">Press and hold image to save to Photos</span>\r
-        </div>\r
-      </div>\r
-\r
-      <div class="save-modal-img-wrap">\r
-        <img id="save-modal-img" class="save-modal-img" src="" alt="ViviBon Cover Poster" />\r
-      </div>\r
-\r
-      <div class="save-modal-actions">\r
-        <button id="modal-download-btn" class="save-modal-btn primary" onclick="triggerMobileSave()">\r
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px; vertical-align: -2px;">\r
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>\r
-            <polyline points="7 10 12 15 17 10"></polyline>\r
-            <line x1="12" y1="15" x2="12" y2="3"></line>\r
-          </svg>\r
-          Save to Album\r
-        </button>\r
-        <button class="save-modal-btn secondary" onclick="closeSaveModal(event)">Done</button>\r
-      </div>\r
-    </div>\r
-  </div>\r
-\r
-  <!-- Haute Couture Studio Service Busy / Error Dialog (Prevents default fallback replacement) -->\r
-  <div id="error-modal" class="error-modal-overlay" onclick="closeErrorModal(event)">\r
-    <div class="error-modal-card" onclick="event.stopPropagation()">\r
-      <button class="save-modal-close-btn error-modal-close-trigger" onclick="closeErrorModal(event)" aria-label="Close">\r
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">\r
-          <line x1="18" y1="6" x2="6" y2="18"></line>\r
-          <line x1="6" y1="6" x2="18" y2="18"></line>\r
-        </svg>\r
-      </button>\r
-\r
-      <div class="error-modal-icon-wrap">\r
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">\r
-          <circle cx="12" cy="12" r="10"></circle>\r
-          <line x1="12" y1="8" x2="12" y2="12"></line>\r
-          <line x1="12" y1="16" x2="12.01" y2="16"></line>\r
-        </svg>\r
-      </div>\r
-\r
-      <div class="error-modal-title" id="error-modal-title">Service Temporarily Busy</div>\r
-      <p class="error-modal-desc" id="error-modal-desc">\r
-        Our studio AI rendering servers are experiencing heavy queue volumes. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment.\r
-      </p>\r
-      <div class="error-modal-tip">\r
-        \u2726 Tip: Your original uploaded photo is preserved\r
-      </div>\r
-\r
-      <div class="error-modal-actions">\r
-        <button class="error-modal-btn secondary error-modal-close-trigger" onclick="closeErrorModal(event)">\r
-          Keep Editing\r
-        </button>\r
-        <button class="error-modal-btn primary" onclick="retryGeneration()">\r
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">\r
-            <polyline points="1 4 1 10 7 10"></polyline>\r
-            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>\r
-          </svg>\r
-          Try Again\r
-        </button>\r
-      </div>\r
-    </div>\r
-  </div>\r
-\r
-  <canvas id="render-canvas"></canvas>\r
-\r
-  <script>\r
-    // 4 Categories \xD7 3 High-Converting Templates (12 Core Templates Matrix)\r
-    const THEMES = {\r
-      corporate: {\r
-        id: "corporate",\r
-        backendTheme: "corporate",\r
-        name: "Corporate",\r
-        tag: "WORK & LIFE \xB7 01",\r
-        templates: [\r
-          {\r
-            id: "airline_captain",\r
-            name: "The Captain",\r
-            img: "models/airline_captain.webp",\r
-            title: "Elite Gold Aviator Uniform",\r
-            tag: "CAPTAIN \xB7 01"\r
-          },\r
-          {\r
-            id: "coffee_pro",\r
-            name: "Caffeine Pro",\r
-            img: "models/caffeine_pro.webp",\r
-            title: "Coffee Lifeline & Desk",\r
-            tag: "CAFFEINE \xB7 02"\r
-          },\r
-          {\r
-            id: "michelin_chef",\r
-            name: "Michelin Chef",\r
-            img: "models/michelin_chef.webp",\r
-            title: "Pet Chef Cooking Daily",\r
-            tag: "CHEF \xB7 03"\r
-          }\r
-        ]\r
-      },\r
-      fine_art: {\r
-        id: "fine_art",\r
-        backendTheme: "fine_art",\r
-        name: "Fine Art",\r
-        tag: "FINE ART \xB7 01",\r
-        templates: [\r
-          {\r
-            id: "mona_lisa",\r
-            name: "Mona Lisa",\r
-            img: "models/mona_lisa.webp",\r
-            title: "Renaissance Masterpiece",\r
-            tag: "FINE ART \xB7 01"\r
-          },\r
-          {\r
-            id: "pearl_earring",\r
-            name: "Pearl Earring",\r
-            img: "models/pearl_earring.webp",\r
-            title: "Girl with a Pearl Earring",\r
-            tag: "DUTCH GOLDEN \xB7 02"\r
-          },\r
-          {\r
-            id: "line_art",\r
-            name: "Line Art",\r
-            img: "models/line_art.webp",\r
-            title: "Minimalist Ink Sketch",\r
-            tag: "LINE ART \xB7 03"\r
-          }\r
-        ]\r
-      },\r
-      cosplay: {\r
-        id: "cosplay",\r
-        backendTheme: "cosplay",\r
-        name: "Cosplay",\r
-        tag: "LEGEND \xB7 01",\r
-        templates: [\r
-          {\r
-            id: "assumption_of_mary",\r
-            name: "The Assumption",\r
-            img: "models/assumption_of_mary.webp",\r
-            title: "Titian Baroque Masterpiece",\r
-            tag: "SACRED \xB7 01"\r
-          },\r
-          {\r
-            id: "caribbean_pirate",\r
-            name: "Caribbean Pirate",\r
-            img: "models/caribbean_pirate.webp",\r
-            title: "Pirates of the Caribbean",\r
-            tag: "PIRATE \xB7 02"\r
-          },\r
-          {\r
-            id: "secret_agent",\r
-            name: "Secret Agent",\r
-            img: "models/secret_agent.webp",\r
-            title: "Pet Heist Secret Agent",\r
-            tag: "AGENT \xB7 03"\r
-          }\r
-        ]\r
-      },\r
-      celebration: {\r
-        id: "celebration",\r
-        backendTheme: "celebration",\r
-        name: "Celebration",\r
-        tag: "HOLIDAY \xB7 01",\r
-        templates: [\r
-          {\r
-            id: "christmas",\r
-            name: "Christmas Box",\r
-            img: "models/christmas.webp",\r
-            title: "British Velvet Gift Box",\r
-            tag: "CHRISTMAS \xB7 01"\r
-          },\r
-          {\r
-            id: "halloween",\r
-            name: "Pumpkin Carriage",\r
-            img: "models/halloween.webp",\r
-            title: "Magical Pumpkin Carriage",\r
-            tag: "PUMPKIN \xB7 02"\r
-          },\r
-          {\r
-            id: "birthday_vip",\r
-            name: "Birthday Gala",\r
-            img: "models/birthday_vip.webp",\r
-            title: "VIP Cake & Birthday Gala",\r
-            tag: "BIRTHDAY \xB7 03"\r
-          }\r
-        ]\r
-      }\r
-    };\r
-\r
-    // Backward-compatibility aliases\r
-    THEMES.lifestyle = THEMES.corporate;\r
-    THEMES.artistic = THEMES.fine_art;\r
-    THEMES.drama = THEMES.cosplay;\r
-\r
-    let activeThemeKey = "corporate";\r
-    let activeTemplateId = "airline_captain";\r
-    let userPhotoUrl = "models/milo_gentle.webp";\r
-    let isUserUploaded = false;\r
-    let defaultModelBase64 = null;\r
-\r
-    async function loadDefaultModelBase64() {\r
-      if (defaultModelBase64) return defaultModelBase64;\r
-      try {\r
-        const res = await fetch('models/milo_gentle.jpg');\r
-        const blob = await res.blob();\r
-        return new Promise((resolve) => {\r
-          const reader = new FileReader();\r
-          reader.onloadend = () => {\r
-            defaultModelBase64 = reader.result;\r
-            resolve(defaultModelBase64);\r
-          };\r
-          reader.readAsDataURL(blob);\r
-        });\r
-      } catch (e) {\r
-        console.warn('Failed to load default model base64:', e);\r
-        return null;\r
-      }\r
-    }\r
-\r
-    function trackEvent(eventName, properties = {}) {\r
-      try {\r
-        if (window.clarity) {\r
-          window.clarity("event", eventName);\r
-          if (properties && typeof properties === 'object') {\r
-            for (const [k, v] of Object.entries(properties)) {\r
-              if (v !== undefined && v !== null) {\r
-                window.clarity("set", \`\${eventName}_\${k}\`, String(v));\r
-              }\r
-            }\r
-          }\r
-        }\r
-      } catch(e) {\r
-        console.warn('[Clarity Event]:', e);\r
-      }\r
-    }\r
-\r
-    function triggerHaptic(duration = 8) {\r
-      if (navigator.vibrate) {\r
-        try { navigator.vibrate(duration); } catch(e){}\r
-      }\r
-    }\r
-\r
-    /**\r
-     * Web Audio Pure Haptic Sound Engine (0KB Asset Overhead - NC-7 Compliant)\r
-     * Synthesizes mechanical tactile clicks, camera shutter release, and darkroom finish chimes.\r
-     */\r
-    class HapticSoundEngine {\r
-      constructor() {\r
-        this.ctx = null;\r
-        this.masterGain = null;\r
-        this.initUnlockListener();\r
-      }\r
-\r
-      ensureContext() {\r
-        try {\r
-          if (!this.ctx) {\r
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;\r
-            if (!AudioCtx) return null;\r
-            this.ctx = new AudioCtx();\r
-            this.masterGain = this.ctx.createGain();\r
-            this.masterGain.gain.setValueAtTime(0.92, this.ctx.currentTime);\r
-            this.masterGain.connect(this.ctx.destination);\r
-          }\r
-          if (this.ctx.state === 'suspended') {\r
-            return this.ctx.resume();\r
-          }\r
-          return Promise.resolve();\r
-        } catch (e) {\r
-          return null;\r
-        }\r
-      }\r
-\r
-      initUnlockListener() {\r
-        const unlock = () => {\r
-          const p = this.ensureContext();\r
-          if (p && typeof p.then === 'function') {\r
-            p.then(() => {\r
-              try {\r
-                if (this.ctx) {\r
-                  const b = this.ctx.createBuffer(1, 1, this.ctx.sampleRate);\r
-                  const s = this.ctx.createBufferSource();\r
-                  s.buffer = b;\r
-                  s.connect(this.ctx.destination);\r
-                  s.start(0);\r
-                }\r
-              } catch (e) {}\r
-            }).catch(() => {});\r
-          }\r
-        };\r
-        ['pointerdown', 'touchstart', 'mousedown', 'click', 'keydown'].forEach(evt => {\r
-          document.addEventListener(evt, unlock, { passive: true });\r
-        });\r
-      }\r
-\r
-      /**\r
-       * Teenage Engineering / Recent.design Style Tactile Mechanical Switch Click\r
-       * Dual-Action Acoustic Foley:\r
-       * - Layer 1: High-Frequency Snap (1900Hz -> 580Hz sweep, 24ms, gain 0.35)\r
-       *   Directly targets human ear canal resonance (Fletcher-Munson sweet spot 1k-3k Hz)\r
-       *   Audible on all smartphone and laptop speakers.\r
-       * - Layer 2: Metallic Leaf Spring Contact (2800Hz bandpass white noise, 18ms, gain 0.26)\r
-       * - Layer 3: Keycap Chassis Punch (340Hz -> 110Hz triangle thump, 28ms, gain 0.28)\r
-       */\r
-      playDialClick() {\r
-        const p = this.ensureContext();\r
-        if (!this.ctx) return;\r
-        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {\r
-          p.then(() => this._executeDialClick()).catch(() => {});\r
-        } else {\r
-          this._executeDialClick();\r
-        }\r
-      }\r
-\r
-      _executeDialClick() {\r
-        try {\r
-          if (!this.ctx || !this.masterGain) return;\r
-          const now = this.ctx.currentTime + 0.003;\r
-          const jitter = 1.0 + (Math.random() - 0.5) * 0.04;\r
-\r
-          // Layer 1: Sharp Mechanical Snap (Pitch drop transient, 1900Hz -> 580Hz)\r
-          const snapOsc = this.ctx.createOscillator();\r
-          const snapGain = this.ctx.createGain();\r
-          snapOsc.type = 'sine';\r
-          snapOsc.frequency.setValueAtTime(1900 * jitter, now);\r
-          snapOsc.frequency.exponentialRampToValueAtTime(580, now + 0.024);\r
-\r
-          snapGain.gain.setValueAtTime(0.35, now);\r
-          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.024);\r
-\r
-          snapOsc.connect(snapGain);\r
-          snapGain.connect(this.masterGain);\r
-          snapOsc.start(now);\r
-          snapOsc.stop(now + 0.025);\r
-\r
-          // Layer 2: Metal Leaf Spring Friction (Bandpass white noise, 2800Hz)\r
-          const bufferSize = Math.floor(this.ctx.sampleRate * 0.018);\r
-          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);\r
-          const output = noiseBuffer.getChannelData(0);\r
-          for (let i = 0; i < bufferSize; i++) {\r
-            output[i] = Math.random() * 2 - 1;\r
-          }\r
-          const noise = this.ctx.createBufferSource();\r
-          noise.buffer = noiseBuffer;\r
-\r
-          const bandpass = this.ctx.createBiquadFilter();\r
-          bandpass.type = 'bandpass';\r
-          bandpass.frequency.setValueAtTime(2800 * jitter, now);\r
-          bandpass.Q.setValueAtTime(3.2, now);\r
-\r
-          const noiseGain = this.ctx.createGain();\r
-          noiseGain.gain.setValueAtTime(0.26, now);\r
-          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.018);\r
-\r
-          noise.connect(bandpass);\r
-          bandpass.connect(noiseGain);\r
-          noiseGain.connect(this.masterGain);\r
-          noise.start(now);\r
-\r
-          // Layer 3: Keycap Bottoming Punch (Triangle wave body thump, 340Hz -> 110Hz)\r
-          const bodyOsc = this.ctx.createOscillator();\r
-          const bodyGain = this.ctx.createGain();\r
-          bodyOsc.type = 'triangle';\r
-          bodyOsc.frequency.setValueAtTime(340 * jitter, now);\r
-          bodyOsc.frequency.exponentialRampToValueAtTime(110, now + 0.028);\r
-\r
-          bodyGain.gain.setValueAtTime(0.28, now);\r
-          bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);\r
-\r
-          bodyOsc.connect(bodyGain);\r
-          bodyGain.connect(this.masterGain);\r
-          bodyOsc.start(now);\r
-          bodyOsc.stop(now + 0.029);\r
-        } catch (e) {\r
-          // Silent fallback\r
-        }\r
-      }\r
-\r
-      /**\r
-       * Mechanical Camera Shutter Release (Leica/Hasselblad style dual-stage click)\r
-       * Stroke 1: Leaf blade opening transient (1600Hz -> 420Hz, 32ms) + blade friction noise\r
-       * Stroke 2: Mechanical curtain / mirror return (280Hz -> 90Hz, 45ms, delayed by 36ms)\r
-       */\r
-      playShutterSnap() {\r
-        const p = this.ensureContext();\r
-        if (!this.ctx) return;\r
-        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {\r
-          p.then(() => this._executeShutterSnap()).catch(() => {});\r
-        } else {\r
-          this._executeShutterSnap();\r
-        }\r
-      }\r
-\r
-      _executeShutterSnap() {\r
-        try {\r
-          if (!this.ctx || !this.masterGain) return;\r
-          const now = this.ctx.currentTime + 0.003;\r
-          const jitter = 1.0 + (Math.random() - 0.5) * 0.03;\r
-\r
-          // Stroke 1: Shutter Blade Snap\r
-          const snapOsc = this.ctx.createOscillator();\r
-          const snapGain = this.ctx.createGain();\r
-          snapOsc.type = 'sine';\r
-          snapOsc.frequency.setValueAtTime(1600 * jitter, now);\r
-          snapOsc.frequency.exponentialRampToValueAtTime(420, now + 0.032);\r
-          snapGain.gain.setValueAtTime(0.38, now);\r
-          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.032);\r
-          snapOsc.connect(snapGain);\r
-          snapGain.connect(this.masterGain);\r
-          snapOsc.start(now);\r
-          snapOsc.stop(now + 0.033);\r
-\r
-          const bufferSize = Math.floor(this.ctx.sampleRate * 0.035);\r
-          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);\r
-          const output = noiseBuffer.getChannelData(0);\r
-          for (let i = 0; i < bufferSize; i++) {\r
-            output[i] = Math.random() * 2 - 1;\r
-          }\r
-          const whiteNoise = this.ctx.createBufferSource();\r
-          whiteNoise.buffer = noiseBuffer;\r
-          const filter = this.ctx.createBiquadFilter();\r
-          filter.type = 'bandpass';\r
-          filter.frequency.setValueAtTime(2400 * jitter, now);\r
-          filter.Q.setValueAtTime(2.5, now);\r
-          const noiseGain = this.ctx.createGain();\r
-          noiseGain.gain.setValueAtTime(0.30, now);\r
-          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);\r
-          whiteNoise.connect(filter);\r
-          filter.connect(noiseGain);\r
-          noiseGain.connect(this.masterGain);\r
-          whiteNoise.start(now);\r
-\r
-          // Stroke 2: Mechanical Return & Chassis Thump (t + 0.036s)\r
-          const returnTime = now + 0.036;\r
-          const returnOsc = this.ctx.createOscillator();\r
-          const returnGain = this.ctx.createGain();\r
-          returnOsc.type = 'triangle';\r
-          returnOsc.frequency.setValueAtTime(280 * jitter, returnTime);\r
-          returnOsc.frequency.exponentialRampToValueAtTime(90, returnTime + 0.045);\r
-          returnGain.gain.setValueAtTime(0.35, returnTime);\r
-          returnGain.gain.exponentialRampToValueAtTime(0.0001, returnTime + 0.045);\r
-          returnOsc.connect(returnGain);\r
-          returnGain.connect(this.masterGain);\r
-          returnOsc.start(returnTime);\r
-          returnOsc.stop(returnTime + 0.046);\r
-        } catch (e) {\r
-          // Silent fallback\r
-        }\r
-      }\r
-\r
-      /**\r
-       * Crystal Finish Chime (Lapse Darkroom Reveal)\r
-       * Apple / Studio Style 3-Note Micro-Arpeggio Chime: E6 (1318.5Hz), G#6 (1661.2Hz), B6 (1975.5Hz)\r
-       */\r
-      playChime() {\r
-        const p = this.ensureContext();\r
-        if (!this.ctx) return;\r
-        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {\r
-          p.then(() => this._executeChime()).catch(() => {});\r
-        } else {\r
-          this._executeChime();\r
-        }\r
-      }\r
-\r
-      _executeChime() {\r
-        try {\r
-          if (!this.ctx || !this.masterGain) return;\r
-          const now = this.ctx.currentTime + 0.003;\r
-\r
-          const notes = [\r
-            { f: 1318.5, delay: 0.0, gain: 0.24, dur: 0.55 },\r
-            { f: 1661.2, delay: 0.04, gain: 0.22, dur: 0.60 },\r
-            { f: 1975.5, delay: 0.08, gain: 0.26, dur: 0.70 }\r
-          ];\r
-\r
-          notes.forEach(note => {\r
-            const osc = this.ctx.createOscillator();\r
-            const gain = this.ctx.createGain();\r
-            const t = now + note.delay;\r
-\r
-            osc.type = 'sine';\r
-            osc.frequency.setValueAtTime(note.f, t);\r
-\r
-            gain.gain.setValueAtTime(note.gain, t);\r
-            gain.gain.exponentialRampToValueAtTime(0.0001, t + note.dur);\r
-\r
-            osc.connect(gain);\r
-            gain.connect(this.masterGain);\r
-\r
-            osc.start(t);\r
-            osc.stop(t + note.dur + 0.01);\r
-          });\r
-        } catch (e) {\r
-          // Silent fallback\r
-        }\r
-      }\r
-    }\r
-\r
-    const soundEngine = new HapticSoundEngine();\r
-\r
-    function showToast(text, duration = 2500) {\r
-      const toast = document.getElementById("toast");\r
-      if (!toast) return;\r
-      toast.innerText = text;\r
-      toast.classList.add("show");\r
-      setTimeout(() => {\r
-        toast.classList.remove("show");\r
-      }, duration);\r
-    }\r
-\r
-    function renderCategoryPills() {\r
-      const bar = document.getElementById("category-pills-bar");\r
-      if (!bar) return;\r
-      const keys = ["corporate", "fine_art", "cosplay", "celebration"];\r
-      bar.innerHTML = keys.map(k => {\r
-        const theme = THEMES[k];\r
-        const isActive = k === activeThemeKey;\r
-        return \`\r
-          <div class="category-pill \${isActive ? 'active' : ''}" onclick="selectTheme('\${k}')">\r
-            <span class="category-pill-name">\${theme.name}</span>\r
-          </div>\r
-        \`;\r
-      }).join('');\r
-    }\r
-\r
-    function selectTheme(themeKey) {\r
-      triggerHaptic(6);\r
-      soundEngine.playDialClick();\r
-      activeThemeKey = themeKey;\r
-      const theme = THEMES[themeKey];\r
-      activeTemplateId = theme.templates[0].id;\r
-      renderCategoryPills();\r
-      renderTemplateCards();\r
-      trackEvent("style_selected", { theme: themeKey, template: activeTemplateId });\r
-\r
-      const row = document.getElementById("template-cards-row");\r
-      if (row) {\r
-        row.scrollTo({ left: 0, behavior: 'smooth' });\r
-      }\r
-    }\r
-\r
-    function renderTemplateCards() {\r
-      const row = document.getElementById("template-cards-row");\r
-      if (!row) return;\r
-      const theme = THEMES[activeThemeKey];\r
-      row.innerHTML = theme.templates.map(tpl => {\r
-        const isActive = tpl.id === activeTemplateId;\r
-        return \`\r
-          <div class="template-card \${isActive ? 'active' : ''}" id="card-\${tpl.id}" onclick="selectTemplate('\${tpl.id}')">\r
-            <div class="template-thumb-box">\r
-              <img class="template-thumb" src="\${tpl.img}" alt="\${tpl.name}" decoding="async" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />\r
-            </div>\r
-            <div class="template-label">\${tpl.name}</div>\r
-          </div>\r
-        \`;\r
-      }).join('');\r
-      updateScrollEdgeHint();\r
-    }\r
-\r
-    function selectTemplate(tplId) {\r
-      if (activeTemplateId === tplId) return;\r
-      triggerHaptic(6);\r
-      soundEngine.playDialClick();\r
-      \r
-      // Fast DOM active class toggle without destroying and reloading images!\r
-      const prevCard = document.getElementById(\`card-\${activeTemplateId}\`);\r
-      if (prevCard) prevCard.classList.remove('active');\r
-      \r
-      activeTemplateId = tplId;\r
-      const targetCard = document.getElementById(\`card-\${tplId}\`);\r
-      if (targetCard) {\r
-        targetCard.classList.add('active');\r
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });\r
-      }\r
-      trackEvent("template_selected", { theme: activeThemeKey, template: tplId });\r
-    }\r
-\r
-    function preloadAllTemplateThumbnails() {\r
-      const allUrls = [];\r
-      Object.values(THEMES).forEach(theme => {\r
-        if (theme.templates && Array.isArray(theme.templates)) {\r
-          theme.templates.forEach(t => {\r
-            if (t.img && !allUrls.includes(t.img)) allUrls.push(t.img);\r
-          });\r
-        }\r
-      });\r
-      allUrls.forEach(url => {\r
-        const img = new Image();\r
-        img.src = url;\r
-        if (img.decode) {\r
-          img.decode().catch(() => {});\r
-        }\r
-      });\r
-    }\r
-\r
-    function updateScrollEdgeHint() {\r
-      const row = document.getElementById("template-cards-row");\r
-      const hint = document.getElementById("scroll-edge-hint");\r
-      if (!row || !hint) return;\r
-      const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 10;\r
-      hint.style.opacity = atEnd ? '0' : '1';\r
-    }\r
-\r
-    function initDragScroll() {\r
-      const row = document.getElementById("template-cards-row");\r
-      if (!row) return;\r
-\r
-      let isDown = false;\r
-      let startX = 0;\r
-      let scrollLeft = 0;\r
-      let moved = false;\r
-\r
-      row.addEventListener('mousedown', (e) => {\r
-        isDown = true;\r
-        moved = false;\r
-        startX = e.pageX - row.offsetLeft;\r
-        scrollLeft = row.scrollLeft;\r
-      });\r
-\r
-      window.addEventListener('mouseup', () => {\r
-        isDown = false;\r
-      });\r
-\r
-      row.addEventListener('mousemove', (e) => {\r
-        if (!isDown) return;\r
-        e.preventDefault();\r
-        const x = e.pageX - row.offsetLeft;\r
-        const walk = (x - startX) * 1.5;\r
-        if (Math.abs(walk) > 4) moved = true;\r
-        row.scrollLeft = scrollLeft - walk;\r
-      });\r
-\r
-      row.addEventListener('scroll', updateScrollEdgeHint, { passive: true });\r
-    }\r
-\r
-    /**\r
-     * P0-1: Downsample and optimize image file to prevent iOS Safari OOM crashes\r
-     * Scales max edge to <= 1500px, outputs high-quality JPEG (0.85), memory footprint < 25MB\r
-     */\r
-    function downsampleImageFile(file, maxEdge = 1500, quality = 0.85) {\r
-      return new Promise((resolve, reject) => {\r
-        if (!file || !file.type.startsWith('image/')) {\r
-          return reject(new Error('Please select a valid image file.'));\r
-        }\r
-\r
-        const objectUrl = URL.createObjectURL(file);\r
-        const img = new Image();\r
-\r
-        img.onload = () => {\r
-          try {\r
-            let width = img.naturalWidth || img.width;\r
-            let height = img.naturalHeight || img.height;\r
-\r
-            if (width > maxEdge || height > maxEdge) {\r
-              if (width >= height) {\r
-                height = Math.round((height * maxEdge) / width);\r
-                width = maxEdge;\r
-              } else {\r
-                width = Math.round((width * maxEdge) / height);\r
-                height = maxEdge;\r
-              }\r
-            }\r
-\r
-            const canvas = document.createElement('canvas');\r
-            canvas.width = width;\r
-            canvas.height = height;\r
-            const ctx = canvas.getContext('2d');\r
-            if (!ctx) {\r
-              URL.revokeObjectURL(objectUrl);\r
-              return reject(new Error('Canvas 2D context unavailable'));\r
-            }\r
-\r
-            ctx.drawImage(img, 0, 0, width, height);\r
-            const optimizedDataUrl = canvas.toDataURL('image/jpeg', quality);\r
-\r
-            URL.revokeObjectURL(objectUrl);\r
-            canvas.width = 0;\r
-            canvas.height = 0;\r
-\r
-            resolve({\r
-              dataUrl: optimizedDataUrl,\r
-              width,\r
-              height,\r
-              originalSizeKb: Math.round(file.size / 1024),\r
-              optimizedSizeKb: Math.round((optimizedDataUrl.length * 3) / 4 / 1024)\r
-            });\r
-          } catch (err) {\r
-            URL.revokeObjectURL(objectUrl);\r
-            reject(err);\r
-          }\r
-        };\r
-\r
-        img.onerror = () => {\r
-          URL.revokeObjectURL(objectUrl);\r
-          reject(new Error('Failed to load and decode image'));\r
-        };\r
-\r
-        img.src = objectUrl;\r
-      });\r
-    }\r
-\r
-    async function handleUpload(event) {\r
-      const file = event.target.files && event.target.files[0];\r
-      if (!file) return;\r
-\r
-      if (file.size > 20 * 1024 * 1024) {\r
-        showToast("Photo exceeds 20MB limit. Please choose another.");\r
-        return;\r
-      }\r
-\r
-      showToast("Optimizing portrait resolution... \u2726", 1000);\r
-\r
-      try {\r
-        const result = await downsampleImageFile(file, 1500, 0.85);\r
-        userPhotoUrl = result.dataUrl;\r
-        isUserUploaded = true;\r
-        const preview = document.getElementById("entry-preview");\r
-        if (preview) {\r
-          preview.src = userPhotoUrl;\r
-          preview.style.display = "block";\r
-        }\r
-        const placeholder = document.getElementById("upload-placeholder");\r
-        if (placeholder) placeholder.style.display = "none";\r
-        const floatBtn = document.getElementById("upload-btn-floating");\r
-        if (floatBtn) floatBtn.style.display = "flex";\r
-        document.getElementById("res-original-img").src = userPhotoUrl;\r
-        showToast("Photo uploaded successfully! \u2726");\r
-        triggerHaptic(10);\r
-        soundEngine.playDialClick();\r
-        trackEvent("photo_uploaded", {\r
-          original_kb: result.originalSizeKb,\r
-          optimized_kb: result.optimizedSizeKb,\r
-          scaled_w: result.width,\r
-          scaled_h: result.height\r
-        });\r
-      } catch (err) {\r
-        console.warn("Downsampling failed, fallback to FileReader:", err);\r
-        const reader = new FileReader();\r
-        reader.onload = (e) => {\r
-          userPhotoUrl = e.target.result;\r
-          isUserUploaded = true;\r
-          const preview = document.getElementById("entry-preview");\r
-          if (preview) {\r
-            preview.src = userPhotoUrl;\r
-            preview.style.display = "block";\r
-          }\r
-          const placeholder = document.getElementById("upload-placeholder");\r
-          if (placeholder) placeholder.style.display = "none";\r
-          const floatBtn = document.getElementById("upload-btn-floating");\r
-          if (floatBtn) floatBtn.style.display = "flex";\r
-          document.getElementById("res-original-img").src = userPhotoUrl;\r
-          showToast("Photo uploaded successfully! \u2726");\r
-          triggerHaptic(10);\r
-          soundEngine.playDialClick();\r
-          trackEvent("photo_uploaded", { file_size_kb: Math.round(file.size / 1024) });\r
-        };\r
-        reader.readAsDataURL(file);\r
-      }\r
-    }\r
-\r
-    function preloadImage(url) {\r
-      return new Promise((resolve) => {\r
-        const img = new Image();\r
-        img.crossOrigin = "anonymous";\r
-        img.src = url;\r
-        img.onload = () => resolve(img);\r
-        img.onerror = () => resolve(img);\r
-      });\r
-    }\r
-\r
-    async function startGeneration() {\r
-      if (!isUserUploaded || !userPhotoUrl) {\r
-        triggerHaptic(15);\r
-        soundEngine.playDialClick();\r
-        showToast("Please upload your pet's photo first \u2726");\r
-        const fileInput = document.getElementById("file-input");\r
-        if (fileInput) fileInput.click();\r
-        return;\r
-      }\r
-\r
-      triggerHaptic(12);\r
-      soundEngine.playShutterSnap();\r
-      const theme = THEMES[activeThemeKey];\r
-      const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];\r
-      trackEvent("generate_clicked", { theme: activeThemeKey, template: tpl.id, is_user_uploaded: isUserUploaded });\r
-\r
-      const loader = document.getElementById("loader");\r
-      const loaderText = document.getElementById("loader-text");\r
-      const loaderSub = document.getElementById("loader-sub");\r
-      const progressFill = document.getElementById("loader-progress-fill");\r
-      const percentageText = document.getElementById("loader-percentage");\r
-\r
-      loader.style.display = "flex";\r
-      loader.style.opacity = "1";\r
-\r
-      const startTime = Date.now();\r
-      let progress = 18;\r
-      progressFill.style.width = "18%";\r
-      percentageText.innerText = "18%";\r
-\r
-      // High-Fashion Studio Darkroom Ritual with dynamic extended pacing\r
-      const milestones = [\r
-        { t: 0, text: "Exposing 120mm Medium Format...", sub: "Calibrating biometric facial proportions [0.4s]", prog: 26 },\r
-        { t: 700, text: "Tailoring Savile Row Bespoke...", sub: "Weaving wool tweed & silk lining [1.1s]", prog: 55 },\r
-        { t: 1600, text: "Sculpting Rembrandt Studio Light...", sub: "Balancing softbox specular highlights [1.9s]", prog: 82 },\r
-        { t: 2400, text: "Applying Matte Varnish & Bodoni Type...", sub: "Curing archival pigments & cover typography [2.8s]", prog: 91 },\r
-        { t: 5500, text: "Rendering Neural Diffusion Latent Space...", sub: "Preserving pet facial contours & eye gaze [6.0s]", prog: 94 },\r
-        { t: 11000, text: "Infusing Haute Couture Microtextures...", sub: "Tailoring bespoke collars, lapels & textures [12.0s]", prog: 96 },\r
-        { t: 18000, text: "Developing Exhibition-Grade Fine Print...", sub: "Finalizing 1080P Bodoni editorial composition [19.0s]", prog: 98 }\r
-      ];\r
-\r
-      const stageTimers = [];\r
-      milestones.forEach(m => {\r
-        const tid = setTimeout(() => {\r
-          loaderText.innerText = m.text;\r
-          loaderSub.innerText = m.sub;\r
-          progressFill.style.width = \`\${m.prog}%\`;\r
-          percentageText.innerText = \`\${m.prog}%\`;\r
-        }, m.t);\r
-        stageTimers.push(tid);\r
-      });\r
-\r
-      let finalPosterImg = null;\r
-      let responseData = null;\r
-      let isSuccess = false;\r
-      let failureMsg = "";\r
-\r
-      const effectiveImageBase64 = userPhotoUrl;\r
-\r
-      try {\r
-        const templateImagePath = tpl.img || tpl.sampleImageUrl;\r
-        const referenceImageUrl = templateImagePath\r
-          ? (templateImagePath.startsWith('http') && !templateImagePath.includes('localhost') && !templateImagePath.includes('127.0.0.1')\r
-              ? templateImagePath\r
-              : \`https://vivibon-cover.pages.dev/\${templateImagePath.replace(/^\\/+/, '')}\`)\r
-          : undefined;\r
-\r
-        const payload = {\r
-          styleKey: theme.backendTheme || "corporate",\r
-          themeId: theme.backendTheme || "corporate",\r
-          itemId: tpl.id,\r
-          templateId: tpl.id,\r
-          petName: "Milo",\r
-          imageBase64: effectiveImageBase64 || undefined,\r
-          isDefaultSample: false,\r
-          referenceImageUrl: referenceImageUrl\r
-        };\r
-\r
-        const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';\r
-        const isPages = window.location.hostname.endsWith('pages.dev');\r
-        const endpoint = isLocal\r
-          ? 'http://127.0.0.1:8787/api/generate'\r
-          : (isPages ? 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/generate' : '/api/generate');\r
-\r
-        const reqTimestamp = Date.now().toString();\r
-        const reqNonce = (typeof crypto !== 'undefined' && crypto.randomUUID)\r
-          ? crypto.randomUUID()\r
-          : (Math.random().toString(36).slice(2) + Date.now().toString(36));\r
-\r
-        const requestHeaders = {\r
-          'Content-Type': 'application/json',\r
-          'x-request-timestamp': reqTimestamp,\r
-          'x-request-nonce': reqNonce\r
-        };\r
-\r
-        const apiPromise = fetch(endpoint, {\r
-          method: 'POST',\r
-          headers: requestHeaders,\r
-          body: JSON.stringify(payload)\r
-        }).then(async (res) => {\r
-          if (res.ok) {\r
-            const json = await res.json();\r
-            if (json.data && json.data.imageUrl) {\r
-              if (json.data.isFallback) {\r
-                // Upstream AI models degraded to fallback sample - strictly suppress sample to preserve user pet ID\r
-                console.warn('[AI Generation] Upstream models unavailable; fallback sample suppressed per UX directive.');\r
-                isSuccess = false;\r
-                failureMsg = "Our studio AI rendering servers are currently congested. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment.";\r
-              } else {\r
-                responseData = json.data;\r
-                finalPosterImg = json.data.imageUrl;\r
-                isSuccess = true;\r
-              }\r
-            } else {\r
-              isSuccess = false;\r
-              failureMsg = "Upstream model returned an incomplete response. Please try again.";\r
-            }\r
-          } else {\r
-            isSuccess = false;\r
-            console.warn('[API HTTP Error]:', res.status);\r
-            if (res.status === 429) {\r
-              try {\r
-                const errData = await res.json();\r
-                failureMsg = errData.message || "You have reached the temporary rate limit. Please try again in a few moments.";\r
-              } catch(_) {\r
-                failureMsg = "You have reached the temporary rate limit. Please try again in a few moments.";\r
-              }\r
-            } else {\r
-              failureMsg = "Our studio rendering cluster is temporarily congested. Please tap Try Again in a moment.";\r
-            }\r
-          }\r
-        }).catch((err) => {\r
-          isSuccess = false;\r
-          console.warn('[API Network Error]:', err);\r
-          failureMsg = "Network timeout or connection blip occurred. Please check your network and tap Try Again.";\r
-        });\r
-\r
-        await Promise.all([\r
-          apiPromise,\r
-          new Promise(r => setTimeout(r, 2200))\r
-        ]);\r
-\r
-        if (isSuccess && finalPosterImg) {\r
-          await preloadImage(finalPosterImg);\r
-        }\r
-      } catch(err) {\r
-        console.warn('Generation workflow exception:', err);\r
-        isSuccess = false;\r
-      } finally {\r
-        stageTimers.forEach(clearTimeout);\r
-\r
-        if (!isSuccess || !finalPosterImg) {\r
-          // Failure flow: Hide loader, keep user on entry studio with photo intact, DO NOT switch to result screen!\r
-          loader.style.opacity = "0";\r
-          setTimeout(() => {\r
-            loader.style.display = "none";\r
-          }, 200);\r
-\r
-          trackEvent("generation_failed", {\r
-            theme: activeThemeKey,\r
-            template: tpl.id,\r
-            is_user_uploaded: isUserUploaded\r
-          });\r
-\r
-          openErrorModal(\r
-            "Service Temporarily Busy",\r
-            failureMsg || "Our studio AI rendering servers are experiencing heavy queue volumes. Your uploaded photo and styling selections have been preserved. Please tap Try Again in a moment."\r
-          );\r
-          return;\r
-        }\r
-\r
-        // Success flow: Unveil high fashion result\r
-        progressFill.style.width = "100%";\r
-        percentageText.innerText = "100%";\r
-        loaderText.innerText = "Darkroom print developed! Unveiling cover...";\r
-        soundEngine.playChime();\r
-        triggerHaptic(15);\r
-\r
-        document.getElementById("res-display-img").src = finalPosterImg;\r
-        document.getElementById("res-original-img").src = userPhotoUrl;\r
-        const magTagEl = document.getElementById("mag-tag");\r
-        if (magTagEl) magTagEl.innerText = tpl.tag;\r
-        const magTitleEl = document.getElementById("mag-title");\r
-        if (magTitleEl) magTitleEl.innerText = \`Milo \xB7 \${tpl.title}\`;\r
-\r
-        if (typeof window.resetCompareState === 'function') {\r
-          window.resetCompareState();\r
-        }\r
-\r
-        setTimeout(() => {\r
-          document.getElementById("view-entry").style.display = "none";\r
-          const resView = document.getElementById("view-result");\r
-          resView.style.display = "flex";\r
-          resView.style.flexDirection = "column";\r
-          document.getElementById("header-back-btn").style.display = "flex";\r
-\r
-          loader.style.opacity = "0";\r
-          setTimeout(() => {\r
-            loader.style.display = "none";\r
-          }, 200);\r
-        }, 220);\r
-      }\r
-    }\r
-\r
-    function backToEntry() {\r
-      triggerHaptic(8);\r
-      soundEngine.playDialClick();\r
-      if (typeof window.resetCompareState === 'function') {\r
-        window.resetCompareState();\r
-      }\r
-      document.getElementById("view-result").style.display = "none";\r
-      document.getElementById("header-back-btn").style.display = "none";\r
-      const entryView = document.getElementById("view-entry");\r
-      entryView.style.display = "flex";\r
-      entryView.style.flexDirection = "column";\r
-    }\r
-\r
-    function initCompareEvents() {\r
-      const btn = document.getElementById("compare-btn");\r
-      const label = document.getElementById("compare-label");\r
-      const originalLayer = document.getElementById("res-original-img");\r
-      if (!btn || !originalLayer) return;\r
-\r
-      let isHolding = false;\r
-      let isToggled = false;\r
-      let pressStartTime = 0;\r
-\r
-      function setCompareState(visible) {\r
-        if (visible) {\r
-          originalLayer.style.opacity = "1";\r
-          btn.classList.add("active");\r
-          btn.setAttribute("aria-pressed", "true");\r
-          if (label) label.textContent = "Original";\r
-        } else {\r
-          originalLayer.style.opacity = "0";\r
-          btn.classList.remove("active");\r
-          btn.setAttribute("aria-pressed", "false");\r
-          if (label) label.textContent = "Hold to compare";\r
-        }\r
-      }\r
-\r
-      window.resetCompareState = function() {\r
-        isHolding = false;\r
-        isToggled = false;\r
-        setCompareState(false);\r
-      };\r
-\r
-      const handlePointerDown = (e) => {\r
-        if (e) {\r
-          e.stopPropagation();\r
-          if (e.cancelable) e.preventDefault();\r
-          if (btn.setPointerCapture && e.pointerId !== undefined) {\r
-            try { btn.setPointerCapture(e.pointerId); } catch(_) {}\r
-          }\r
-        }\r
-        pressStartTime = performance.now();\r
-        isHolding = true;\r
-        triggerHaptic(6);\r
-        soundEngine.playDialClick();\r
-\r
-        if (isToggled) {\r
-          // If already in toggled Original state, tapping prepares to switch back to AI cover\r
-          setCompareState(false);\r
-        } else {\r
-          // Instant 0ms GPU reveal of original photo\r
-          setCompareState(true);\r
-          trackEvent("compare_shown", { template: activeTemplateId, mode: "hold" });\r
-        }\r
-      };\r
-\r
-      const handlePointerUp = (e) => {\r
-        if (!isHolding) return;\r
-        isHolding = false;\r
-        if (btn.releasePointerCapture && e && e.pointerId !== undefined) {\r
-          try { btn.releasePointerCapture(e.pointerId); } catch(_) {}\r
-        }\r
-\r
-        const duration = performance.now() - pressStartTime;\r
-        triggerHaptic(6);\r
-\r
-        if (duration < 280) {\r
-          // Quick Tap (<280ms): Toggle view state\r
-          isToggled = !isToggled;\r
-          setCompareState(isToggled);\r
-          trackEvent("compare_shown", { template: activeTemplateId, mode: isToggled ? "toggle_on" : "toggle_off" });\r
-        } else {\r
-          // Long Press Hold (>=280ms): Releasing always returns to AI cover\r
-          isToggled = false;\r
-          setCompareState(false);\r
-        }\r
-      };\r
-\r
-      const handlePointerCancel = (e) => {\r
-        if (isHolding) {\r
-          isHolding = false;\r
-          isToggled = false;\r
-          setCompareState(false);\r
-        }\r
-        if (btn.releasePointerCapture && e && e.pointerId !== undefined) {\r
-          try { btn.releasePointerCapture(e.pointerId); } catch(_) {}\r
-        }\r
-      };\r
-\r
-      // Modern Unified Pointer Events (Zero-latency, immune to mobile ghost click race conditions)\r
-      btn.addEventListener("pointerdown", handlePointerDown);\r
-      btn.addEventListener("pointerup", handlePointerUp);\r
-      btn.addEventListener("pointercancel", handlePointerCancel);\r
-      window.addEventListener("pointerup", handlePointerUp);\r
-      window.addEventListener("pointercancel", handlePointerCancel);\r
-\r
-      // Keyboard accessibility\r
-      btn.addEventListener("keydown", (e) => {\r
-        if (e.key === " " || e.key === "Enter") {\r
-          e.preventDefault();\r
-          isToggled = !isToggled;\r
-          setCompareState(isToggled);\r
-          triggerHaptic(6);\r
-          soundEngine.playDialClick();\r
-        }\r
-      });\r
-\r
-      // Tap on poster stage to dismiss toggle mode\r
-      const posterStage = btn.closest(".poster-stage");\r
-      if (posterStage) {\r
-        posterStage.addEventListener("click", (e) => {\r
-          if (e.target === btn || btn.contains(e.target)) return;\r
-          if (isToggled) {\r
-            isToggled = false;\r
-            setCompareState(false);\r
-            triggerHaptic(6);\r
-            soundEngine.playDialClick();\r
-          }\r
-        });\r
-      }\r
-\r
-      // Window blur safety\r
-      window.addEventListener("blur", () => {\r
-        if (isHolding || isToggled) {\r
-          window.resetCompareState();\r
-        }\r
-      });\r
-    }\r
-\r
-    async function exportPoster() {\r
-      triggerHaptic(12);\r
-      soundEngine.playShutterSnap();\r
-      const canvas = document.getElementById("render-canvas");\r
-      const ctx = canvas.getContext("2d");\r
-      const width = 1080;\r
-      const height = 1440;\r
-      canvas.width = width;\r
-      canvas.height = height;\r
-\r
-      try { await document.fonts.ready; } catch(e){}\r
-\r
-      const theme = THEMES[activeThemeKey];\r
-      const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];\r
-      const displayImg = document.getElementById("res-display-img");\r
-\r
-      const img = new Image();\r
-      img.crossOrigin = "anonymous";\r
-      img.src = displayImg.src;\r
-\r
-      img.onload = () => {\r
-        const targetRatio = width / height;\r
-        const srcRatio = img.naturalWidth / img.naturalHeight;\r
-        let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;\r
-\r
-        if (srcRatio > targetRatio) {\r
-          sw = img.naturalHeight * targetRatio;\r
-          sx = (img.naturalWidth - sw) / 2;\r
-        } else {\r
-          sh = img.naturalWidth / targetRatio;\r
-          sy = (img.naturalHeight - sh) / 2;\r
-        }\r
-\r
-        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, width, height);\r
-\r
-        try {\r
-          const dataUrl = canvas.toDataURL("image/png");\r
-          currentPosterDataUrl = dataUrl;\r
-          trackEvent("poster_exported", { theme: activeThemeKey, template: tpl.id, is_user_uploaded: isUserUploaded });\r
-\r
-          // P0-2: Universal Mobile & In-App Webview Detection\r
-          const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);\r
-          const isWeChatOrInApp = /MicroMessenger|WeChat|Weibo|Instagram|TikTok/i.test(navigator.userAgent);\r
-\r
-          if (isMobile || isWeChatOrInApp) {\r
-            const modalImg = document.getElementById("save-modal-img");\r
-            modalImg.src = dataUrl;\r
-\r
-            // Adaptive Tip Text for Specific Environments\r
-            const tipText = document.getElementById("save-modal-tip-text");\r
-            if (isWeChatOrInApp) {\r
-              tipText.innerText = "Press and hold image to save to Photos / Send to Chat";\r
-            } else {\r
-              tipText.innerText = "Press and hold image to save to Photos";\r
-            }\r
-\r
-            document.getElementById("save-modal").style.display = "flex";\r
-            return;\r
-          }\r
-\r
-          // Desktop PC direct file download\r
-          const a = document.createElement("a");\r
-          a.download = \`ViviBon-Cover-\${tpl.id}-\${Date.now()}.png\`;\r
-          a.href = dataUrl;\r
-          document.body.appendChild(a);\r
-          a.click();\r
-          document.body.removeChild(a);\r
-          showToast("Saved 1080P portrait to downloads! \u2726");\r
-        } catch(err) {\r
-          console.warn("Direct download restricted, opening save modal:", err);\r
-          const dataUrl = canvas.toDataURL("image/png");\r
-          currentPosterDataUrl = dataUrl;\r
-          document.getElementById("save-modal-img").src = dataUrl;\r
-          document.getElementById("save-modal").style.display = "flex";\r
-        }\r
-      };\r
-    }\r
-\r
-    let currentPosterDataUrl = null;\r
-\r
-    /**\r
-     * Universal Mobile Save Handler (Covering Safari, Chrome, WeChat, QQ, TikTok, etc.)\r
-     * 1. Attempts Native Web Share API (File direct to iOS/Android system Photos sheet)\r
-     * 2. Attempts Blob <a download> click for mobile browsers supporting anchor downloads\r
-     * 3. Fallbacks to clear animated guidance for long-press-to-save in in-app webviews (WeChat)\r
-     */\r
-    async function triggerMobileSave() {\r
-      if (!currentPosterDataUrl) return;\r
-      triggerHaptic(8);\r
-      soundEngine.playDialClick();\r
-\r
-      const isWeChatOrInApp = /MicroMessenger|WeChat|Weibo|Instagram|TikTok/i.test(navigator.userAgent);\r
-\r
-      // In WeChat / In-App Webview: directly highlight the long-press action since Web Share & anchor downloads are sandbox-blocked\r
-      if (isWeChatOrInApp) {\r
-        showToast("\u{1F446} Press & hold image above to save to album");\r
-        const badge = document.getElementById("save-modal-badge");\r
-        if (badge) {\r
-          badge.style.transform = "scale(1.08)";\r
-          badge.style.boxShadow = "0 0 0 3px rgba(232, 93, 63, 0.35)";\r
-          setTimeout(() => {\r
-            badge.style.transform = "";\r
-            badge.style.boxShadow = "";\r
-          }, 1200);\r
-        }\r
-        return;\r
-      }\r
-\r
-      // Step 1: Try Native Web Share API (iOS Safari & Android Chrome direct save to camera roll)\r
-      if (navigator.share && navigator.canShare) {\r
-        try {\r
-          const response = await fetch(currentPosterDataUrl);\r
-          const blob = await response.blob();\r
-          const file = new File([blob], \`ViviBon-Cover-\${Date.now()}.png\`, { type: 'image/png' });\r
-          if (navigator.canShare({ files: [file] })) {\r
-            await navigator.share({\r
-              title: 'ViviBon Cover',\r
-              files: [file]\r
-            });\r
-            trackEvent("poster_shared_native_photos");\r
-            return;\r
-          }\r
-        } catch (err) {\r
-          if (err.name === 'AbortError') return; // User closed sheet\r
-          console.warn("Web Share files failed, attempting fallback download:", err);\r
-        }\r
-      }\r
-\r
-      // Step 2: Try Direct Blob Download for mobile browsers allowing download attribute\r
-      try {\r
-        const response = await fetch(currentPosterDataUrl);\r
-        const blob = await response.blob();\r
-        const blobUrl = URL.createObjectURL(blob);\r
-        const a = document.createElement("a");\r
-        a.style.display = "none";\r
-        a.href = blobUrl;\r
-        a.download = \`ViviBon-Cover-\${Date.now()}.png\`;\r
-        document.body.appendChild(a);\r
-        a.click();\r
-        setTimeout(() => {\r
-          document.body.removeChild(a);\r
-          URL.revokeObjectURL(blobUrl);\r
-        }, 300);\r
-        showToast("Saved to Photos / Downloads! \u2726");\r
-      } catch (e) {\r
-        showToast("\u{1F446} Press & hold image to save to album");\r
-      }\r
-    }\r
-\r
-    function closeSaveModal(e) {\r
-      if (e) e.stopPropagation();\r
-      soundEngine.playDialClick();\r
-      document.getElementById("save-modal").style.display = "none";\r
-    }\r
-\r
-    function openErrorModal(title, message) {\r
-      triggerHaptic(15);\r
-      const modal = document.getElementById("error-modal");\r
-      if (!modal) return;\r
-      if (title) document.getElementById("error-modal-title").innerText = title;\r
-      if (message) document.getElementById("error-modal-desc").innerText = message;\r
-      modal.style.display = "flex";\r
-    }\r
-\r
-    function closeErrorModal(e) {\r
-      if (e) e.stopPropagation();\r
-      triggerHaptic(6);\r
-      soundEngine.playDialClick();\r
-      const modal = document.getElementById("error-modal");\r
-      if (modal) modal.style.display = "none";\r
-    }\r
-\r
-    function retryGeneration() {\r
-      const modal = document.getElementById("error-modal");\r
-      if (modal) modal.style.display = "none";\r
-      startGeneration();\r
-    }\r
-\r
-    document.addEventListener("DOMContentLoaded", () => {\r
-      renderCategoryPills();\r
-      renderTemplateCards();\r
-      preloadAllTemplateThumbnails();\r
-      initDragScroll();\r
-      initCompareEvents();\r
-    });\r
-  </script>\r
-</body>\r
-</html>\r
-`;
+var public_default = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>ViviBon Cover</title>
+
+  <!-- Declarative TCP/TLS Pre-warming for 0-RTT Connection Reuse -->
+  <link rel="preconnect" href="https://vivibon-cover-worker.zhoumiaoyin1.workers.dev" crossorigin />
+  <link rel="dns-prefetch" href="https://vivibon-cover-worker.zhoumiaoyin1.workers.dev" />
+
+  <!-- Instant Eager Preload for Initial Corporate Templates -->
+  <link rel="preload" as="image" href="models/airline_captain.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="models/caffeine_pro.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="models/michelin_chef.webp" type="image/webp" fetchpriority="high" />
+
+  <!-- High-fashion Atelier Monogram Favicon (0KB Network Request, Eliminates 404) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23111111'/><circle cx='16' cy='16' r='6' fill='%23FAF8F5'/></svg>" />
+
+  <!-- Microsoft Clarity (100% Free, Unlimited Replay & Heatmaps) -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      try {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      } catch (e) { console.warn('[Clarity] Init error:', e); }
+    })(window, document, "clarity", "script", "yf41ikpys2");
+  </script>
+
+  <style>
+    :root {
+      --bg-page: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.07);
+      --text-main: #111111;
+      --text-subtle: #4A4A4A;
+      --text-muted: #8E8E93;
+
+      --focus-bg: #111111;
+      --focus-text: #FFFFFF;
+      --focus-border: #111111;
+      --focus-shadow: rgba(0, 0, 0, 0.18);
+
+      --unfocus-bg: rgba(255, 255, 255, 0.78);
+      --unfocus-border: rgba(0, 0, 0, 0.07);
+      --unfocus-text: #555555;
+
+      --cta-bg: #111111;
+      --cta-text: #FFFFFF;
+      --cta-shadow: rgba(0, 0, 0, 0.25);
+
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --spring-tight: cubic-bezier(0.2, 0.8, 0.2, 1);
+      --spring-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+      --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @supports (color: color(display-p3 1 1 1)) {
+      :root {
+        --bg-page: color(display-p3 0.982 0.973 0.962);
+        --bg-card: color(display-p3 1 1 1);
+        --text-main: color(display-p3 0.067 0.067 0.067);
+        --focus-bg: color(display-p3 0.067 0.067 0.067);
+        --focus-text: color(display-p3 1 1 1);
+        --focus-border: color(display-p3 0.067 0.067 0.067);
+        --cta-bg: color(display-p3 0.067 0.067 0.067);
+        --cta-text: color(display-p3 1 1 1);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html,
+    body {
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      overflow-x: hidden !important;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-page);
+      -webkit-overflow-scrolling: auto;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui, sans-serif;
+      width: 100%;
+    }
+
+    .ambient-glow-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 380px;
+      background: radial-gradient(120% 100% at 50% 0%, rgba(238, 233, 222, 0.65) 0%, rgba(250, 248, 245, 0) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: max(8px, env(safe-area-inset-top)) 16px max(14px, env(safe-area-inset-bottom)) 16px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Top Masthead */
+    .header-bar {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      min-height: clamp(38px, 4.8vh, 48px);
+      margin-bottom: clamp(2px, 0.6vh, 6px);
+      padding: 2px 0;
+      width: 100%;
+    }
+
+    .brand-masthead {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      user-select: none;
+      gap: 2px;
+      width: 100%;
+    }
+
+    .brand-title {
+      font-size: clamp(17.5px, 4.6vw, 21.5px);
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-indent: 0.24em;
+      color: var(--text-main);
+      font-family: "Didot", "Bodoni MT", "Cinzel", "Times New Roman", serif;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .brand-subtitle {
+      font-size: clamp(7.5px, 1.9vw, 8.5px);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-indent: 0.22em;
+      color: var(--text-muted);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .vernier-caliper-gauge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 92%;
+      max-width: 320px;
+      margin-top: 2px;
+      opacity: 0.55;
+      user-select: none;
+    }
+
+    .vernier-stamp {
+      font-size: 7px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", monospace;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .vernier-ticks {
+      flex: 1 1 auto;
+      height: 5px;
+      margin: 0 10px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.35) 0,
+        rgba(0, 0, 0, 0.35) 1px,
+        transparent 1px,
+        transparent 5px
+      );
+      mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+    }
+
+    .header-back-btn {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .header-back-btn:active {
+      transform: translateY(-50%) scale(0.92);
+      opacity: 0.7;
+    }
+
+    /* Views */
+    #view-entry {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      flex: 1 1 0;
+      min-height: 0;
+      overflow: hidden;
+      justify-content: space-between;
+    }
+
+    /* 3D Perspective Stage */
+    .deck-stage-container {
+      position: relative;
+      width: 100%;
+      flex: 1 1 0;
+      min-height: 0;
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      overflow: visible;
+    }
+
+    .deck-cards-viewport {
+      position: relative;
+      width: min(calc((100dvh - 215px) * 0.75), 80vw, 340px);
+      aspect-ratio: 3 / 4;
+      max-height: 100%;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .deck-cover {
+      position: absolute;
+      inset: 0;
+      border-radius: clamp(18px, 2.6vh, 24px);
+      overflow: hidden;
+      background: #0D0D0F;
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      will-change: transform, opacity, filter, border-radius, box-shadow;
+      touch-action: none;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .deck-paper-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0;
+      mix-blend-mode: overlay;
+      transition: opacity 0.12s ease-out;
+    }
+
+    .deck-paper-shadow {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.12s ease-out;
+    }
+
+    .deck-paper-back {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: #FAF8F5;
+      box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .paper-back-watermark {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.25;
+      color: #111111;
+      font-family: "Didot", "Bodoni MT", serif;
+      letter-spacing: 0.24em;
+    }
+
+    .paper-back-logo {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .paper-back-spec {
+      font-size: 7.5px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .deck-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.22s ease;
+    }
+
+    .deck-cover-overlay {
+      position: absolute;
+      inset: 0;
+      padding: clamp(14px, 2vh, 18px) clamp(14px, 3.4vw, 18px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0.82) 100%);
+      color: #FFFFFF;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .deck-cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .cover-brand-micro {
+      font-size: clamp(10px, 2.4vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      font-family: "Didot", "Bodoni MT", serif;
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .cover-issue-tag {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", monospace;
+      text-transform: uppercase;
+      opacity: 0.88;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 2.5px 8px;
+      border-radius: 9999px;
+      border: 0.5px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .deck-cover-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      width: 100%;
+    }
+
+    .cover-editorial-title {
+      font-size: clamp(16px, 4.4vw, 20.5px);
+      font-weight: 600;
+      line-height: 1.16;
+      letter-spacing: 0.02em;
+      font-family: "Didot", "Bodoni MT", "Cinzel", serif;
+      color: #FFFFFF;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+      margin: 0;
+    }
+
+    .cover-feature-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      align-self: flex-start;
+      padding: clamp(6px, 1vh, 8px) clamp(12px, 3.2vw, 15px);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #111111;
+      font-size: clamp(10px, 2.5vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      text-transform: uppercase;
+      pointer-events: auto;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    }
+
+    .cover-feature-pill:hover {
+      background: #111111;
+      color: #FFFFFF;
+    }
+
+    .cover-feature-pill:active {
+      transform: scale(0.95);
+    }
+
+    /* Bottom Controls: Anchors, Scrubber, CTA */
+    .bottom-controls {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 100%;
+      gap: clamp(5px, 0.9vh, 8px);
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .scrubber-anchors {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0 6px;
+    }
+
+    .scrubber-anchor {
+      font-size: clamp(9px, 2.3vw, 10.5px);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      user-select: none;
+    }
+
+    .scrubber-anchor.active {
+      color: #111111;
+      font-weight: 700;
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .scrubber-rail-wrap {
+      position: relative;
+      width: 100%;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .scrubber-track {
+      position: relative;
+      width: 100%;
+      height: 18px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 0.5px solid rgba(0, 0, 0, 0.09);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .scrubber-ticks {
+      position: absolute;
+      inset: 0 16px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.28) 0,
+        rgba(0, 0, 0, 0.28) 1px,
+        transparent 1px,
+        transparent 6px
+      );
+      opacity: 0.65;
+      pointer-events: none;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .scrubber-thumb {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 22px;
+      background: #111111;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 0.5px 0 rgba(255, 255, 255, 0.3);
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+      z-index: 3;
+    }
+
+    .scrubber-thumb:active {
+      cursor: grabbing;
+    }
+
+    .scrubber-thumb-num {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", monospace;
+    }
+
+    .btn-cta {
+      margin-top: 0;
+      flex-shrink: 0;
+      width: 100%;
+      padding: clamp(12px, 1.6vh, 15px) 16px;
+      border-radius: 9999px;
+      background: var(--cta-bg);
+      color: var(--cta-text);
+      font-size: clamp(12px, 3.1vw, 13px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px var(--cta-shadow);
+      transition: all 0.22s var(--ease-smooth);
+      user-select: none;
+      text-transform: uppercase;
+    }
+
+    .btn-cta:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
+    /* Result View */
+    #view-result {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      flex: 1 1 0;
+      min-height: 0;
+      gap: clamp(10px, 1.6vh, 16px);
+    }
+
+    .poster-stage {
+      position: relative;
+      width: min(calc((100dvh - 200px) * 0.75), 84vw, 360px);
+      aspect-ratio: 3 / 4;
+      max-height: calc(100dvh - 200px);
+      margin: 0 auto;
+      background: #0D0D0F;
+      border-radius: clamp(18px, 2.6vh, 24px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
+      flex-shrink: 0;
+    }
+
+    #view-result .btn-cta {
+      width: min(calc((100dvh - 200px) * 0.75), 84vw, 360px);
+      margin: 0 auto;
+    }
+
+    .poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      -webkit-touch-callout: default;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    #res-display-img.unveiling {
+      opacity: 0;
+      transform: scale(0.985);
+      transition: none !important;
+    }
+
+    .poster-img.original-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: none !important;
+      transition: opacity 0.15s ease-out;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .compare-pill {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17, 17, 17, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 0.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 9999px;
+      padding: 7px 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #FFFFFF;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .compare-pill.active {
+      background: #FFFFFF;
+      color: #111111;
+    }
+
+    /* Fullscreen Frosted Loader */
+    .loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 248, 245, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .loader-card {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .darkroom-ripple-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .darkroom-agitate-hint {
+      font-size: 10px;
+      color: var(--text-muted);
+      opacity: 0.52;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .ripple-aperture-box {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .aperture-beam-wrap {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .aperture-beam-svg {
+      width: 100%;
+      height: 100%;
+      animation: spinBeam 1.8s linear infinite;
+    }
+
+    @keyframes spinBeam {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .aperture-center-core {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #111111;
+    }
+
+    .darkroom-phase-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 9999px;
+    }
+
+    .darkroom-phase-beacon {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #111111;
+      animation: pulseBeacon 1.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseBeacon {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .darkroom-phase-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .darkroom-phase-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .darkroom-cancel-btn {
+      margin-top: 10px;
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 9999px;
+      padding: 6px 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    /* Toast */
+    .toast-pill {
+      position: fixed;
+      top: max(20px, env(safe-area-inset-top));
+      left: 50%;
+      transform: translateX(-50%) translateY(-30px);
+      background: rgba(17, 17, 17, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 200;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .toast-pill.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Error Modal */
+    .studio-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 150;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 24px;
+    }
+
+    .studio-modal-overlay.active {
+      opacity: 1;
+    }
+
+    .studio-modal-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 24px;
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .studio-modal-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 12px 0 6px 0;
+      color: #111111;
+    }
+
+    .studio-modal-desc {
+      font-size: 12.5px;
+      color: var(--text-subtle);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .studio-modal-actions {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .studio-modal-btn {
+      flex: 1;
+      padding: 10px 0;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .studio-modal-btn.primary {
+      background: #111111;
+      color: #FFFFFF;
+    }
+
+    .studio-modal-btn.secondary {
+      background: rgba(0, 0, 0, 0.06);
+      color: #111111;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ambient-glow-top"></div>
+
+  <div class="app-card">
+
+    <header class="header-bar">
+      <button id="header-back-btn" class="header-back-btn" style="display: none;" onclick="backToEntry()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="brand-masthead">
+        <div class="brand-title">V I V I B O N</div>
+        <div class="brand-subtitle-wrap">
+          <span class="brand-subtitle">HAUTE OPTIQUE ATELIER \xB7 DROP N\xB0 09</span>
+        </div>
+        <div class="vernier-caliper-gauge" aria-hidden="true">
+          <span class="vernier-stamp">CAL. 1080\xD71440</span>
+          <span class="vernier-ticks"></span>
+          <span class="vernier-stamp">TOL. 0.00MM</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= VIEW 1: 3D Spatial Deck ================= -->
+    <div id="view-entry">
+
+      <div class="deck-stage-container" id="deck-stage">
+        <div class="deck-cards-viewport" id="deck-viewport">
+          <!-- 12 3D covers dynamically rendered here -->
+        </div>
+      </div>
+
+      <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="handleUpload(event)" />
+
+      <!-- Precision Vernier Scrubber & Bottom Controls -->
+      <div class="bottom-controls">
+        <!-- 4 Core Collection Anchors -->
+        <div class="scrubber-anchors" id="scrubber-anchors">
+          <span class="scrubber-anchor active" onclick="jumpToCategory('corporate')">BOARDROOM</span>
+          <span class="scrubber-anchor" onclick="jumpToCategory('fine_art')">LOUVRE</span>
+          <span class="scrubber-anchor" onclick="jumpToCategory('cosplay')">DRAMA</span>
+          <span class="scrubber-anchor" onclick="jumpToCategory('celebration')">GALA</span>
+        </div>
+
+        <!-- Vernier Mechanical Scrubber Rail -->
+        <div class="scrubber-rail-wrap" id="scrubber-rail-wrap">
+          <div class="scrubber-track" id="scrubber-track">
+            <div class="scrubber-ticks"></div>
+            <div class="scrubber-thumb" id="scrubber-thumb">
+              <span class="scrubber-thumb-num" id="scrubber-thumb-num">01</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary CTA Shutter Key -->
+        <button class="btn-cta" id="main-cta-btn" onclick="startGeneration()">
+          CALIBRATE & FEATURE PET
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ================= VIEW 2: Result Showcase ================= -->
+    <div id="view-result">
+
+      <div class="poster-stage">
+        <img id="res-display-img" class="poster-img" src="models/milo_gentle_prince_of_wales.webp" alt="High Fashion Cover" />
+        <img id="res-original-img" class="poster-img original-layer" src="models/milo_gentle.webp" alt="Original Pet" />
+
+        <div class="compare-pill" id="compare-btn" role="button" aria-pressed="false" tabindex="0">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span id="compare-label">Hold to compare</span>
+        </div>
+      </div>
+
+      <button class="btn-cta" onclick="exportPoster()">
+        Save 1080P portrait
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Fullscreen Frosted Loader Overlay -->
+  <div class="loader-overlay" id="loader">
+    <canvas id="darkroom-ripple-canvas" class="darkroom-ripple-canvas"></canvas>
+    <div class="loader-card">
+      <div class="ripple-aperture-box">
+        <div class="aperture-beam-wrap">
+          <svg class="aperture-beam-svg" viewBox="0 0 68 68">
+            <circle cx="34" cy="34" r="33" fill="none" stroke="#111111" stroke-width="2.2" stroke-dasharray="38 170" stroke-linecap="round" />
+          </svg>
+          <div class="aperture-center-core"></div>
+        </div>
+      </div>
+
+      <div class="darkroom-phase-pill">
+        <div class="darkroom-phase-beacon"></div>
+        <div class="darkroom-phase-title" id="loader-phase-title">Analyzing facial features</div>
+      </div>
+      <div class="darkroom-phase-sub" id="loader-phase-sub">Detecting subject lighting & geometry</div>
+
+      <button class="darkroom-cancel-btn" type="button" onclick="cancelGeneration()">
+        Cancel
+      </button>
+      <div class="darkroom-agitate-hint">Touch to agitate silver gelatin print</div>
+    </div>
+  </div>
+
+  <!-- Toast Pill -->
+  <div class="toast-pill" id="toast"></div>
+
+  <!-- Error Modal -->
+  <div class="studio-modal-overlay" id="error-modal" onclick="closeErrorModal(event)">
+    <div class="studio-modal-card" onclick="event.stopPropagation()">
+      <div class="studio-modal-title" id="error-modal-title">Studio Queue Busy</div>
+      <div class="studio-modal-desc" id="error-modal-desc">
+        High demand on rendering servers. Your pet photo and chosen style have been safely preserved.
+      </div>
+      <div class="studio-modal-actions">
+        <button class="studio-modal-btn secondary" type="button" onclick="closeErrorModal(event)">Dismiss</button>
+        <button class="studio-modal-btn primary" type="button" onclick="retryGeneration()">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="render-canvas" style="display: none;"></canvas>
+
+  <script>
+    // 4 Categories \xD7 3 High-Converting Templates (Haute Optique Drops)
+    const THEMES = {
+      corporate: {
+        id: "corporate",
+        backendTheme: "corporate",
+        name: "01 / BOARDROOM",
+        tag: "BOARDROOM \xB7 01",
+        templates: [
+          {
+            id: "airline_captain",
+            name: "Captain",
+            img: "models/airline_captain.webp",
+            title: "Frequent Flyer Chief Fluff",
+            tag: "AVIATOR \xB7 01"
+          },
+          {
+            id: "coffee_pro",
+            name: "Caffeine Pro",
+            img: "models/caffeine_pro.webp",
+            title: "Caffeine Fueled Overtime",
+            tag: "OVERTIME \xB7 02"
+          },
+          {
+            id: "michelin_chef",
+            name: "Chef",
+            img: "models/michelin_chef.webp",
+            title: "Michelin Treat Specialist",
+            tag: "CHEF \xB7 03"
+          }
+        ]
+      },
+      fine_art: {
+        id: "fine_art",
+        backendTheme: "fine_art",
+        name: "02 / LOUVRE",
+        tag: "LOUVRE \xB7 02",
+        templates: [
+          {
+            id: "mona_lisa",
+            name: "Mona Lisa",
+            img: "models/mona_lisa.webp",
+            title: "Louvre Heist In Progress",
+            tag: "HEIST \xB7 01"
+          },
+          {
+            id: "pearl_earring",
+            name: "Pearl Earring",
+            img: "models/pearl_earring.webp",
+            title: "Golden Age Pure Elegance",
+            tag: "VERMEER \xB7 02"
+          },
+          {
+            id: "line_art",
+            name: "Line Art",
+            img: "models/line_art.webp",
+            title: "Minimalist Modern Ink",
+            tag: "SKETCH \xB7 03"
+          }
+        ]
+      },
+      cosplay: {
+        id: "cosplay",
+        backendTheme: "cosplay",
+        name: "03 / DRAMA",
+        tag: "DRAMA \xB7 03",
+        templates: [
+          {
+            id: "assumption_of_mary",
+            name: "Baroque",
+            img: "models/assumption_of_mary.webp",
+            title: "Renaissance Dramatic Lead",
+            tag: "BAROQUE \xB7 01"
+          },
+          {
+            id: "caribbean_pirate",
+            name: "Pirate",
+            img: "models/caribbean_pirate.webp",
+            title: "Seven Seas Treat Corsair",
+            tag: "CORSAIR \xB7 02"
+          },
+          {
+            id: "secret_agent",
+            name: "Agent",
+            img: "models/secret_agent.webp",
+            title: "Midnight Heist Secret Agent",
+            tag: "AGENT \xB7 03"
+          }
+        ]
+      },
+      celebration: {
+        id: "celebration",
+        backendTheme: "celebration",
+        name: "04 / GALA",
+        tag: "GALA \xB7 04",
+        templates: [
+          {
+            id: "christmas",
+            name: "Velvet",
+            img: "models/christmas.webp",
+            title: "Velvet Gift Box Aristocrat",
+            tag: "VELVET \xB7 01"
+          },
+          {
+            id: "halloween",
+            name: "Pumpkin",
+            img: "models/halloween.webp",
+            title: "Cinderella Pumpkin Rider",
+            tag: "PUMPKIN \xB7 02"
+          },
+          {
+            id: "birthday_vip",
+            name: "VIP Gala",
+            img: "models/birthday_vip.webp",
+            title: "Met Gala Crasher VIP",
+            tag: "GALA \xB7 03"
+          }
+        ]
+      }
+    };
+
+    THEMES.lifestyle = THEMES.corporate;
+    THEMES.artistic = THEMES.fine_art;
+    THEMES.drama = THEMES.cosplay;
+
+    let activeThemeKey = "corporate";
+    let activeTemplateId = "airline_captain";
+    let userPhotoUrl = "models/milo_gentle.webp";
+    let isUserUploaded = false;
+
+    function trackEvent(eventName, properties = {}) {
+      try {
+        if (window.clarity) {
+          window.clarity("event", eventName);
+          if (properties && typeof properties === 'object') {
+            for (const [k, v] of Object.entries(properties)) {
+              if (v !== undefined && v !== null) {
+                window.clarity("set", \`\${eventName}_\${k}\`, String(v));
+              }
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('[Clarity Event]:', e);
+      }
+    }
+
+    let userHasInteracted = false;
+    const markUserInteraction = () => {
+      userHasInteracted = true;
+    };
+    ['pointerdown', 'touchstart', 'mousedown', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, markUserInteraction, { capture: true, passive: true, once: true });
+    });
+
+    function triggerHaptic(duration = 8) {
+      if (!userHasInteracted) return;
+      if (navigator.vibrate) {
+        try { navigator.vibrate(duration); } catch (e) { }
+      }
+    }
+
+    /**
+     * Web Audio Pure Haptic Sound Engine (0KB Asset Overhead - NC-7 Compliant)
+     */
+    class HapticSoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.masterGain = null;
+        this.initUnlockListener();
+      }
+
+      ensureContext() {
+        if (!userHasInteracted) return null;
+        try {
+          if (!this.ctx) {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return null;
+            this.ctx = new AudioCtx();
+            this.masterGain = this.ctx.createGain();
+            this.masterGain.gain.setValueAtTime(0.92, this.ctx.currentTime);
+            this.masterGain.connect(this.ctx.destination);
+          }
+          if (this.ctx.state === 'suspended') {
+            return this.ctx.resume();
+          }
+          return Promise.resolve();
+        } catch (e) {
+          return null;
+        }
+      }
+
+      initUnlockListener() {
+        const unlock = () => {
+          userHasInteracted = true;
+          const p = this.ensureContext();
+          if (p && typeof p.then === 'function') {
+            p.then(() => {
+              try {
+                if (this.ctx) {
+                  const b = this.ctx.createBuffer(1, 1, this.ctx.sampleRate);
+                  const s = this.ctx.createBufferSource();
+                  s.buffer = b;
+                  s.connect(this.ctx.destination);
+                  s.start(0);
+                }
+              } catch (e) { }
+            }).catch(() => { });
+          }
+        };
+        ['pointerdown', 'touchstart', 'mousedown', 'keydown'].forEach(evt => {
+          window.addEventListener(evt, unlock, { capture: true, passive: true, once: true });
+        });
+      }
+
+      playDialClick() {
+        const p = this.ensureContext();
+        if (!this.ctx) return;
+        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {
+          p.then(() => this._executeDialClick()).catch(() => { });
+        } else {
+          this._executeDialClick();
+        }
+      }
+
+      _executeDialClick() {
+        try {
+          if (!this.ctx || !this.masterGain) return;
+          const now = this.ctx.currentTime + 0.003;
+          const jitter = 1.0 + (Math.random() - 0.5) * 0.04;
+
+          const snapOsc = this.ctx.createOscillator();
+          const snapGain = this.ctx.createGain();
+          snapOsc.type = 'sine';
+          snapOsc.frequency.setValueAtTime(1900 * jitter, now);
+          snapOsc.frequency.exponentialRampToValueAtTime(580, now + 0.024);
+
+          snapGain.gain.setValueAtTime(0.35, now);
+          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.024);
+
+          snapOsc.connect(snapGain);
+          snapGain.connect(this.masterGain);
+          snapOsc.start(now);
+          snapOsc.stop(now + 0.025);
+
+          const bufferSize = Math.floor(this.ctx.sampleRate * 0.018);
+          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            output[i] = Math.random() * 2 - 1;
+          }
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = noiseBuffer;
+
+          const bandpass = this.ctx.createBiquadFilter();
+          bandpass.type = 'bandpass';
+          bandpass.frequency.setValueAtTime(2800 * jitter, now);
+          bandpass.Q.setValueAtTime(3.2, now);
+
+          const noiseGain = this.ctx.createGain();
+          noiseGain.gain.setValueAtTime(0.26, now);
+          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.018);
+
+          noise.connect(bandpass);
+          bandpass.connect(noiseGain);
+          noiseGain.connect(this.masterGain);
+          noise.start(now);
+
+          const bodyOsc = this.ctx.createOscillator();
+          const bodyGain = this.ctx.createGain();
+          bodyOsc.type = 'triangle';
+          bodyOsc.frequency.setValueAtTime(340 * jitter, now);
+          bodyOsc.frequency.exponentialRampToValueAtTime(110, now + 0.028);
+
+          bodyGain.gain.setValueAtTime(0.28, now);
+          bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);
+
+          bodyOsc.connect(bodyGain);
+          bodyGain.connect(this.masterGain);
+          bodyOsc.start(now);
+          bodyOsc.stop(now + 0.029);
+        } catch (e) { }
+      }
+
+      playShutterSnap() {
+        const p = this.ensureContext();
+        if (!this.ctx) return;
+        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {
+          p.then(() => this._executeShutterSnap()).catch(() => { });
+        } else {
+          this._executeShutterSnap();
+        }
+      }
+
+      _executeShutterSnap() {
+        try {
+          if (!this.ctx || !this.masterGain) return;
+          const now = this.ctx.currentTime + 0.003;
+          const jitter = 1.0 + (Math.random() - 0.5) * 0.03;
+
+          const snapOsc = this.ctx.createOscillator();
+          const snapGain = this.ctx.createGain();
+          snapOsc.type = 'sine';
+          snapOsc.frequency.setValueAtTime(1600 * jitter, now);
+          snapOsc.frequency.exponentialRampToValueAtTime(420, now + 0.032);
+          snapGain.gain.setValueAtTime(0.38, now);
+          snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.032);
+          snapOsc.connect(snapGain);
+          snapGain.connect(this.masterGain);
+          snapOsc.start(now);
+          snapOsc.stop(now + 0.033);
+
+          const bufferSize = Math.floor(this.ctx.sampleRate * 0.035);
+          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            output[i] = Math.random() * 2 - 1;
+          }
+          const whiteNoise = this.ctx.createBufferSource();
+          whiteNoise.buffer = noiseBuffer;
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(2400 * jitter, now);
+          filter.Q.setValueAtTime(2.5, now);
+          const noiseGain = this.ctx.createGain();
+          noiseGain.gain.setValueAtTime(0.30, now);
+          noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);
+          whiteNoise.connect(filter);
+          filter.connect(noiseGain);
+          noiseGain.connect(this.masterGain);
+          whiteNoise.start(now);
+
+          const returnTime = now + 0.036;
+          const returnOsc = this.ctx.createOscillator();
+          const returnGain = this.ctx.createGain();
+          returnOsc.type = 'triangle';
+          returnOsc.frequency.setValueAtTime(280 * jitter, returnTime);
+          returnOsc.frequency.exponentialRampToValueAtTime(90, returnTime + 0.045);
+          returnGain.gain.setValueAtTime(0.35, returnTime);
+          returnGain.gain.exponentialRampToValueAtTime(0.0001, returnTime + 0.045);
+          returnOsc.connect(returnGain);
+          returnGain.connect(this.masterGain);
+          returnOsc.start(returnTime);
+          returnOsc.stop(returnTime + 0.046);
+        } catch (e) { }
+      }
+
+      playPaperRustle(intensity = 1.0) {
+        const p = this.ensureContext();
+        if (!this.ctx) return;
+        if (this.ctx.state === 'suspended' && p && typeof p.then === 'function') {
+          p.then(() => this._executePaperRustle(intensity)).catch(() => { });
+        } else {
+          this._executePaperRustle(intensity);
+        }
+      }
+
+      _executePaperRustle(intensity) {
+        try {
+          if (!this.ctx || !this.masterGain) return;
+          const now = this.ctx.currentTime + 0.002;
+          const duration = 0.042;
+          const bufferSize = Math.floor(this.ctx.sampleRate * duration);
+          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.42));
+          }
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = noiseBuffer;
+
+          const bandpass = this.ctx.createBiquadFilter();
+          bandpass.type = 'bandpass';
+          bandpass.frequency.setValueAtTime(1480, now);
+          bandpass.Q.setValueAtTime(1.9, now);
+
+          const rustleGain = this.ctx.createGain();
+          const gainVal = Math.min(0.24, 0.10 * intensity);
+          rustleGain.gain.setValueAtTime(gainVal, now);
+          rustleGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+          noise.connect(bandpass);
+          bandpass.connect(rustleGain);
+          rustleGain.connect(this.masterGain);
+          noise.start(now);
+          noise.stop(now + duration + 0.005);
+        } catch (e) { }
+      }
+    }
+
+    const soundEngine = new HapticSoundEngine();
+
+    function showToast(text, duration = 2500) {
+      const toast = document.getElementById("toast");
+      if (!toast) return;
+      toast.innerText = text;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, duration);
+    }
+
+    // Flatten 12 High-Fashion Templates
+    const ALL_TEMPLATES = [];
+    const CATEGORY_START_INDEX = {};
+    const CATEGORY_KEYS = ["corporate", "fine_art", "cosplay", "celebration"];
+
+    CATEGORY_KEYS.forEach(k => {
+      const theme = THEMES[k];
+      if (!theme) return;
+      CATEGORY_START_INDEX[k] = ALL_TEMPLATES.length;
+      theme.templates.forEach((tpl, idx) => {
+        ALL_TEMPLATES.push({
+          ...tpl,
+          categoryKey: k,
+          categoryName: theme.name,
+          categoryTag: theme.tag,
+          localIndex: idx,
+          globalIndex: ALL_TEMPLATES.length
+        });
+      });
+    });
+
+    let currentDeckIndex = 0;
+    let deckProgress = 0.0;
+    let cardElements = [];
+    let cardSheens = [];
+    let cardShadows = [];
+    let lastHapticIndex = 0;
+    let lastClickTimestamp = 0;
+    let animFrameId = null;
+
+    function handleHeroClick() {
+      soundEngine.playDialClick();
+      const input = document.getElementById('file-input');
+      if (input) input.click();
+    }
+
+    function renderDeckStage() {
+      const viewport = document.getElementById("deck-viewport");
+      if (!viewport) return;
+
+      viewport.innerHTML = ALL_TEMPLATES.map((tpl, i) => {
+        const isCurrentActive = i === currentDeckIndex;
+        const displaySrc = (isCurrentActive && isUserUploaded && userPhotoUrl) ? userPhotoUrl : tpl.img;
+        const pillText = (isCurrentActive && isUserUploaded) ? "RECALIBRATE PET" : "FEATURE MY PET";
+
+        return \`
+          <div class="deck-cover" id="deck-card-\${i}" onclick="onDeckCardClick(\${i})" aria-label="\${tpl.title}">
+            <img class="deck-cover-img" id="deck-img-\${i}" src="\${displaySrc}" alt="\${tpl.title}" decoding="async" fetchpriority="\${isCurrentActive ? 'high' : 'auto'}" onerror="this.onerror=null;this.src='models/milo_gentle.webp';" />
+            <div class="deck-paper-sheen" id="deck-sheen-\${i}"></div>
+            <div class="deck-paper-shadow" id="deck-shadow-\${i}"></div>
+            <div class="deck-paper-back">
+              <div class="paper-back-watermark">
+                <span class="paper-back-logo">VIVIBON</span>
+                <span class="paper-back-spec">HAUTE COUTURE ARCHIVE \xB7 1 OF 1</span>
+              </div>
+            </div>
+            <div class="deck-cover-overlay">
+              <div class="deck-cover-header">
+                <span class="cover-brand-micro">VIVIBON</span>
+                <span class="cover-issue-tag">\${tpl.tag}</span>
+              </div>
+              <div class="deck-cover-footer">
+                <h2 class="cover-editorial-title">\${tpl.title}</h2>
+                <div class="cover-feature-pill" id="deck-pill-\${i}" onclick="event.stopPropagation(); handleHeroClick()">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                    <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                    <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                    <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                    <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                    <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                  </svg>
+                  <span id="deck-pill-label-\${i}">\${pillText}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        \`;
+      }).join('');
+
+      cardElements = Array.from(viewport.querySelectorAll(".deck-cover"));
+      cardSheens = Array.from(viewport.querySelectorAll(".deck-paper-sheen"));
+      cardShadows = Array.from(viewport.querySelectorAll(".deck-paper-shadow"));
+      applyDeckProgress(deckProgress);
+    }
+
+    /**
+     * Haute Couture Cylindrical Paper Roll Mathematics:
+     * Continuous 120 FPS physical paper curl with dynamic specular sweep & fold shadow.
+     */
+    function applyDeckProgress(progress, silent = false) {
+      const total = ALL_TEMPLATES.length;
+      const clampedProgress = Math.max(0, Math.min(total - 1, progress));
+
+      cardElements.forEach((card, i) => {
+        const diff = i - clampedProgress;
+        const absDiff = Math.abs(diff);
+
+        if (absDiff > 2.6) {
+          card.style.display = 'none';
+          return;
+        }
+        card.style.display = 'block';
+
+        const rotateY = -diff * 32; // Cylindrical curl curvature
+        const rotateZ = diff * 3.6;  // Organic paper sag & lift
+        const skewY = diff * 3.0;    // Flexible paper shear
+        const translateX = diff * 70; // 3D translation
+        const translateZ = -absDiff * 80 - Math.pow(absDiff, 2) * 22; // Recess depth
+        const scale = Math.max(0.66, 1 - absDiff * 0.16);
+        const brightness = Math.max(0.38, 1 - absDiff * 0.28);
+        const blur = Math.min(1.5, Math.max(0, (absDiff - 0.25) * 0.8));
+        const opacity = absDiff < 0.2 ? 1 : Math.max(0, 1 - (absDiff - 0.45) * 0.82);
+        const zIndex = Math.round(60 - absDiff * 15);
+        const isCenter = absDiff < 0.35;
+
+        // Dynamic paper border-radius (tighter curl on leading edge)
+        const rCurled = Math.min(36, Math.round(20 + absDiff * 14));
+        const radiusStyle = diff < 0 
+          ? \`20px \${rCurled}px \${rCurled}px 20px\` 
+          : \`\${rCurled}px 20px 20px \${rCurled}px\`;
+
+        // Shift transform origin along curl axis
+        const originX = diff < 0 ? '25%' : (diff > 0 ? '75%' : '50%');
+
+        card.style.transformOrigin = \`\${originX} 50%\`;
+        card.style.transform = \`translateX(\${translateX}%) scale(\${scale}) translateZ(\${translateZ}px) rotateY(\${rotateY}deg) rotateZ(\${rotateZ}deg) skewY(\${skewY}deg)\`;
+        card.style.borderRadius = radiusStyle;
+        card.style.opacity = String(opacity);
+        card.style.filter = \`brightness(\${brightness}) blur(\${blur}px)\`;
+        card.style.zIndex = String(zIndex);
+        
+        // Contact drop shadow cast by curling card onto next sheet
+        const shadowX = -diff * 22;
+        const shadowSpread = Math.round(absDiff * 8);
+        card.style.boxShadow = isCenter
+          ? '0 24px 56px -10px rgba(0, 0, 0, 0.40), 0 0 0 1px rgba(255, 255, 255, 0.20)'
+          : \`\${shadowX}px 20px 48px -\${shadowSpread}px rgba(0, 0, 0, \${0.30 + absDiff * 0.20}), 0 0 0 1px rgba(255, 255, 255, \${Math.max(0.04, 0.18 - absDiff * 0.15)})\`;
+        card.style.pointerEvents = absDiff < 1.3 ? 'auto' : 'none';
+
+        // Dynamic Specular Sheen (sweeping reflection band along the crest)
+        const sheen = cardSheens[i];
+        if (sheen) {
+          if (absDiff < 0.04) {
+            sheen.style.opacity = '0';
+          } else {
+            const crest = diff < 0 ? (100 - absDiff * 70) : (absDiff * 70);
+            const sheenIntensity = Math.min(0.55, absDiff * 0.75);
+            sheen.style.opacity = '1';
+            sheen.style.background = \`linear-gradient(\${diff < 0 ? 105 : 75}deg, transparent \${crest - 20}%, rgba(255, 255, 255, \${sheenIntensity}) \${crest}%, transparent \${crest + 20}%)\`;
+          }
+        }
+
+        // Dynamic Ambient Occlusion Crease Shadow
+        const shadow = cardShadows[i];
+        if (shadow) {
+          if (absDiff < 0.05) {
+            shadow.style.opacity = '0';
+          } else {
+            const shadowIntensity = Math.min(0.46, absDiff * 0.62);
+            shadow.style.opacity = '1';
+            shadow.style.background = \`linear-gradient(\${diff < 0 ? 'to left' : 'to right'}, rgba(0, 0, 0, \${shadowIntensity}) 0%, transparent 62%)\`;
+          }
+        }
+      });
+
+      // Scrubber Thumb Sync
+      const thumb = document.getElementById("scrubber-thumb");
+      const thumbNum = document.getElementById("scrubber-thumb-num");
+      const track = document.getElementById("scrubber-track");
+      if (thumb && track) {
+        const percent = clampedProgress / Math.max(1, total - 1);
+        const trackWidth = track.clientWidth || 320;
+        const thumbWidth = 32;
+        const usableWidth = trackWidth - thumbWidth;
+        const leftPx = (thumbWidth / 2) + (percent * usableWidth);
+        thumb.style.left = \`\${leftPx}px\`;
+
+        const nearest = Math.round(clampedProgress);
+        if (thumbNum) {
+          thumbNum.innerText = String(nearest + 1).padStart(2, '0');
+        }
+
+        if (nearest !== lastHapticIndex) {
+          lastHapticIndex = nearest;
+          const now = performance.now();
+          if (!silent && (now - lastClickTimestamp > 45)) {
+            lastClickTimestamp = now;
+            triggerHaptic(6);
+            soundEngine.playDialClick();
+          }
+          highlightActiveCategory(ALL_TEMPLATES[nearest].categoryKey);
+        }
+      }
+    }
+
+    function highlightActiveCategory(catKey) {
+      const anchors = document.querySelectorAll(".scrubber-anchor");
+      anchors.forEach(a => {
+        const cat = a.getAttribute("onclick")?.match(/'([^']+)'/)?.[1];
+        if (cat === catKey) {
+          a.classList.add("active");
+        } else {
+          a.classList.remove("active");
+        }
+      });
+    }
+
+    function updateCtaButtonLabel() {
+      const mainCta = document.getElementById("main-cta-btn");
+      if (mainCta) {
+        if (isUserUploaded) {
+          mainCta.innerText = "START EXPOSURE \u2794";
+        } else {
+          mainCta.innerText = "CALIBRATE & FEATURE PET";
+        }
+      }
+    }
+
+    function updateScrubberUI() {
+      applyDeckProgress(deckProgress);
+      updateCtaButtonLabel();
+    }
+
+    function onDeckCardClick(index) {
+      if (Math.abs(index - deckProgress) < 0.3) {
+        handleHeroClick();
+      } else {
+        triggerHaptic(6);
+        soundEngine.playDialClick();
+        animateToDeckIndex(index);
+      }
+    }
+
+    /**
+     * Inertial Flywheel Physics Engine (Euler Momentum + Magnetic Ratchet Snap)
+     * Upgrades drag and scrubber gestures with authentic brass mechanical momentum.
+     */
+    let flywheelVelocity = 0;
+    let isFlywheelGliding = false;
+
+    function cancelFlywheel() {
+      if (animFrameId) {
+        cancelAnimationFrame(animFrameId);
+        animFrameId = null;
+      }
+      isFlywheelGliding = false;
+      flywheelVelocity = 0;
+    }
+
+    function startFlywheelGlide(initialVelocity) {
+      cancelFlywheel();
+      flywheelVelocity = initialVelocity;
+      isFlywheelGliding = true;
+
+      const FRICTION = 0.938;
+      const MAX_BOUND = ALL_TEMPLATES.length - 1;
+      let lastTime = performance.now();
+
+      function glideStep(now) {
+        if (!isFlywheelGliding) return;
+        const dt = Math.min(32, Math.max(1, now - lastTime));
+        lastTime = now;
+
+        // Friction decay normalized to ~16.6ms
+        const frameFriction = Math.pow(FRICTION, dt / 16.6);
+        flywheelVelocity *= frameFriction;
+
+        // Position step
+        deckProgress += flywheelVelocity * dt;
+
+        // Rubberband boundary tension
+        if (deckProgress < 0) {
+          deckProgress += (0 - deckProgress) * 0.18;
+          flywheelVelocity *= 0.65;
+        } else if (deckProgress > MAX_BOUND) {
+          deckProgress += (MAX_BOUND - deckProgress) * 0.18;
+          flywheelVelocity *= 0.65;
+        }
+
+        // Apply deck and dynamic ratchet acoustic feedback
+        applyDeckProgress(deckProgress, false);
+
+        // Low speed threshold -> engage magnetic snap
+        if (Math.abs(flywheelVelocity) < 0.0018) {
+          isFlywheelGliding = false;
+          flywheelVelocity = 0;
+          const target = Math.max(0, Math.min(MAX_BOUND, Math.round(deckProgress)));
+          animateToDeckIndex(target);
+          return;
+        }
+
+        animFrameId = requestAnimationFrame(glideStep);
+      }
+
+      animFrameId = requestAnimationFrame(glideStep);
+    }
+
+    function animateToDeckIndex(targetIndex) {
+      cancelFlywheel();
+      const target = Math.max(0, Math.min(ALL_TEMPLATES.length - 1, targetIndex));
+      const start = deckProgress;
+      const change = target - start;
+
+      if (Math.abs(change) < 0.001) {
+        deckProgress = target;
+        currentDeckIndex = target;
+        activeThemeKey = ALL_TEMPLATES[currentDeckIndex].categoryKey;
+        activeTemplateId = ALL_TEMPLATES[currentDeckIndex].id;
+        applyDeckProgress(deckProgress, true);
+        updateCtaButtonLabel();
+        return;
+      }
+
+      const startTime = performance.now();
+      const duration = Math.min(380, Math.max(180, Math.abs(change) * 150));
+
+      function step(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progressRatio = Math.min(1, elapsed / duration);
+        const ease = 1 - Math.pow(1 - progressRatio, 4);
+        deckProgress = start + change * ease;
+        // Intermediate steps are muted during smooth flight
+        applyDeckProgress(deckProgress, true);
+
+        if (progressRatio < 1) {
+          animFrameId = requestAnimationFrame(step);
+        } else {
+          deckProgress = target;
+          currentDeckIndex = target;
+          activeThemeKey = ALL_TEMPLATES[currentDeckIndex].categoryKey;
+          activeTemplateId = ALL_TEMPLATES[currentDeckIndex].id;
+          applyDeckProgress(deckProgress, true);
+          updateCtaButtonLabel();
+          triggerHaptic(8);
+          soundEngine.playDialClick();
+          trackEvent("template_selected", { theme: activeThemeKey, template: activeTemplateId });
+        }
+      }
+
+      animFrameId = requestAnimationFrame(step);
+    }
+
+    function goToDeckIndex(index, withAudio = true) {
+      const clamped = Math.max(0, Math.min(ALL_TEMPLATES.length - 1, index));
+      if (withAudio && clamped !== currentDeckIndex) {
+        triggerHaptic(6);
+        soundEngine.playDialClick();
+      }
+      animateToDeckIndex(clamped);
+    }
+
+    function jumpToCategory(categoryKey) {
+      const targetIdx = CATEGORY_START_INDEX[categoryKey];
+      if (targetIdx !== undefined) {
+        if (targetIdx !== currentDeckIndex) {
+          triggerHaptic(8);
+          soundEngine.playDialClick();
+        }
+        animateToDeckIndex(targetIdx);
+      }
+    }
+
+    function initDeckGestures() {
+      const stage = document.getElementById("deck-stage");
+      if (!stage) return;
+
+      let isDragging = false;
+      let hasDragged = false;
+      let suppressClickUntil = 0;
+      let startX = 0;
+      let startY = 0;
+      let startProgress = 0;
+      let lastX = 0;
+      let lastTime = 0;
+      let smoothedVelocity = 0;
+      let isHorizontalGesture = null;
+      let lastRustleTime = 0;
+
+      stage.addEventListener("pointerdown", (e) => {
+        if (e.target.closest('.cover-feature-pill')) return;
+        cancelFlywheel();
+        isDragging = true;
+        hasDragged = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        lastX = e.clientX;
+        lastTime = performance.now();
+        startProgress = deckProgress;
+        smoothedVelocity = 0;
+        isHorizontalGesture = null;
+        lastRustleTime = performance.now();
+        stage.setPointerCapture?.(e.pointerId);
+      });
+
+      stage.addEventListener("pointermove", (e) => {
+        if (!isDragging) return;
+        const now = performance.now();
+        const dt = Math.max(1, now - lastTime);
+        const instVel = (e.clientX - lastX) / dt;
+        smoothedVelocity = smoothedVelocity * 0.4 + instVel * 0.6;
+        lastX = e.clientX;
+        lastTime = now;
+
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+
+        if (isHorizontalGesture === null) {
+          if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) {
+            isHorizontalGesture = Math.abs(deltaX) >= Math.abs(deltaY);
+          }
+        }
+
+        if (isHorizontalGesture === false) return;
+
+        if (Math.abs(deltaX) > 8) {
+          hasDragged = true;
+        }
+
+        // Tactile paper rustle foley during drag
+        if (Math.abs(smoothedVelocity) > 0.15 && now - lastRustleTime > 140) {
+          lastRustleTime = now;
+          soundEngine.playPaperRustle(Math.min(1.5, Math.abs(smoothedVelocity) * 1.8));
+        }
+
+        const deltaProgress = -deltaX / 220;
+        let newProgress = startProgress + deltaProgress;
+        if (newProgress < 0) {
+          newProgress = newProgress * 0.35;
+        } else if (newProgress > ALL_TEMPLATES.length - 1) {
+          const maxP = ALL_TEMPLATES.length - 1;
+          newProgress = maxP + (newProgress - maxP) * 0.35;
+        }
+        deckProgress = newProgress;
+        applyDeckProgress(deckProgress);
+      });
+
+      const onPointerEnd = (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        stage.releasePointerCapture?.(e.pointerId);
+
+        const now = performance.now();
+        if (now - lastTime > 65) {
+          smoothedVelocity = 0;
+        }
+
+        if (hasDragged) {
+          suppressClickUntil = performance.now() + 380;
+          soundEngine.playPaperRustle(0.75);
+        }
+
+        if (isHorizontalGesture === false) return;
+
+        const progressVelocity = -smoothedVelocity / 220;
+
+        if (Math.abs(progressVelocity) > 0.0018) {
+          startFlywheelGlide(progressVelocity);
+        } else {
+          const target = Math.max(0, Math.min(ALL_TEMPLATES.length - 1, Math.round(deckProgress)));
+          animateToDeckIndex(target);
+        }
+      };
+
+      stage.addEventListener("pointerup", onPointerEnd);
+      stage.addEventListener("pointercancel", onPointerEnd);
+
+      // Prevent accidental card click opening upload after a swipe/drag gesture
+      stage.addEventListener("click", (e) => {
+        if (performance.now() < suppressClickUntil) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }, true);
+    }
+
+    function initScrubberGestures() {
+      const track = document.getElementById("scrubber-track");
+      if (!track) return;
+
+      let isScrubbing = false;
+      let lastScrubTime = 0;
+      let lastScrubProgress = 0;
+      let scrubberVelocity = 0;
+
+      const handleScrub = (clientX, now) => {
+        const rect = track.getBoundingClientRect();
+        if (rect.width <= 0) return;
+        const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
+        const normalized = x / rect.width;
+        const newProgress = normalized * (ALL_TEMPLATES.length - 1);
+
+        if (lastScrubTime > 0) {
+          const dt = Math.max(1, now - lastScrubTime);
+          const instVel = (newProgress - lastScrubProgress) / dt;
+          scrubberVelocity = scrubberVelocity * 0.4 + instVel * 0.6;
+        }
+        lastScrubTime = now;
+        lastScrubProgress = newProgress;
+
+        deckProgress = Math.max(0, Math.min(ALL_TEMPLATES.length - 1, newProgress));
+        applyDeckProgress(deckProgress);
+      };
+
+      track.addEventListener("pointerdown", (e) => {
+        cancelFlywheel();
+        isScrubbing = true;
+        scrubberVelocity = 0;
+        lastScrubTime = performance.now();
+        lastScrubProgress = deckProgress;
+        track.setPointerCapture?.(e.pointerId);
+        handleScrub(e.clientX, performance.now());
+      });
+
+      track.addEventListener("pointermove", (e) => {
+        if (!isScrubbing) return;
+        handleScrub(e.clientX, performance.now());
+      });
+
+      const stopScrub = (e) => {
+        if (!isScrubbing) return;
+        isScrubbing = false;
+        track.releasePointerCapture?.(e.pointerId);
+
+        const now = performance.now();
+        if (now - lastScrubTime > 65) {
+          scrubberVelocity = 0;
+        }
+
+        if (Math.abs(scrubberVelocity) > 0.0018) {
+          startFlywheelGlide(scrubberVelocity);
+        } else {
+          const target = Math.max(0, Math.min(ALL_TEMPLATES.length - 1, Math.round(deckProgress)));
+          animateToDeckIndex(target);
+        }
+      };
+
+      track.addEventListener("pointerup", stopScrub);
+      track.addEventListener("pointercancel", stopScrub);
+    }
+
+    const WORKER_SCRIPT = \`self.onmessage=async(e)=>{const{id,file,maxEdge,quality}=e.data;try{const bitmap=await createImageBitmap(file,{imageOrientation:'from-image'});let width=bitmap.width,height=bitmap.height;if(width>maxEdge||height>maxEdge){if(width>=height){height=Math.round((height*maxEdge)/width);width=maxEdge}else{width=Math.round((width*maxEdge)/height);height=maxEdge}}width=Math.max(256,Math.round(width/16)*16);height=Math.max(256,Math.round(height/16)*16);const canvas=new OffscreenCanvas(width,height);const ctx=canvas.getContext('2d',{alpha:false});ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(bitmap,0,0,width,height);bitmap.close();const blob=await canvas.convertToBlob({type:'image/jpeg',quality:quality||0.82});canvas.width=0;canvas.height=0;let dataUrl='';if(typeof FileReaderSync!=='undefined'){dataUrl=new FileReaderSync().readAsDataURL(blob)}else{dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)})}self.postMessage({id,success:true,dataUrl,width,height,originalSizeKb:Math.round(file.size/1024),optimizedSizeKb:Math.round((dataUrl.length*3)/4/1024)})}catch(err){self.postMessage({id,success:false,error:err.message||'Worker processing failed'})}};\`;
+
+    let offscreenWorkerInstance = null;
+    let workerTaskId = 0;
+    const workerCallbacks = new Map();
+
+    function getOffscreenWorker() {
+      if (typeof Worker === 'undefined' || typeof OffscreenCanvas === 'undefined') {
+        return null;
+      }
+      if (!offscreenWorkerInstance) {
+        try {
+          const blob = new Blob([WORKER_SCRIPT], { type: 'application/javascript' });
+          const workerUrl = URL.createObjectURL(blob);
+          offscreenWorkerInstance = new Worker(workerUrl);
+          URL.revokeObjectURL(workerUrl);
+
+          offscreenWorkerInstance.onmessage = (e) => {
+            const { id, success, dataUrl, width, height, originalSizeKb, optimizedSizeKb, error } = e.data;
+            const cb = workerCallbacks.get(id);
+            if (cb) {
+              workerCallbacks.delete(id);
+              if (success) {
+                cb.resolve({ dataUrl, width, height, originalSizeKb, optimizedSizeKb });
+              } else {
+                cb.reject(new Error(error));
+              }
+            }
+          };
+
+          offscreenWorkerInstance.onerror = (err) => {
+            console.warn('[Offscreen Worker Error]:', err);
+            workerCallbacks.forEach((cb) => cb.reject(err));
+            workerCallbacks.clear();
+            offscreenWorkerInstance.terminate();
+            offscreenWorkerInstance = null;
+          };
+        } catch (e) {
+          console.warn('[Worker Init Notice]:', e);
+          offscreenWorkerInstance = null;
+        }
+      }
+      return offscreenWorkerInstance;
+    }
+
+    async function downsampleMainThread(file, maxEdge = 1024, quality = 0.82) {
+      let sourceWidth = 0;
+      let sourceHeight = 0;
+      let drawSource = null;
+      let cleanup = () => {};
+
+      if ('createImageBitmap' in window) {
+        try {
+          const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+          sourceWidth = bitmap.width;
+          sourceHeight = bitmap.height;
+          drawSource = bitmap;
+          cleanup = () => { try { bitmap.close(); } catch (_) {} };
+        } catch (_) {
+          drawSource = null;
+        }
+      }
+
+      if (!drawSource) {
+        const objectUrl = URL.createObjectURL(file);
+        const img = new Image();
+        img.src = objectUrl;
+        await new Promise((resolve, reject) => {
+          img.onload = () => resolve();
+          img.onerror = () => reject(new Error('Failed to load image'));
+        });
+        sourceWidth = img.naturalWidth || img.width;
+        sourceHeight = img.naturalHeight || img.height;
+        drawSource = img;
+        cleanup = () => { URL.revokeObjectURL(objectUrl); };
+      }
+
+      try {
+        let width = sourceWidth;
+        let height = sourceHeight;
+
+        if (width > maxEdge || height > maxEdge) {
+          if (width >= height) {
+            height = Math.round((height * maxEdge) / width);
+            width = maxEdge;
+          } else {
+            width = Math.round((width * maxEdge) / height);
+            height = maxEdge;
+          }
+        }
+
+        width = Math.max(256, Math.round(width / 16) * 16);
+        height = Math.max(256, Math.round(height / 16) * 16);
+
+        let canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        let ctx = canvas.getContext('2d', { alpha: false });
+        if (!ctx) {
+          throw new Error('Canvas 2D context unavailable');
+        }
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(drawSource, 0, 0, width, height);
+
+        const optimizedDataUrl = canvas.toDataURL('image/jpeg', quality);
+
+        // VRAM explicit deallocation
+        canvas.width = 0;
+        canvas.height = 0;
+        ctx = null;
+        canvas = null;
+
+        return {
+          dataUrl: optimizedDataUrl,
+          width,
+          height,
+          originalSizeKb: Math.round(file.size / 1024),
+          optimizedSizeKb: Math.round((optimizedDataUrl.length * 3) / 4 / 1024)
+        };
+      } finally {
+        cleanup();
+      }
+    }
+
+    async function downsampleImageFile(file, maxEdge = 1024, quality = 0.82) {
+      if (!file || !file.type.startsWith('image/')) {
+        throw new Error('Please select a valid image file.');
+      }
+
+      const worker = getOffscreenWorker();
+      if (worker) {
+        try {
+          const taskId = ++workerTaskId;
+          return await new Promise((resolve, reject) => {
+            const timeoutTimer = setTimeout(() => {
+              workerCallbacks.delete(taskId);
+              reject(new Error('Worker processing timeout'));
+            }, 6000);
+
+            workerCallbacks.set(taskId, {
+              resolve: (res) => { clearTimeout(timeoutTimer); resolve(res); },
+              reject: (err) => { clearTimeout(timeoutTimer); reject(err); }
+            });
+
+            worker.postMessage({ id: taskId, file, maxEdge, quality });
+          });
+        } catch (workerErr) {
+          console.warn('[Worker Downsample Fallback]:', workerErr);
+        }
+      }
+
+      return downsampleMainThread(file, maxEdge, quality);
+    }
+
+    async function handleUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      try {
+        const result = await downsampleImageFile(file, 1024, 0.82);
+        userPhotoUrl = result.dataUrl;
+        isUserUploaded = true;
+        renderDeckStage();
+        updateScrubberUI();
+        const resOrig = document.getElementById("res-original-img");
+        if (resOrig) resOrig.src = userPhotoUrl;
+        showToast("Portrait calibrated successfully");
+
+        try {
+          const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';
+          const pingUrl = isLocal ? 'http://127.0.0.1:8787/api/ping' : 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/ping';
+          fetch(pingUrl, { method: 'GET', keepalive: true, mode: 'no-cors' }).catch(() => {});
+        } catch (_) {}
+
+        triggerHaptic(10);
+        soundEngine.playDialClick();
+        trackEvent("photo_uploaded", {
+          original_kb: result.originalSizeKb,
+          optimized_kb: result.optimizedSizeKb,
+          scaled_w: result.width,
+          scaled_h: result.height
+        });
+      } catch (err) {
+        console.warn("Downsampling failed, fallback to FileReader:", err);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          userPhotoUrl = e.target.result;
+          isUserUploaded = true;
+          renderDeckStage();
+          updateScrubberUI();
+          const resOrig = document.getElementById("res-original-img");
+          if (resOrig) resOrig.src = userPhotoUrl;
+          showToast("Portrait calibrated successfully");
+          triggerHaptic(10);
+          soundEngine.playDialClick();
+          trackEvent("photo_uploaded", { file_size_kb: Math.round(file.size / 1024) });
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // ==========================================
+    // OPTION C: Darkroom Liquid Agitation Ceremony Engine
+    // ==========================================
+    let darkroomRippleAnimId = null;
+    let darkroomCanvas = null;
+    let darkroomCtx = null;
+    const darkroomRipples = [];
+    const silverParticles = [];
+    let darkroomLastAutoDrop = 0;
+
+    function initDarkroomAgitation() {
+      const loader = document.getElementById("loader");
+      darkroomCanvas = document.getElementById("darkroom-ripple-canvas");
+      if (!loader || !darkroomCanvas) return;
+      darkroomCtx = darkroomCanvas.getContext("2d");
+
+      const handleAgitate = (cx, cy) => {
+        const rect = darkroomCanvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        const x = (cx - rect.left) * dpr;
+        const y = (cy - rect.top) * dpr;
+        addDarkroomRipple(x, y, 1.0);
+        triggerHaptic(4);
+      };
+
+      loader.addEventListener("pointerdown", (e) => {
+        if (e.target && e.target.closest && e.target.closest(".darkroom-cancel-btn")) return;
+        handleAgitate(e.clientX, e.clientY);
+      });
+
+      loader.addEventListener("pointermove", (e) => {
+        if (e.buttons === 1) {
+          if (e.target && e.target.closest && e.target.closest(".darkroom-cancel-btn")) return;
+          if (Math.random() < 0.3) {
+            handleAgitate(e.clientX, e.clientY);
+          }
+        }
+      });
+    }
+
+    function addDarkroomRipple(x, y, intensity = 1.0) {
+      if (darkroomRipples.length > 8) darkroomRipples.shift();
+      const dpr = window.devicePixelRatio || 1;
+      darkroomRipples.push({
+        x,
+        y,
+        radius: 4 * dpr,
+        maxRadius: 180 * dpr * (0.8 + Math.random() * 0.4),
+        alpha: 0.35 * intensity,
+        speed: (2.4 + Math.random() * 0.8) * dpr
+      });
+
+      const shockRadius = 130 * dpr;
+      for (let i = 0; i < silverParticles.length; i++) {
+        const p = silverParticles[i];
+        const dx = p.x - x;
+        const dy = p.y - y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        if (dist < shockRadius) {
+          const force = (1 - dist / shockRadius) * 3.5 * dpr;
+          p.vx += (dx / dist) * force;
+          p.vy += (dy / dist) * force;
+        }
+      }
+    }
+
+    function startDarkroomAgitationLoop() {
+      if (!darkroomCanvas) {
+        darkroomCanvas = document.getElementById("darkroom-ripple-canvas");
+        if (darkroomCanvas) darkroomCtx = darkroomCanvas.getContext("2d");
+      }
+      if (!darkroomCanvas || !darkroomCtx) return;
+
+      const loader = document.getElementById("loader");
+      const dpr = window.devicePixelRatio || 1;
+      const w = loader.clientWidth || window.innerWidth;
+      const h = loader.clientHeight || window.innerHeight;
+
+      darkroomCanvas.width = Math.floor(w * dpr);
+      darkroomCanvas.height = Math.floor(h * dpr);
+      darkroomCanvas.style.width = w + "px";
+      darkroomCanvas.style.height = h + "px";
+
+      darkroomRipples.length = 0;
+      silverParticles.length = 0;
+
+      for (let i = 0; i < 28; i++) {
+        silverParticles.push({
+          x: Math.random() * darkroomCanvas.width,
+          y: Math.random() * darkroomCanvas.height,
+          vx: (Math.random() - 0.5) * 0.4 * dpr,
+          vy: (Math.random() - 0.5) * 0.4 * dpr,
+          radius: (0.8 + Math.random() * 1.4) * dpr,
+          baseAlpha: 0.14 + Math.random() * 0.22,
+          pulse: Math.random() * Math.PI * 2
+        });
+      }
+
+      addDarkroomRipple(darkroomCanvas.width * 0.5, darkroomCanvas.height * 0.45, 0.8);
+      darkroomLastAutoDrop = performance.now();
+
+      if (darkroomRippleAnimId) cancelAnimationFrame(darkroomRippleAnimId);
+
+      const render = (now) => {
+        if (!darkroomCtx || darkroomCanvas.width === 0) return;
+
+        if (now - darkroomLastAutoDrop > 2400) {
+          darkroomLastAutoDrop = now;
+          const rx = darkroomCanvas.width * (0.35 + Math.random() * 0.3);
+          const ry = darkroomCanvas.height * (0.35 + Math.random() * 0.3);
+          addDarkroomRipple(rx, ry, 0.5);
+        }
+
+        darkroomCtx.clearRect(0, 0, darkroomCanvas.width, darkroomCanvas.height);
+
+        for (let i = darkroomRipples.length - 1; i >= 0; i--) {
+          const r = darkroomRipples[i];
+          r.radius += r.speed;
+          const progress = r.radius / r.maxRadius;
+          const curAlpha = r.alpha * (1 - progress);
+
+          if (progress >= 1 || curAlpha <= 0.005) {
+            darkroomRipples.splice(i, 1);
+            continue;
+          }
+
+          darkroomCtx.beginPath();
+          darkroomCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+          darkroomCtx.lineWidth = Math.max(0.8, (1.8 * (1 - progress * 0.7)) * (window.devicePixelRatio || 1));
+          darkroomCtx.strokeStyle = \`rgba(17, 17, 17, \${curAlpha.toFixed(3)})\`;
+          darkroomCtx.stroke();
+
+          if (r.radius > 18 * (window.devicePixelRatio || 1)) {
+            darkroomCtx.beginPath();
+            darkroomCtx.arc(r.x, r.y, Math.max(1, r.radius - 12 * (window.devicePixelRatio || 1)), 0, Math.PI * 2);
+            darkroomCtx.lineWidth = 0.8 * (window.devicePixelRatio || 1);
+            darkroomCtx.strokeStyle = \`rgba(30, 30, 30, \${(curAlpha * 0.35).toFixed(3)})\`;
+            darkroomCtx.stroke();
+          }
+        }
+
+        for (let i = 0; i < silverParticles.length; i++) {
+          const p = silverParticles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vx *= 0.97;
+          p.vy *= 0.97;
+          p.pulse += 0.02;
+
+          // Wrap boundaries
+          if (p.x < 0) p.x = darkroomCanvas.width;
+          if (p.x > darkroomCanvas.width) p.x = 0;
+          if (p.y < 0) p.y = darkroomCanvas.height;
+          if (p.y > darkroomCanvas.height) p.y = 0;
+
+          const alpha = p.baseAlpha * (0.7 + 0.3 * Math.sin(p.pulse));
+          darkroomCtx.beginPath();
+          darkroomCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          darkroomCtx.fillStyle = \`rgba(18, 18, 18, \${alpha.toFixed(3)})\`;
+          darkroomCtx.fill();
+        }
+
+        darkroomRippleAnimId = requestAnimationFrame(render);
+      };
+
+      darkroomRippleAnimId = requestAnimationFrame(render);
+    }
+
+    function stopDarkroomAgitationLoop() {
+      if (darkroomRippleAnimId) {
+        cancelAnimationFrame(darkroomRippleAnimId);
+        darkroomRippleAnimId = null;
+      }
+      darkroomRipples.length = 0;
+      silverParticles.length = 0;
+      // Instant VRAM release: resetting width/height clears GPU backing store
+      if (darkroomCanvas) {
+        darkroomCanvas.width = 0;
+        darkroomCanvas.height = 0;
+      }
+    }
+
+    let generationAbortController = null;
+    let activeMilestoneTimers = [];
+
+    function cancelGeneration() {
+      stopDarkroomAgitationLoop();
+      if (generationAbortController) {
+        try { generationAbortController.abort(); } catch (_) { }
+        generationAbortController = null;
+      }
+      activeMilestoneTimers.forEach(clearTimeout);
+      activeMilestoneTimers = [];
+
+      const loader = document.getElementById("loader");
+      if (loader) {
+        loader.style.opacity = "0";
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 200);
+      }
+      triggerHaptic(8);
+      soundEngine.playDialClick();
+      showToast("Exposure cancelled");
+    }
+
+    function preloadAndDecodeImage(url, timeoutMs = 7000) {
+      return new Promise((resolve, reject) => {
+        let settled = false;
+        const img = new Image();
+        if (url && !url.startsWith('data:')) {
+          img.crossOrigin = "anonymous";
+        }
+
+        const timer = setTimeout(() => {
+          if (!settled) {
+            settled = true;
+            img.src = "";
+            reject(new Error('Image preload timeout'));
+          }
+        }, timeoutMs);
+
+        const onFinish = () => {
+          if (!settled) {
+            settled = true;
+            clearTimeout(timer);
+            if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+              resolve(img);
+            } else {
+              reject(new Error('Image has zero dimensions'));
+            }
+          }
+        };
+
+        const tryDecode = () => {
+          if (typeof img.decode === 'function') {
+            img.decode().then(onFinish).catch((decodeErr) => {
+              if (!settled) {
+                settled = true;
+                clearTimeout(timer);
+                reject(decodeErr || new Error('Image decode failed'));
+              }
+            });
+          } else {
+            onFinish();
+          }
+        };
+
+        img.onload = tryDecode;
+        img.onerror = () => {
+          if (!settled) {
+            settled = true;
+            clearTimeout(timer);
+            reject(new Error('Image network load failed'));
+          }
+        };
+        img.src = url;
+
+        if (img.complete && img.naturalWidth > 0) {
+          tryDecode();
+        }
+      });
+    }
+
+    async function startGeneration() {
+      const tGenerationStart = performance.now();
+      if (!isUserUploaded || !userPhotoUrl) {
+        triggerHaptic(12);
+        soundEngine.playDialClick();
+        showToast("Please introduce your pet to begin bespoke draping");
+        const fileInput = document.getElementById("file-input");
+        if (fileInput) fileInput.click();
+        return;
+      }
+
+      triggerHaptic(12);
+      soundEngine.playShutterSnap();
+      const currentTpl = ALL_TEMPLATES[currentDeckIndex] || ALL_TEMPLATES[0];
+      activeThemeKey = currentTpl.categoryKey;
+      activeTemplateId = currentTpl.id;
+      const theme = THEMES[activeThemeKey];
+      const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];
+      trackEvent("generate_clicked", { theme: activeThemeKey, template: tpl.id, is_user_uploaded: isUserUploaded });
+
+      const loader = document.getElementById("loader");
+      const phaseTitle = document.getElementById("loader-phase-title");
+      const phaseSub = document.getElementById("loader-phase-sub");
+
+      loader.style.display = "flex";
+      loader.style.opacity = "1";
+      startDarkroomAgitationLoop();
+
+      if (generationAbortController) {
+        try { generationAbortController.abort(); } catch (_) { }
+      }
+      generationAbortController = new AbortController();
+      activeMilestoneTimers.forEach(clearTimeout);
+      activeMilestoneTimers = [];
+
+      const phases = [
+        { t: 0, text: "Analyzing facial features", sub: "Detecting subject lighting & geometry" },
+        { t: 1200, text: "Styling bespoke couture", sub: "Tailoring high-fashion silhouette" },
+        { t: 3200, text: "Sculpting studio lighting", sub: "Calibrating contrast & depth" },
+        { t: 6500, text: "Developing darkroom print", sub: "Polishing 1080P artistic fidelity" },
+        { t: 12000, text: "Finalizing editorial cover", sub: "Harmonizing tones & texture" }
+      ];
+
+      phases.forEach(p => {
+        const tid = setTimeout(() => {
+          if (phaseTitle) phaseTitle.innerText = p.text;
+          if (phaseSub) phaseSub.innerText = p.sub;
+          triggerHaptic(5);
+        }, p.t);
+        activeMilestoneTimers.push(tid);
+      });
+
+      let finalPosterImg = null;
+      let responseData = null;
+      let isSuccess = false;
+      let failureMsg = "";
+
+      const effectiveImageBase64 = userPhotoUrl;
+
+      try {
+        const payload = {
+          styleKey: theme.backendTheme || "corporate",
+          themeId: theme.backendTheme || "corporate",
+          itemId: tpl.id,
+          templateId: tpl.id,
+          petName: "Milo",
+          imageBase64: effectiveImageBase64 || undefined,
+          isDefaultSample: false,
+          referenceImageUrl: undefined
+        };
+
+        const isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '3000';
+        const isPages = window.location.hostname.endsWith('pages.dev');
+        let endpoint = isLocal
+          ? 'http://127.0.0.1:8787/api/generate'
+          : (isPages ? 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/generate' : '/api/generate');
+
+        const reqTimestamp = Date.now().toString();
+        const reqNonce = (typeof crypto !== 'undefined' && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : (Math.random().toString(36).slice(2) + Date.now().toString(36));
+
+        const requestHeaders = {
+          'Content-Type': 'application/json',
+          'x-request-timestamp': reqTimestamp,
+          'x-request-nonce': reqNonce
+        };
+
+        const tFetchStart = performance.now();
+        let res;
+        try {
+          res = await fetch(endpoint, {
+            method: 'POST',
+            headers: requestHeaders,
+            body: JSON.stringify(payload),
+            signal: generationAbortController.signal
+          });
+        } catch (fetchErr) {
+          if (endpoint.includes('127.0.0.1:8787') && !generationAbortController.signal.aborted) {
+            console.warn('[Network Resilience] Local 8787 unreachable, auto-routing to production cloud worker...');
+            endpoint = 'https://vivibon-cover-worker.zhoumiaoyin1.workers.dev/api/generate';
+            res = await fetch(endpoint, {
+              method: 'POST',
+              headers: requestHeaders,
+              body: JSON.stringify(payload),
+              signal: generationAbortController.signal
+            });
+          } else {
+            throw fetchErr;
+          }
+        }
+
+        const tFetchDone = performance.now();
+        if (!res.ok) {
+          throw new Error(\`Server returned status: \${res.status}\`);
+        }
+
+        const json = await res.json();
+        if (json.success && json.data && json.data.imageUrl) {
+          responseData = json.data;
+          finalPosterImg = json.data.imageUrl;
+          isSuccess = true;
+        } else {
+          throw new Error(json.error || "Generation payload incomplete");
+        }
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+        console.warn('[Studio Fallback]:', err);
+        failureMsg = err.message || "Failed";
+        // Graceful degradation: Fallback to benchmark preset
+        finalPosterImg = tpl.img;
+        isSuccess = true;
+      }
+
+      activeMilestoneTimers.forEach(clearTimeout);
+      activeMilestoneTimers = [];
+
+      if (!isSuccess || !finalPosterImg) {
+        stopDarkroomAgitationLoop();
+        loader.style.opacity = "0";
+        setTimeout(() => { loader.style.display = "none"; }, 200);
+        openErrorModal("Studio Queue Busy", "High demand on rendering servers. Your pet photo and chosen style have been safely preserved.");
+        return;
+      }
+
+      // 1. \u663E\u5F71\u7EC8\u7AE0\u60C5\u611F\u8FC7\u6E21 (Emotional Darkroom Transition)
+      if (phaseTitle) phaseTitle.innerText = "Developing darkroom print";
+      if (phaseSub) phaseSub.innerText = "Unveiling 1080P high fashion masterwork";
+
+      // 2. GPU \u663E\u5B58\u9759\u9ED8\u9884\u5149\u6805\u5316\u95E8\u7981 (In-Memory GPU Pre-Decode Gate)
+      let decodedImageElement = null;
+      try {
+        decodedImageElement = await preloadAndDecodeImage(finalPosterImg, 8000);
+      } catch (e) {
+        console.warn("[Pre-decode warning -> Auto Healing Degradation]:", e);
+        // NC-4 \u4F18\u96C5\u81EA\u6108\uFF1A\u82E5\u751F\u6210\u56FE\u7247\u7F51\u7EDC\u4E0B\u8F7D\u622A\u65AD\u6216\u635F\u574F\uFF0C\u6BEB\u79D2\u7EA7\u964D\u7EA7\u81F3\u6807\u6746\u9884\u7F6E\u6837\u7247
+        finalPosterImg = tpl.img;
+        try {
+          decodedImageElement = await preloadAndDecodeImage(finalPosterImg, 4000);
+        } catch (_) {}
+      }
+
+      // 3. \u8BBE\u7F6E\u6210\u7247\u5E76\u65BD\u52A0\u5B9A\u683C\u521D\u59CB\u6001
+      const displayImg = document.getElementById("res-display-img");
+      displayImg.classList.add("unveiling");
+      displayImg.src = finalPosterImg;
+
+      // 4. \u591A\u5DF4\u80FA\u5FAE\u8109\u51B2\u4E0E\u673A\u68B0\u54AC\u5408\u58F0\u5B66\u53CD\u9988
+      triggerHaptic(10);
+      soundEngine.playDialClick();
+
+      // 5. \u5E73\u6ED1\u63ED\u6653\u906E\u7F69\u5E76\u5B9A\u683C\u6D6E\u73B0\u6210\u7247 (Silk Cross-Fade & Scale Lock)
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        stopDarkroomAgitationLoop();
+        loader.style.display = "none";
+        document.getElementById("view-entry").style.display = "none";
+        const resView = document.getElementById("view-result");
+        resView.style.display = "flex";
+        document.getElementById("header-back-btn").style.display = "flex";
+        startResultParallax();
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            displayImg.classList.remove("unveiling");
+          });
+        });
+
+        preparePosterCache(finalPosterImg, decodedImageElement);
+      }, 200);
+    }
+
+    // ==========================================
+    // OPTION D: Sotheby's 3D Micro-Parallax & Bespoke Embossed Seal
+    // ==========================================
+    let parallaxRafId = null;
+    let targetTiltX = 0;
+    let targetTiltY = 0;
+    let currentTiltX = 0;
+    let currentTiltY = 0;
+    let isParallaxActive = false;
+
+    function initResultParallax() {
+      const stage = document.querySelector(".poster-stage");
+      if (!stage) return;
+
+      const handlePointerMove = (e) => {
+        if (!isParallaxActive) return;
+        const rect = stage.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
+        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+        const nx = (clientX - (rect.left + rect.width * 0.5)) / (rect.width * 0.5);
+        const ny = (clientY - (rect.top + rect.height * 0.5)) / (rect.height * 0.5);
+        targetTiltY = Math.max(-1, Math.min(1, nx)) * 4.6;
+        targetTiltX = -Math.max(-1, Math.min(1, ny)) * 4.6;
+      };
+
+      const handlePointerLeave = () => {
+        targetTiltX = 0;
+        targetTiltY = 0;
+      };
+
+      stage.addEventListener("pointermove", handlePointerMove);
+      stage.addEventListener("pointerleave", handlePointerLeave);
+
+      const handleOrientation = (e) => {
+        if (!isParallaxActive || e.gamma === null || e.beta === null) return;
+        const gamma = Math.max(-25, Math.min(25, e.gamma));
+        const beta = Math.max(-25, Math.min(25, e.beta - 45));
+        targetTiltY = (gamma / 25) * 4.6;
+        targetTiltX = -(beta / 25) * 4.6;
+      };
+
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", handleOrientation, { passive: true });
+      }
+    }
+
+    function startResultParallax() {
+      const stage = document.querySelector(".poster-stage");
+      if (!stage) return;
+      isParallaxActive = true;
+      targetTiltX = 0;
+      targetTiltY = 0;
+      currentTiltX = 0;
+      currentTiltY = 0;
+
+      if (parallaxRafId) cancelAnimationFrame(parallaxRafId);
+
+      const loop = () => {
+        if (!isParallaxActive) return;
+        currentTiltX += (targetTiltX - currentTiltX) * 0.12;
+        currentTiltY += (targetTiltY - currentTiltY) * 0.12;
+
+        stage.style.transform = \`perspective(1000px) rotateX(\${currentTiltX.toFixed(2)}deg) rotateY(\${currentTiltY.toFixed(2)}deg)\`;
+
+        parallaxRafId = requestAnimationFrame(loop);
+      };
+
+      parallaxRafId = requestAnimationFrame(loop);
+    }
+
+    function stopResultParallax() {
+      isParallaxActive = false;
+      if (parallaxRafId) {
+        cancelAnimationFrame(parallaxRafId);
+        parallaxRafId = null;
+      }
+      const stage = document.querySelector(".poster-stage");
+      if (stage) {
+        stage.style.transform = "";
+      }
+    }
+
+    function drawEmbossedSeal(ctx, width, height, petName = "MILO") {
+      const cx = width - 128, cy = height - 138, r = 66;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx - 0.9, cy - 0.9, r, 0, Math.PI * 2);
+      ctx.lineWidth = 1.6;
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.36)";
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx + 1.1, cy + 1.1, r, 0, Math.PI * 2);
+      ctx.lineWidth = 1.6;
+      ctx.strokeStyle = "rgba(10, 10, 10, 0.44)";
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx - 0.7, cy - 0.7, r - 9, 0, Math.PI * 2);
+      ctx.lineWidth = 0.9;
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.28)";
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx + 0.9, cy + 0.9, r - 9, 0, Math.PI * 2);
+      ctx.lineWidth = 0.9;
+      ctx.strokeStyle = "rgba(10, 10, 10, 0.35)";
+      ctx.stroke();
+
+      function drawArcText(text, radius, startAngle, endAngle, outward = true) {
+        const chars = text.split("");
+        const angleStep = (endAngle - startAngle) / Math.max(chars.length - 1, 1);
+        for (let i = 0; i < chars.length; i++) {
+          const angle = startAngle + i * angleStep;
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(angle);
+          ctx.translate(0, outward ? -radius : radius);
+          if (!outward) ctx.rotate(Math.PI);
+          ctx.font = "bold 7.5px 'Bodoni MT', 'Didot', 'Georgia', serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = "rgba(10, 10, 10, 0.40)";
+          ctx.fillText(chars[i], 0.7, 0.7);
+          ctx.fillStyle = "rgba(255, 255, 255, 0.34)";
+          ctx.fillText(chars[i], -0.6, -0.6);
+          ctx.restore();
+        }
+      }
+
+      drawArcText("VIVIBON \xB7 HAUTE COUTURE", r - 16, -Math.PI * 0.78, -Math.PI * 0.22, true);
+      drawArcText("ARCHIVAL PROOF \xB7 1 OF 1", r - 16, Math.PI * 0.78, Math.PI * 0.22, false);
+
+      ctx.font = "italic bold 17px 'Bodoni MT', 'Didot', 'Georgia', serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "rgba(10, 10, 10, 0.42)";
+      ctx.fillText("VB", cx + 0.9, cy + 0.9);
+      ctx.fillStyle = "rgba(255, 255, 255, 0.36)";
+      ctx.fillText("VB", cx - 0.7, cy - 0.7);
+
+      const drawFlankDot = (dx, dy) => {
+        ctx.beginPath();
+        ctx.arc(cx + dx + 0.6, cy + dy + 0.6, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(10, 10, 10, 0.38)";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(cx + dx - 0.5, cy + dy - 0.5, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.32)";
+        ctx.fill();
+      };
+      drawFlankDot(-25, 0);
+      drawFlankDot(25, 0);
+      ctx.restore();
+    }
+
+    function backToEntry() {
+      stopResultParallax();
+      triggerHaptic(8);
+      soundEngine.playDialClick();
+      if (typeof window.resetCompareState === 'function') {
+        window.resetCompareState();
+      }
+      document.getElementById("view-result").style.display = "none";
+      document.getElementById("header-back-btn").style.display = "none";
+      const entryView = document.getElementById("view-entry");
+      entryView.style.display = "flex";
+      applyDeckProgress(deckProgress);
+    }
+
+    function initCompareEvents() {
+      const btn = document.getElementById("compare-btn");
+      const label = document.getElementById("compare-label");
+      const originalLayer = document.getElementById("res-original-img");
+      if (!btn || !originalLayer) return;
+
+      let isHolding = false;
+      let isToggled = false;
+      let pressStartTime = 0;
+
+      function setCompareState(visible) {
+        if (visible) {
+          originalLayer.style.opacity = "1";
+          btn.classList.add("active");
+          btn.setAttribute("aria-pressed", "true");
+          if (label) label.textContent = "Original";
+        } else {
+          originalLayer.style.opacity = "0";
+          btn.classList.remove("active");
+          btn.setAttribute("aria-pressed", "false");
+          if (label) label.textContent = "Hold to compare";
+        }
+      }
+
+      window.resetCompareState = function () {
+        isHolding = false;
+        isToggled = false;
+        setCompareState(false);
+      };
+
+      const handlePointerDown = (e) => {
+        if (e) {
+          e.stopPropagation();
+          if (e.cancelable) e.preventDefault();
+        }
+        pressStartTime = performance.now();
+        isHolding = true;
+        triggerHaptic(6);
+        soundEngine.playDialClick();
+
+        if (isToggled) {
+          setCompareState(false);
+        } else {
+          setCompareState(true);
+        }
+      };
+
+      const handlePointerUp = (e) => {
+        if (!isHolding) return;
+        isHolding = false;
+        const duration = performance.now() - pressStartTime;
+        triggerHaptic(6);
+
+        if (duration < 280) {
+          isToggled = !isToggled;
+          setCompareState(isToggled);
+        } else {
+          isToggled = false;
+          setCompareState(false);
+        }
+      };
+
+      btn.addEventListener("pointerdown", handlePointerDown);
+      btn.addEventListener("pointerup", handlePointerUp);
+      btn.addEventListener("pointercancel", () => {
+        if (isHolding) {
+          isHolding = false;
+          isToggled = false;
+          setCompareState(false);
+        }
+      });
+    }
+
+    let cachedPosterBlob = null;
+    let cachedPosterFile = null;
+    let isPreparingCache = false;
+
+    async function preparePosterCache(imgSrc, preloadedImg) {
+      if (isPreparingCache) return;
+      isPreparingCache = true;
+
+      try {
+        const theme = THEMES[activeThemeKey];
+        const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];
+
+        const canvas = document.getElementById("render-canvas");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const width = 1080;
+        const height = 1440;
+        canvas.width = width;
+        canvas.height = height;
+
+        let img = (preloadedImg && preloadedImg.complete && preloadedImg.naturalWidth > 0)
+          ? preloadedImg
+          : null;
+
+        if (!img) {
+          img = new Image();
+          const targetSrc = imgSrc || document.getElementById("res-display-img").src;
+          if (targetSrc && !targetSrc.startsWith('data:')) {
+            img.crossOrigin = "anonymous";
+          }
+          img.src = targetSrc;
+
+          await new Promise((resolve, reject) => {
+            const onDone = () => {
+              if (typeof img.decode === 'function') {
+                img.decode().then(resolve).catch(reject);
+              } else {
+                resolve();
+              }
+            };
+            if (img.complete && img.naturalWidth > 0) return onDone();
+            img.onload = onDone;
+            img.onerror = () => reject(new Error('Image failed to load in preparePosterCache'));
+          });
+        }
+
+        const targetRatio = width / height;
+        const srcRatio = img.naturalWidth / img.naturalHeight;
+        let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+
+        if (srcRatio > targetRatio) {
+          sw = img.naturalHeight * targetRatio;
+          sx = (img.naturalWidth - sw) / 2;
+        } else {
+          sh = img.naturalWidth / targetRatio;
+          sy = (img.naturalHeight - sh) / 2;
+        }
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, width, height);
+
+        drawEmbossedSeal(ctx, width, height, tpl.petName || "MILO");
+
+        await new Promise((resolve) => {
+          canvas.toBlob((blob) => {
+            if (blob) {
+              cachedPosterBlob = blob;
+              cachedPosterFile = new File([blob], \`ViviBon-Cover-\${tpl.id}-\${Date.now()}.png\`, { type: 'image/png' });
+              const displayImg = document.getElementById("res-display-img");
+              if (displayImg) {
+                try {
+                  displayImg.src = URL.createObjectURL(blob);
+                } catch (_) {}
+              }
+            }
+            resolve();
+          }, 'image/png');
+        });
+      } catch (e) {
+        console.warn('[Poster Cache Self-Healing]: Image corrupted or failed, auto-healing to pristine sample:', e);
+        try {
+          const theme = THEMES[activeThemeKey];
+          const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];
+          const displayImg = document.getElementById("res-display-img");
+          if (displayImg && tpl && tpl.img) {
+            displayImg.src = tpl.img;
+          }
+        } catch (_) {}
+      } finally {
+        isPreparingCache = false;
+      }
+    }
+
+    async function exportPoster() {
+      triggerHaptic(12);
+      soundEngine.playShutterSnap();
+
+      const theme = THEMES[activeThemeKey];
+      const tpl = theme.templates.find(t => t.id === activeTemplateId) || theme.templates[0];
+
+      if (!cachedPosterBlob || !cachedPosterFile) {
+        await preparePosterCache();
+      }
+
+      const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || 
+                       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isRestrictedInApp = /MicroMessenger|WeChat|Weibo|Instagram|TikTok/i.test(navigator.userAgent);
+
+      if (isMobile && !isRestrictedInApp && navigator.canShare && cachedPosterFile && navigator.canShare({ files: [cachedPosterFile] })) {
+        try {
+          await navigator.share({
+            files: [cachedPosterFile],
+            title: 'ViviBon Cover',
+            text: 'ViviBon Bespoke Editorial Cover'
+          });
+          trackEvent("poster_saved_native_share", { theme: activeThemeKey, template: tpl.id });
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return;
+          console.warn("Native share interrupted:", err);
+        }
+      }
+
+      if (cachedPosterBlob) {
+        try {
+          const url = URL.createObjectURL(cachedPosterBlob);
+          const a = document.createElement("a");
+          a.download = \`ViviBon-Cover-\${tpl.id}-\${Date.now()}.png\`;
+          a.href = url;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          showToast("Saved 1080P portrait to downloads");
+          trackEvent("poster_saved_direct_download", { theme: activeThemeKey, template: tpl.id });
+          return;
+        } catch (downloadErr) {
+          console.warn("Direct blob download failed:", downloadErr);
+        }
+      }
+
+      showToast("Press & hold portrait above to save to Photos", 3000);
+    }
+
+    function openErrorModal(title, message) {
+      triggerHaptic(15);
+      const modal = document.getElementById("error-modal");
+      if (!modal) return;
+      if (title) document.getElementById("error-modal-title").innerText = title;
+      if (message) document.getElementById("error-modal-desc").innerText = message;
+      modal.style.display = "flex";
+      requestAnimationFrame(() => {
+        modal.classList.add("active");
+      });
+    }
+
+    function closeErrorModal(e) {
+      if (e) e.stopPropagation();
+      triggerHaptic(6);
+      soundEngine.playDialClick();
+      const modal = document.getElementById("error-modal");
+      if (modal) {
+        modal.classList.remove("active");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 250);
+      }
+    }
+
+    function retryGeneration() {
+      const modal = document.getElementById("error-modal");
+      if (modal) {
+        modal.classList.remove("active");
+        setTimeout(() => {
+          modal.style.display = "none";
+          startGeneration();
+        }, 200);
+      } else {
+        startGeneration();
+      }
+    }
+
+    function preloadAllTemplateThumbnails() {
+      const activeTheme = THEMES[activeThemeKey];
+      if (activeTheme && activeTheme.templates) {
+        activeTheme.templates.forEach(tpl => {
+          const img = new Image();
+          img.src = tpl.img;
+        });
+      }
+
+      const preloadRemaining = () => {
+        Object.keys(THEMES).forEach(k => {
+          if (k === activeThemeKey) return;
+          const theme = THEMES[k];
+          if (theme && theme.templates) {
+            theme.templates.forEach(tpl => {
+              const img = new Image();
+              img.src = tpl.img;
+            });
+          }
+        });
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(preloadRemaining, { timeout: 1500 });
+      } else {
+        setTimeout(preloadRemaining, 300);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      preloadAllTemplateThumbnails();
+      renderDeckStage();
+      updateScrubberUI();
+      initDeckGestures();
+      initScrubberGestures();
+      initDarkroomAgitation();
+      initResultParallax();
+      window.addEventListener('resize', () => updateScrubberUI());
+      initCompareEvents();
+
+      if ('fonts' in document) {
+        try {
+          document.fonts.load('bold 48px "Didot"').catch(() => {});
+          document.fonts.load('bold 48px "Bodoni MT"').catch(() => {});
+        } catch (_) {}
+      }
+    });
+  </script>
+</body>
+
+</html>`;
 
 // src/index.ts
 var createApp = (customFalService, rateLimiterOpts) => {
-  const app2 = new import_hono4.Hono();
+  const app2 = new import_hono5.Hono();
   app2.use("*", loggerMiddleware());
   app2.use("*", corsMiddleware());
   app2.use("/api/generate", antiBotMiddleware());
   app2.use("/api/generate", rateLimiterMiddleware(rateLimiterOpts));
   app2.get("/", (c) => c.html(public_default));
   app2.get("/index.html", (c) => c.html(public_default));
+  app2.route("/api/ping", pingRouter);
   app2.route("/", healthRoute);
   app2.route("/", stylesRoute);
   app2.route("/", createGenerateRoute(customFalService || falService));
@@ -11764,6 +12652,110 @@ var createApp = (customFalService, rateLimiterOpts) => {
         sent
       }
     });
+  });
+  app2.all("/api/test/pruna", async (c) => {
+    if (!c.env.AI) {
+      return c.json({ success: false, error: "Cloudflare AI binding (env.AI) is not available" }, 500);
+    }
+    const t0 = Date.now();
+    try {
+      let prompt = "Transform this pet into a 17th century baroque royal oil painting portrait wearing golden embroidered luxury velvet costume";
+      let images = ["https://huggingface.co/spaces/yisol/IDM-VTON/resolve/main/example/human/00121_00.jpg"];
+      let aspectRatio = "3:4";
+      let turbo = true;
+      if (c.req.method === "POST") {
+        const body = await c.req.json().catch(() => ({}));
+        if (body.prompt) prompt = body.prompt;
+        if (Array.isArray(body.images) && body.images.length > 0) images = body.images;
+        if (body.aspectRatio) aspectRatio = body.aspectRatio;
+        if (typeof body.turbo === "boolean") turbo = body.turbo;
+      }
+      const aiResponse = await c.env.AI.run("pruna/p-image-edit", {
+        prompt,
+        images,
+        aspect_ratio: aspectRatio,
+        turbo,
+        disable_safety_checker: false
+      });
+      const latencyMs = Date.now() - t0;
+      return c.json({
+        success: true,
+        model: "pruna/p-image-edit",
+        latencyMs,
+        response: aiResponse
+      });
+    } catch (err) {
+      const latencyMs = Date.now() - t0;
+      return c.json({
+        success: false,
+        model: "pruna/p-image-edit",
+        latencyMs,
+        error: err?.message || String(err),
+        stack: err?.stack
+      }, 500);
+    }
+  });
+  app2.all("/api/test/flux2", async (c) => {
+    if (!c.env.AI) {
+      return c.json({ success: false, error: "Cloudflare AI binding (env.AI) is not available" }, 500);
+    }
+    const t0 = Date.now();
+    const modelId = c.req.query("model") || "@cf/black-forest-labs/flux-2-klein-4b";
+    try {
+      const formData = new FormData();
+      formData.append("prompt", "A cute fluffy orange cat sitting gracefully, baroque royal oil painting portrait");
+      if (c.req.method === "POST") {
+        const body = await c.req.json().catch(() => ({}));
+        if (body.prompt) {
+          formData.set("prompt", body.prompt);
+        }
+        if (body.image) {
+          const base64Data = body.image.replace(/^data:image\/\w+;base64,/, "");
+          const buffer = Uint8Array.from(atob(base64Data), (c2) => c2.charCodeAt(0));
+          const blob = new Blob([buffer], { type: "image/jpeg" });
+          formData.append("image", blob, "input.jpg");
+        }
+      }
+      let bodyPayload = {
+        prompt: "A cute fluffy orange cat, baroque oil painting portrait"
+      };
+      if (c.req.method === "POST") {
+        const custom = await c.req.json().catch(() => ({}));
+        if (custom.body) {
+          bodyPayload = custom.body;
+        } else if (custom.prompt) {
+          bodyPayload.prompt = custom.prompt;
+        }
+      }
+      let result1, error1;
+      try {
+        result1 = await c.env.AI.run(modelId, {
+          multipart: {
+            contentType: "multipart/form-data",
+            body: bodyPayload
+          }
+        });
+      } catch (e) {
+        error1 = e.message;
+      }
+      const latencyMs = Date.now() - t0;
+      return c.json({
+        model: modelId,
+        latencyMs,
+        sentBody: bodyPayload,
+        result1,
+        error1
+      });
+    } catch (err) {
+      const latencyMs = Date.now() - t0;
+      return c.json({
+        success: false,
+        model: modelId,
+        latencyMs,
+        error: err?.message || String(err),
+        stack: err?.stack
+      }, 500);
+    }
   });
   app2.notFound((c) => {
     const errorResp = {

@@ -1,0 +1,76 @@
+name: ViviBon Cover · Enterprise CD Continuous Deployment
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+concurrency:
+  group: cd-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # =========================================================================
+  # 部署作业：依赖 CI 全绿，仅在凭据完备时执行 Cloudflare 双端发布
+  # =========================================================================
+  deploy-cloudflare:
+    name: 🚀 Cloudflare Production Deployment (Pages & Workers)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'worker/package-lock.json'
+
+      - name: Install Dependencies
+        working-directory: worker
+        run: npm ci
+
+      - name: Check Cloudflare Credentials Availability
+        id: check_auth
+        run: |
+          if [ -n "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] && [ -n "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "has_auth=true" >> $GITHUB_OUTPUT
+            echo "✅ Cloudflare credentials detected."
+          else
+            echo "has_auth=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ Cloudflare credentials not configured in GitHub Secrets."
+            echo "ℹ️ Skipping deployment step. To enable automatic deployment, configure:"
+            echo "    - CLOUDFLARE_API_TOKEN"
+            echo "    - CLOUDFLARE_ACCOUNT_ID"
+          fi
+
+      # ---------------------------------------------------------------------
+      # 1. 部署前端至 Cloudflare Pages
+      # ---------------------------------------------------------------------
+      - name: Deploy Frontend to Cloudflare Pages
+        if: steps.check_auth.outputs.has_auth == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=vivibon-cover --branch=main
+
+      # ---------------------------------------------------------------------
+      # 2. 部署后端微服务至 Cloudflare Workers
+      # ---------------------------------------------------------------------
+      - name: Deploy Backend to Cloudflare Workers
+        if: steps.check_auth.outputs.has_auth == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          command: deploy
+
+      - name: Deployment Summary Notice
+        if: steps.check_auth.outputs.has_auth == 'true'
+        run: |
+          echo "🎉 Cloudflare Pages & Workers successfully deployed to production!"
+          echo "🌐 Frontend: https://vivibon-cover.pages.dev"
+          echo "⚡ Backend: https://vivibon-cover-worker.zhoumiaoyin1.workers.dev"

@@ -64,6 +64,7 @@ export const corsMiddleware = (): MiddlewareHandler<{ Bindings: Env }> => {
 
     c.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     c.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, x-request-timestamp, x-request-nonce, x-admin-bypass-key, x-test-bypass');
+    c.header('Access-Control-Expose-Headers', 'Server-Timing, X-Model-Provider, X-Model-Latency-Ms, X-Worker-Total-Ms');
 
     await next();
   };

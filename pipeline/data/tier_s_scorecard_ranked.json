@@ -1,0 +1,963 @@
+{
+  "scorecard_version": "2.0.0-STAGE-2-MENTAL-SCORECARD",
+  "evaluation_criteria": {
+    "social_currency": "40% (Identity Signaling 15%, Conversation Starter 15%, Emotional Shield 10%)",
+    "reproduction_feasibility": "30% (Pose Tolerance 10%, Biometric Fidelity 10%, Prop Harmony 10%)",
+    "emotional_depth": "30% (Biological Neoteny 10%, Comedy of Errors 10%, Lindy Longevity 10%)"
+  },
+  "total_tier_s_evaluated": 13,
+  "overall_top6_champions": [
+    {
+      "rank": 1,
+      "id": "MEME-01",
+      "modality": "Meme-1:1",
+      "title": "This Meeting Could've Been An Email",
+      "mental_score": 93.0,
+      "cv_score": 90.9,
+      "social_currency": 36.9,
+      "reproduction_feasibility": 29.1,
+      "emotional_depth": 27.0,
+      "production_rank": "S+ Rank - Production Launch Champion",
+      "key_conversion_hook": "Irresistible conversational meme weapon (Workplace Catharsis & Shared Corporate Pain). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+    },
+    {
+      "rank": 2,
+      "id": "MEME-04",
+      "modality": "Meme-1:1",
+      "title": "Chief Nap Officer / WFH Slacker",
+      "mental_score": 92.7,
+      "cv_score": 87.6,
+      "social_currency": 39.6,
+      "reproduction_feasibility": 27.9,
+      "emotional_depth": 25.2,
+      "production_rank": "S+ Rank - Production Launch Champion",
+      "key_conversion_hook": "Irresistible conversational meme weapon (Work-From-Home Irony & Relatable Sloth). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+    },
+    {
+      "rank": 3,
+      "id": "MEME-10",
+      "modality": "Meme-1:1",
+      "title": "Unhinged 3 AM Zoomies Panic",
+      "mental_score": 92.3,
+      "cv_score": 92.7,
+      "social_currency": 39.2,
+      "reproduction_feasibility": 27.9,
+      "emotional_depth": 25.2,
+      "production_rank": "S+ Rank - Production Launch Champion",
+      "key_conversion_hook": "Irresistible conversational meme weapon (Chaotic Energy & Relatable Pet Madness). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+    },
+    {
+      "rank": 4,
+      "id": "MEME-08",
+      "modality": "Meme-1:1",
+      "title": "The Guilt Trip: Please Forgive Me",
+      "mental_score": 91.5,
+      "cv_score": 93.9,
+      "social_currency": 36.8,
+      "reproduction_feasibility": 27.9,
+      "emotional_depth": 26.8,
+      "production_rank": "S+ Rank - Production Launch Champion",
+      "key_conversion_hook": "Irresistible conversational meme weapon (Disarming Apology & Emotional Shield). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+    },
+    {
+      "rank": 5,
+      "id": "MEME-02",
+      "modality": "Meme-1:1",
+      "title": "Caught in 4K Ski-Mask Burglar",
+      "mental_score": 91.2,
+      "cv_score": 93.7,
+      "social_currency": 36.8,
+      "reproduction_feasibility": 27.4,
+      "emotional_depth": 27.0,
+      "production_rank": "S+ Rank - Production Launch Champion",
+      "key_conversion_hook": "Irresistible conversational meme weapon (Absurd Comedy & 'Guilty as Charged' Relief). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+    },
+    {
+      "rank": 6,
+      "id": "PFP-02",
+      "modality": "Avatar-1:1",
+      "title": "Wes Anderson Pastel Symmetry",
+      "mental_score": 91.0,
+      "cv_score": 86.1,
+      "social_currency": 37.3,
+      "reproduction_feasibility": 27.9,
+      "emotional_depth": 25.8,
+      "production_rank": "S+ Rank - Production Launch Champion",
+      "key_conversion_hook": "High-status self-representation (Indie Film Taste & Visual Perfectionism). Owners pridefully adopt as their primary social avatar on Discord, WhatsApp, and Slack, creating continuous passive viral impressions."
+    }
+  ],
+  "pfp_champions": [
+    {
+      "id": "PFP-02",
+      "title": "Wes Anderson Pastel Symmetry",
+      "mental_score": 91.0,
+      "cv_score": 86.1
+    },
+    {
+      "id": "PFP-05",
+      "title": "Pixar Disney 3D Animated Hero",
+      "mental_score": 88.5,
+      "cv_score": 88.1
+    }
+  ],
+  "meme_top_champions": [
+    {
+      "id": "MEME-01",
+      "title": "This Meeting Could've Been An Email",
+      "mental_score": 93.0,
+      "cv_score": 90.9
+    },
+    {
+      "id": "MEME-04",
+      "title": "Chief Nap Officer / WFH Slacker",
+      "mental_score": 92.7,
+      "cv_score": 87.6
+    },
+    {
+      "id": "MEME-10",
+      "title": "Unhinged 3 AM Zoomies Panic",
+      "mental_score": 92.3,
+      "cv_score": 92.7
+    },
+    {
+      "id": "MEME-08",
+      "title": "The Guilt Trip: Please Forgive Me",
+      "mental_score": 91.5,
+      "cv_score": 93.9
+    }
+  ],
+  "full_ranked_records": [
+    {
+      "id": "MEME-01",
+      "modality": "Meme-1:1",
+      "title": "This Meeting Could've Been An Email",
+      "concept_name": "Corporate Burnout Monday Standup",
+      "source_platform": "Slack Global Reaction Emoji & LinkedIn Viral Meme",
+      "engagement_signals": {
+        "platform_likes": 185000,
+        "shares": 142000,
+        "target_demographic": "Remote workers, tech workers, corporate employees in US & Europe",
+        "social_currency_type": "Workplace Catharsis & Shared Corporate Pain"
+      },
+      "visual_specs": {
+        "camera_shot": "85mm documentary portrait over laptop keyboard, eye-level realism",
+        "lighting": "Sterile office fluorescent ceiling tubes mixed with cold monitor glow",
+        "composition_ratio": "1:1 square, paws resting flat on desk",
+        "background": "Realistic open-plan office desk, sticky notes, blurred Slack monitor"
+      },
+      "semiotic_props": [
+        "Clear plastic venti iced Americano cup with melted ice cubes and green straw",
+        "Disheveled oversized gray hoodie with loose company lanyard and badge"
+      ],
+      "projected_emotion": "Deadpan, unamused, tired half-closed eyes, completely disassociated from reality",
+      "prompt_seed": "Realistic 1:1 documentary photo of [PET] as an utterly exhausted corporate remote worker sitting behind a modern desk, both furry paws resting flat on the keyboard. In front sits a plastic iced coffee cup with melted ice cubes. Wearing a rumpled grey tech hoodie with a company lanyard, cold blue computer screen reflection in deadpan unamused dead-fish eyes, dark eye circle vibe, zero human anatomy, hilarious relatable workplace burnout.",
+      "negative_prompt": "smiling, happy worker, human hands, human fingers, smartphone selfie, 3d cartoon, bright sun",
+      "trigger_scenarios": [
+        "Used in Slack/Teams channel when a meeting runs 30 minutes over time",
+        "Monday morning group chat status update"
+      ],
+      "cross_validation": {
+        "cv_score": 90.9,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 47.4,
+          "domestic_auxiliary": 28.0,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "早八冰美式续命工位猫/狗",
+        "validation_rationale": "[This Meeting Could've Been An Email] demonstrates explosive dual-market validation (Score 90.9). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (早八冰美式续命工位猫/狗). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 93.0,
+        "social_currency": 36.9,
+        "reproduction_feasibility": 29.1,
+        "emotional_depth": 27.0,
+        "dimension_breakdown": {
+          "social_currency": 36.9,
+          "social_identity_signaling": 14.4,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 29.1,
+          "reproduction_pose_tolerance": 9.7,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 27.0,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 9.8,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Workplace Catharsis & Shared Corporate Pain). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-04",
+      "modality": "Meme-1:1",
+      "title": "Chief Nap Officer / WFH Slacker",
+      "concept_name": "WFH Camera-Off Slack Status",
+      "source_platform": "LinkedIn Viral Humor & Remote Work Subreddits",
+      "engagement_signals": {
+        "platform_likes": 134000,
+        "shares": 89000,
+        "target_demographic": "Remote/Hybrid workers, tech employees, Silicon Valley slackers",
+        "social_currency_type": "Work-From-Home Irony & Relatable Sloth"
+      },
+      "visual_specs": {
+        "camera_shot": "Eye-level office shot, slumped comfortably back in desk chair",
+        "lighting": "Warm afternoon natural light flooding home office",
+        "composition_ratio": "1:1 square, relaxed slumped posture",
+        "background": "Herman Miller office chair mesh back and home office potted plant"
+      },
+      "semiotic_props": [
+        "Single white wireless AirPod tucked into one furry ear",
+        "Both front paws folded peacefully over a rounded tummy"
+      ],
+      "projected_emotion": "Blissfully asleep during a 200-person all-hands company Zoom call",
+      "prompt_seed": "Close-up 1:1 comedy photograph of [PET] as the Chief Nap Officer working from home, slouched blissfully deep into a black mesh ergonomic office chair. A single tiny white wireless AirPod earbud rests in one ear, both paws folded gently over belly, eyes peacefully closed with a contented smirk during a Zoom meeting. Soft natural home office light, photorealistic pet fur, pure hilarious remote-work sloth.",
+      "negative_prompt": "hardworking, human hands, human body, stress, ugly, cartoon 3d, dark room",
+      "trigger_scenarios": [
+        "Slack status: 'In a meeting (Away)' with this avatar",
+        "Replying to colleagues on Friday afternoon: 'Signing off early'"
+      ],
+      "cross_validation": {
+        "cv_score": 87.6,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 44.1,
+          "domestic_auxiliary": 28.0,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "早八冰美式续命工位猫/狗",
+        "validation_rationale": "[Chief Nap Officer / WFH Slacker] demonstrates explosive dual-market validation (Score 87.6). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (早八冰美式续命工位猫/狗). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 92.7,
+        "social_currency": 39.6,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 39.6,
+          "social_identity_signaling": 14.8,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 9.8,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Work-From-Home Irony & Relatable Sloth). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-10",
+      "modality": "Meme-1:1",
+      "title": "Unhinged 3 AM Zoomies Panic",
+      "concept_name": "The Midnight Gremlin Awakening",
+      "source_platform": "TikTok Viral Pet Videos & Cat Memes Subreddit",
+      "engagement_signals": {
+        "platform_likes": 220000,
+        "shares": 174000,
+        "target_demographic": "Cat and dog parents who know the terror of midnight galloping",
+        "social_currency_type": "Chaotic Energy & Relatable Pet Madness"
+      },
+      "visual_specs": {
+        "camera_shot": "Dynamic low mid-leap action capture, motion blur on tail and paws",
+        "lighting": "Night vision green/amber security camera flash aesthetic",
+        "composition_ratio": "1:1 square, chaotic diagonal energy",
+        "background": "Dark bedroom carpet with blurred hallway doorway"
+      },
+      "semiotic_props": [
+        "Wildly dilated pitch-black pupils taking over 95% of the iris",
+        "Ears flared out in full gremlin attack mode, fur standing on end"
+      ],
+      "projected_emotion": "Pure unadulterated chaotic madness, possessed by the spirits of ancient speed",
+      "prompt_seed": "Chaotic 1:1 action flash photography of [PET] possessed by the midnight 3 AM zoomies, caught mid-sprint on living room carpet. Giant pitch-black dilated pupils taking up whole eyes, wild unhinged grin, ears pinned sideways in gremlin airplane mode, fur slightly standing on end with motion blur on paws. Authentic chaotic household lighting, legendary high-energy internet pet meme.",
+      "negative_prompt": "peaceful sleeping, calm studio photo, human hands, daytime, clean neat pose, 3d render",
+      "trigger_scenarios": [
+        "Typing in all-caps in group chats when chaos breaks loose",
+        "Expressing uncontrollable caffeine rush or sudden manic motivation"
+      ],
+      "cross_validation": {
+        "cv_score": 92.7,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 48.8,
+          "domestic_auxiliary": 28.4,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "委屈到变形飞机耳求原谅",
+        "validation_rationale": "[Unhinged 3 AM Zoomies Panic] demonstrates explosive dual-market validation (Score 92.7). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (委屈到变形飞机耳求原谅). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 92.3,
+        "social_currency": 39.2,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 39.2,
+          "social_identity_signaling": 14.4,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 9.8,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Chaotic Energy & Relatable Pet Madness). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-08",
+      "modality": "Meme-1:1",
+      "title": "The Guilt Trip: Please Forgive Me",
+      "concept_name": "Airplane Ears Pleading For Mercy",
+      "source_platform": "iMessage Sticker Packs & Instagram Viral Pets",
+      "engagement_signals": {
+        "platform_likes": 162000,
+        "shares": 93000,
+        "target_demographic": "Couples, friends apologizing for late replies, wholesome reconciliations",
+        "social_currency_type": "Disarming Apology & Emotional Shield"
+      },
+      "visual_specs": {
+        "camera_shot": "High-angle looking down from standing human perspective",
+        "lighting": "Soft warm indoor lamp light, glistening teary eye reflections",
+        "composition_ratio": "1:1 square, flattened submissive posture",
+        "background": "Soft living room wooden floor with plush rug edge"
+      },
+      "semiotic_props": [
+        "Ears pinned completely flat against head (airplane ears mode)",
+        "Chin completely pressed flat against the floorboards"
+      ],
+      "projected_emotion": "Pleading, glossy liquid eyes looking up, 'I know I chewed the couch but I love you'",
+      "prompt_seed": "High-angle 1:1 portrait of [PET] flattened completely onto a hardwood floor in overwhelming guilt and adorable apology. Ears folded all the way back in extreme airplane ears posture, chin glued to the floorboards, gigantic glossy liquid eyes looking up pleadingly with glistening reflections. Heartbreakingly pitiful whimpering face, ultra-soft fur texture, the ultimate disarming apology meme.",
+      "negative_prompt": "angry, aggressive, proud standing, human hands, cartoon 3d, oversaturated, stiff",
+      "trigger_scenarios": [
+        "Apologizing for replying 6 hours late to a text",
+        "Asking partner to pick up takeout on their way home"
+      ],
+      "cross_validation": {
+        "cv_score": 93.9,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 46.5,
+          "domestic_auxiliary": 28.4,
+          "universal_human_condition": 19.0
+        },
+        "matched_domestic_resonance": "委屈到变形飞机耳求原谅",
+        "validation_rationale": "[The Guilt Trip: Please Forgive Me] demonstrates explosive dual-market validation (Score 93.9). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (委屈到变形飞机耳求原谅). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 91.5,
+        "social_currency": 36.8,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 26.8,
+        "dimension_breakdown": {
+          "social_currency": 36.8,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 9.8,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 26.8,
+          "emotional_neoteny_cute_aggression": 9.8,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Disarming Apology & Emotional Shield). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-02",
+      "modality": "Meme-1:1",
+      "title": "Caught in 4K Ski-Mask Burglar",
+      "concept_name": "The Midnight Cheese Heist",
+      "source_platform": "TikTok Viral Trend & Reddit r/funny (9.4M upvotes across reposts)",
+      "engagement_signals": {
+        "platform_likes": 210000,
+        "shares": 165000,
+        "target_demographic": "Gen-Z & Millennials across TikTok, Discord, and Instagram",
+        "social_currency_type": "Absurd Comedy & 'Guilty as Charged' Relief"
+      },
+      "visual_specs": {
+        "camera_shot": "0.5x ultra wide-angle smartphone flash shot, extreme barrel distortion on nose",
+        "lighting": "Harsh direct camera flash in a dark kitchen, stark shadows",
+        "composition_ratio": "1:1 square, exaggerated perspective",
+        "background": "Open refrigerator door casting interior yellow glow in dark room"
+      },
+      "semiotic_props": [
+        "Tight black ribbed knit ski-mask balaclava on head with eyeholes cut out",
+        "Massively magnified giant wet black nose right in foreground center"
+      ],
+      "projected_emotion": "Absolute deer-in-headlights paralysis, giant dilated pupils caught in the act",
+      "prompt_seed": "Hilarious unhinged 1:1 smartphone 0.5x ultra-wide candid flash photo of [PET] caught stealing snacks in the dark kitchen at 2 AM, wearing a tight black ribbed knitted thief balaclava ski-mask on head. Gigantic distorted wet nose pushing directly into the camera lens, eyes wide open in sheer paralyzed panic, direct harsh camera flash, authentic fur, legendary internet comedy meme.",
+      "negative_prompt": "professional soft studio lighting, smiling pretty dog, human fingers, cartoon, 3d render, elegant",
+      "trigger_scenarios": [
+        "Used when someone gets exposed in group chat drama",
+        "Replying to 'Who ate all the cookies?' with zero defense"
+      ],
+      "cross_validation": {
+        "cv_score": 93.7,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 48.4,
+          "domestic_auxiliary": 26.8,
+          "universal_human_condition": 18.5
+        },
+        "matched_domestic_resonance": "土味特工偷吃当场被抓包",
+        "validation_rationale": "[Caught in 4K Ski-Mask Burglar] demonstrates explosive dual-market validation (Score 93.7). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (土味特工偷吃当场被抓包). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 91.2,
+        "social_currency": 36.8,
+        "reproduction_feasibility": 27.4,
+        "emotional_depth": 27.0,
+        "dimension_breakdown": {
+          "social_currency": 36.8,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 9.8,
+          "reproduction_feasibility": 27.4,
+          "reproduction_pose_tolerance": 8.0,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 27.0,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 9.8,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Absurd Comedy & 'Guilty as Charged' Relief). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "PFP-02",
+      "modality": "Avatar-1:1",
+      "title": "Wes Anderson Pastel Symmetry",
+      "concept_name": "The Grand Budapest Companion",
+      "source_platform": "TikTok #WesAnderson Trend (Over 2.4 Billion Views)",
+      "engagement_signals": {
+        "platform_likes": 142000,
+        "shares": 68000,
+        "target_demographic": "Designers, Gen-Z indie film enthusiasts, aesthetic Instagram creators",
+        "social_currency_type": "Indie Film Taste & Visual Perfectionism"
+      },
+      "visual_specs": {
+        "camera_shot": "Deadpan centered symmetrical 50mm flat-lay shot, strict frontal alignment",
+        "lighting": "Bright diffused shadowless pastel studio light, high color harmony",
+        "composition_ratio": "1:1 square, exact bilateral symmetry",
+        "background": "Solid pastel mustard-yellow wallpaper with vintage pink wainscoting"
+      },
+      "semiotic_props": [
+        "Tilted burnt-orange woolen beret resting neatly between ears",
+        "Tailored vintage tweed houndstooth blazer with brass button and tiny pocket square"
+      ],
+      "projected_emotion": "Quirky, deadpan, perfectly composed calm with polite curiosity",
+      "prompt_seed": "Wes Anderson cinematic 1:1 symmetrical portrait of [PET] in The Grand Budapest Hotel aesthetic, dead-center frontal camera framing. Wearing a perfectly tailored vintage mustard tweed blazer with tiny velvet collar and a tilted burnt-orange wool beret between ears. Pastel pink and warm yellow symmetrical vintage wallpaper background, flat whimsical studio lighting, hyper-detailed natural fur, iconic cinematic deadpan expression.",
+      "negative_prompt": "asymmetrical, tilted head, human hands, high contrast harsh shadows, modern neon, messy background, low quality",
+      "trigger_scenarios": [
+        "Aesthetic Instagram Grid PFP & TikTok profile",
+        "Creative portfolio or design-oriented Twitter profile"
+      ],
+      "cross_validation": {
+        "cv_score": 86.1,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 45.0,
+          "domestic_auxiliary": 25.6,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "复古贵族油画高定肖像",
+        "validation_rationale": "[Wes Anderson Pastel Symmetry] demonstrates explosive dual-market validation (Score 86.1). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (复古贵族油画高定肖像). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 91.0,
+        "social_currency": 37.3,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 25.8,
+        "dimension_breakdown": {
+          "social_currency": 37.3,
+          "social_identity_signaling": 14.8,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.8,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.6
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "High-status self-representation (Indie Film Taste & Visual Perfectionism). Owners pridefully adopt as their primary social avatar on Discord, WhatsApp, and Slack, creating continuous passive viral impressions."
+      }
+    },
+    {
+      "id": "MEME-07",
+      "modality": "Meme-1:1",
+      "title": "Brain Cell 404: Not Found",
+      "concept_name": "The 45-Degree Head Tilt Of Confusion",
+      "source_platform": "Reddit r/aww (34M members) & TikTok #GoldenRetrieverEnergy",
+      "engagement_signals": {
+        "platform_likes": 178000,
+        "shares": 105000,
+        "target_demographic": "Wholesome dog/cat lovers, people admitting they don't understand",
+        "social_currency_type": "Lovable Stupidity & Wholesome Vulnerability"
+      },
+      "visual_specs": {
+        "camera_shot": "Extreme head tilt close-up, 45-degree angle filling the frame",
+        "lighting": "Bright even daylight, sharp focus on eyes and tongue",
+        "composition_ratio": "1:1 square, asymmetric head tilt",
+        "background": "Cozy domestic living room couch, soft warm bokeh"
+      },
+      "semiotic_props": [
+        "Head tilted at an extreme 45-degree angle",
+        "Tiny pink tongue tip barely poking out between lips (the blep)"
+      ],
+      "projected_emotion": "Zero thoughts behind those beautiful eyes, dial-up internet sound inside brain",
+      "prompt_seed": "Close-up 1:1 comedy photograph of [PET] tilting head at an impossible 45-degree angle in pure adorable confusion. One ear perked tall while the other flops down, eyes wide and completely blank with lovable innocence, tiny pink tongue tip poking out (blep). Authentic living room daylight, crisp fur details, universal internet meme of cognitive overload and zero brain cells active.",
+      "negative_prompt": "smart calculating stare, human hands, normal straight pose, scary, cartoon, distorted skull",
+      "trigger_scenarios": [
+        "Replying to complex technical explanations: 'I didn't get any of that'",
+        "When someone asks you to do math in public"
+      ],
+      "cross_validation": {
+        "cv_score": 89.8,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 47.1,
+          "domestic_auxiliary": 27.2,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "脑干缺失但清澈的愚蠢",
+        "validation_rationale": "[Brain Cell 404: Not Found] demonstrates explosive dual-market validation (Score 89.8). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (脑干缺失但清澈的愚蠢). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 88.8,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 29.1,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 29.1,
+          "reproduction_pose_tolerance": 9.7,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Lovable Stupidity & Wholesome Vulnerability). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-03",
+      "modality": "Meme-1:1",
+      "title": "Bombastic Side-Eye (Criminal Offensive)",
+      "concept_name": "Judging You Silently Across The Room",
+      "source_platform": "TikTok Viral Sound (Over 10M videos created)",
+      "engagement_signals": {
+        "platform_likes": 195000,
+        "shares": 158000,
+        "target_demographic": "Sassy, quick-witted internet users and pop-culture meme lovers",
+        "social_currency_type": "The Ultimate Non-Verbal Sarcastic Dismissal"
+      },
+      "visual_specs": {
+        "camera_shot": "Tight crop on face, head pulled back into neck creating micro-crease",
+        "lighting": "Realistic everyday domestic living room light",
+        "composition_ratio": "1:1 square, asymmetric micro-expression",
+        "background": "Neutral beige wall, zero distracting elements"
+      },
+      "semiotic_props": [
+        "One pupil cocked extremely to the far corner of the eye socket",
+        "Upper lip curled slightly in utter disbelief"
+      ],
+      "projected_emotion": "Profound skepticism, judging your entire ancestry, 'are you actually serious?'",
+      "prompt_seed": "Legendary 1:1 candid comedy portrait of [PET] delivering the iconic bombastic side-eye look. Head retracted back slightly into neck, one eye narrowed in extreme skepticism while looking sideways with disdain, lips tightly curled in disbelief. Razor-sharp detail of natural pet fur and expressive whisker pads, authentic domestic candid photo lighting, universal hilarious judgment meme.",
+      "negative_prompt": "smiling, friendly, front view, human hands, human teeth, cartoon, 3d render, airbrushed",
+      "trigger_scenarios": [
+        "Instant reaction when someone suggests working over the weekend",
+        "Reacting to absurd takes or cringeworthy messages in group chats"
+      ],
+      "cross_validation": {
+        "cv_score": 89.3,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 47.8,
+          "domestic_auxiliary": 26.0,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "地铁老人看手机式嫌弃审视",
+        "validation_rationale": "[Bombastic Side-Eye (Criminal Offensive)] demonstrates explosive dual-market validation (Score 89.3). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (地铁老人看手机式嫌弃审视). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 88.8,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 29.1,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 29.1,
+          "reproduction_pose_tolerance": 9.7,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (The Ultimate Non-Verbal Sarcastic Dismissal). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-12",
+      "modality": "Meme-1:1",
+      "title": "I Feel Personally Attacked Right Now",
+      "concept_name": "The Offended Gasp Of Disbelief",
+      "source_platform": "Twitter Viral Quote Tweets & Pop Culture Memes",
+      "engagement_signals": {
+        "platform_likes": 143000,
+        "shares": 97000,
+        "target_demographic": "Drama queens, playful banterers, social media complainers",
+        "social_currency_type": "Playful Outrage & Dramatic Reaction"
+      },
+      "visual_specs": {
+        "camera_shot": "Close-up front angle, head thrown back in dramatic gasp",
+        "lighting": "Clean bright living room daylight",
+        "composition_ratio": "1:1 square, theatrical dramatic capture",
+        "background": "Soft living room sofa background"
+      },
+      "semiotic_props": [
+        "Mouth dropped wide open in an exaggerated theatrical gasp 'O'",
+        "Ears raised high in defensive shock"
+      ],
+      "projected_emotion": "Theatrical offense, gasping in horror, 'how dare you speak to me that way'",
+      "prompt_seed": "Dramatic 1:1 comedy photograph of [PET] reacting in theatrical offended shock, head recoiling back with mouth popped wide open in a round audible gasp of disbelief. Eyes wide and scandalized, ears perked high in defensive outrage, crisp whisker details and pink mouth interior, bright candid daytime lighting, the ultimate 'how dare you' dramatic internet meme.",
+      "negative_prompt": "calm, sleeping, aggressive biting, human fingers, cartoon, 3d, dark moody",
+      "trigger_scenarios": [
+        "When someone roasts your outfit or haircut in the group chat",
+        "Reacting to a brutally accurate horoscope or personality test"
+      ],
+      "cross_validation": {
+        "cv_score": 89.1,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 45.2,
+          "domestic_auxiliary": 28.4,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "委屈到变形飞机耳求原谅",
+        "validation_rationale": "[I Feel Personally Attacked Right Now] demonstrates explosive dual-market validation (Score 89.1). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (委屈到变形飞机耳求原谅). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 88.8,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 29.1,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 29.1,
+          "reproduction_pose_tolerance": 9.7,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Playful Outrage & Dramatic Reaction). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "PFP-05",
+      "modality": "Avatar-1:1",
+      "title": "Pixar Disney 3D Animated Hero",
+      "concept_name": "Pixar Animated Feature Protagonist",
+      "source_platform": "Civitai Top Checkpoints / ArtStation Trending",
+      "engagement_signals": {
+        "platform_likes": 135000,
+        "shares": 79000,
+        "target_demographic": "Animation lovers, families, Disney/Pixar fans worldwide",
+        "social_currency_type": "Universal Cuteness & Storybook Charm"
+      },
+      "visual_specs": {
+        "camera_shot": "3D animated feature close-up, cinematic depth of field",
+        "lighting": "Warm volumetric rim light, glossy subsurface scattering on ears and skin",
+        "composition_ratio": "1:1 square, emotional storytelling focus",
+        "background": "Soft storybook Parisian attic or cozy cottage bokeh"
+      },
+      "semiotic_props": [
+        "Oversized expressive luminous glass marble eyes with multi-layer glints",
+        "Cozy hand-stitched mini adventurer bandana with tiny brass button"
+      ],
+      "projected_emotion": "Heart-melting wonder, wide sparkling pupils, eager youthful loyalty",
+      "prompt_seed": "Breathtaking 1:1 Pixar Disney 3D animation movie close-up of [PET], stylized feature-film character design with massive expressive luminous eyes glowing with starry reflections. Velvety soft fur with individual hair rendering, warm subsurface scattering glow through ears, wearing a tiny rustic leather scout bandana. Pixar RenderMan studio lighting, heartwarming innocent emotion, 8k cinematic masterpiece.",
+      "negative_prompt": "creepy, realistic ugly taxidermy, low poly, bad render, human fingers, flat vector, oversaturated neon",
+      "trigger_scenarios": [
+        "Discord / Family WhatsApp / Apple ID profile picture",
+        "Universally loved wholesome avatar that appeals to all ages"
+      ],
+      "cross_validation": {
+        "cv_score": 88.1,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 44.2,
+          "domestic_auxiliary": 28.4,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "委屈到变形飞机耳求原谅",
+        "validation_rationale": "[Pixar Disney 3D Animated Hero] demonstrates explosive dual-market validation (Score 88.1). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (委屈到变形飞机耳求原谅). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 88.5,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 28.2,
+        "emotional_depth": 25.8,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 28.2,
+          "reproduction_pose_tolerance": 9.7,
+          "reproduction_biometric_fidelity": 8.8,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.8,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.6
+        },
+        "production_recommendation": "S+ Rank - Production Launch Champion",
+        "key_conversion_hook": "High-status self-representation (Universal Cuteness & Storybook Charm). Owners pridefully adopt as their primary social avatar on Discord, WhatsApp, and Slack, creating continuous passive viral impressions."
+      }
+    },
+    {
+      "id": "MEME-09",
+      "modality": "Meme-1:1",
+      "title": "Sunday Night Existential Dread",
+      "concept_name": "Contemplating Life Choices At 11 PM",
+      "source_platform": "Reddit r/me_irl (6.8M members) & Twitter Viral Posts",
+      "engagement_signals": {
+        "platform_likes": 154000,
+        "shares": 121000,
+        "target_demographic": "Young adults, 20-30s workforce dealing with Sunday scaries",
+        "social_currency_type": "Melancholic Solidarity (The Sunday Scaries)"
+      },
+      "visual_specs": {
+        "camera_shot": "Side profile gazing out of rainy window, cinematic mood",
+        "lighting": "Moody blue late-night rainfall streetlights and window reflections",
+        "composition_ratio": "1:1 square, deep emotional negative space",
+        "background": "Dark apartment window with falling raindrops and distant city lights"
+      },
+      "semiotic_props": [
+        "Muggy rain droplets running down window pane",
+        "Furry chin resting heavily on windowsill"
+      ],
+      "projected_emotion": "Gazing into the dark abyss of another upcoming work week with heavy philosophical sigh",
+      "prompt_seed": "Moody 1:1 cinematic comedy photograph of [PET] resting chin on a dark wooden windowsill, gazing out into a rainy city night. Raindrops running down the glass reflecting cold blue and amber streetlights, tired philosophical heavy gaze contemplating life choices before Monday morning. Deep atmospheric grain, authentic wet window reflections on soft fur, relatable Sunday Scaries meme.",
+      "negative_prompt": "sunny bright daylight, happy smile, human body, scary horror, cartoon, low quality",
+      "trigger_scenarios": [
+        "Sunday night 10 PM group chat check-in: 'Is everyone ready to suffer tomorrow?'",
+        "Expressing existential dread before a big presentation"
+      ],
+      "cross_validation": {
+        "cv_score": 91.1,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 46.2,
+          "domestic_auxiliary": 26.4,
+          "universal_human_condition": 18.5
+        },
+        "matched_domestic_resonance": "秋冬毛衣窗边温暖治愈",
+        "validation_rationale": "[Sunday Night Existential Dread] demonstrates explosive dual-market validation (Score 91.1). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (秋冬毛衣窗边温暖治愈). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 87.6,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S Rank - Priority Batch 2",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Melancholic Solidarity (The Sunday Scaries)). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-06",
+      "modality": "Meme-1:1",
+      "title": "Friday 5:00 PM Launchpad",
+      "concept_name": "Waiting for the Weekend Bell",
+      "source_platform": "Instagram Viral Reels & LinkedIn Friday Posts",
+      "engagement_signals": {
+        "platform_likes": 149000,
+        "shares": 98000,
+        "target_demographic": "Anyone counting down the minutes till the weekend begins",
+        "social_currency_type": "Universal Liberation & Weekend Excitement"
+      },
+      "visual_specs": {
+        "camera_shot": "Low stance sprinter starting block position on office floor",
+        "lighting": "Golden late-afternoon Friday sun hitting the exit door",
+        "composition_ratio": "1:1 square, intense kinetic tension",
+        "background": "Office hallway carpet leading directly to elevator bank"
+      },
+      "semiotic_props": [
+        "Miniature blue canvas backpack already strapped tightly across chest",
+        "Claws dug slightly into carpet ready to bolt the millisecond the clock hits 5:00"
+      ],
+      "projected_emotion": "Laser-focused wild pupils locked onto elevator doors, ears twitching in anticipation",
+      "prompt_seed": "Action comedy 1:1 photo of [PET] in starting sprinter position on the office carpet, wearing a tiny strapped blue commuter backpack. Front paws braced on floor ready to spring, intense hyper-focused eyes locked onto the office exit door, ears pinned forward with kinetic anticipation waiting for 5:00 PM. Golden Friday sunset sunlight through glass hallway, photorealistic fur, universal weekend freedom meme.",
+      "negative_prompt": "sleeping, calm, human legs running, blurry mess, cartoon speed lines, ugly",
+      "trigger_scenarios": [
+        "Posting in team Slack at 4:55 PM on Friday",
+        "Group chat rally call: 'Who's getting drinks tonight?'"
+      ],
+      "cross_validation": {
+        "cv_score": 89.0,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 45.9,
+          "domestic_auxiliary": 27.6,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "周五准时下班弹射起飞",
+        "validation_rationale": "[Friday 5:00 PM Launchpad] demonstrates explosive dual-market validation (Score 89.0). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (周五准时下班弹射起飞). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 87.6,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S Rank - Priority Batch 2",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Universal Liberation & Weekend Excitement). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    },
+    {
+      "id": "MEME-05",
+      "modality": "Meme-1:1",
+      "title": "Crypto Bro: Doge To The Moon",
+      "concept_name": "Wall Street Doge In The Bull Run",
+      "source_platform": "Twitter (X) Crypto & Reddit r/wallstreetbets (16M members)",
+      "engagement_signals": {
+        "platform_likes": 167000,
+        "shares": 112000,
+        "target_demographic": "Crypto traders, financial meme accounts, WallStreetBets apes",
+        "social_currency_type": "Hype, Bullish Swagger & Degenerate Financial Irony"
+      },
+      "visual_specs": {
+        "camera_shot": "Slight low angle looking up, puffed out furry chest",
+        "lighting": "Dramatic green monitor candlesticks reflected on sunglasses",
+        "composition_ratio": "1:1 square, obnoxious confident stance",
+        "background": "Trading desk with multiple monitors displaying surging green stock charts"
+      },
+      "semiotic_props": [
+        "Obnoxious chunky gold dollar-sign medallion chain around neck",
+        "Black sunglasses slid down to the tip of snout, smirking eyes visible"
+      ],
+      "projected_emotion": "Smug billionaire trader, 'I told you to buy the dip', arrogant swagger",
+      "prompt_seed": "Hilarious 1:1 crypto meme portrait of [PET] as an eccentric Wall Street trader celebrating a market pump, wearing an oversized chunky gold dollar-sign chain necklace and black sunglasses slid down snout. Multiple computer monitors with surging green candlestick charts glowing in the background, puffed chest, smug billionaire grin, crisp reflections on metallic chain, photorealistic fur, legendary degenerate financial comedy.",
+      "negative_prompt": "human hands holding money, realistic human torso, crying red charts, poor quality, cartoon",
+      "trigger_scenarios": [
+        "Crypto pump / stock gain bragging in Discord trading groups",
+        "Payday flex in friend group chats"
+      ],
+      "cross_validation": {
+        "cv_score": 87.8,
+        "tier": "Tier-S: Global Universal Hit",
+        "priority": "P0 - Immediate Production Harness",
+        "score_breakdown": {
+          "overseas_primary": 46.7,
+          "domestic_auxiliary": 25.6,
+          "universal_human_condition": 15.5
+        },
+        "matched_domestic_resonance": "复古贵族油画高定肖像",
+        "validation_rationale": "[Crypto Bro: Doge To The Moon] demonstrates explosive dual-market validation (Score 87.8). Hits universal human condition with proven Western viral traction and high domestic micro-resonance (复古贵族油画高定肖像). Guaranteed cross-cultural viral velocity."
+      },
+      "mental_scorecard": {
+        "total_score": 87.6,
+        "social_currency": 34.5,
+        "reproduction_feasibility": 27.9,
+        "emotional_depth": 25.2,
+        "dimension_breakdown": {
+          "social_currency": 34.5,
+          "social_identity_signaling": 12.0,
+          "social_conversation_starter": 15.0,
+          "social_emotional_shield": 7.5,
+          "reproduction_feasibility": 27.9,
+          "reproduction_pose_tolerance": 8.5,
+          "reproduction_biometric_fidelity": 9.7,
+          "reproduction_prop_harmony": 9.7,
+          "emotional_depth": 25.2,
+          "emotional_neoteny_cute_aggression": 8.2,
+          "emotional_comedy_of_errors": 8.0,
+          "emotional_lindy_longevity": 9.0
+        },
+        "production_recommendation": "S Rank - Priority Batch 2",
+        "key_conversion_hook": "Irresistible conversational meme weapon (Hype, Bullish Swagger & Degenerate Financial Irony). Solves everyday social friction (apology, Monday dread) by anthropomorphizing the user's feelings through their beloved pet."
+      }
+    }
+  ]
+}

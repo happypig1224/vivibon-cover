@@ -64,7 +64,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(result.capsuleVariant?.id).toBe('airline_captain');
     expect(result.capsuleVariant?.name).toBe('顶级民航机长');
     expect(mockRunner).toHaveBeenCalledWith(
-      expect.stringContaining('fisheye lens perspective'),
+      expect.stringContaining('airline captain'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
@@ -154,7 +154,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
-      expect.stringContaining('modern digital artifacts'),
+      expect.stringContaining('human arms'),
       undefined,
       expect.any(String)
     );
@@ -193,7 +193,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     );
     expect(resLineArt.capsuleVariant?.id).toBe('line_art');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('Study of My Pet'),
+      expect.stringContaining('sketchbook study'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
@@ -277,7 +277,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     );
     expect(resIntern.capsuleVariant?.id).toBe('airline_captain');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('fisheye lens perspective'),
+      expect.stringContaining('airline captain'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
@@ -319,7 +319,7 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     );
     expect(resPirate.capsuleVariant?.id).toBe('caribbean_pirate');
     expect(mockRunner).toHaveBeenLastCalledWith(
-      expect.stringContaining('ruthless pirate captain'),
+      expect.stringContaining('pirate captain'),
       DEFAULT_MILO_BASE64,
       'valid_key',
       expect.any(AbortSignal),
@@ -476,5 +476,162 @@ describe('FalService AI Defense & Cascading Architecture Matrix', () => {
     expect(result.failoverTriggered).toBe(true);
     expect(result.activeProvider).toBe('Wokey');
     expect(result.jobId).toBe('wk_backup_111');
+  });
+
+  it('should support 302ai Gemini as primary provider and correctly label activeProvider', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider, refUrl, options) => {
+      if (provider === '302ai') {
+        return Promise.resolve({
+          jobId: 'gemini_test_999',
+          imageUrl: 'https://file.302.ai/gpt/imgs/test.jpeg'
+        });
+      }
+      return Promise.reject(new Error('Unexpected provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'cosplay',
+      'Milo',
+      undefined,
+      undefined,
+      undefined,
+      'featured',
+      'secret_agent',
+      undefined,
+      undefined,
+      undefined,
+      [
+        { provider: '302ai', apiKey: '302_test_key', modelId: 'gemini-3.1-flash-lite-image' },
+        { provider: 'volcengine', apiKey: 'volc_key' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.failoverTriggered).toBe(false);
+    expect(result.activeProvider).toBe('302.AI (Gemini 3.1 Flash Lite)');
+    expect(result.imageUrl).toBe('https://file.302.ai/gpt/imgs/test.jpeg');
+    expect(mockRunner).toHaveBeenCalledWith(
+      expect.stringContaining('balaclava'),
+      DEFAULT_MILO_BASE64,
+      '302_test_key',
+      expect.any(AbortSignal),
+      expect.any(String),
+      '302ai',
+      expect.any(String),
+      expect.objectContaining({
+        modelId: 'gemini-3.1-flash-lite-image'
+      })
+    );
+  });
+
+  it('should failover from 302ai to Volcengine when 302ai fails', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider) => {
+      if (provider === '302ai') {
+        return Promise.reject(new Error('No image returned from 302.ai Gemini'));
+      }
+      if (provider === 'volcengine') {
+        return Promise.resolve({
+          jobId: 'ark_backup_222',
+          imageUrl: 'https://ark.volces.com/backup.png'
+        });
+      }
+      return Promise.reject(new Error('Unexpected provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'cosplay',
+      'Milo',
+      undefined,
+      undefined,
+      undefined,
+      'featured',
+      'secret_agent',
+      undefined,
+      undefined,
+      undefined,
+      [
+        { provider: '302ai', apiKey: '302_test_key' },
+        { provider: 'volcengine', apiKey: 'volc_good_key' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.failoverTriggered).toBe(true);
+    expect(result.activeProvider).toBe('Volcengine Ark (Seedream 5.0 Lite)');
+    expect(result.jobId).toBe('ark_backup_222');
+  });
+
+  it('should successfully generate poster via Segmind provider rail', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider) => {
+      if (provider === 'segmind') {
+        return Promise.resolve({
+          jobId: 'segmind_fast_999',
+          imageUrl: 'https://segmind.media/fast_sdxl.jpg'
+        });
+      }
+      return Promise.reject(new Error('Unexpected provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'fine_art',
+      'Toby',
+      undefined,
+      undefined,
+      undefined,
+      'louvre',
+      'baroque_oil',
+      undefined,
+      undefined,
+      undefined,
+      [
+        { provider: 'segmind', apiKey: 'SG_test_key_123' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.activeProvider).toBe('Segmind (SDXL Img2Img)');
+    expect(result.jobId).toBe('segmind_fast_999');
+    expect(result.imageUrl).toBe('https://segmind.media/fast_sdxl.jpg');
+  });
+
+  it('should failover from Segmind to Volcengine when Segmind throws Insufficient credits', async () => {
+    const mockRunner = vi.fn().mockImplementation((prompt, img, key, sig, neg, provider) => {
+      if (provider === 'segmind') {
+        return Promise.reject(new Error('Segmind upstream error: 406 Insufficient credits'));
+      }
+      if (provider === 'volcengine') {
+        return Promise.resolve({
+          jobId: 'ark_salvaged_777',
+          imageUrl: 'https://ark.volces.com/salvaged.png'
+        });
+      }
+      return Promise.reject(new Error('Unexpected provider'));
+    });
+
+    const service = new FalService(mockRunner, 5000);
+    const result = await service.generatePoster(
+      'celebration',
+      'Milo',
+      undefined,
+      undefined,
+      undefined,
+      'featured',
+      'birthday_cake',
+      undefined,
+      undefined,
+      undefined,
+      [
+        { provider: 'segmind', apiKey: 'SG_zero_credit' },
+        { provider: 'volcengine', apiKey: 'volc_safe_key' }
+      ]
+    );
+
+    expect(result.isFallback).toBe(false);
+    expect(result.failoverTriggered).toBe(true);
+    expect(result.activeProvider).toBe('Volcengine Ark (Seedream 5.0 Lite)');
+    expect(result.jobId).toBe('ark_salvaged_777');
   });
 });

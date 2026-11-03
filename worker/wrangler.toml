@@ -8,10 +8,16 @@ kv_namespaces = [
   { binding = "RATE_LIMIT_KV", id = "872d5b3c61864f6c99ff505046f38445" }
 ]
 
+[ai]
+binding = "AI"
+
 [vars]
 ENVIRONMENT = "production"
-PRIMARY_AI_PROVIDER = "volcengine"
-VOLCENGINE_MODEL_ID = "ep-20260910130528-l8thd"
+PRIMARY_AI_PROVIDER = "302ai"
+AI302_API_KEY = "sk-zEKY10L4HFXrEmIQNwjI27sGj23VhjuCqVE7TneyuM9PF3Vy"
+AI302_MODEL_ID = "gemini-3.1-flash-lite-image"
+VOLCENGINE_MODEL_ID = "ep-20260912175029-zvmwv"
+VOLCENGINE_SIZE = "2K"
 
 [triggers]
 crons = ["0 14 * * *"]

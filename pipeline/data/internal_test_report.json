@@ -1,0 +1,154 @@
+{
+  "report_version": "1.0.0-INTERNAL-SANDBOX",
+  "execution_time": "2026-09-11 18:48:02",
+  "total_templates_tested": 6,
+  "passed_count": 6,
+  "pass_rate": "100.0%",
+  "environment": "100% Isolated Sandbox (pipeline/)",
+  "results": [
+    {
+      "template_id": "MEME-01",
+      "title": "This Meeting Could've Been An Email",
+      "modality": "Meme-1:1",
+      "pet_subject": {
+        "species": "cat",
+        "breed": "British Shorthair",
+        "color_pattern": "solid slate blue-gray",
+        "eye_color": "glistening copper amber",
+        "features": "round plush cheeks, velvety dense coat"
+      },
+      "api_invoked": false,
+      "elapsed_seconds": 0.0,
+      "status": "PASSED",
+      "quality_gate": {
+        "latency_under_10s": true,
+        "zero_illegal_text_in_prompt": true,
+        "face_id_slot_preserved": true,
+        "negative_safeguard_verified": true
+      },
+      "result_image_uri": "sandbox://pipeline/assets/test_runs/MEME-01_simulated.webp",
+      "error": null,
+      "assembled_prompt_preview": "Masterpiece 1:1 professional portrait of a solid slate blue-gray British Shorthair with striking glistening copper amber eyes (round plush cheeks, vel..."
+    },
+    {
+      "template_id": "MEME-04",
+      "title": "Chief Nap Officer / WFH Slacker",
+      "modality": "Meme-1:1",
+      "pet_subject": {
+        "species": "cat",
+        "breed": "British Shorthair",
+        "color_pattern": "solid slate blue-gray",
+        "eye_color": "glistening copper amber",
+        "features": "round plush cheeks, velvety dense coat"
+      },
+      "api_invoked": false,
+      "elapsed_seconds": 0.0,
+      "status": "PASSED",
+      "quality_gate": {
+        "latency_under_10s": true,
+        "zero_illegal_text_in_prompt": true,
+        "face_id_slot_preserved": true,
+        "negative_safeguard_verified": true
+      },
+      "result_image_uri": "sandbox://pipeline/assets/test_runs/MEME-04_simulated.webp",
+      "error": null,
+      "assembled_prompt_preview": "Masterpiece 1:1 professional portrait of a solid slate blue-gray British Shorthair with striking glistening copper amber eyes (round plush cheeks, vel..."
+    },
+    {
+      "template_id": "MEME-10",
+      "title": "Unhinged 3 AM Zoomies Panic",
+      "modality": "Meme-1:1",
+      "pet_subject": {
+        "species": "cat",
+        "breed": "British Shorthair",
+        "color_pattern": "solid slate blue-gray",
+        "eye_color": "glistening copper amber",
+        "features": "round plush cheeks, velvety dense coat"
+      },
+      "api_invoked": false,
+      "elapsed_seconds": 0.0,
+      "status": "PASSED",
+      "quality_gate": {
+        "latency_under_10s": true,
+        "zero_illegal_text_in_prompt": true,
+        "face_id_slot_preserved": true,
+        "negative_safeguard_verified": true
+      },
+      "result_image_uri": "sandbox://pipeline/assets/test_runs/MEME-10_simulated.webp",
+      "error": null,
+      "assembled_prompt_preview": "Masterpiece 1:1 professional portrait of a solid slate blue-gray British Shorthair with striking glistening copper amber eyes (round plush cheeks, vel..."
+    },
+    {
+      "template_id": "MEME-08",
+      "title": "The Guilt Trip: Please Forgive Me",
+      "modality": "Meme-1:1",
+      "pet_subject": {
+        "species": "cat",
+        "breed": "British Shorthair",
+        "color_pattern": "solid slate blue-gray",
+        "eye_color": "glistening copper amber",
+        "features": "round plush cheeks, velvety dense coat"
+      },
+      "api_invoked": false,
+      "elapsed_seconds": 0.0,
+      "status": "PASSED",
+      "quality_gate": {
+        "latency_under_10s": true,
+        "zero_illegal_text_in_prompt": true,
+        "face_id_slot_preserved": true,
+        "negative_safeguard_verified": true
+      },
+      "result_image_uri": "sandbox://pipeline/assets/test_runs/MEME-08_simulated.webp",
+      "error": null,
+      "assembled_prompt_preview": "Masterpiece 1:1 professional portrait of a solid slate blue-gray British Shorthair with striking glistening copper amber eyes (round plush cheeks, vel..."
+    },
+    {
+      "template_id": "MEME-02",
+      "title": "Caught in 4K Ski-Mask Burglar",
+      "modality": "Meme-1:1",
+      "pet_subject": {
+        "species": "cat",
+        "breed": "British Shorthair",
+        "color_pattern": "solid slate blue-gray",
+        "eye_color": "glistening copper amber",
+        "features": "round plush cheeks, velvety dense coat"
+      },
+      "api_invoked": false,
+      "elapsed_seconds": 0.0,
+      "status": "PASSED",
+      "quality_gate": {
+        "latency_under_10s": true,
+        "zero_illegal_text_in_prompt": true,
+        "face_id_slot_preserved": true,
+        "negative_safeguard_verified": true
+      },
+      "result_image_uri": "sandbox://pipeline/assets/test_runs/MEME-02_simulated.webp",
+      "error": null,
+      "assembled_prompt_preview": "Masterpiece 1:1 professional portrait of a solid slate blue-gray British Shorthair with striking glistening copper amber eyes (round plush cheeks, vel..."
+    },
+    {
+      "template_id": "PFP-02",
+      "title": "Wes Anderson Pastel Symmetry",
+      "modality": "Avatar-1:1",
+      "pet_subject": {
+        "species": "cat",
+        "breed": "British Shorthair",
+        "color_pattern": "solid slate blue-gray",
+        "eye_color": "glistening copper amber",
+        "features": "round plush cheeks, velvety dense coat"
+      },
+      "api_invoked": false,
+      "elapsed_seconds": 0.0,
+      "status": "PASSED",
+      "quality_gate": {
+        "latency_under_10s": true,
+        "zero_illegal_text_in_prompt": true,
+        "face_id_slot_preserved": true,
+        "negative_safeguard_verified": true
+      },
+      "result_image_uri": "sandbox://pipeline/assets/test_runs/PFP-02_simulated.webp",
+      "error": null,
+      "assembled_prompt_preview": "Masterpiece 1:1 professional portrait of a solid slate blue-gray British Shorthair with striking glistening copper amber eyes (round plush cheeks, vel..."
+    }
+  ]
+}

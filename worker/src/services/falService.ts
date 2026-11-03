@@ -35,16 +35,17 @@ export type FalRunner = (
   apiKey: string,
   signal: AbortSignal,
   negativePrompt?: string,
-  providerName?: 'volcengine' | 'wokey' | 'siliconflow' | 'fal',
+  providerName?: '302ai' | 'volcengine' | 'wokey' | 'siliconflow' | 'fal' | 'segmind',
   referenceImageUrl?: string,
   options?: {
     modelId?: string;
     endpoint?: string;
+    size?: string;
   }
 ) => Promise<{ jobId: string; imageUrl: string }>;
 
 export interface ProviderRail {
-  provider: 'volcengine' | 'wokey' | 'siliconflow' | 'fal';
+  provider: '302ai' | 'volcengine' | 'wokey' | 'siliconflow' | 'fal' | 'segmind';
   apiKey: string;
   name?: string;
   timeoutMs?: number;
@@ -101,6 +102,210 @@ export const defaultFalRunner: FalRunner = async (
   // Pure Image-to-Image Enforcement
   if (!imageBase64) {
     throw new Error('Pure Image-to-Image required. Missing pet photo input.');
+  }
+
+  // 0. 302.AI Provider: Gemini 3.1 Flash Lite Image
+  if (providerName === '302ai') {
+    const endpoint = options?.endpoint || 'https://api.302.ai/v1/chat/completions';
+    const model = options?.modelId || 'gemini-3.1-flash-lite-image';
+
+    let formattedImage = imageBase64;
+    if (!formattedImage.startsWith('http://') && !formattedImage.startsWith('https://') && !formattedImage.startsWith('data:')) {
+      formattedImage = `data:image/jpeg;base64,${formattedImage}`;
+    }
+
+    // Build multi-modal message content (Photo 1: user pet, optional Photo 2: style reference)
+    const contentList: Array<{ type: string; text?: string; image_url?: { url: string } }> = [
+      { type: 'text', text: prompt },
+      { type: 'image_url', image_url: { url: formattedImage } }
+    ];
+
+    if (referenceImageUrl) {
+      let resolvedRef = referenceImageUrl;
+      if (!resolvedRef.startsWith('http') && !resolvedRef.startsWith('data:')) {
+        resolvedRef = `https://vivibon-cover.pages.dev/${resolvedRef.replace(/^\/+/, '')}`;
+      }
+      contentList.push({
+        type: 'image_url',
+        image_url: { url: resolvedRef }
+      });
+    }
+
+    const payload = {
+      model,
+      messages: [
+        {
+          role: 'user',
+          content: contentList
+        }
+      ]
+    };
+
+    const t302Start = Date.now();
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload),
+      signal
+    });
+
+    const t302TTFBMs = Date.now() - t302Start;
+
+    if (!response.ok) {
+      const errText = await response.text().catch(() => '');
+      throw new Error(`302.ai upstream error: ${response.status} ${response.statusText} ${errText}`);
+    }
+
+    const rawText = await response.text().catch(() => '');
+    const t302TotalMs = Date.now() - t302Start;
+    const t302TransferMs = t302TotalMs - t302TTFBMs;
+    console.log(`[302.AI Network Telemetry] TTFB (GPU Compute + Proxy Queue): ${t302TTFBMs}ms, Body Transfer: ${t302TransferMs}ms, Total: ${t302TotalMs}ms`);
+    let data: any;
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      // Guard against proxy concatenated JSON responses
+      const firstCloseBrace = rawText.indexOf('}}');
+      if (firstCloseBrace !== -1) {
+        try {
+          data = JSON.parse(rawText.slice(0, firstCloseBrace + 2));
+        } catch {
+          throw new Error(`Invalid JSON returned from 302.ai Gemini: ${rawText.slice(0, 200)}`);
+        }
+      } else {
+        throw new Error(`Failed to parse 302.ai response: ${rawText.slice(0, 200)}`);
+      }
+    }
+
+    let imageUrl: string | undefined;
+
+    // 1. OpenAI Chat Completion format (markdown image: ![image](url) or direct url)
+    if (data.choices && data.choices[0]?.message?.content) {
+      const content = data.choices[0].message.content;
+      const mdMatch = content.match(/!\[.*?\]\((https?:\/\/[^\s\)]+)\)/i);
+      if (mdMatch) {
+        imageUrl = mdMatch[1];
+      } else {
+        const urlMatch = content.match(/(https?:\/\/[^\s\)\"\'\<\>]+)/i);
+        if (urlMatch) {
+          imageUrl = urlMatch[1];
+        } else if (content.startsWith('data:image/')) {
+          imageUrl = content.trim();
+        }
+      }
+    }
+
+    // 2. OpenAI Images Generations format (data[0].url or data[0].b64_json)
+    if (!imageUrl && data.data && data.data[0]) {
+      const item = data.data[0];
+      if (item.url) {
+        imageUrl = item.url;
+      } else if (item.b64_json) {
+        imageUrl = item.b64_json.startsWith('data:')
+          ? item.b64_json
+          : `data:image/jpeg;base64,${item.b64_json}`;
+      }
+    }
+
+    if (!imageUrl) {
+      throw new Error('No image returned from 302.ai Gemini');
+    }
+
+    // Edge Inlining & Stream Shield: Ingest and sanitize upstream remote images into safe Data URLs
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      try {
+        const relayRes = await fetch(imageUrl, {
+          headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+          signal
+        });
+        if (relayRes.ok) {
+          const buf = await relayRes.arrayBuffer();
+          if (buf.byteLength >= 15000) {
+            const bytes = new Uint8Array(buf);
+            const CHUNK_SZ = 0x8000;
+            const chunks: string[] = [];
+            for (let i = 0; i < bytes.length; i += CHUNK_SZ) {
+              chunks.push(String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK_SZ) as unknown as number[]));
+            }
+            const b64 = btoa(chunks.join(''));
+            const rawType = relayRes.headers.get('content-type') || 'image/jpeg';
+            const cleanType = rawType.split(';')[0].trim();
+            imageUrl = `data:${cleanType};base64,${b64}`;
+          } else {
+            console.warn(`[302.ai Edge Inlining Warning]: Image byte length abnormally small (${buf.byteLength} bytes)`);
+          }
+        }
+      } catch (relayErr) {
+        console.warn('[302.ai Edge Inlining Warning]: Failed to inline remote image:', relayErr);
+      }
+    }
+
+    return {
+      jobId: `gemini_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl
+    };
+  }
+
+  // 0. Segmind Provider: Fast SDXL Img2Img (1.8s ~ 2.5s)
+  if (providerName === 'segmind') {
+    const endpoint = options?.endpoint || 'https://api.segmind.com/v1/sdxl-img2img';
+    const cleanBase64 = imageBase64.includes('base64,') ? imageBase64.split('base64,')[1] : imageBase64;
+
+    const payload = {
+      image: cleanBase64,
+      prompt,
+      negative_prompt: negativePrompt || 'ugly, deformed, disfigured, blurry, low quality, bad anatomy, mutated',
+      samples: 1,
+      scheduler: 'EulerDiscreteScheduler',
+      num_inference_steps: 25,
+      guidance_scale: 7.5,
+      strength: 0.65,
+      base64: true
+    };
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload),
+      signal
+    });
+
+    if (!response.ok) {
+      const errText = await response.text().catch(() => '');
+      throw new Error(`Segmind upstream error: ${response.status} ${response.statusText} ${errText}`);
+    }
+
+    const contentType = response.headers.get('content-type') || '';
+    let imageUrl = '';
+
+    if (contentType.includes('application/json')) {
+      const data = (await response.json()) as { image?: string; data?: string };
+      if (data.image) {
+        imageUrl = data.image.startsWith('data:') ? data.image : `data:image/jpeg;base64,${data.image}`;
+      } else if (data.data) {
+        imageUrl = data.data.startsWith('data:') ? data.data : `data:image/jpeg;base64,${data.data}`;
+      }
+    } else {
+      // Direct image binary buffer from Segmind
+      const arrBuffer = await response.arrayBuffer();
+      const b64 = Buffer.from(arrBuffer).toString('base64');
+      imageUrl = `data:image/jpeg;base64,${b64}`;
+    }
+
+    if (!imageUrl) {
+      throw new Error('No image returned from Segmind');
+    }
+
+    return {
+      jobId: `segmind_${crypto.randomUUID().slice(0, 8)}`,
+      imageUrl
+    };
   }
 
   // 1. Volcengine Ark Provider: Doubao Seedream 5.0 Lite
@@ -380,8 +585,9 @@ export class FalService {
         resolvedRefUrl = undefined;
       }
     }
+    const isUserUpload = Boolean(imageBase64 && imageBase64 !== DEFAULT_MILO_BASE64);
     const effectiveReferenceUrl = resolvedRefUrl || (
-      variant.sampleImageUrl
+      !isUserUpload && variant.sampleImageUrl
         ? (variant.sampleImageUrl.startsWith('http') ? variant.sampleImageUrl : `https://vivibon-cover.pages.dev/${variant.sampleImageUrl.replace(/^\/+/, '')}`)
         : undefined
     );
@@ -405,9 +611,13 @@ export class FalService {
 
       for (let i = 0; i < activeRails.length; i++) {
         const rail = activeRails[i];
-        const displayName = rail.provider === 'volcengine'
-          ? 'Volcengine Ark (Seedream 5.0 Lite)'
-          : (rail.provider === 'wokey' ? 'Wokey' : (rail.provider === 'siliconflow' ? 'SiliconFlow' : 'Fal.ai'));
+        const displayName = rail.provider === 'segmind'
+          ? 'Segmind (SDXL Img2Img)'
+          : (rail.provider === '302ai'
+            ? '302.AI (Gemini 3.1 Flash Lite)'
+            : (rail.provider === 'volcengine'
+              ? 'Volcengine Ark (Seedream 5.0 Lite)'
+              : (rail.provider === 'wokey' ? 'Wokey' : (rail.provider === 'siliconflow' ? 'SiliconFlow' : 'Fal.ai'))));
         const timeoutLimit = rail.timeoutMs || 60000;
 
         const runRailAttempt = async () => {
@@ -581,7 +791,7 @@ export class FalService {
               secondaryProvider: secondaryApiKey ? secondaryProviderName : 'None',
               errorMessage: primaryError.message,
               durationMs: Date.now() - start,
-              timeoutMs: this.timeoutLimit
+              timeoutMs: this.timeoutMs
             },
             'WARNING'
           ).catch(() => {});
@@ -604,7 +814,7 @@ export class FalService {
             secondaryProvider: secondaryProviderName,
             errorMessage: `Primary failed with: ${primaryError?.message || 'N/A'}`,
             durationMs: Date.now() - start,
-            timeoutMs: this.timeoutLimit
+            timeoutMs: this.timeoutMs
           },
           'INFO'
         ).catch(() => {});
@@ -633,7 +843,7 @@ export class FalService {
               secondaryProvider: secondaryProviderName,
               errorMessage: `Primary: [${primaryError?.message}], Secondary: [${secondaryError.message}]`,
               durationMs: Date.now() - start,
-              timeoutMs: this.timeoutLimit
+              timeoutMs: this.timeoutMs
             },
             'CRITICAL'
           ).catch(() => {});

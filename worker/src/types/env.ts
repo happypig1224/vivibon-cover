@@ -1,15 +1,21 @@
 export interface Env {
   RATE_LIMIT_KV: KVNamespace;
+  AI?: any;
   FAL_KEY?: string;
   SILICONFLOW_KEY?: string;
   WOKEY_API_KEY?: string;
   GEMINI_API_KEY?: string;
+  AI302_API_KEY?: string;
+  AI302_MODEL_ID?: string;
+  AI302_ENDPOINT?: string;
   ARK_API_KEY?: string;
   VOLCENGINE_API_KEY?: string;
   VOLCENGINE_MODEL_ID?: string;
   VOLCENGINE_ENDPOINT?: string;
+  VOLCENGINE_SIZE?: string;
+  SEGMIND_API_KEY?: string;
   WECHAT_WEBHOOK_URL?: string;
-  PRIMARY_AI_PROVIDER?: 'volcengine' | 'wokey' | 'fal' | 'siliconflow' | 'gemini';
+  PRIMARY_AI_PROVIDER?: '302ai' | 'volcengine' | 'wokey' | 'fal' | 'siliconflow' | 'gemini' | 'segmind';
   ENVIRONMENT?: string;
   CORS_ORIGIN?: string;
   ADMIN_BYPASS_KEY?: string;

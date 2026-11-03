@@ -1,0 +1,7 @@
+# ViviBon Cover - Viral Template Intelligence Pipeline
+# Standard library dependencies: urllib, json, os, ssl, typing
+# Optional external packages for enhanced scraping & vision processing:
+requests>=2.31.0
+pillow>=10.0.0
+pydantic>=2.5.0
+pytest>=8.0.0
