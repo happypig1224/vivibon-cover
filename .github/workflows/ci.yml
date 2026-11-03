@@ -149,6 +149,8 @@ jobs:
           fi
 
       - name: Run Pipeline Pytest Suites
+        env:
+          PYTHONPATH: .
         run: |
           python -m pytest pipeline/tests -v
 

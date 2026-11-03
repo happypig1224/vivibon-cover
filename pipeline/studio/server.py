@@ -7,6 +7,7 @@ import os
 import sys
 import json
 import urllib.parse
+from typing import Any, Dict, Optional, List
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 # Setup pathing

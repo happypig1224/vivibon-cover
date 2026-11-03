@@ -6,7 +6,7 @@ Serves as the auxiliary benchmark for cross-validation against Western macro-tre
 """
 import os
 import json
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 class DomesticSocialRadar:
     """
